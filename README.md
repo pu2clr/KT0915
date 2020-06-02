@@ -1,7 +1,8 @@
 # PU2CLR KT915 Arduino Library
 
-__ATTENTION: This library is under construction.__ 
+__ATTENTION: This library is under construction...__ 
 
+![Under construction](https://github.com/pu2clr/KT0915/blob/master/extras/images/under_construction.png)
 
 
 This is an Arduino Library for controlling the KT0915 DSP receiver from KTMicro.
