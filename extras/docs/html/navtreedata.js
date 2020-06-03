@@ -23,7 +23,7 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "PU2CLR KT0915 Arduino Library", "index.html", [
-    [ "PU2CLR KT915 Arduino Library", "md__k_t0915__r_e_a_d_m_e.html", [
+    [ "PU2CLR KT0915 Arduino Library", "md__k_t0915__r_e_a_d_m_e.html", [
       [ "Contents", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md1", [
         [ "Preface", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md2", null ],
         [ "Your support is important", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md3", null ],
