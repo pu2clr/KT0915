@@ -1,12 +1,11 @@
 
 /**
  * @mainpage PU2CLR KT0915 Arduino Library 
- * @brief PU2CLR KT0915 Arduino Library implementation 
- * @details This is an Arduino library for the KT0915, BROADCAST RECEIVER.  
+ * @brief PU2CLR KT0915 Arduino Library implementation. <br> 
+ * @details This is an Arduino library for the KT0915, BROADCAST RECEIVER.<br>  
  * @details It works with I2C protocol and can provide an easier interface for controlling the KT0915 device.<br>
  * @details This library was built based on KT0915 Datasheet from KTMicro (Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip TM). 
- * @details Others sources help the author to build this library.  
- * @details They are referenced in the documentation for this library on: https://github.com/pu2clr/KT0915
+ * @details Others sources help the author to build this library. They are referenced in the documentation for this library on: https://github.com/pu2clr/KT0915
  * @details This library uses the I2C protocols to read and write KT0915 registers. In this context, registers are memory position into the device.
  * @details The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost. 
  * @details This device, will surprise hobbyists and experimenters with its simplicity. 
