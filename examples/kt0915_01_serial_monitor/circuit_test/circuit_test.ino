@@ -11,6 +11,11 @@ void setup() {
     Serial.println("Check your circuit!");
     while(1);
   }
+
+  Serial.println("CHIP ID....................");
+  Serial.print(radio.getDeviceId());
+
+  
   
   // put your setup code here, to run once:
   radio.setup(12);

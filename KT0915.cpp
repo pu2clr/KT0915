@@ -66,13 +66,31 @@ uint16_t KT0915::getRegister(uint8_t reg) {
 
 /**
  * @ingroup GA03
+ * @brief Gets the Device Id 
+ * @return uint16_t 16 bits word with the device id number
+ */
+char * KT0915::getDeviceId()
+{
+    word16_to_bytes deviceIdNumber;
+    deviceIdNumber.raw = getRegister(REG_CHIP_ID);
+    this->deviceId[0] = deviceIdNumber.refined.highByte;
+    this->deviceId[1] = deviceIdNumber.refined.lowByte;
+    this->deviceId[2] = '\0';
+    return this->deviceId;
+}
+
+
+
+/**
+ * @ingroup GA03
  * @brief Sets the Crystal Type
  * @details Configures the Crystal Type you are using in your circuit.
  * @details The valid crystal type are 12MHz or 32.768Khz
  * 
  * @param crystal 
  */
-void KT0915::setCrystalType(uint8_t crystal)
+    void
+    KT0915::setCrystalType(uint8_t crystal)
 {
     kt09xx_amsyscfg reg;
     reg.raw = getRegister(REG_AMSYSCFG);  // Gets the current value of the register

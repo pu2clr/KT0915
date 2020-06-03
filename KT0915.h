@@ -512,11 +512,13 @@ protected:
     uint16_t currentFrequency;                  //!< Store the current frequency
     uint8_t currentMode;                        //!< Store the current mode
     uint8_t currentCrystalType = CRYSTAL_32KHZ; //!< Store the crystal type
+    char    deviceId[3];
 
 public:
     void setRegister(uint8_t reg, uint16_t parameter);
     uint16_t getRegister(uint8_t reg);
 
+    char *getDeviceId();
     void reset();
     void setI2CBusAddress(int deviceAddress);
     void setCrystalType(uint8_t crystal);
