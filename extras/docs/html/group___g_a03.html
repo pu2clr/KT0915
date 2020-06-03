@@ -98,6 +98,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa76e7e46c4bcfff5ac46b68cb772ff4e"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e">KT0915::getRegister</a> (uint8_t reg)</td></tr>
 <tr class="memdesc:gaa76e7e46c4bcfff5ac46b68cb772ff4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a given KT09XX register content.  <a href="group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e">More...</a><br /></td></tr>
 <tr class="separator:gaa76e7e46c4bcfff5ac46b68cb772ff4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ef8fc29fa07cdfaea5ccfd6aae1aafc"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga9ef8fc29fa07cdfaea5ccfd6aae1aafc">KT0915::getDeviceId</a> ()</td></tr>
+<tr class="memdesc:ga9ef8fc29fa07cdfaea5ccfd6aae1aafc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Device Id.  <a href="group___g_a03.html#ga9ef8fc29fa07cdfaea5ccfd6aae1aafc">More...</a><br /></td></tr>
+<tr class="separator:ga9ef8fc29fa07cdfaea5ccfd6aae1aafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8f8d955aeba6e598bccaa9609f69c7bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga8f8d955aeba6e598bccaa9609f69c7bf">KT0915::setCrystalType</a> (uint8_t crystal)</td></tr>
 <tr class="memdesc:ga8f8d955aeba6e598bccaa9609f69c7bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Crystal Type.  <a href="group___g_a03.html#ga8f8d955aeba6e598bccaa9609f69c7bf">More...</a><br /></td></tr>
 <tr class="separator:ga8f8d955aeba6e598bccaa9609f69c7bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,6 +180,28 @@ Basic</h1>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the register content </dd></dl>
+
+</div>
+</div>
+<a id="ga9ef8fc29fa07cdfaea5ccfd6aae1aafc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9ef8fc29fa07cdfaea5ccfd6aae1aafc">&#9670;&nbsp;</a></span>getDeviceId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * KT0915::getDeviceId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the Device Id. </p>
+<dl class="section return"><dt>Returns</dt><dd>uint16_t 16 bits word with the device id number </dd></dl>
+
+<p class="reference">References <a class="el" href="class_k_t0915.html#adfb08d0ad4cd0aeda4881f5a686bff22">KT0915::deviceId</a>.</p>
 
 </div>
 </div>
@@ -340,7 +365,7 @@ Basic</h1>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="agroup___g_a03_html_ga936dfc3e88614f4ad406f63321d27b29"><div class="ttname"><a href="group___g_a03.html#ga936dfc3e88614f4ad406f63321d27b29">KT0915::setup</a></div><div class="ttdeci">void setup(int reset_pin, uint8_t crystal_type=CRYSTAL_32KHZ)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> KT0915.cpp:151</div></div>
+<div class="ttc" id="agroup___g_a03_html_ga936dfc3e88614f4ad406f63321d27b29"><div class="ttname"><a href="group___g_a03.html#ga936dfc3e88614f4ad406f63321d27b29">KT0915::setup</a></div><div class="ttdeci">void setup(int reset_pin, uint8_t crystal_type=CRYSTAL_32KHZ)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> KT0915.cpp:178</div></div>
 <div class="ttc" id="aclass_k_t0915_html"><div class="ttname"><a href="class_k_t0915.html">KT0915</a></div><div class="ttdef"><b>Definition:</b> KT0915.h:504</div></div>
 <div class="ttc" id="a_k_t0915_8h_html"><div class="ttname"><a href="_k_t0915_8h.html">KT0915.h</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_a74c62040d9bf060c6281703c49412772"><div class="ttname"><a href="_k_t0915_8h.html#a74c62040d9bf060c6281703c49412772">CRYSTAL_12MHZ</a></div><div class="ttdeci">#define CRYSTAL_12MHZ</div><div class="ttdef"><b>Definition:</b> KT0915.h:27</div></div>
