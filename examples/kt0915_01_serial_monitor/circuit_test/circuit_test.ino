@@ -1,5 +1,6 @@
 #include <KT0915.h>
 
+
 KT0915 radio; 
 
 void setup() {
@@ -12,13 +13,14 @@ void setup() {
     while(1);
   }
 
-  Serial.println("CHIP ID....................");
+  Serial.println("CHIP ID....................:");
   Serial.print(radio.getDeviceId());
 
+  radio.setup(-1, CRYSTAL_32KHZ);
+
+  Serial.println("Crystal Ready..............:");
+  Serial.print(radio.isCrystalReady());
   
-  
-  // put your setup code here, to run once:
-  radio.setup(12);
 
 }
 

@@ -79,7 +79,17 @@ char * KT0915::getDeviceId()
     return this->deviceId;
 }
 
-
+/**
+ * @brief Gets the Crystal Status information
+ * 
+ * @return true  
+ * @return false 
+ */
+bool KT0915::isCrystalReady() {
+    kt09xx_statusa reg;
+    reg.raw = getRegister(REG_STATUSA);
+    return reg.refined.XTAL_OK;
+}
 
 /**
  * @ingroup GA03
@@ -89,8 +99,7 @@ char * KT0915::getDeviceId()
  * 
  * @param crystal 
  */
-    void
-    KT0915::setCrystalType(uint8_t crystal)
+void KT0915::setCrystalType(uint8_t crystal)
 {
     kt09xx_amsyscfg reg;
     reg.raw = getRegister(REG_AMSYSCFG);  // Gets the current value of the register

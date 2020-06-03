@@ -522,6 +522,7 @@ public:
     void reset();
     void setI2CBusAddress(int deviceAddress);
     void setCrystalType(uint8_t crystal);
+    bool isCrystalReady(); 
     void setup(int reset_pin, uint8_t crystal_type = CRYSTAL_32KHZ);
 };
 
