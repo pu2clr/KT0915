@@ -541,6 +541,7 @@ public:
     void frequencyUp();
     void frequencyDown();
     uint32_t getFrequency();
+    void setAntennaTuneCapacitor(uint16_t capacitor); 
 
 };
 

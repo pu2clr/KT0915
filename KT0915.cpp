@@ -208,6 +208,18 @@ void KT0915::setup(int reset_pin, uint8_t crystal_type, uint8_t ref_clock) {
 
 /**
  * @ingroup GA04
+ * @brief Set AM the Antenna Tune Capacitor 
+ * @details Sets a value between 0 and 16383 for AM Antenna Calibration 
+ * @param capacitor value between 0 and 16383
+ */
+void setAntennaTuneCapacitor(uint16_t capacitor){
+    kt09xx_amcali reg;
+    reg.refined.CAP_INDEX = capacitor; 
+    setRegister(REG_AMCALI, reg.raw);    // Strores the new value to the register
+};
+
+/**
+ * @ingroup GA04
  * @brief Sets the receiver to FM mode
  * @details Configures the receiver on FM mode; Also sets the band limits, defaul frequency and step.
  * 
@@ -262,6 +274,12 @@ void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
     setFrequency(default_frequency);
 }
 
+/**
+ * @ingroup GA04
+ * @brief Sets the current frequency
+ * 
+ * @param frequency 
+ */
 void KT0915::setFrequency(uint32_t frequency)
 {
     kt09xx_amchan reg_amchan;
@@ -283,17 +301,29 @@ void KT0915::setFrequency(uint32_t frequency)
     this->currentFrequency = frequency;
 }
 
+/**
+ * @ingroup GA04
+ * @brief Increments the frequency one step
+ * @details if the frequency plus the step value is greater than the maximum frequency for the band, 
+ * @details tne current frequency will be set to minimum frequency.
+ * 
+ * @see setFrequency
+ */
 void KT0915::frequencyUp(){
     this->currentFrequency += this->currentStep;
     if (this->currentFrequency > this->maximumFrequency)
         this->currentFrequency = this->minimumFrequency;
 
     setFrequency(this->currentFrequency);
-};
+}
 
 /**
- * @brief 
+ * @ingroup GA04
+ * @brief Decrements the frequency one step
+ * @details if the frequency minus the step value is less than the minimum frequency for the band, 
+ * @details tne current frequency will be set to minimum frequency.
  * 
+ * @see setFrequency
  */
 void KT0915::frequencyDown(){
     this->currentFrequency -= this->currentStep;
@@ -304,6 +334,7 @@ void KT0915::frequencyDown(){
 };
 
 /**
+ * @ingroup GA04
  * @brief Sets the frequency step
  * @details Sets increment and decrement frequency 
  * @param step  Values: 1, 5, 9, 10, 100, 200 
