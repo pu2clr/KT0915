@@ -89,6 +89,45 @@ The main features of this library are listed below.
 
 
 
+### KT0915 Pinout
+
+ | Pin Number  | Pin Name  | Description |
+ | ----------  | --------  | ----------- |
+ | 1           | CH        | Channel Adjustment. Used to deal with mechanical tune option |
+ | 2           | DVSS      | Digital Ground | 
+ | 3           | ROUT      | Righ channel audio output | 
+ | 4           | LOUT      | Left channel audio output | 
+ | 5           | AVSS      | Analog ground | 
+ | 6           | AVDD      | Power Supply | 
+ | 7           | XI/RCLK   | Crystal input or reference clock input setup | 
+ | 8           | XO        | Crystal Output | 
+ | 9           | ENABLE    | Chip enable. Tied to an internal 600kohm pull down resistor |
+ | 10          | AMINN     | AM RF negative input |
+ | 11          | AMINP     | AM RF positive input |
+ | 12          | RFINP     | FM RF input | 
+ | 13          | RFGND     | RF ground | 
+ | 14          | SCL       | SCL of I2C bus. Tied to an internal 47kohm pull-up resistor |
+ | 15          | SDA       | SDA of I2C bus. Tied to an internal 47kohm pull-up resistor |
+ | 16          | VOL       | Volume adjustment. Used to deal with mechanical volume control |
+
+
+
+### KT0915 SSOP16L package
+
+
+
+
+
+#### About the Pin 1 (CH) and Pin 16 (VOL)
+
+KT0915 can be configured to deal with mechanical tuning via a variable resistor. Also, you an use a variable resistor to control the audio volume. It is  enabled by setting the the register GPIOCFG (Address 0x1D). The dial can be a variable resistor with the tap connected to CH and VOL as well. The divided voltage at the tap is processed by the internal KT0915  analog to digital converter (ADC) and converted to a channel value or volume level.
+
+By default, this library the tune an volume are conttrolled by the Arduino. However, you can sets the mechanical feature by calling setTuneDialModeOn and setVolumeDialModeOn. See [API Documentation](https://pu2clr.github.io/KT0915/extras/docs/html/index.html).
+
+See the KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); pages: 8, 9, 10 and 20.
+
+
+
 ## SCHEMATIC
 
 
