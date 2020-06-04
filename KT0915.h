@@ -1,7 +1,6 @@
 
 /**
  * @mainpage PU2CLR KT0915 Arduino Library 
- * @file KT0915.h
  * @brief PU2CLR KT0915 Arduino Library implementation. <br> 
  * @details This is an Arduino library for the KT0915, BROADCAST RECEIVER.<br>  
  * @details It works with I2C protocol and can provide an easier interface for controlling the KT0915 device.<br>
