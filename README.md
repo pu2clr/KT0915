@@ -18,7 +18,7 @@ Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook
 
 # Contents
 
-1. [Preface](https://github.com/pu2clr/KT0915#preface)
+1. [Preface](https://pu2clr.github.io/KT0915#preface)
 2. [Your support is important](https://github.com/pu2clr/KT0915#your-support-is-important)
 3. [Library Features](https://github.com/pu2clr/KT0915#library-features)
 4. [MIT License](https://github.com/pu2clr/KT0915#mit-license)
