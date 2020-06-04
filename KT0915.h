@@ -36,9 +36,11 @@
 #define OSCILLATOR_26MHZ    8      //  26MHz
 #define OSCILLATOR_38KHz    9      //  38KHz 
 
-#define REF_CLOCK_ENABLE    1   // 
-#define REF_CLOCK_DISABLE   0
+#define REF_CLOCK_ENABLE    1      // Reference Clock 
+#define REF_CLOCK_DISABLE   0      // Crystal Clock 
 
+#define DIAL_MODE_ON        1      // Mechanical tuning (Via 100K resistor)
+#define DIAL_MODE_OFF       0      // MCU (Arduino) tuning  
 
 #define REG_CHIP_ID 0x01
 #define REG_SEEK 0x02
@@ -514,13 +516,14 @@ protected:
     int deviceAddress = AKC595X_I2C_ADRESS;
     int resetPin = -1;
 
-    uint8_t volume;                                 //!< Store the current volume
-    uint16_t currentStep;                           //!< Strore the current step
-    uint16_t currentFrequency;                      //!< Store the current frequency
+    uint8_t volume;                                 //!< Stores the current volume
+    uint16_t currentStep;                           //!< Stores the current step
+    uint16_t currentFrequency;                      //!< Stores the current frequency
     uint16_t minimumFrequency;                      //!< Stores the minimum frequency for the current band
     uint16_t maximumFrequency;                      //!< Stores the maximum frequency for the current band
-    uint8_t currentMode;                            //!< Store the current mode
-    uint8_t currentCrystalType = OSCILLATOR_32KHZ;  //!< Store the crystal type
+    uint8_t currentMode;                            //!< Stores the current mode
+    uint8_t currentCrystalType = OSCILLATOR_32KHZ;  //!< Stores the crystal type
+    uint8_t currentDialMode = DIAL_MODE_OFF;        //!< Stores the default Dial Mode (OFF)
     char    deviceId[3];
 
 public:
@@ -533,6 +536,11 @@ public:
     void setReferenceClockType(uint8_t crystal, uint8_t ref_clock = 0);
     bool isCrystalReady(); 
     void setup(int reset_pin, uint8_t OSCILLATOR_type = OSCILLATOR_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
+
+    void setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequency);
+    void setTuneDialModeOff();
+    void setVolumeDialModeOn();
+    void setVolumeDialModeOff();
 
     void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
     void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);

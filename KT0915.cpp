@@ -18,6 +18,18 @@
 
 /**
  * @ingroup GA03
+ * @todo check the real i2c address 
+ * @brief Set I2C bus address 
+ * 
+ * @param deviceAddress  I2C address
+ */
+void KT0915::setI2CBusAddress(int deviceAddress)
+{
+    this->deviceAddress = deviceAddress;
+}
+
+/**
+ * @ingroup GA03
  * @brief Sets the a value to a given KT09XX register
  * 
  * @param reg        register number to be written (0x1 ~ 0x3C) - See #define REG_ in KT0915.h 
@@ -124,7 +136,6 @@ void KT0915::setReferenceClockType(uint8_t crystal, uint8_t ref_clock)
 }
 
 
-
 /**
  * @ingroup GA03
  * @brief Resets the system. 
@@ -148,14 +159,82 @@ void KT0915::reset()
 
 /**
  * @ingroup GA03
- * @todo check the real i2c address 
- * @brief Set I2C bus address 
+ * @todo Channel Limits
+ * @brief Sets Tune Dial Mode Interface  
+ * @details This method sets the KT0915 work with a mechanical tuning via an external 100K resistor.
+ * @details KT0915 supports a unique Dial Mode (mechanical tuning wheel with a variable resistor) which is 
+ * @details enabled by GPIO1 to 2 (10). The dial can be a variable resistor with the tap connected to CH (pin 1).  
  * 
- * @param deviceAddress  I2C address
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); pages 19 and 20.
+ * 
+ * @param minimu_frequency   Start frequency for the user band
+ * @param maximum_frequency  Final frequency for the user band   
  */
-void KT0915::setI2CBusAddress(int deviceAddress) {
-    this->deviceAddress = deviceAddress;
+void KT0915::setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequency)
+{
+    kt09xx_amsyscfg reg;
+    kt09xx_gpiocfg gpio;
+    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value from the register
+    reg.refined.USERBAND = this->currentDialMode = DIAL_MODE_ON;
+    setRegister(REG_AMSYSCFG, reg.raw); // Strores the new value in the register
+
+    gpio.raw = getRegister(REG_GPIOCFG); // Gets the current value from the register
+    gpio.refined.GPIO1 = 2;              // Sets Dial Mode interface (pin 1/CH)
+    setRegister(REG_GPIOCFG, gpio.raw);  // Stores the new value in the register
+
+    // TODO: Sets the frequency limits for user and
 };
+
+/**
+ * @ingroup GA03
+ * @brief Turns the Tune Dial Mode interface OFF
+ * @see setTuneDialModeOn
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.
+ */
+void KT0915::setTuneDialModeOff()
+{
+    kt09xx_amsyscfg reg;
+    kt09xx_gpiocfg gpio;
+    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value of the register
+    reg.refined.USERBAND = this->currentDialMode = DIAL_MODE_OFF;
+    setRegister(REG_AMSYSCFG, reg.raw); // Strores the new value to the register
+
+    gpio.raw = getRegister(REG_GPIOCFG); // Gets the current value of the register
+    gpio.refined.GPIO1 = 0;              // Sets MCU (Arduino) control (High Z)
+    setRegister(REG_GPIOCFG, gpio.raw);  // Stores the new value in the register
+}
+
+/**
+ * @ingroup GA03
+ * @brief   Sets Dial Mode Interface  
+ * @details This method sets the KT0915 work with a mechanical tuning via an external 100K resistor.
+ * @details KT0915 supports a unique Dial Mode (mechanical tuning wheel with a variable resistor) which is 
+ * @details enabled by GPIO2 to 2 (10). The dial can be a variable resistor with the tap connected to CH (pin 1). 
+ * 
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.
+ */
+void KT0915::setVolumeDialModeOn()
+{
+    kt09xx_gpiocfg gpio;
+    gpio.raw = getRegister(REG_GPIOCFG); // Gets the current value from the register
+    gpio.refined.GPIO2 = 2;              // Sets Dial Mode interface (pin 1/CH)
+    setRegister(REG_GPIOCFG, gpio.raw);  // Stores the new value in the register
+};
+
+/**
+ * @ingroup GA03
+ * @brief Turns the Volume Dial Mode interface OFF
+ * @see setVolumeDialModeOn
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.
+ */
+void KT0915::setVolumeDialModeOff()
+{
+    kt09xx_gpiocfg gpio;
+    gpio.raw = getRegister(REG_GPIOCFG); // Gets the current value of the register
+    gpio.refined.GPIO2 = 0;              // Sets to MCU (Arduino) control (High Z)
+    setRegister(REG_GPIOCFG, gpio.raw);  // Stores the new value in the register
+}
+
 
 /**
  * @ingroup GA03
@@ -225,6 +304,7 @@ void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
     setRegister(REG_AMCALI, reg.raw);    // Strores the new value to the register
 };
 
+
 /**
  * @ingroup GA04
  * @brief Sets the receiver to FM mode
@@ -235,7 +315,7 @@ void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
  * @param default_frequency  default freuency
  * @param step  increment and decrement frequency step
  */
-void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
+    void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
 {
     kt09xx_amsyscfg reg;
 
@@ -245,10 +325,10 @@ void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
     this->maximumFrequency = maximum_frequency;
     this->currentMode = MODE_FM;
 
-    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value of the register
+    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value from the register
     reg.refined.AM_FM = MODE_FM;
-    reg.refined.USERBAND = 1;          // Use user-defined band
-    setRegister(REG_AMSYSCFG, reg.raw); // Strores the new value to the register
+    reg.refined.USERBAND = 0;          
+    setRegister(REG_AMSYSCFG, reg.raw);  // Stores the new value in the register
 
     setFrequency(default_frequency);
 };
@@ -273,10 +353,10 @@ void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
     this->maximumFrequency = maximum_frequency;
     this->currentMode = MODE_AM;
 
-    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value of the register
+    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value from the register
     reg.refined.AM_FM = MODE_AM;
-    reg.refined.USERBAND = 1;           // Use user-defined band
-    setRegister(REG_AMSYSCFG, reg.raw);  // Strores the new value to the register
+    reg.refined.USERBAND = 0;           
+    setRegister(REG_AMSYSCFG, reg.raw);  // Strores the new value in the register
 
     setFrequency(default_frequency);
 }
