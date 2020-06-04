@@ -29,13 +29,19 @@ var NAVTREE =
         [ "Your support is important", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md3", null ],
         [ "Library Features", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md4", null ],
         [ "MIT License", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md5", null ],
-        [ "Library Installation", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md6", null ],
-        [ "About KT0915 DSP radio", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md7", null ],
-        [ "SCHEMATIC", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md8", null ],
-        [ "API Documentation", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md9", null ],
-        [ "Examples", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md10", null ],
-        [ "Videos", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md11", null ],
-        [ "References", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md12", null ]
+        [ "Library Installation", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md6", [
+          [ "Installing via Arduino IDE", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md7", null ]
+        ] ],
+        [ "About KT0915 DSP radio", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md8", [
+          [ "KT0915 features", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md9", null ],
+          [ "KT0915 Pinout", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md10", null ],
+          [ "KT0915 SSOP16L package", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md11", [
+            [ "About the Pin 1 (CH) and Pin 16 (VOL)", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md12", null ]
+          ] ]
+        ] ],
+        [ "SCHEMATIC", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md13", null ],
+        [ "Videos", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md14", null ],
+        [ "References", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md15", null ]
       ] ]
     ] ],
     [ "Todo List", "todo.html", null ],
@@ -53,6 +59,8 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -62,7 +70,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_k_t0915_8cpp.html",
-"group___g_a01.html#unionkt09xx__amdstatusa"
+"group___g_a01.html#unionkt09xx__amchan"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['dial_5fmode_5foff_231',['DIAL_MODE_OFF',['../_k_t0915_8h.html#ae3bcdce68abd6a33bcf1876faf42178a',1,'KT0915.h']]],
-  ['dial_5fmode_5fon_232',['DIAL_MODE_ON',['../_k_t0915_8h.html#a786a491adc9737eb70cc91a4d20d78bf',1,'KT0915.h']]]
+  ['kt0915_5fi2c_5faddress_280',['KT0915_I2C_ADDRESS',['../_k_t0915_8h.html#aa709b65c74553a73a062cfdf66b42b0c',1,'KT0915.h']]]
 ];

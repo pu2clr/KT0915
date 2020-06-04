@@ -1,16 +1,19 @@
 var searchData=
 [
-  ['setam_120',['setAM',['../group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2',1,'KT0915']]],
-  ['setantennatunecapacitor_121',['setAntennaTuneCapacitor',['../group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0',1,'KT0915']]],
-  ['setfm_122',['setFM',['../group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633',1,'KT0915']]],
-  ['setfrequency_123',['setFrequency',['../group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323',1,'KT0915']]],
-  ['seti2cbusaddress_124',['setI2CBusAddress',['../group___g_a03.html#ga93df47f64b36e60d25332990bfa02baf',1,'KT0915']]],
-  ['setreferenceclocktype_125',['setReferenceClockType',['../group___g_a03.html#gaea3de0c32d82b229aff25e66c8a1fdc9',1,'KT0915']]],
-  ['setregister_126',['setRegister',['../group___g_a03.html#ga666259e108dcdea1e2f62af98697561c',1,'KT0915']]],
-  ['setstep_127',['setStep',['../group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d',1,'KT0915']]],
-  ['settunedialmodeoff_128',['setTuneDialModeOff',['../group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9',1,'KT0915']]],
-  ['settunedialmodeon_129',['setTuneDialModeOn',['../group___g_a03.html#ga33e4e2c4b3529e035f5738991f2a8f0d',1,'KT0915']]],
-  ['setup_130',['setup',['../group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf',1,'KT0915']]],
-  ['setvolumedialmodeoff_131',['setVolumeDialModeOff',['../group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1',1,'KT0915']]],
-  ['setvolumedialmodeon_132',['setVolumeDialModeOn',['../group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9',1,'KT0915']]]
+  ['setam_140',['setAM',['../group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2',1,'KT0915']]],
+  ['setantennatunecapacitor_141',['setAntennaTuneCapacitor',['../group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0',1,'KT0915']]],
+  ['setfm_142',['setFM',['../group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633',1,'KT0915']]],
+  ['setfrequency_143',['setFrequency',['../group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323',1,'KT0915']]],
+  ['seti2cbusaddress_144',['setI2CBusAddress',['../group___g_a03.html#ga93df47f64b36e60d25332990bfa02baf',1,'KT0915']]],
+  ['setreferenceclocktype_145',['setReferenceClockType',['../group___g_a03.html#gaea3de0c32d82b229aff25e66c8a1fdc9',1,'KT0915']]],
+  ['setregister_146',['setRegister',['../group___g_a03.html#ga666259e108dcdea1e2f62af98697561c',1,'KT0915']]],
+  ['setstep_147',['setStep',['../group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d',1,'KT0915']]],
+  ['settunedialmodeoff_148',['setTuneDialModeOff',['../group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9',1,'KT0915']]],
+  ['settunedialmodeon_149',['setTuneDialModeOn',['../group___g_a03.html#ga33e4e2c4b3529e035f5738991f2a8f0d',1,'KT0915']]],
+  ['setup_150',['setup',['../group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf',1,'KT0915']]],
+  ['setvolumedialmodeoff_151',['setVolumeDialModeOff',['../group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1',1,'KT0915']]],
+  ['setvolumedialmodeon_152',['setVolumeDialModeOn',['../group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9',1,'KT0915']]],
+  ['so_153',['so',['../license_8txt.html#ad33c8f6a68363f2875b84f7c4ca98aba',1,'license.txt']]],
+  ['software_154',['Software',['../license_8txt.html#acd5f6fc3bc0ca6669b69716abdd68f6a',1,'license.txt']]],
+  ['sublicense_155',['sublicense',['../license_8txt.html#a9f571168d2ee9a598450704a59d048d3',1,'license.txt']]]
 ];

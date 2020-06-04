@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('_k_t0915_8cpp_source.html',''); initRe
 <a href="_k_t0915_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * @brief  PU2CLR KT0915 Arduino Library</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @details KT0915 Arduino Library implementation. This is an Arduino library for the KT0915, BROADCAST RECEIVER.  </span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @details It works with I2C protocol and can provide an easier interface for controlling the KT0915 device.&lt;br&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @details It works with I2C protocol and can provide an easier interface to control the KT0915 device.&lt;br&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @details This library was built based on KT0915 Datasheet from KTMicro (Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip TM). </span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * @details This library can be freely distributed using the MIT Free Software model.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * @copyright Copyright (c) 2020 Ricardo Lima Caratti. </span></div>
@@ -248,8 +248,8 @@ $(document).ready(function(){initNavTree('_k_t0915_8cpp_source.html',''); initRe
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> * @todo Channel Limits</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> * @brief Sets Tune Dial Mode Interface  </span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> * @todo You need to check mechanical Tune features</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> * @brief Sets Tune Dial Mode Interface On  </span></div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> * @details This method sets the KT0915 to deal with a mechanical tuning via an external 100K resistor.</span></div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment"> * @details KT0915 supports a unique Dial Mode (mechanical tuning wheel with a variable resistor) which is </span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"> * @details enabled by GPIO1 to 2 (10). The dial can be a variable resistor with the tap connected to CH (pin 1).  </span></div>
@@ -263,301 +263,323 @@ $(document).ready(function(){initNavTree('_k_t0915_8cpp_source.html',''); initRe
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    kt09xx_amsyscfg reg;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    kt09xx_gpiocfg gpio;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    reg.raw = getRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    reg.refined.USERBAND = <span class="keyword">this</span>-&gt;currentDialMode = <a class="code" href="_k_t0915_8h.html#a786a491adc9737eb70cc91a4d20d78bf">DIAL_MODE_ON</a>;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>, reg.raw); <span class="comment">// Strores the new value in the register</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    kt09xx_userstartch uf;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    kt09xx_userguard ug;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    kt09xx_userchannum uc;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    gpio.refined.GPIO1 = 2;              <span class="comment">// Sets Dial Mode interface (pin 1/CH)</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    reg.raw = getRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    reg.refined.USERBAND = <span class="keyword">this</span>-&gt;currentDialMode = <a class="code" href="_k_t0915_8h.html#a786a491adc9737eb70cc91a4d20d78bf">DIAL_MODE_ON</a>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>, reg.raw); <span class="comment">// Strores the new value in the register</span></div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// TODO: Sets the frequency limits for user and</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;};</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment"> * @brief Turns the Tune Dial Mode interface OFF</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment"> * @see setTuneDialModeOn</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9">  194</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9">setTuneDialModeOff</a>()</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    kt09xx_amsyscfg reg;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    kt09xx_gpiocfg gpio;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    reg.raw = getRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>); <span class="comment">// Gets the current value of the register</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    reg.refined.USERBAND = <span class="keyword">this</span>-&gt;currentDialMode = <a class="code" href="_k_t0915_8h.html#ae3bcdce68abd6a33bcf1876faf42178a">DIAL_MODE_OFF</a>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>, reg.raw); <span class="comment">// Strores the new value to the register</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value of the register</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    gpio.refined.GPIO1 = 0;              <span class="comment">// Sets MCU (Arduino) control (High Z)</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    gpio.refined.GPIO1 = 2;              <span class="comment">// Sets Dial Mode interface (pin 1/CH)</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">// TODO: Sets the frequency limits for user and</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span> ( <span class="keyword">this</span>-&gt;currentMode == <a class="code" href="_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a>) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        uf.refined.USER_START_CHAN = minimu_frequency;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        uc.refined.USER_CHAN_NUM = (maximum_frequency - minimu_frequency) / <span class="keyword">this</span>-&gt;currentStep;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        ug.refined.USER_GUARD = 0x0011;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        uf.refined.USER_START_CHAN = minimu_frequency / 50;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        uc.refined.USER_CHAN_NUM = ((maximum_frequency - minimu_frequency) / 50) / <span class="keyword">this</span>-&gt;currentStep;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        ug.refined.USER_GUARD = 0x001D;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abba7d7d7c3681f5ab097cd116c90c716">REG_USERSTARTCH</a>, uf.raw);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#ad31768fd33d0236ad3b24d06ee5eda92">REG_USERGUARD</a>, ug.raw);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a8cf7132d09f78a6f9dce90cc7ce7bca7">REG_USERCHANNUM</a>, uc.raw);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;};</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment"> * @brief   Sets Dial Mode Interface  </span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment"> * @details This method sets the KT0915 to deal with a mechanical volume control via an external 100K resistor.</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment"> * @details KT0915 supports a unique Dial Mode  which is enabled by GPIO2 to 2 (10). </span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"> * @details The dial can be a variable resistor with the tap connected to VOL (pin 16). </span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9">  216</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9">setVolumeDialModeOn</a>()</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;{</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    kt09xx_gpiocfg gpio;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    gpio.refined.GPIO2 = 2;              <span class="comment">// Sets Dial Mode interface (pin 16/VOL)</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;};</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment"> * @brief Turns the Volume Dial Mode interface OFF</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment"> * @see setVolumeDialModeOn</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1">  230</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1">setVolumeDialModeOff</a>()</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;{</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    kt09xx_gpiocfg gpio;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value of the register</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    gpio.refined.GPIO2 = 0;              <span class="comment">// Sets to MCU (Arduino) control (High Z)</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment"> * @brief   Receiver startup </span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment"> * @details Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using. </span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment"> * @details The options for the crystal can be seen in the table below.</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment"> * @details If you omit the crystal type parameter, will be considered  0 (32.768KHz). </span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment"> * @details For a low frequency crystal oscillator, selects 32.768KHz or 38KHz crystals. </span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment"> * @details Alternatively, you can use a CMOS level external reference clock may be used by setting </span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment"> * @details the parameter ref_clock to 1 (REF_CLOCK_ENABLE) and setting the reference clock according to the table below.</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment"> * @details The code below shows how to use the setup function.</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment"> * @code</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment"> * #include &lt;KT0915.h&gt;</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment"> * #define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment"> * KT0915 radio;</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment"> * void setup() {</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment"> *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select OSCILLATOR_32KHZ, OSCILLATOR_12MHZ etc</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment"> *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   </span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment"> *    radio.setup(RESET_PIN, OSCILLATOR_12MHZ, REF_CLOCK_DISABLE );</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment"> * }</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment"> * @endcode</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment"> * Crystal type table</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment"> * | Dec | binary | Description | defined constant    |</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment"> * | --  | ------ | ----------- | ---------------     |</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment"> * | 0   | 0000   | 32.768KHz   | OSCILLATOR_32KHZ    |</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment"> * | 1   | 0001   | 6.5MHz      | OSCILLATOR_6_5MHZ   |</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment"> * | 2   | 0010   | 7.6MHz      | OSCILLATOR_7_6MHZ   |</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment"> * | 3   | 0011   | 12MHz       | OSCILLATOR_12MHZ    |</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment"> * | 4   | 0100   | 13MHz       | OSCILLATOR_13MHZ    |</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment"> * | 5   | 0101   | 15.2MHz     | OSCILLATOR_15_2MHZ  |</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment"> * | 6   | 0110   | 19.2MHz     | OSCILLATOR_19_2MHZ  | </span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment"> * | 7   | 0111   | 24MHz       | OSCILLATOR_24MHZ    |</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment"> * | 8   | 1000   | 26MHz       | OSCILLATOR_26MHZ    |</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment"> * | 9   | 1001   | 38KHz       | OSCILLATOR_38KHz    |</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); 3.6 Crystal and reference clock; page 9. </span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment"> * @see setReferenceClockType </span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment"> * @param resetPin      if &gt;= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. </span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment"> * @param OSCILLATOR_type  Crystal type. See the table above.</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment"> * @param ref_clock     0 = Crystal (Reference clock enabled disabled - default); 1 = Reference clock enabled.</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno"><a class="line" href="group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf">  282</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf">setup</a>(<span class="keywordtype">int</span> reset_pin, uint8_t OSCILLATOR_type, uint8_t ref_clock) {</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keyword">this</span><a class="code" href="group___g_a01.html#ae5d289a232d28d35d613e302170efcba">-&gt;</a><a class="code" href="group___g_a01.html#ae5d289a232d28d35d613e302170efcba">resetPin</a> = reset_pin;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <a class="code" href="group___g_a03.html#gae77c5c4482902db2249ff0863c14d3de">reset</a><a class="code" href="group___g_a03.html#gae77c5c4482902db2249ff0863c14d3de">(</a><a class="code" href="group___g_a03.html#gae77c5c4482902db2249ff0863c14d3de">)</a>;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    setReferenceClockType(OSCILLATOR_type, ref_clock);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">/** </span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment"> * @defgroup GA04 Tune Methods </span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment"> * @section  GA04 Tune Methods  </span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment"> * @details  Methods to tune and set the receiver mode</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment"> * @brief Set AM the Antenna Tune Capacitor </span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment"> * @details Sets a value between 0 and 16383 for AM Antenna Calibration </span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment"> * @param capacitor value between 0 and 16383</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">  300</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">setAntennaTuneCapacitor</a>(uint16_t capacitor)</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;{</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    kt09xx_amcali reg;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    reg.refined.CAP_INDEX = capacitor;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#aa98d7873b3a6281e5ebbc26181186236">REG_AMCALI</a>, reg.raw);    <span class="comment">// Strores the new value to the register</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;};</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment"> * @brief Turns the Tune Dial Mode interface Off</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment"> * @see setTuneDialModeOn</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9">  213</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9">setTuneDialModeOff</a>()</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;{</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    kt09xx_amsyscfg reg;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    kt09xx_gpiocfg gpio;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    reg.raw = getRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>); <span class="comment">// Gets the current value of the register</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    reg.refined.USERBAND = <span class="keyword">this</span>-&gt;currentDialMode = <a class="code" href="_k_t0915_8h.html#ae3bcdce68abd6a33bcf1876faf42178a">DIAL_MODE_OFF</a>;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>, reg.raw); <span class="comment">// Strores the new value to the register</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value of the register</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    gpio.refined.GPIO1 = 0;              <span class="comment">// Sets MCU (Arduino) control (High Z)</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment"> * @brief   Sets Volume Dial Mode Interface On </span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment"> * @details This method sets the KT0915 to deal with a mechanical volume control via an external 100K resistor.</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment"> * @details KT0915 supports a unique Dial Mode  which is enabled by GPIO2 to 2 (10). </span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment"> * @details The dial can be a variable resistor with the tap connected to VOL (pin 16). </span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9">  235</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9">setVolumeDialModeOn</a>()</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;{</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    kt09xx_gpiocfg gpio;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    gpio.refined.GPIO2 = 2;              <span class="comment">// Sets Dial Mode interface (pin 16/VOL)</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;};</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment"> * @brief Turns the Volume Dial Mode interface Off</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment"> * @see setVolumeDialModeOn</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1">  249</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1">setVolumeDialModeOff</a>()</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;{</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    kt09xx_gpiocfg gpio;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value of the register</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    gpio.refined.GPIO2 = 0;              <span class="comment">// Sets to MCU (Arduino) control (High Z)</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment"> * @brief   Receiver startup </span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment"> * @details Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using. </span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment"> * @details The options for the crystal can be seen in the table below.</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment"> * @details If you omit the crystal type parameter, will be considered  0 (32.768KHz). </span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment"> * @details For a low frequency crystal oscillator, selects 32.768KHz or 38KHz crystals. </span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment"> * @details Alternatively, you can use a CMOS level external reference clock may be used by setting </span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment"> * @details the parameter ref_clock to 1 (REF_CLOCK_ENABLE) and setting the reference clock according to the table below.</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment"> * @details The code below shows how to use the setup function.</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment"> * @code</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment"> * #include &lt;KT0915.h&gt;</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment"> * #define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment"> * KT0915 radio;</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment"> * void setup() {</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment"> *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select OSCILLATOR_32KHZ, OSCILLATOR_12MHZ etc</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment"> *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   </span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment"> *    radio.setup(RESET_PIN, OSCILLATOR_12MHZ, REF_CLOCK_DISABLE );</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment"> * }</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment"> * @endcode</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment"> * Crystal type table</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment"> * | Dec | binary | Description | defined constant    |</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment"> * | --  | ------ | ----------- | ---------------     |</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment"> * | 0   | 0000   | 32.768KHz   | OSCILLATOR_32KHZ    |</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment"> * | 1   | 0001   | 6.5MHz      | OSCILLATOR_6_5MHZ   |</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> * | 2   | 0010   | 7.6MHz      | OSCILLATOR_7_6MHZ   |</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment"> * | 3   | 0011   | 12MHz       | OSCILLATOR_12MHZ    |</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment"> * | 4   | 0100   | 13MHz       | OSCILLATOR_13MHZ    |</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment"> * | 5   | 0101   | 15.2MHz     | OSCILLATOR_15_2MHZ  |</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment"> * | 6   | 0110   | 19.2MHz     | OSCILLATOR_19_2MHZ  | </span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment"> * | 7   | 0111   | 24MHz       | OSCILLATOR_24MHZ    |</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment"> * | 8   | 1000   | 26MHz       | OSCILLATOR_26MHZ    |</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment"> * | 9   | 1001   | 38KHz       | OSCILLATOR_38KHz    |</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); 3.6 Crystal and reference clock; page 9. </span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment"> * @see setReferenceClockType </span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment"> * @param resetPin      if &gt;= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. </span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment"> * @param OSCILLATOR_type  Crystal type. See the table above.</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment"> * @param ref_clock     0 = Crystal (Reference clock enabled disabled - default); 1 = Reference clock enabled.</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno"><a class="line" href="group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf">  301</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf">setup</a>(<span class="keywordtype">int</span> reset_pin, uint8_t OSCILLATOR_type, uint8_t ref_clock) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keyword">this</span><a class="code" href="group___g_a01.html#ae5d289a232d28d35d613e302170efcba">-&gt;</a><a class="code" href="group___g_a01.html#ae5d289a232d28d35d613e302170efcba">resetPin</a> = reset_pin;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <a class="code" href="group___g_a03.html#gae77c5c4482902db2249ff0863c14d3de">reset</a><a class="code" href="group___g_a03.html#gae77c5c4482902db2249ff0863c14d3de">(</a><a class="code" href="group___g_a03.html#gae77c5c4482902db2249ff0863c14d3de">)</a>;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    setReferenceClockType(OSCILLATOR_type, ref_clock);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment"> * @brief Sets the receiver to FM mode</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment"> * @details Configures the receiver on FM mode; Also sets the band limits, defaul frequency and step.</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment"> * @param minimum_frequency  minimum frequency for the band</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment"> * @param maximum_frequency  maximum frequency for the band</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment"> * @param default_frequency  default freuency</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment"> * @param step  increment and decrement frequency step</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633">  318</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633">setFM</a>(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;{</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    kt09xx_amsyscfg reg;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keyword">this</span>-&gt;currentStep = step;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency = default_frequency;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keyword">this</span>-&gt;minimumFrequency = minimum_frequency;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keyword">this</span>-&gt;maximumFrequency = maximum_frequency;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keyword">this</span>-&gt;currentMode = <a class="code" href="_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55">MODE_FM</a>;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    reg.raw = getRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    reg.refined.AM_FM = <a class="code" href="_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55">MODE_FM</a>;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    reg.refined.USERBAND = 0;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>, reg.raw);  <span class="comment">// Stores the new value in the register</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    setFrequency(default_frequency);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;};</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment"> * @brief Sets the receiver to AM mode</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment"> * @details Configures the receiver on AM mode; Also sets the band limits, defaul frequency and step.</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment"> * @param minimum_frequency  minimum frequency for the band</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment"> * @param maximum_frequency  maximum frequency for the band</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment"> * @param default_frequency  default freuency</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment"> * @param step  increment and decrement frequency step</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2">  346</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2">setAM</a>(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;{</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    kt09xx_amsyscfg reg;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keyword">this</span>-&gt;currentStep = step;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency = default_frequency;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keyword">this</span>-&gt;minimumFrequency = minimum_frequency;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keyword">this</span>-&gt;maximumFrequency = maximum_frequency;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keyword">this</span>-&gt;currentMode = <a class="code" href="_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a>;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    reg.raw = getRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    reg.refined.AM_FM = <a class="code" href="_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a>;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    reg.refined.USERBAND = 0;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>, reg.raw);  <span class="comment">// Strores the new value in the register</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    setFrequency(default_frequency);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;}</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment"> * @brief Sets the current frequency</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment"> * @param frequency </span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323">  370</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323">setFrequency</a>(uint32_t frequency)</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;{</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    kt09xx_amchan reg_amchan;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    kt09xx_tune reg_tune;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="comment">/** </span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment"> * @defgroup GA04 Tune Methods </span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment"> * @section  GA04 Tune Methods  </span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment"> * @details  Methods to tune and set the receiver mode</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment"> * @brief Set AM the Antenna Tune Capacitor </span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment"> * @details Sets a value between 0 and 16383 for AM Antenna Calibration </span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment"> * @param capacitor value between 0 and 16383</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">  319</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">setAntennaTuneCapacitor</a>(uint16_t capacitor)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;{</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    kt09xx_amcali reg;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    reg.refined.CAP_INDEX = capacitor;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#aa98d7873b3a6281e5ebbc26181186236">REG_AMCALI</a>, reg.raw);    <span class="comment">// Strores the new value to the register</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;};</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="comment"> * @brief Sets the receiver to FM mode</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="comment"> * @details Configures the receiver on FM mode; Also sets the band limits, defaul frequency and step.</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment"> * @param minimum_frequency  minimum frequency for the band</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment"> * @param maximum_frequency  maximum frequency for the band</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment"> * @param default_frequency  default freuency</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment"> * @param step  increment and decrement frequency step</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633">  337</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633">setFM</a>(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;{</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    kt09xx_amsyscfg reg;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keyword">this</span>-&gt;currentStep = step;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency = default_frequency;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keyword">this</span>-&gt;minimumFrequency = minimum_frequency;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keyword">this</span>-&gt;maximumFrequency = maximum_frequency;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keyword">this</span>-&gt;currentMode = <a class="code" href="_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55">MODE_FM</a>;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    reg.raw = getRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    reg.refined.AM_FM = <a class="code" href="_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55">MODE_FM</a>;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    reg.refined.USERBAND = 0;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>, reg.raw);  <span class="comment">// Stores the new value in the register</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    setFrequency(default_frequency);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;};</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment"> * @brief Sets the receiver to AM mode</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="comment"> * @details Configures the receiver on AM mode; Also sets the band limits, defaul frequency and step.</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment"> * @param minimum_frequency  minimum frequency for the band</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment"> * @param maximum_frequency  maximum frequency for the band</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment"> * @param default_frequency  default freuency</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment"> * @param step  increment and decrement frequency step</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2">  365</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2">setAM</a>(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;{</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    kt09xx_amsyscfg reg;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keyword">this</span>-&gt;currentStep = step;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency = default_frequency;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keyword">this</span>-&gt;minimumFrequency = minimum_frequency;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keyword">this</span>-&gt;maximumFrequency = maximum_frequency;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keyword">this</span>-&gt;currentMode = <a class="code" href="_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a>;</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span>-&gt;currentMode == <a class="code" href="_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a>)</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        reg_amchan.refined.AMTUNE = 1;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        reg_amchan.refined.AMCHAN = frequency;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        setRegister(<a class="code" href="_k_t0915_8h.html#a67de7f49a17dc0ddb94ee876d3429352">REG_AMCHAN</a>,reg_amchan.raw);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    }</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    {</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        reg_tune.refined.FMTUNE = 1;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        reg_tune.refined.FMCHAN = frequency / 50;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        setRegister(<a class="code" href="_k_t0915_8h.html#aee0b412da47456a006a6416611949eee">REG_TUNE</a>, reg_tune.raw);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    }</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency = frequency;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;}</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="comment"> * @brief Increments the frequency one step</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="comment"> * @details if the frequency plus the step value is greater than the maximum frequency for the band, </span></div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="comment"> * @details tne current frequency will be set to minimum frequency.</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="comment"> * @see setFrequency</span></div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno"><a class="line" href="group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7">  399</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7">frequencyUp</a>(){</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency += <span class="keyword">this</span>-&gt;currentStep;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span>-&gt;currentFrequency &gt; <span class="keyword">this</span>-&gt;maximumFrequency)</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keyword">this</span>-&gt;currentFrequency = <span class="keyword">this</span>-&gt;minimumFrequency;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    setFrequency(<span class="keyword">this</span>-&gt;currentFrequency);</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;}</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    reg.raw = getRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    reg.refined.AM_FM = <a class="code" href="_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a>;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    reg.refined.USERBAND = 0;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a>, reg.raw);  <span class="comment">// Strores the new value in the register</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    setFrequency(default_frequency);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;}</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="comment"> * @brief Sets the current frequency</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="comment"> * @param frequency </span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323">  389</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323">setFrequency</a>(uint32_t frequency)</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;{</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    kt09xx_amchan reg_amchan;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    kt09xx_tune reg_tune;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span>-&gt;currentMode == <a class="code" href="_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a>)</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        reg_amchan.refined.AMTUNE = 1;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        reg_amchan.refined.AMCHAN = frequency;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        setRegister(<a class="code" href="_k_t0915_8h.html#a67de7f49a17dc0ddb94ee876d3429352">REG_AMCHAN</a>,reg_amchan.raw);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    }</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        reg_tune.refined.FMTUNE = 1;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        reg_tune.refined.FMCHAN = frequency / 50;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        setRegister(<a class="code" href="_k_t0915_8h.html#aee0b412da47456a006a6416611949eee">REG_TUNE</a>, reg_tune.raw);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    }</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="comment"> * @brief Decrements the frequency one step</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="comment"> * @details if the frequency minus the step value is less than the minimum frequency for the band, </span></div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="comment"> * @details tne current frequency will be set to minimum frequency.</span></div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="comment"> * @see setFrequency</span></div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4">  415</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4">frequencyDown</a>(){</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency -= <span class="keyword">this</span>-&gt;currentStep;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span>-&gt;currentFrequency &lt; <span class="keyword">this</span>-&gt;minimumFrequency)</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keyword">this</span>-&gt;currentFrequency = <span class="keyword">this</span>-&gt;maximumFrequency;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    setFrequency(<span class="keyword">this</span>-&gt;currentFrequency);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;};</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency = frequency;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment"> * @brief Increments the frequency one step</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="comment"> * @details if the frequency plus the step value is greater than the maximum frequency for the band, </span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="comment"> * @details tne current frequency will be set to minimum frequency.</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="comment"> * @see setFrequency</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno"><a class="line" href="group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7">  418</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7">frequencyUp</a>(){</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency += <span class="keyword">this</span>-&gt;currentStep;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span>-&gt;currentFrequency &gt; <span class="keyword">this</span>-&gt;maximumFrequency)</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keyword">this</span>-&gt;currentFrequency = <span class="keyword">this</span>-&gt;minimumFrequency;</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="comment"> * @brief Sets the frequency step</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="comment"> * @details Sets increment and decrement frequency </span></div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="comment"> * @param step  Values: 1, 5, 9, 10, 100, 200 </span></div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00429"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d">  429</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d">setStep</a>(uint16_t step)</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;{</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keyword">this</span>-&gt;currentStep = step;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="group___g_a01.html#a27fe68f4550dc8412bf870b982d09828">  434</a></span>&#160;<a class="code" href="group___g_a01.html#a27fe68f4550dc8412bf870b982d09828">uint32_t</a> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a01.html#a27fe68f4550dc8412bf870b982d09828">getFrequency</a>()</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;{</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">this</span>-&gt;currentFrequency;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;}</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    setFrequency(<span class="keyword">this</span>-&gt;currentFrequency);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;}</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;<span class="comment"> * @brief Decrements the frequency one step</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="comment"> * @details if the frequency minus the step value is less than the minimum frequency for the band, </span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="comment"> * @details tne current frequency will be set to minimum frequency.</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="comment"> * @see setFrequency</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4">  434</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4">frequencyDown</a>(){</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keyword">this</span>-&gt;currentFrequency -= <span class="keyword">this</span>-&gt;currentStep;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span>-&gt;currentFrequency &lt; <span class="keyword">this</span>-&gt;minimumFrequency)</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keyword">this</span>-&gt;currentFrequency = <span class="keyword">this</span>-&gt;maximumFrequency;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    setFrequency(<span class="keyword">this</span>-&gt;currentFrequency);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;};</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment"> * @brief Sets the frequency step</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="comment"> * @details Sets increment and decrement frequency </span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="comment"> * @param step  Values: 1, 5, 9, 10, 100, 200 </span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d">  448</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d">setStep</a>(uint16_t step)</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;{</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keyword">this</span>-&gt;currentStep = step;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;}</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno"><a class="line" href="group___g_a01.html#a27fe68f4550dc8412bf870b982d09828">  453</a></span>&#160;<a class="code" href="group___g_a01.html#a27fe68f4550dc8412bf870b982d09828">uint32_t</a> <a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a>::<a class="code" href="group___g_a01.html#a27fe68f4550dc8412bf870b982d09828">getFrequency</a>()</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;{</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">this</span>-&gt;currentFrequency;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="agroup___g_a04_html_ga3affa4b75d836a9792b43f3a58b47633"><div class="ttname"><a href="group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633">KT0915::setFM</a></div><div class="ttdeci">void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</div><div class="ttdoc">Sets the receiver to FM mode.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00318">KT0915.cpp:318</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_gad66d64a17d4dd583c4384d27665ff9bf"><div class="ttname"><a href="group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf">KT0915::setup</a></div><div class="ttdeci">void setup(int reset_pin, uint8_t OSCILLATOR_type=OSCILLATOR_32KHZ, uint8_t ref_clock=REF_CLOCK_DISABLE)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00282">KT0915.cpp:282</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_ga3affa4b75d836a9792b43f3a58b47633"><div class="ttname"><a href="group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633">KT0915::setFM</a></div><div class="ttdeci">void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</div><div class="ttdoc">Sets the receiver to FM mode.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00337">KT0915.cpp:337</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_gad66d64a17d4dd583c4384d27665ff9bf"><div class="ttname"><a href="group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf">KT0915::setup</a></div><div class="ttdeci">void setup(int reset_pin, uint8_t OSCILLATOR_type=OSCILLATOR_32KHZ, uint8_t ref_clock=REF_CLOCK_DISABLE)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00301">KT0915.cpp:301</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_a596042ef664fa8b7f9b14b3a27aa5743"><div class="ttname"><a href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a></div><div class="ttdeci">#define REG_GPIOCFG</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00059">KT0915.h:59</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_adfb08d0ad4cd0aeda4881f5a686bff22"><div class="ttname"><a href="group___g_a01.html#adfb08d0ad4cd0aeda4881f5a686bff22">KT0915::deviceId</a></div><div class="ttdeci">char deviceId[3]</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00527">KT0915.h:527</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_a67de7f49a17dc0ddb94ee876d3429352"><div class="ttname"><a href="_k_t0915_8h.html#a67de7f49a17dc0ddb94ee876d3429352">REG_AMCHAN</a></div><div class="ttdeci">#define REG_AMCHAN</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00057">KT0915.h:57</a></div></div>
-<div class="ttc" id="agroup___g_a04_html_gaee03f6351e9ac697822983d839cb06f0"><div class="ttname"><a href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">KT0915::setAntennaTuneCapacitor</a></div><div class="ttdeci">void setAntennaTuneCapacitor(uint16_t capacitor)</div><div class="ttdoc">Set AM the Antenna Tune Capacitor.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00300">KT0915.cpp:300</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_gaee03f6351e9ac697822983d839cb06f0"><div class="ttname"><a href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">KT0915::setAntennaTuneCapacitor</a></div><div class="ttdeci">void setAntennaTuneCapacitor(uint16_t capacitor)</div><div class="ttdoc">Set AM the Antenna Tune Capacitor.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00319">KT0915.cpp:319</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_abe41e4b53230ef4549c5fe967a0c385a"><div class="ttname"><a href="_k_t0915_8h.html#abe41e4b53230ef4549c5fe967a0c385a">REG_AMSYSCFG</a></div><div class="ttdeci">#define REG_AMSYSCFG</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00056">KT0915.h:56</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_a46befaec21d3091b4530cdf8a6f93c55"><div class="ttname"><a href="_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55">MODE_FM</a></div><div class="ttdeci">#define MODE_FM</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00024">KT0915.h:24</a></div></div>
+<div class="ttc" id="a_k_t0915_8h_html_ad31768fd33d0236ad3b24d06ee5eda92"><div class="ttname"><a href="_k_t0915_8h.html#ad31768fd33d0236ad3b24d06ee5eda92">REG_USERGUARD</a></div><div class="ttdeci">#define REG_USERGUARD</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00065">KT0915.h:65</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_a27aa705095a6b6dad7db24441132f9bd"><div class="ttname"><a href="_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a></div><div class="ttdeci">#define MODE_AM</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00025">KT0915.h:25</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_a48515448bd86b756f20da232ac318649"><div class="ttname"><a href="_k_t0915_8h.html#a48515448bd86b756f20da232ac318649">REG_STATUSA</a></div><div class="ttdeci">#define REG_STATUSA</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00053">KT0915.h:53</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_ae3bcdce68abd6a33bcf1876faf42178a"><div class="ttname"><a href="_k_t0915_8h.html#ae3bcdce68abd6a33bcf1876faf42178a">DIAL_MODE_OFF</a></div><div class="ttdeci">#define DIAL_MODE_OFF</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00043">KT0915.h:43</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_a8efae1e4921f13b904a1477a94c02c51"><div class="ttname"><a href="group___g_a01.html#a8efae1e4921f13b904a1477a94c02c51">KT0915::isCrystalReady</a></div><div class="ttdeci">bool isCrystalReady()</div><div class="ttdoc">Gets the Crystal Status information.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00098">KT0915.cpp:98</a></div></div>
+<div class="ttc" id="a_k_t0915_8h_html_a8cf7132d09f78a6f9dce90cc7ce7bca7"><div class="ttname"><a href="_k_t0915_8h.html#a8cf7132d09f78a6f9dce90cc7ce7bca7">REG_USERCHANNUM</a></div><div class="ttdeci">#define REG_USERCHANNUM</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00066">KT0915.h:66</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_class_k_t0915"><div class="ttname"><a href="group___g_a01.html#class_k_t0915">KT0915</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00513">KT0915.h:513</a></div></div>
-<div class="ttc" id="agroup___g_a04_html_ga55b63fb7158d156249eefad8b27943e2"><div class="ttname"><a href="group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2">KT0915::setAM</a></div><div class="ttdeci">void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</div><div class="ttdoc">Sets the receiver to AM mode.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00346">KT0915.cpp:346</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_ga55b63fb7158d156249eefad8b27943e2"><div class="ttname"><a href="group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2">KT0915::setAM</a></div><div class="ttdeci">void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</div><div class="ttdoc">Sets the receiver to AM mode.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00365">KT0915.cpp:365</a></div></div>
 <div class="ttc" id="agroup___g_a03_html_ga93df47f64b36e60d25332990bfa02baf"><div class="ttname"><a href="group___g_a03.html#ga93df47f64b36e60d25332990bfa02baf">KT0915::setI2CBusAddress</a></div><div class="ttdeci">void setI2CBusAddress(int deviceAddress)</div><div class="ttdoc">Set I2C bus address.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00026">KT0915.cpp:26</a></div></div>
+<div class="ttc" id="a_k_t0915_8h_html_abba7d7d7c3681f5ab097cd116c90c716"><div class="ttname"><a href="_k_t0915_8h.html#abba7d7d7c3681f5ab097cd116c90c716">REG_USERSTARTCH</a></div><div class="ttdeci">#define REG_USERSTARTCH</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00064">KT0915.h:64</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_ae18a907888005f0a781600e2b8ca9daf"><div class="ttname"><a href="group___g_a01.html#ae18a907888005f0a781600e2b8ca9daf">KT0915::deviceAddress</a></div><div class="ttdeci">int deviceAddress</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00516">KT0915.h:516</a></div></div>
-<div class="ttc" id="agroup___g_a04_html_ga6c5890f59ddf05de366df69d80591b6d"><div class="ttname"><a href="group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d">KT0915::setStep</a></div><div class="ttdeci">void setStep(uint16_t step)</div><div class="ttdoc">Sets the frequency step.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00429">KT0915.cpp:429</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_ga33e4e2c4b3529e035f5738991f2a8f0d"><div class="ttname"><a href="group___g_a03.html#ga33e4e2c4b3529e035f5738991f2a8f0d">KT0915::setTuneDialModeOn</a></div><div class="ttdeci">void setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequency)</div><div class="ttdoc">Sets Tune Dial Mode Interface</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00173">KT0915.cpp:173</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_ga6c5890f59ddf05de366df69d80591b6d"><div class="ttname"><a href="group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d">KT0915::setStep</a></div><div class="ttdeci">void setStep(uint16_t step)</div><div class="ttdoc">Sets the frequency step.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00448">KT0915.cpp:448</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_ga33e4e2c4b3529e035f5738991f2a8f0d"><div class="ttname"><a href="group___g_a03.html#ga33e4e2c4b3529e035f5738991f2a8f0d">KT0915::setTuneDialModeOn</a></div><div class="ttdeci">void setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequency)</div><div class="ttdoc">Sets Tune Dial Mode Interface On</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00173">KT0915.cpp:173</a></div></div>
 <div class="ttc" id="agroup___g_a03_html_gaea3de0c32d82b229aff25e66c8a1fdc9"><div class="ttname"><a href="group___g_a03.html#gaea3de0c32d82b229aff25e66c8a1fdc9">KT0915::setReferenceClockType</a></div><div class="ttdeci">void setReferenceClockType(uint8_t crystal, uint8_t ref_clock=0)</div><div class="ttdoc">Sets the Crystal Type.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00129">KT0915.cpp:129</a></div></div>
-<div class="ttc" id="agroup___g_a01_html_a27fe68f4550dc8412bf870b982d09828"><div class="ttname"><a href="group___g_a01.html#a27fe68f4550dc8412bf870b982d09828">KT0915::getFrequency</a></div><div class="ttdeci">uint32_t getFrequency()</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00434">KT0915.cpp:434</a></div></div>
+<div class="ttc" id="agroup___g_a01_html_a27fe68f4550dc8412bf870b982d09828"><div class="ttname"><a href="group___g_a01.html#a27fe68f4550dc8412bf870b982d09828">KT0915::getFrequency</a></div><div class="ttdeci">uint32_t getFrequency()</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00453">KT0915.cpp:453</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_ae5d289a232d28d35d613e302170efcba"><div class="ttname"><a href="group___g_a01.html#ae5d289a232d28d35d613e302170efcba">KT0915::resetPin</a></div><div class="ttdeci">int resetPin</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00517">KT0915.h:517</a></div></div>
 <div class="ttc" id="agroup___g_a03_html_gaa76e7e46c4bcfff5ac46b68cb772ff4e"><div class="ttname"><a href="group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e">KT0915::getRegister</a></div><div class="ttdeci">uint16_t getRegister(uint8_t reg)</div><div class="ttdoc">Gets a given KT09XX register content.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00059">KT0915.cpp:59</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_aa98d7873b3a6281e5ebbc26181186236"><div class="ttname"><a href="_k_t0915_8h.html#aa98d7873b3a6281e5ebbc26181186236">REG_AMCALI</a></div><div class="ttdeci">#define REG_AMCALI</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00058">KT0915.h:58</a></div></div>
 <div class="ttc" id="agroup___g_a03_html_ga666259e108dcdea1e2f62af98697561c"><div class="ttname"><a href="group___g_a03.html#ga666259e108dcdea1e2f62af98697561c">KT0915::setRegister</a></div><div class="ttdeci">void setRegister(uint8_t reg, uint16_t parameter)</div><div class="ttdoc">Sets the a value to a given KT09XX register.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00038">KT0915.cpp:38</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_a786a491adc9737eb70cc91a4d20d78bf"><div class="ttname"><a href="_k_t0915_8h.html#a786a491adc9737eb70cc91a4d20d78bf">DIAL_MODE_ON</a></div><div class="ttdeci">#define DIAL_MODE_ON</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00042">KT0915.h:42</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_gad03af1182b58a192bd7cb2b5b07242c1"><div class="ttname"><a href="group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1">KT0915::setVolumeDialModeOff</a></div><div class="ttdeci">void setVolumeDialModeOff()</div><div class="ttdoc">Turns the Volume Dial Mode interface OFF.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00230">KT0915.cpp:230</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_gad03af1182b58a192bd7cb2b5b07242c1"><div class="ttname"><a href="group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1">KT0915::setVolumeDialModeOff</a></div><div class="ttdeci">void setVolumeDialModeOff()</div><div class="ttdoc">Turns the Volume Dial Mode interface Off.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00249">KT0915.cpp:249</a></div></div>
 <div class="ttc" id="agroup___g_a03_html_gae77c5c4482902db2249ff0863c14d3de"><div class="ttname"><a href="group___g_a03.html#gae77c5c4482902db2249ff0863c14d3de">KT0915::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Resets the system.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00147">KT0915.cpp:147</a></div></div>
-<div class="ttc" id="agroup___g_a04_html_gaceba9c66a56862acffb3972a06c86ce7"><div class="ttname"><a href="group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7">KT0915::frequencyUp</a></div><div class="ttdeci">void frequencyUp()</div><div class="ttdoc">Increments the frequency one step.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00399">KT0915.cpp:399</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_gab7c667ae0100d5ef98af1e89977aaae9"><div class="ttname"><a href="group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9">KT0915::setVolumeDialModeOn</a></div><div class="ttdeci">void setVolumeDialModeOn()</div><div class="ttdoc">Sets Dial Mode Interface</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00216">KT0915.cpp:216</a></div></div>
-<div class="ttc" id="agroup___g_a04_html_ga7b2e8a1f44c403c142bdbc6e14fa1323"><div class="ttname"><a href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323">KT0915::setFrequency</a></div><div class="ttdeci">void setFrequency(uint32_t frequency)</div><div class="ttdoc">Sets the current frequency.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00370">KT0915.cpp:370</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_gae51e0cd9b5c16ef62382a66087de06e9"><div class="ttname"><a href="group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9">KT0915::setTuneDialModeOff</a></div><div class="ttdeci">void setTuneDialModeOff()</div><div class="ttdoc">Turns the Tune Dial Mode interface OFF.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00194">KT0915.cpp:194</a></div></div>
-<div class="ttc" id="agroup___g_a04_html_ga62a8459b778a4501fec4c685fb7698e4"><div class="ttname"><a href="group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4">KT0915::frequencyDown</a></div><div class="ttdeci">void frequencyDown()</div><div class="ttdoc">Decrements the frequency one step.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00415">KT0915.cpp:415</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_gaceba9c66a56862acffb3972a06c86ce7"><div class="ttname"><a href="group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7">KT0915::frequencyUp</a></div><div class="ttdeci">void frequencyUp()</div><div class="ttdoc">Increments the frequency one step.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00418">KT0915.cpp:418</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_gab7c667ae0100d5ef98af1e89977aaae9"><div class="ttname"><a href="group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9">KT0915::setVolumeDialModeOn</a></div><div class="ttdeci">void setVolumeDialModeOn()</div><div class="ttdoc">Sets Volume Dial Mode Interface On.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00235">KT0915.cpp:235</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_ga7b2e8a1f44c403c142bdbc6e14fa1323"><div class="ttname"><a href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323">KT0915::setFrequency</a></div><div class="ttdeci">void setFrequency(uint32_t frequency)</div><div class="ttdoc">Sets the current frequency.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00389">KT0915.cpp:389</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_gae51e0cd9b5c16ef62382a66087de06e9"><div class="ttname"><a href="group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9">KT0915::setTuneDialModeOff</a></div><div class="ttdeci">void setTuneDialModeOff()</div><div class="ttdoc">Turns the Tune Dial Mode interface Off.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00213">KT0915.cpp:213</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_ga62a8459b778a4501fec4c685fb7698e4"><div class="ttname"><a href="group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4">KT0915::frequencyDown</a></div><div class="ttdeci">void frequencyDown()</div><div class="ttdoc">Decrements the frequency one step.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00434">KT0915.cpp:434</a></div></div>
 <div class="ttc" id="agroup___g_a03_html_ga9ef8fc29fa07cdfaea5ccfd6aae1aafc"><div class="ttname"><a href="group___g_a03.html#ga9ef8fc29fa07cdfaea5ccfd6aae1aafc">KT0915::getDeviceId</a></div><div class="ttdeci">char * getDeviceId()</div><div class="ttdoc">Gets the Device Id.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00082">KT0915.cpp:82</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_aee0b412da47456a006a6416611949eee"><div class="ttname"><a href="_k_t0915_8h.html#aee0b412da47456a006a6416611949eee">REG_TUNE</a></div><div class="ttdeci">#define REG_TUNE</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00047">KT0915.h:47</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_abead2f4994c6f3b4a3b9ca286d00f13b"><div class="ttname"><a href="_k_t0915_8h.html#abead2f4994c6f3b4a3b9ca286d00f13b">REG_CHIP_ID</a></div><div class="ttdeci">#define REG_CHIP_ID</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00045">KT0915.h:45</a></div></div>

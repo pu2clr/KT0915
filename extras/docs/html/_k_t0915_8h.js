@@ -1,6 +1,6 @@
 var _k_t0915_8h =
 [
-    [ "AKC595X_I2C_ADRESS", "_k_t0915_8h.html#a4f9ba789d49e4594b1c43508cc3856cc", null ],
+    [ "KT0915_I2C_ADDRESS", "_k_t0915_8h.html#aa709b65c74553a73a062cfdf66b42b0c", null ],
     [ "MODE_FM", "_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55", null ],
     [ "MODE_AM", "_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd", null ],
     [ "OSCILLATOR_32KHZ", "_k_t0915_8h.html#a43a042a97315308b5845013f8511bb9c", null ],
