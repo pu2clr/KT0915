@@ -76,7 +76,15 @@ The main features of this library are listed below.
 
 ## MIT License
 
+Copyright (c) 2019 Ricardo Lima Caratti
 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+<BR>
 
 
 ## Library Installation
@@ -84,8 +92,15 @@ The main features of this library are listed below.
 
 
 
+
 ## About KT0915 DSP radio
 
+According to __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"__ document from KTMicro, "the KT0915 is KT a fully integrated full band AM/FM digital radio receiver IC with patented technologies that offer full band FM/MW/SW/LW functionality, high quality audio performance, simple design and low BOM cost.
+The direct frequency and volume control interface help custumers to maintain the classic looks of their existing products.
+
+Thanks to the patented tuning technology, the receiver maintains good signal reception with short antenna. The chip consumes only 22mA current and can be powered by 2 AAA batteries. Another useful feature is that the volume and channel setup can be preserved in standby mode without external memories. KT0915 supports a wide range of reference clocks from 32.768KHz to 26MHz, hence can share system clocks with a varieties of MCUs further reducing the system BOM cost.
+
+With high audio performance, fully integrated features and low BOM cost, KT0915 is ideal for various FM/MW/SW/LW applications and products".
 
 
 
@@ -120,7 +135,8 @@ The main features of this library are listed below.
 
 #### About the Pin 1 (CH) and Pin 16 (VOL)
 
-KT0915 can be configured to deal with mechanical tuning via a variable resistor. Also, you an use a variable resistor to control the audio volume. It is  enabled by setting the the register GPIOCFG (Address 0x1D). The dial can be a variable resistor with the tap connected to CH and VOL as well. The divided voltage at the tap is processed by the internal KT0915  analog to digital converter (ADC) and converted to a channel value or volume level.
+The KT0915 can be configured to deal with mechanical tuning via a variable resistors. For example, you can use a variable resistor to control the audio volume and another to tuninig the receiver. This resource is  enabled by setting the internal register GPIOCFG (Address 0x1D) of the device. The dial can be a variable resistor with the tap connected to CH and VOL as well. The divided voltage at the tap is processed by the internal KT0915  analog to digital converter (ADC). Finally, the converted datas are stored into the internal registers of the KT0915 device.
+
 
 By default, this library the tune an volume are conttrolled by the Arduino. However, you can sets the mechanical feature by calling setTuneDialModeOn and setVolumeDialModeOn. See [API Documentation](https://pu2clr.github.io/KT0915/extras/docs/html/index.html).
 
