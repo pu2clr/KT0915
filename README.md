@@ -115,8 +115,7 @@ The main features of this library are listed below.
 ### KT0915 SSOP16L package
 
 
-
-
+![KT0915 SSOP16L package](https://pu2clr.github.io/KT0915/extras/images/KT0915_SSOP16L.png)
 
 
 #### About the Pin 1 (CH) and Pin 16 (VOL)
