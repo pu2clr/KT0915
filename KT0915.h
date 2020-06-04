@@ -501,7 +501,7 @@ typedef union {
 } word16_to_bytes;
 
 /**
- * @defgroup GA02 KT0915 Class  
+ * @ingroup GA01  
  * @brief KT0915 Class 
  * @details This class implements all functions that will help you to control the KT0915 devices. 
  * 

@@ -12,8 +12,8 @@ var searchData=
   ['crystal_5f38khz_11',['CRYSTAL_38KHz',['../_k_t0915_8h.html#a9cf4f6d5ff091ddf5caff99acf1037bd',1,'KT0915.h']]],
   ['crystal_5f6_5f5mhz_12',['CRYSTAL_6_5MHZ',['../_k_t0915_8h.html#a025c0404224c77ea7c9e7764ffce3087',1,'KT0915.h']]],
   ['crystal_5f7_5f6mhz_13',['CRYSTAL_7_6MHZ',['../_k_t0915_8h.html#af4e6c1106bad21aa5f60174d7c116a14',1,'KT0915.h']]],
-  ['currentcrystaltype_14',['currentCrystalType',['../class_k_t0915.html#aa09c21de952007fb4de4f5be2fd6e01d',1,'KT0915']]],
-  ['currentfrequency_15',['currentFrequency',['../class_k_t0915.html#aa3a9570080a99ec2ffa390ede02b38b6',1,'KT0915']]],
-  ['currentmode_16',['currentMode',['../class_k_t0915.html#a7939c5335f901dae8b2fe68a3204c296',1,'KT0915']]],
-  ['currentstep_17',['currentStep',['../class_k_t0915.html#a6c013cdf37aee5ceb98f2e039f61a361',1,'KT0915']]]
+  ['currentcrystaltype_14',['currentCrystalType',['../group___g_a01.html#aa09c21de952007fb4de4f5be2fd6e01d',1,'KT0915']]],
+  ['currentfrequency_15',['currentFrequency',['../group___g_a01.html#aa3a9570080a99ec2ffa390ede02b38b6',1,'KT0915']]],
+  ['currentmode_16',['currentMode',['../group___g_a01.html#a7939c5335f901dae8b2fe68a3204c296',1,'KT0915']]],
+  ['currentstep_17',['currentStep',['../group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361',1,'KT0915']]]
 ];

@@ -1,6 +1,6 @@
 var annotated_dup =
 [
-    [ "KT0915", "class_k_t0915.html", "class_k_t0915" ],
+    [ "KT0915", "group___g_a01.html#class_k_t0915", "group___g_a01_class_k_t0915" ],
     [ "kt09xx_afc", "group___g_a01.html#unionkt09xx__afc", "group___g_a01_unionkt09xx__afc" ],
     [ "kt09xx_afc.refined", "group___g_a01.html#structkt09xx__afc_8refined", "group___g_a01_structkt09xx__afc_8refined" ],
     [ "kt09xx_amcali", "group___g_a01.html#unionkt09xx__amcali", "group___g_a01_unionkt09xx__amcali" ],

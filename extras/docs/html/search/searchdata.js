@@ -6,7 +6,7 @@ var indexSectionsWithContent =
   3: "fgirs",
   4: "cdmrv",
   5: "acmr",
-  6: "bktu",
+  6: "btu",
   7: "pt"
 };
 
