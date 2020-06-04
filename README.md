@@ -89,8 +89,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Library Installation
 
+You can install this library on your Arduino environment using different methods. The best ways to do that are described below.  
 
 
+### Installing via Arduino IDE
+
+// TODO
 
 
 ## About KT0915 DSP radio
