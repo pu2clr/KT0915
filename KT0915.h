@@ -25,16 +25,16 @@
 #define MODE_AM     1
 
 
-#define CRYSTAL_32KHZ    0      //  32.768KHz 
-#define CRYSTAL_6_5MHZ   1      //  6.5MHz 
-#define CRYSTAL_7_6MHZ   2      //  7.6MHz
-#define CRYSTAL_12MHZ    3      //  12MHz
-#define CRYSTAL_13MHZ    4      //  13MHz
-#define CRYSTAL_15_2MHZ  5      //  15.2MHz
-#define CRYSTAL_19_2MHZ  6      //  19.2MHz
-#define CRYSTAL_24MHZ    7      //  24MHz
-#define CRYSTAL_26MHZ    8      //  26MHz
-#define CRYSTAL_38KHz    9      //  38KHz 
+#define OSCILLATOR_32KHZ    0      //  32.768KHz 
+#define OSCILLATOR_6_5MHZ   1      //  6.5MHz 
+#define OSCILLATOR_7_6MHZ   2      //  7.6MHz
+#define OSCILLATOR_12MHZ    3      //  12MHz
+#define OSCILLATOR_13MHZ    4      //  13MHz
+#define OSCILLATOR_15_2MHZ  5      //  15.2MHz
+#define OSCILLATOR_19_2MHZ  6      //  19.2MHz
+#define OSCILLATOR_24MHZ    7      //  24MHz
+#define OSCILLATOR_26MHZ    8      //  26MHz
+#define OSCILLATOR_38KHz    9      //  38KHz 
 
 #define REF_CLOCK_ENABLE    1   // 
 #define REF_CLOCK_DISABLE   0
@@ -263,16 +263,16 @@ typedef union {
  * Crystal type table
  * | Dec | binary | Description | defined constant |
  * | --  | ------ | ----------- | ---------------  |
- * | 0   | 0000   | 32.768KHz   | CRYSTAL_32KHZ    |
- * | 1   | 0001   | 6.5MHz      | CRYSTAL_6_5MHZ   |
- * | 2   | 0010   | 7.6MHz      | CRYSTAL_7_6MHZ   |
- * | 3   | 0011   | 12MHz       | CRYSTAL_12MHZ    |
- * | 4   | 0100   | 13MHz       | CRYSTAL_13MHZ    |
- * | 5   | 0101   | 15.2MHz     | CRYSTAL_15_2MHZ  |
- * | 6   | 0110   | 19.2MHz     | CRYSTAL_19_2MHZ  | 
- * | 7   | 0111   | 24MHz       | CRYSTAL_24MHZ    |
- * | 8   | 1000   | 26MHz       | CRYSTAL_26MHZ    |
- * | 9   | 1001   | ?? 38KHz ?? | CRYSTAL_38KHz    |
+ * | 0   | 0000   | 32.768KHz   | OSCILLATOR_32KHZ    |
+ * | 1   | 0001   | 6.5MHz      | OSCILLATOR_6_5MHZ   |
+ * | 2   | 0010   | 7.6MHz      | OSCILLATOR_7_6MHZ   |
+ * | 3   | 0011   | 12MHz       | OSCILLATOR_12MHZ    |
+ * | 4   | 0100   | 13MHz       | OSCILLATOR_13MHZ    |
+ * | 5   | 0101   | 15.2MHz     | OSCILLATOR_15_2MHZ  |
+ * | 6   | 0110   | 19.2MHz     | OSCILLATOR_19_2MHZ  | 
+ * | 7   | 0111   | 24MHz       | OSCILLATOR_24MHZ    |
+ * | 8   | 1000   | 26MHz       | OSCILLATOR_26MHZ    |
+ * | 9   | 1001   | ?? 38KHz ?? | OSCILLATOR_38KHz    |
  * 
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 19.
  * 
@@ -514,13 +514,13 @@ protected:
     int deviceAddress = AKC595X_I2C_ADRESS;
     int resetPin = -1;
 
-    uint8_t volume;                             //!< Store the current volume
-    uint16_t currentStep;                       //!< Strore the current step
-    uint16_t currentFrequency;                  //!< Store the current frequency
-    uint16_t minimumFrequency;                  //!< Stores the minimum frequency for the current band
-    uint16_t maximumFrequency;                  //!< Stores the maximum frequency for the current band
-    uint8_t currentMode;                        //!< Store the current mode
-    uint8_t currentCrystalType = CRYSTAL_32KHZ; //!< Store the crystal type
+    uint8_t volume;                                 //!< Store the current volume
+    uint16_t currentStep;                           //!< Strore the current step
+    uint16_t currentFrequency;                      //!< Store the current frequency
+    uint16_t minimumFrequency;                      //!< Stores the minimum frequency for the current band
+    uint16_t maximumFrequency;                      //!< Stores the maximum frequency for the current band
+    uint8_t currentMode;                            //!< Store the current mode
+    uint8_t currentCrystalType = OSCILLATOR_32KHZ;  //!< Store the crystal type
     char    deviceId[3];
 
 public:
@@ -530,9 +530,9 @@ public:
     char *getDeviceId();
     void reset();
     void setI2CBusAddress(int deviceAddress);
-    void setCrystalType(uint8_t crystal, uint8_t ref_clock = 0);
+    void setReferenceClockType(uint8_t crystal, uint8_t ref_clock = 0);
     bool isCrystalReady(); 
-    void setup(int reset_pin, uint8_t crystal_type = CRYSTAL_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
+    void setup(int reset_pin, uint8_t OSCILLATOR_type = OSCILLATOR_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
 
     void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
     void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);

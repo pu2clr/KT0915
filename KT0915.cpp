@@ -92,27 +92,29 @@ bool KT0915::isCrystalReady() {
 /**
  * @ingroup GA03
  * @brief Sets the Crystal Type
- * @details Configures the Crystal Type you are using in your circuit.
- * @details The valid crystal type are 12MHz or 32.768Khz
- * 
+ * @details Configures the Crystal or reference clock  you are using in your circuit.
+ * @details For a low frequency crystal oscillator, selects 32.768KHz or 38KHz crystals. 
+ * @details Alternatively, you can use a CMOS level external reference clock may be used by setting 
+ * @details the parameter ref_clock to 1 (REF_CLOCK_ENABLE) and setting the reference clock according to the table below.
+
  *  * Crystal type table
- * | Dec | binary | Description | defined constant |
- * | --  | ------ | ----------- | ---------------  |
- * | 0   | 0000   | 32.768KHz   | CRYSTAL_32KHZ    |
- * | 1   | 0001   | 6.5MHz      | CRYSTAL_6_5MHZ   |
- * | 2   | 0010   | 7.6MHz      | CRYSTAL_7_6MHZ   |
- * | 3   | 0011   | 12MHz       | CRYSTAL_12MHZ    |
- * | 4   | 0100   | 13MHz       | CRYSTAL_13MHZ    |
- * | 5   | 0101   | 15.2MHz     | CRYSTAL_15_2MHZ  |
- * | 6   | 0110   | 19.2MHz     | CRYSTAL_19_2MHZ  | 
- * | 7   | 0111   | 24MHz       | CRYSTAL_24MHZ    |
- * | 8   | 1000   | 26MHz       | CRYSTAL_26MHZ    |
- * | 9   | 1001   | ?? 38KHz ?? | CRYSTAL_38KHz    |
+ * | Dec | binary | Description | defined constant    |
+ * | --  | ------ | ----------- | ---------------     |
+ * | 0   | 0000   | 32.768KHz   | OSCILLATOR_32KHZ    |
+ * | 1   | 0001   | 6.5MHz      | OSCILLATOR_6_5MHZ   |
+ * | 2   | 0010   | 7.6MHz      | OSCILLATOR_7_6MHZ   |
+ * | 3   | 0011   | 12MHz       | OSCILLATOR_12MHZ    |
+ * | 4   | 0100   | 13MHz       | OSCILLATOR_13MHZ    |
+ * | 5   | 0101   | 15.2MHz     | OSCILLATOR_15_2MHZ  |
+ * | 6   | 0110   | 19.2MHz     | OSCILLATOR_19_2MHZ  | 
+ * | 7   | 0111   | 24MHz       | OSCILLATOR_24MHZ    |
+ * | 8   | 1000   | 26MHz       | OSCILLATOR_26MHZ    |
+ * | 9   | 1001   | ?? 38KHz ?? | OSCILLATOR_38KHz    |
  * 
  * @param crystal   Reference Clock Selection. See table above. 
  * @param ref_clock 0 = Crystal (default); 1 = Reference clock enabled.
  */
-void KT0915::setCrystalType(uint8_t crystal, uint8_t ref_clock)
+void KT0915::setReferenceClockType(uint8_t crystal, uint8_t ref_clock)
 {
     kt09xx_amsyscfg reg;
     reg.raw = getRegister(REG_AMSYSCFG);  // Gets the current value of the register
@@ -157,45 +159,51 @@ void KT0915::setI2CBusAddress(int deviceAddress) {
 
 /**
  * @ingroup GA03
- * @brief    Receiver startup 
- * @details  Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using. 
- * @details  The options for the crystal can be seen in the table below.
- * @details  If you omit the crystal type parameter, will be considered  0 (32.768KHz). 
- * @details  The code below shows how to use the setup function.
+ * @brief   Receiver startup 
+ * @details Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using. 
+ * @details The options for the crystal can be seen in the table below.
+ * @details If you omit the crystal type parameter, will be considered  0 (32.768KHz). 
+ * @details For a low frequency crystal oscillator, selects 32.768KHz or 38KHz crystals. 
+ * @details Alternatively, you can use a CMOS level external reference clock may be used by setting 
+ * @details the parameter ref_clock to 1 (REF_CLOCK_ENABLE) and setting the reference clock according to the table below.
+ * @details The code below shows how to use the setup function.
  * 
  * @code
  * #include <KT0915.h>
  * #define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.
  * KT0915 radio;
  * void setup() {
- *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ, CRYSTAL_12MHZ etc
+ *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select OSCILLATOR_32KHZ, OSCILLATOR_12MHZ etc
  *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   
- *    radio.setup(RESET_PIN, CRYSTAL_12MHZ, REF_CLOCK_DISABLE );
+ *    radio.setup(RESET_PIN, OSCILLATOR_12MHZ, REF_CLOCK_DISABLE );
  * }
  * @endcode
  * 
  * Crystal type table
- * | Dec | binary | Description | defined constant |
- * | --  | ------ | ----------- | ---------------  |
- * | 0   | 0000   | 32.768KHz   | CRYSTAL_32KHZ    |
- * | 1   | 0001   | 6.5MHz      | CRYSTAL_6_5MHZ   |
- * | 2   | 0010   | 7.6MHz      | CRYSTAL_7_6MHZ   |
- * | 3   | 0011   | 12MHz       | CRYSTAL_12MHZ    |
- * | 4   | 0100   | 13MHz       | CRYSTAL_13MHZ    |
- * | 5   | 0101   | 15.2MHz     | CRYSTAL_15_2MHZ  |
- * | 6   | 0110   | 19.2MHz     | CRYSTAL_19_2MHZ  | 
- * | 7   | 0111   | 24MHz       | CRYSTAL_24MHZ    |
- * | 8   | 1000   | 26MHz       | CRYSTAL_26MHZ    |
- * | 9   | 1001   | 38KHz       | CRYSTAL_38KHz    |
+ * | Dec | binary | Description | defined constant    |
+ * | --  | ------ | ----------- | ---------------     |
+ * | 0   | 0000   | 32.768KHz   | OSCILLATOR_32KHZ    |
+ * | 1   | 0001   | 6.5MHz      | OSCILLATOR_6_5MHZ   |
+ * | 2   | 0010   | 7.6MHz      | OSCILLATOR_7_6MHZ   |
+ * | 3   | 0011   | 12MHz       | OSCILLATOR_12MHZ    |
+ * | 4   | 0100   | 13MHz       | OSCILLATOR_13MHZ    |
+ * | 5   | 0101   | 15.2MHz     | OSCILLATOR_15_2MHZ  |
+ * | 6   | 0110   | 19.2MHz     | OSCILLATOR_19_2MHZ  | 
+ * | 7   | 0111   | 24MHz       | OSCILLATOR_24MHZ    |
+ * | 8   | 1000   | 26MHz       | OSCILLATOR_26MHZ    |
+ * | 9   | 1001   | 38KHz       | OSCILLATOR_38KHz    |
+ * 
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); 3.6 Crystal and reference clock; page 9. 
+ * @see setReferenceClockType 
  * 
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. 
- * @param crystal_type  Crystal type. See the table above.
+ * @param OSCILLATOR_type  Crystal type. See the table above.
  * @param ref_clock     0 = Crystal (Reference clock enabled disabled - default); 1 = Reference clock enabled.
  */
-void KT0915::setup(int reset_pin, uint8_t crystal_type, uint8_t ref_clock) {
+void KT0915::setup(int reset_pin, uint8_t OSCILLATOR_type, uint8_t ref_clock) {
     this->resetPin = reset_pin;
     reset();
-    setCrystalType(crystal_type, ref_clock);
+    setReferenceClockType(OSCILLATOR_type, ref_clock);
 }
 
 /** 

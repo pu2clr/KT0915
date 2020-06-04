@@ -16,11 +16,10 @@ void setup() {
   Serial.println("CHIP ID....................:");
   Serial.print(radio.getDeviceId());
 
-  radio.setup(-1, CRYSTAL_32KHZ);
+  radio.setup(-1, OSCILLATOR_32KHZ);
 
   Serial.println("Crystal Ready..............:");
   Serial.print(radio.isCrystalReady());
-  
 
 }
 
