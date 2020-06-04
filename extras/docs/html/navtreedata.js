@@ -62,7 +62,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_k_t0915_8cpp.html",
-"group___g_a01.html#unionkt09xx__statusa"
+"group___g_a01.html#unionkt09xx__dspcfga"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

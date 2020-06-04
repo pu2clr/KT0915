@@ -2,6 +2,8 @@ var _k_t0915_8h =
 [
     [ "KT0915", "class_k_t0915.html", "class_k_t0915" ],
     [ "AKC595X_I2C_ADRESS", "_k_t0915_8h.html#a4f9ba789d49e4594b1c43508cc3856cc", null ],
+    [ "MODE_FM", "_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55", null ],
+    [ "MODE_AM", "_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd", null ],
     [ "CRYSTAL_32KHZ", "_k_t0915_8h.html#abb215e8e082a207ca359cf474bbb4935", null ],
     [ "CRYSTAL_6_5MHZ", "_k_t0915_8h.html#a025c0404224c77ea7c9e7764ffce3087", null ],
     [ "CRYSTAL_7_6MHZ", "_k_t0915_8h.html#af4e6c1106bad21aa5f60174d7c116a14", null ],
@@ -12,6 +14,8 @@ var _k_t0915_8h =
     [ "CRYSTAL_24MHZ", "_k_t0915_8h.html#a0c8ff1d202040adc332352c2fae46c7f", null ],
     [ "CRYSTAL_26MHZ", "_k_t0915_8h.html#a470eae44add904b292aaab23e11d8c9b", null ],
     [ "CRYSTAL_38KHz", "_k_t0915_8h.html#a9cf4f6d5ff091ddf5caff99acf1037bd", null ],
+    [ "REF_CLOCK_ENABLE", "_k_t0915_8h.html#a4d8c2e1baf06554216b9334852e1ae6b", null ],
+    [ "REF_CLOCK_DISABLE", "_k_t0915_8h.html#ab640fa4280beb79f0209204410eac051", null ],
     [ "REG_CHIP_ID", "_k_t0915_8h.html#abead2f4994c6f3b4a3b9ca286d00f13b", null ],
     [ "REG_SEEK", "_k_t0915_8h.html#a4c2a27e941c5407c94c17d80908151ee", null ],
     [ "REG_TUNE", "_k_t0915_8h.html#aee0b412da47456a006a6416611949eee", null ],

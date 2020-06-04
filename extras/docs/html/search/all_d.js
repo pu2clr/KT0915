@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['word16_5fto_5fbytes_116',['word16_to_bytes',['../group___g_a01.html#unionword16__to__bytes',1,'']]],
-  ['word16_5fto_5fbytes_2erefined_117',['word16_to_bytes.refined',['../group___g_a01.html#structword16__to__bytes_8refined',1,'']]]
+  ['union_2c_20structure_20and_20defined_20data_20types_129',['Union, Structure and Defined Data Types',['../group___g_a01.html',1,'']]]
 ];

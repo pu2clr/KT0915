@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['getdeviceid_20',['getDeviceId',['../group___g_a03.html#ga9ef8fc29fa07cdfaea5ccfd6aae1aafc',1,'KT0915']]],
-  ['getregister_21',['getRegister',['../group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e',1,'KT0915']]]
+  ['frequencydown_20',['frequencyDown',['../group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4',1,'KT0915']]],
+  ['frequencyup_21',['frequencyUp',['../group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7',1,'KT0915']]]
 ];
