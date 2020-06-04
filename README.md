@@ -17,7 +17,6 @@ Contact: __pu2clr@gmail.com__.
 Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook.com/groups/2655942598067211)
 
 
-
 # Contents
 
 1. [Preface](https://pu2clr.github.io/KT0915#preface)
