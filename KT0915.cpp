@@ -188,10 +188,10 @@ void KT0915::setI2CBusAddress(int deviceAddress) {
  * | 6   | 0110   | 19.2MHz     | CRYSTAL_19_2MHZ  | 
  * | 7   | 0111   | 24MHz       | CRYSTAL_24MHZ    |
  * | 8   | 1000   | 26MHz       | CRYSTAL_26MHZ    |
- * | 9   | 1001   | ?? 38KHz ?? | CRYSTAL_38KHz    |
+ * | 9   | 1001   | 38KHz       | CRYSTAL_38KHz    |
  * 
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. 
- * @param crystal_type  See the table above.
+ * @param crystal_type  Crystal type. See the table above.
  * @param ref_clock     0 = Crystal (Reference clock enabled disabled - default); 1 = Reference clock enabled.
  */
 void KT0915::setup(int reset_pin, uint8_t crystal_type, uint8_t ref_clock) {

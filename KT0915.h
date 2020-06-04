@@ -21,18 +21,18 @@
 
 #define AKC595X_I2C_ADRESS 35  // It is needed to check it when the KT0915 device arrives.
 
-#define CRYSTAL_32KHZ    0   //  32.768KHz 
-#define CRYSTAL_6_5MHZ   1   //  6.5MHz 
-#define CRYSTAL_7_6MHZ   2   //  7.6MHz
-#define CRYSTAL_12MHZ    3   //  12MHz
-#define CRYSTAL_13MHZ    4   //  13MHz
-#define CRYSTAL_15_2MHZ  5   //  15.2MHz
-#define CRYSTAL_19_2MHZ  6   //  19.2MHz
-#define CRYSTAL_24MHZ    7   //  24MHz
-#define CRYSTAL_26MHZ    8   //  26MHz
-#define CRYSTAL_38KHz    9   //  38 ??? MHZ or KHz???? 
+#define CRYSTAL_32KHZ    0      //  32.768KHz 
+#define CRYSTAL_6_5MHZ   1      //  6.5MHz 
+#define CRYSTAL_7_6MHZ   2      //  7.6MHz
+#define CRYSTAL_12MHZ    3      //  12MHz
+#define CRYSTAL_13MHZ    4      //  13MHz
+#define CRYSTAL_15_2MHZ  5      //  15.2MHz
+#define CRYSTAL_19_2MHZ  6      //  19.2MHz
+#define CRYSTAL_24MHZ    7      //  24MHz
+#define CRYSTAL_26MHZ    8      //  26MHz
+#define CRYSTAL_38KHz    9      //  38KHz 
 
-#define REF_CLOCK_ENABLE    1
+#define REF_CLOCK_ENABLE    1   // 
 #define REF_CLOCK_DISABLE   0
 
 
