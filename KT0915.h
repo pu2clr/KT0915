@@ -32,6 +32,9 @@
 #define CRYSTAL_26MHZ    8   //  26MHz
 #define CRYSTAL_38KHz    9   //  38 ??? MHZ or KHz???? 
 
+#define REF_CLOCK_ENABLE    1
+#define REF_CLOCK_DISABLE   0
+
 
 #define REG_CHIP_ID 0x01
 #define REG_SEEK 0x02
@@ -521,8 +524,8 @@ public:
     char *getDeviceId();
     void reset();
     void setI2CBusAddress(int deviceAddress);
-    void setCrystalType(uint8_t crystal);
+    void setCrystalType(uint8_t crystal, uint8_t ref_clock = 0);
     bool isCrystalReady(); 
-    void setup(int reset_pin, uint8_t crystal_type = CRYSTAL_32KHZ);
+    void setup(int reset_pin, uint8_t crystal_type = CRYSTAL_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
 };
 

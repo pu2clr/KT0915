@@ -97,15 +97,33 @@ bool KT0915::isCrystalReady() {
  * @details Configures the Crystal Type you are using in your circuit.
  * @details The valid crystal type are 12MHz or 32.768Khz
  * 
- * @param crystal 
+ *  * Crystal type table
+ * | Dec | binary | Description | defined constant |
+ * | --  | ------ | ----------- | ---------------  |
+ * | 0   | 0000   | 32.768KHz   | CRYSTAL_32KHZ    |
+ * | 1   | 0001   | 6.5MHz      | CRYSTAL_6_5MHZ   |
+ * | 2   | 0010   | 7.6MHz      | CRYSTAL_7_6MHZ   |
+ * | 3   | 0011   | 12MHz       | CRYSTAL_12MHZ    |
+ * | 4   | 0100   | 13MHz       | CRYSTAL_13MHZ    |
+ * | 5   | 0101   | 15.2MHz     | CRYSTAL_15_2MHZ  |
+ * | 6   | 0110   | 19.2MHz     | CRYSTAL_19_2MHZ  | 
+ * | 7   | 0111   | 24MHz       | CRYSTAL_24MHZ    |
+ * | 8   | 1000   | 26MHz       | CRYSTAL_26MHZ    |
+ * | 9   | 1001   | ?? 38KHz ?? | CRYSTAL_38KHz    |
+ * 
+ * @param crystal   Reference Clock Selection. See table above. 
+ * @param ref_clock 0 = Crystal (default); 1 = Reference clock enabled.
  */
-void KT0915::setCrystalType(uint8_t crystal)
+void KT0915::setCrystalType(uint8_t crystal, uint8_t ref_clock)
 {
     kt09xx_amsyscfg reg;
     reg.raw = getRegister(REG_AMSYSCFG);  // Gets the current value of the register
     reg.refined.REFCLK = crystal;         // Changes just crystal parameter
+    reg.refined.RCLK_EN = ref_clock;      // Reference Clock Enable => Crystal
     setRegister(REG_AMSYSCFG, reg.raw);   // Strores the new value to the register 
 }
+
+
 
 /**
  * @ingroup GA03
@@ -154,7 +172,7 @@ void KT0915::setI2CBusAddress(int deviceAddress) {
  * void setup() {
  *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ, CRYSTAL_12MHZ etc
  *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   
- *    radio.setup(RESET_PIN, CRYSTAL_12MHZ);
+ *    radio.setup(RESET_PIN, CRYSTAL_12MHZ, REF_CLOCK_DISABLE );
  * }
  * @endcode
  * 
@@ -174,10 +192,11 @@ void KT0915::setI2CBusAddress(int deviceAddress) {
  * 
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. 
  * @param crystal_type  See the table above.
+ * @param ref_clock     0 = Crystal (Reference clock enabled disabled - default); 1 = Reference clock enabled.
  */
-void KT0915::setup(int reset_pin, uint8_t crystal_type) {
+void KT0915::setup(int reset_pin, uint8_t crystal_type, uint8_t ref_clock) {
     this->resetPin = reset_pin;
     reset();
-    setCrystalType(crystal_type);
+    setCrystalType(crystal_type, ref_clock);
 }
 
