@@ -19,17 +19,17 @@ Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook
 # Contents
 
 1. [Preface](https://pu2clr.github.io/KT0915#preface)
-2. [Your support is important](https://github.com/pu2clr/KT0915#your-support-is-important)
-3. [Library Features](https://github.com/pu2clr/KT0915#library-features)
-4. [MIT License](https://github.com/pu2clr/KT0915#mit-license)
-5. [Library Installation](https://pu2clr.github.io/KT0915/#library-installation)
-6. [About KT0915 DSP radio](https://github.com/pu2clr/KT0915#about-kt0915-dsp-radio)
-   * [KT0915 pinout](https://github.com/pu2clr/KT0915#kt0915-pinout)
-7. [SCHEMATIC](https://github.com/pu2clr/KT0915#schematic)
+2. [Your support is important](https://pu2clr.github.io/KT0915#your-support-is-important)
+3. [Library Features](https://pu2clr.github.io/KT0915#library-features)
+4. [MIT License](https://pu2clr.github.io/KT0915#mit-license)
+5. [Library Installation](https://pu2clr.github.io/KT0915#library-installation)
+6. [About KT0915 DSP radio](https://pu2clr.github.io/KT0915#about-kt0915-dsp-radio)
+   * [KT0915 pinout](https://pu2clr.github.io/KT0915#kt0915-pinout)
+7. [SCHEMATIC](https://pu2clr.github.io/KT0915#schematic)
 8.  [API Documentation](https://pu2clr.github.io/KT0915/extras/docs/html/index.html)
 9.  [Examples](https://github.com/pu2clr/KT0915/tree/master/examples)
-10. [Videos](https://github.com/pu2clr/KT0915#videos)
-11. [References](https://pu2clr.github.io/KT0915/#references)
+10. [Videos](https://pu2clr.github.io/KT0915#videos)
+11. [References](https://pu2clr.github.io/KT0915#references)
 
 
 ## Preface
