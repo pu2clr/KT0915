@@ -99,12 +99,41 @@ You can install this library on your Arduino environment using different methods
 
 ## About KT0915 DSP radio
 
-According to __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"__ document from KTMicro, "the KT0915 is KT a fully integrated full band AM/FM digital radio receiver IC with patented technologies that offer full band FM/MW/SW/LW functionality, high quality audio performance, simple design and low BOM cost.
+According to __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"__ document from KTMicro, "the KT0915 is a fully integrated full band AM/FM digital radio receiver IC with patented technologies that offer full band FM/MW/SW/LW functionality, high quality audio performance, simple design and low BOM cost.
 The direct frequency and volume control interface help custumers to maintain the classic looks of their existing products.
 
 Thanks to the patented tuning technology, the receiver maintains good signal reception with short antenna. The chip consumes only 22mA current and can be powered by 2 AAA batteries. Another useful feature is that the volume and channel setup can be preserved in standby mode without external memories. KT0915 supports a wide range of reference clocks from 32.768KHz to 26MHz, hence can share system clocks with a varieties of MCUs further reducing the system BOM cost.
 
 With high audio performance, fully integrated features and low BOM cost, KT0915 is ideal for various FM/MW/SW/LW applications and products".
+
+
+
+### KT0915 features
+
+1. Worldwide full band FM/MW/SW/LW support FM: 32MHz-110MHz
+   * MW: 500KHz-1710KHz 
+   * FM: 32MHz-110MHz
+   * MW: 500KHz-1710KHz SW: 1.6MHz~32MHz LW: 150KHz ~ 280KHz
+2. Fully integrated frequency synthesizer with no external component
+3. High Sensitivity 
+   * 1.6uVEMF for FM 
+   * 16uVEMF for AM
+4. High Fidelity
+   * SNR (FM/AM): 60dB/55dB 
+   * THD: 0.3%
+5. Low supply voltage: 2.2V to 3.6V, can be supplied by 2 AAA batteries
+6. Automatic antenna tuning
+8. Adjustable AM channel filters (2k/4k/6KHz)
+9. Embedded FM SNR meter
+10. Fast seek/Tune
+11. Integrated stereo headphone driver I2C control interface for MCU
+12. Support traditional dial and digital key for frequency tuning and volume control
+13. Memorize channel and volume in standby mode 
+14. Low Supply Current - 22mA (operating) <15uA (standby) 
+15. Support both 32.768KHz and 38KHz crystal
+16. Support continuous reference frequency from 32.768KHz to 26MHz
+
+Source: __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"__ document from KTMicro
 
 
 
