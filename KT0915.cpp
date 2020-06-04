@@ -205,27 +205,65 @@ void KT0915::setup(int reset_pin, uint8_t crystal_type, uint8_t ref_clock) {
  * @section  GA04 Tune Methods  
  * @details  Methods to tune and set the receiver mode
  */
+
+/**
+ * @ingroup GA04
+ * @brief Sets the receiver to FM mode
+ * @details Configures the receiver on FM mode; Also sets the band limits, defaul frequency and step.
+ * 
+ * @param minimum_frequency  minimum frequency for the band
+ * @param maximum_frequency  maximum frequency for the band
+ * @param default_frequency  default freuency
+ * @param step  increment and decrement frequency step
+ */
 void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
 {
+    kt09xx_amsyscfg reg;
+
     this->currentStep = step;
     this->currentFrequency = default_frequency;
     this->minimumFrequency = minimum_frequency;
     this->maximumFrequency = maximum_frequency;
     this->currentMode = MODE_FM;
+
+    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value of the register
+    reg.refined.AM_FM = MODE_FM;
+    reg.refined.USERBAND = 1;          // Use user-defined band
+    setRegister(REG_AMSYSCFG, reg.raw); // Strores the new value to the register
+
+    setFrequency(default_frequency);
 };
 
+/**
+ * @ingroup GA04
+ * @brief Sets the receiver to AM mode
+ * @details Configures the receiver on AM mode; Also sets the band limits, defaul frequency and step.
+ * 
+ * @param minimum_frequency  minimum frequency for the band
+ * @param maximum_frequency  maximum frequency for the band
+ * @param default_frequency  default freuency
+ * @param step  increment and decrement frequency step
+ */
 void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
 {
+    kt09xx_amsyscfg reg;
+
     this->currentStep = step;
     this->currentFrequency = default_frequency;
     this->minimumFrequency = minimum_frequency;
     this->maximumFrequency = maximum_frequency;
-    this->currentMode = MODE_FM;
-};
+    this->currentMode = MODE_AM;
+
+    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value of the register
+    reg.refined.AM_FM = MODE_AM;
+    reg.refined.USERBAND = 1;           // Use user-defined band
+    setRegister(REG_AMSYSCFG, reg.raw);  // Strores the new value to the register
+
+    setFrequency(default_frequency);
+}
 
 void KT0915::setFrequency(uint32_t frequency)
 {
-
     kt09xx_amchan reg_amchan;
     kt09xx_tune reg_tune;
 
@@ -243,16 +281,39 @@ void KT0915::setFrequency(uint32_t frequency)
     }
 
     this->currentFrequency = frequency;
+}
+
+void KT0915::frequencyUp(){
+    this->currentFrequency += this->currentStep;
+    if (this->currentFrequency > this->maximumFrequency)
+        this->currentFrequency = this->minimumFrequency;
+
+    setFrequency(this->currentFrequency);
 };
 
+/**
+ * @brief 
+ * 
+ */
+void KT0915::frequencyDown(){
+    this->currentFrequency -= this->currentStep;
+    if (this->currentFrequency < this->minimumFrequency)
+        this->currentFrequency = this->maximumFrequency;
+
+    setFrequency(this->currentFrequency);
+};
+
+/**
+ * @brief Sets the frequency step
+ * @details Sets increment and decrement frequency 
+ * @param step  Values: 1, 5, 9, 10, 100, 200 
+ */
 void KT0915::setStep(uint16_t step)
 {
-   
     this->currentStep = step;
 }
 
 uint32_t KT0915::getFrequency()
 {
-
     return this->currentFrequency;
 }

@@ -538,6 +538,8 @@ public:
     void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
     void setFrequency(uint32_t frequency);
     void setStep(uint16_t step);
+    void frequencyUp();
+    void frequencyDown();
     uint32_t getFrequency();
 
 };
