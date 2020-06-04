@@ -44,10 +44,32 @@ In this document you will see Arduino source codes, schematics, examples and tip
 
 ## Your support is important
 
-
+If you would like to support this library development, consider joining this project via Github. Alternatively, make suggestions on new features and report errors if you find them. Thank you!
 
 
 ## Library Features
+
+This library uses the I²C communication protocol and implements most of the functions offered by the KT0915 (BROADCAST AM / FM / SW / LW RECEIVER). 
+
+The main features of this library are listed below.
+
+1. Open Source. It is free. You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. See [MIT License to know more](https://pu2clr.github.io/AKC695X/#mit-license);
+2. Built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf);
+3. C++ Language and Object-oriented programming. You can easily extend the AKC695X class by adding more functionalities;
+4. Available on Arduino IDE (via Manage Libraries). Easy to install and use;
+5. Cross-platform. You can compile and run this library on most of board available on Arduino IDE (Examples: ATtiny85, boards based on ATmega328 and ATmega-32u4, ATmega2560, ARM Cortex, STM32, Arduino DUE, ESP32 and more);
+6. Simplifies projects based on KT0915 IC;
+7. Seeking function support;
+8. Support to __32.768KHz, 6.5MHz, 7.6MHz, 12MHz, 13MHz, 15.2MHz, 19.2MHz, 24MHz, and 26MHz__ crystal oscillators;
+9. Support to audio controlled by the MCU (Arduino)  or potentiometer;
+10. Real tim FM stereo or mono indicator;
+11. FM stereo or mono selecting;
+12. Real time signal level reading;
+13. Real time AM and FM carrier to noise ratio information (dB).
+14. Bandwidth selection for FM;
+15. Custom band support;
+16. More than 40 functions implemented.
+
 
 
 
