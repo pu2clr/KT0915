@@ -23,7 +23,7 @@ Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook
 3. [Library Features](https://pu2clr.github.io/KT0915/#library-features)
 4. [MIT License](https://pu2clr.github.io/KT0915/#mit-license)
 5. [Library Installation](https://pu2clr.github.io/KT0915/#library-installation)
-6. [About KT0915 DSP radio](https://pu2clr.github.io/KT0915/#about-KT0915-DSP-radio)
+6. [About KT0915 DSP radio](https://pu2clr.github.io/KT0915/#about-kt0915-DSP-radio)
    * [Register setup]()
    * [Register operations]()
    * [KT0915 Pin definitions]()
