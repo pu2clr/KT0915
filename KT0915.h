@@ -19,7 +19,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#define AKC595X_I2C_ADRESS 35  // It is needed to check it when the KT0915 device arrives.
+#define KT0915_I2C_ADDRESS 35  // It is needed to check it when the KT0915 device arrives.
 
 #define MODE_FM     0
 #define MODE_AM     1
@@ -513,7 +513,7 @@ typedef union {
 class KT0915 {
 
 protected:
-    int deviceAddress = AKC595X_I2C_ADRESS;
+    int deviceAddress = KT0915_I2C_ADDRESS;
     int resetPin = -1;
 
     uint8_t volume;                                 //!< Stores the current volume
