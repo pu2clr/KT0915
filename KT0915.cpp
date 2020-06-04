@@ -160,7 +160,7 @@ void KT0915::reset()
 /**
  * @ingroup GA03
  * @todo Channel Limits
- * @brief Sets Tune Dial Mode Interface  
+ * @brief Sets Tune Dial Mode Interface On  
  * @details This method sets the KT0915 to deal with a mechanical tuning via an external 100K resistor.
  * @details KT0915 supports a unique Dial Mode (mechanical tuning wheel with a variable resistor) which is 
  * @details enabled by GPIO1 to 2 (10). The dial can be a variable resistor with the tap connected to CH (pin 1).  
@@ -187,7 +187,7 @@ void KT0915::setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequ
 
 /**
  * @ingroup GA03
- * @brief Turns the Tune Dial Mode interface OFF
+ * @brief Turns the Tune Dial Mode interface Off
  * @see setTuneDialModeOn
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.
  */
@@ -206,7 +206,7 @@ void KT0915::setTuneDialModeOff()
 
 /**
  * @ingroup GA03
- * @brief   Sets Dial Mode Interface  
+ * @brief   Sets Volume Dial Mode Interface On 
  * @details This method sets the KT0915 to deal with a mechanical volume control via an external 100K resistor.
  * @details KT0915 supports a unique Dial Mode  which is enabled by GPIO2 to 2 (10). 
  * @details The dial can be a variable resistor with the tap connected to VOL (pin 16). 
@@ -223,7 +223,7 @@ void KT0915::setVolumeDialModeOn()
 
 /**
  * @ingroup GA03
- * @brief Turns the Volume Dial Mode interface OFF
+ * @brief Turns the Volume Dial Mode interface Off
  * @see setVolumeDialModeOn
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.
  */
