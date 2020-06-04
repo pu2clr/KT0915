@@ -8,6 +8,10 @@ var group___g_a01_class_k_t0915 =
     [ "setReferenceClockType", "group___g_a03.html#gaea3de0c32d82b229aff25e66c8a1fdc9", null ],
     [ "isCrystalReady", "group___g_a01.html#a8efae1e4921f13b904a1477a94c02c51", null ],
     [ "setup", "group___g_a03.html#gad66d64a17d4dd583c4384d27665ff9bf", null ],
+    [ "setTuneDialModeOn", "group___g_a03.html#ga33e4e2c4b3529e035f5738991f2a8f0d", null ],
+    [ "setTuneDialModeOff", "group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9", null ],
+    [ "setVolumeDialModeOn", "group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9", null ],
+    [ "setVolumeDialModeOff", "group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1", null ],
     [ "setFM", "group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633", null ],
     [ "setAM", "group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2", null ],
     [ "setFrequency", "group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323", null ],
@@ -25,5 +29,6 @@ var group___g_a01_class_k_t0915 =
     [ "maximumFrequency", "group___g_a01.html#ad55279b1091566622f14d26bd39df8e9", null ],
     [ "currentMode", "group___g_a01.html#a7939c5335f901dae8b2fe68a3204c296", null ],
     [ "currentCrystalType", "group___g_a01.html#aa09c21de952007fb4de4f5be2fd6e01d", null ],
+    [ "currentDialMode", "group___g_a01.html#ac2cef3eb6691553e5b0c7ac0b9af719e", null ],
     [ "deviceId", "group___g_a01.html#adfb08d0ad4cd0aeda4881f5a686bff22", null ]
 ];

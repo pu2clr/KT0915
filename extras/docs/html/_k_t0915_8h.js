@@ -15,6 +15,8 @@ var _k_t0915_8h =
     [ "OSCILLATOR_38KHz", "_k_t0915_8h.html#a22b3ace50b4094e1e38e93a52150184b", null ],
     [ "REF_CLOCK_ENABLE", "_k_t0915_8h.html#a4d8c2e1baf06554216b9334852e1ae6b", null ],
     [ "REF_CLOCK_DISABLE", "_k_t0915_8h.html#ab640fa4280beb79f0209204410eac051", null ],
+    [ "DIAL_MODE_ON", "_k_t0915_8h.html#a786a491adc9737eb70cc91a4d20d78bf", null ],
+    [ "DIAL_MODE_OFF", "_k_t0915_8h.html#ae3bcdce68abd6a33bcf1876faf42178a", null ],
     [ "REG_CHIP_ID", "_k_t0915_8h.html#abead2f4994c6f3b4a3b9ca286d00f13b", null ],
     [ "REG_SEEK", "_k_t0915_8h.html#a4c2a27e941c5407c94c17d80908151ee", null ],
     [ "REG_TUNE", "_k_t0915_8h.html#aee0b412da47456a006a6416611949eee", null ],
