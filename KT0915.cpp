@@ -325,6 +325,7 @@ void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
 
 
 /**
+ * @todo Adjust setTuneDialOn()
  * @ingroup GA04
  * @brief Sets the receiver to FM mode
  * @details Configures the receiver on FM mode; Also sets the band limits, defaul frequency and step.
@@ -346,13 +347,17 @@ void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
 
     reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value from the register
     reg.refined.AM_FM = MODE_FM;
-    reg.refined.USERBAND = 0;          
-    setRegister(REG_AMSYSCFG, reg.raw);  // Stores the new value in the register
+    reg.refined.USERBAND = this->currentDialMode;
+    setRegister(REG_AMSYSCFG, reg.raw); // Stores the new value in the register
 
-    setFrequency(default_frequency);
+    if (this->currentDialMode == DIAL_MODE_ON) 
+        setTuneDialModeOn(minimum_frequency, maximum_frequency);
+    else
+        setFrequency(default_frequency);
 };
 
 /**
+ * @todo Adjust setTuneDialOn()
  * @ingroup GA04
  * @brief Sets the receiver to AM mode
  * @details Configures the receiver on AM mode; Also sets the band limits, defaul frequency and step.
@@ -374,10 +379,12 @@ void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
 
     reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value from the register
     reg.refined.AM_FM = MODE_AM;
-    reg.refined.USERBAND = 0;           
+    reg.refined.USERBAND = this->currentDialMode;           
     setRegister(REG_AMSYSCFG, reg.raw);  // Strores the new value in the register
-
-    setFrequency(default_frequency);
+    if (this->currentDialMode == DIAL_MODE_ON)
+        setTuneDialModeOn(minimum_frequency, maximum_frequency);
+    else
+        setFrequency(default_frequency);
 }
 
 /**
