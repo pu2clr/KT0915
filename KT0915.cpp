@@ -212,7 +212,8 @@ void KT0915::setup(int reset_pin, uint8_t crystal_type, uint8_t ref_clock) {
  * @details Sets a value between 0 and 16383 for AM Antenna Calibration 
  * @param capacitor value between 0 and 16383
  */
-void setAntennaTuneCapacitor(uint16_t capacitor){
+void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
+{
     kt09xx_amcali reg;
     reg.refined.CAP_INDEX = capacitor; 
     setRegister(REG_AMCALI, reg.raw);    // Strores the new value to the register
