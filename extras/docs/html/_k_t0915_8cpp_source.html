@@ -250,7 +250,7 @@ $(document).ready(function(){initNavTree('_k_t0915_8cpp_source.html',''); initRe
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> * @todo Channel Limits</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> * @brief Sets Tune Dial Mode Interface  </span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> * @details This method sets the KT0915 work with a mechanical tuning via an external 100K resistor.</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"> * @details This method sets the KT0915 to deal with a mechanical tuning via an external 100K resistor.</span></div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment"> * @details KT0915 supports a unique Dial Mode (mechanical tuning wheel with a variable resistor) which is </span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"> * @details enabled by GPIO1 to 2 (10). The dial can be a variable resistor with the tap connected to CH (pin 1).  </span></div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment"> * </span></div>
@@ -296,9 +296,9 @@ $(document).ready(function(){initNavTree('_k_t0915_8cpp_source.html',''); initRe
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment"> * @ingroup GA03</span></div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment"> * @brief   Sets Dial Mode Interface  </span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment"> * @details This method sets the KT0915 work with a mechanical tuning via an external 100K resistor.</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment"> * @details KT0915 supports a unique Dial Mode (mechanical tuning wheel with a variable resistor) which is </span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"> * @details enabled by GPIO2 to 2 (10). The dial can be a variable resistor with the tap connected to CH (pin 1). </span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment"> * @details This method sets the KT0915 to deal with a mechanical volume control via an external 100K resistor.</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment"> * @details KT0915 supports a unique Dial Mode  which is enabled by GPIO2 to 2 (10). </span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"> * @details The dial can be a variable resistor with the tap connected to VOL (pin 16). </span></div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"> * </span></div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.</span></div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> */</span></div>
@@ -306,7 +306,7 @@ $(document).ready(function(){initNavTree('_k_t0915_8cpp_source.html',''); initRe
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;{</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    kt09xx_gpiocfg gpio;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    gpio.raw = getRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>); <span class="comment">// Gets the current value from the register</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    gpio.refined.GPIO2 = 2;              <span class="comment">// Sets Dial Mode interface (pin 1/CH)</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    gpio.refined.GPIO2 = 2;              <span class="comment">// Sets Dial Mode interface (pin 16/VOL)</span></div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    setRegister(<a class="code" href="_k_t0915_8h.html#a596042ef664fa8b7f9b14b3a27aa5743">REG_GPIOCFG</a>, gpio.raw);  <span class="comment">// Stores the new value in the register</span></div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;};</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
