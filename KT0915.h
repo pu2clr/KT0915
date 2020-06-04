@@ -534,13 +534,11 @@ public:
     bool isCrystalReady(); 
     void setup(int reset_pin, uint8_t crystal_type = CRYSTAL_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
 
-
-    void setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
-    void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
-    void setFrequency(uint16_t frequency);
+    void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
+    void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
+    void setFrequency(uint32_t frequency);
     void setStep(uint16_t step);
-    uint16_t getFrequency();
-
+    uint32_t getFrequency();
 
 };
 

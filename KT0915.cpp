@@ -205,15 +205,8 @@ void KT0915::setup(int reset_pin, uint8_t crystal_type, uint8_t ref_clock) {
  * @section  GA04 Tune Methods  
  * @details  Methods to tune and set the receiver mode
  */
-void KT0915::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step){
-    this->currentStep = step;
-    this->currentFrequency = default_frequency;
-    this->minimumFrequency = minimum_frequency;
-    this->maximumFrequency = maximum_frequency;
-    this->currentMode = MODE_FM; 
-};
-
-void KT0915::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step) {
+void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
+{
     this->currentStep = step;
     this->currentFrequency = default_frequency;
     this->minimumFrequency = minimum_frequency;
@@ -221,16 +214,45 @@ void KT0915::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
     this->currentMode = MODE_FM;
 };
 
-void KT0915::setFrequency(uint16_t frequency) {
+void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
+{
+    this->currentStep = step;
+    this->currentFrequency = default_frequency;
+    this->minimumFrequency = minimum_frequency;
+    this->maximumFrequency = maximum_frequency;
+    this->currentMode = MODE_FM;
+};
+
+void KT0915::setFrequency(uint32_t frequency)
+{
+
+    kt09xx_amchan reg_amchan;
+    kt09xx_tune reg_tune;
+
+    if (this->currentMode == MODE_AM)
+    {
+        reg_amchan.refined.AMTUNE = 1;
+        reg_amchan.refined.AMCHAN = frequency;
+        setRegister(REG_AMCHAN,reg_amchan.raw);
+    }
+    else
+    {
+        reg_tune.refined.FMTUNE = 1;
+        reg_tune.refined.FMCHAN = frequency / 50;
+        setRegister(REG_TUNE, reg_tune.raw);
+    }
+
     this->currentFrequency = frequency;
 };
 
 void KT0915::setStep(uint16_t step)
 {
+   
     this->currentStep = step;
 }
 
-uint16_t KT0915::getFrequency(){
+uint32_t KT0915::getFrequency()
+{
 
     return this->currentFrequency;
 }
