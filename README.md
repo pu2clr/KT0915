@@ -118,6 +118,7 @@ The main features of this library are listed below.
 
 
 
+
 #### About the Pin 1 (CH) and Pin 16 (VOL)
 
 KT0915 can be configured to deal with mechanical tuning via a variable resistor. Also, you an use a variable resistor to control the audio volume. It is  enabled by setting the the register GPIOCFG (Address 0x1D). The dial can be a variable resistor with the tap connected to CH and VOL as well. The divided voltage at the tap is processed by the internal KT0915  analog to digital converter (ADC) and converted to a channel value or volume level.
