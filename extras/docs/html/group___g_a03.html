@@ -89,6 +89,9 @@ $(document).ready(function(){initNavTree('group___g_a03.html',''); initResizable
 <div class="title">Basic Methods</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>PU2CLR <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> Arduino Library.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -115,6 +118,14 @@ Functions</h2></td></tr>
 <tr class="separator:ga6c533ab8c7e645a3e314746f7c9a3276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>PU2CLR <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> Arduino Library. </p>
+<p><a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> Arduino Library implementation. This is an Arduino library for the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a>, BROADCAST RECEIVER. <br  />
+</p>
+<p>It works with I2C protocol and can provide an easier interface for controlling the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> device.<br  />
+</p>
+<p>This library was built based on <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> Datasheet from KTMicro (Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip TM).</p>
+<p>This library can be freely distributed using the MIT Free Software model. </p><dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2020 Ricardo Lima Caratti. </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Ricardo LIma Caratti (<a href="#" onclick="location.href='mai'+'lto:'+'pu2'+'cl'+'r@g'+'ma'+'il.'+'co'+'m'; return false;">pu2cl<span style="display: none;">.nosp@m.</span>r@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>)</dd></dl>
 <h1><a class="anchor" id="GA03"></a>
 Basic</h1>
 <p>Low level functions used to operate with the KT09XX registers </p>
@@ -148,11 +159,13 @@ Basic</h1>
 <p>Sets the a value to a given KT09XX register. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reg</td><td>register number to be written (0x1 ~ 0x3C) - See #define REG_ in <a class="el" href="_k_t0915_8h.html" title="PU2CLR KT0915 Arduino Library implementation.">KT0915.h</a> </td></tr>
+    <tr><td class="paramname">reg</td><td>register number to be written (0x1 ~ 0x3C) - See #define REG_ in <a class="el" href="_k_t0915_8h.html">KT0915.h</a> </td></tr>
     <tr><td class="paramname">parameter</td><td>content you want to store </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00026">26</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -175,11 +188,13 @@ Basic</h1>
 <p>Gets a given KT09XX register content. </p>
 <p>It is a basic function to get a value from a given <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> device register </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reg</td><td>register number to be read (0x1 ~ 0x3C) - See #define REG_ in <a class="el" href="_k_t0915_8h.html" title="PU2CLR KT0915 Arduino Library implementation.">KT0915.h</a> </td></tr>
+    <tr><td class="paramname">reg</td><td>register number to be read (0x1 ~ 0x3C) - See #define REG_ in <a class="el" href="_k_t0915_8h.html">KT0915.h</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the register content </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00047">47</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -201,7 +216,9 @@ Basic</h1>
 <p>Gets the Device Id. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint16_t 16 bits word with the device id number </dd></dl>
 
-<p class="reference">References <a class="el" href="group___g_a01.html#adfb08d0ad4cd0aeda4881f5a686bff22">KT0915::deviceId</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00070">70</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="_k_t0915_8h_source.html#l00524">KT0915::deviceId</a>.</p>
 
 </div>
 </div>
@@ -269,6 +286,8 @@ Basic</h1>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00115">115</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
 </div>
 </div>
 <a id="gae77c5c4482902db2249ff0863c14d3de"></a>
@@ -291,9 +310,11 @@ Basic</h1>
 <p>In this case, the RESET pin have to be set to -1. This setup can be configured calling <a class="el" href="group___g_a03.html#ga6c533ab8c7e645a3e314746f7c9a3276" title="Receiver startup.">KT0915::setup</a> method.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a03.html#ga6c533ab8c7e645a3e314746f7c9a3276" title="Receiver startup.">setup</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="group___g_a01.html#ae5d289a232d28d35d613e302170efcba">KT0915::resetPin</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00134">134</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a03.html#ga6c533ab8c7e645a3e314746f7c9a3276">KT0915::setup()</a>.</p>
+<p class="reference">References <a class="el" href="_k_t0915_8h_source.html#l00515">KT0915::resetPin</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="_k_t0915_8cpp_source.html#l00195">KT0915::setup()</a>.</p>
 
 </div>
 </div>
@@ -322,7 +343,9 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___g_a01.html#ae18a907888005f0a781600e2b8ca9daf">KT0915::deviceAddress</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00154">154</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="_k_t0915_8h_source.html#l00514">KT0915::deviceAddress</a>.</p>
 
 </div>
 </div>
@@ -404,17 +427,19 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___g_a03.html#gae77c5c4482902db2249ff0863c14d3de">KT0915::reset()</a>, and <a class="el" href="group___g_a01.html#ae5d289a232d28d35d613e302170efcba">KT0915::resetPin</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00195">195</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="_k_t0915_8cpp_source.html#l00134">KT0915::reset()</a>, and <a class="el" href="_k_t0915_8h_source.html#l00515">KT0915::resetPin</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="a_k_t0915_8h_html"><div class="ttname"><a href="_k_t0915_8h.html">KT0915.h</a></div><div class="ttdoc">PU2CLR KT0915 Arduino Library implementation.</div></div>
-<div class="ttc" id="agroup___g_a01_html_class_k_t0915"><div class="ttname"><a href="group___g_a01.html#class_k_t0915">KT0915</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> KT0915.h:512</div></div>
-<div class="ttc" id="a_k_t0915_8h_html_ab640fa4280beb79f0209204410eac051"><div class="ttname"><a href="_k_t0915_8h.html#ab640fa4280beb79f0209204410eac051">REF_CLOCK_DISABLE</a></div><div class="ttdeci">#define REF_CLOCK_DISABLE</div><div class="ttdef"><b>Definition:</b> KT0915.h:41</div></div>
-<div class="ttc" id="agroup___g_a03_html_ga6c533ab8c7e645a3e314746f7c9a3276"><div class="ttname"><a href="group___g_a03.html#ga6c533ab8c7e645a3e314746f7c9a3276">KT0915::setup</a></div><div class="ttdeci">void setup(int reset_pin, uint8_t crystal_type=CRYSTAL_32KHZ, uint8_t ref_clock=REF_CLOCK_DISABLE)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> KT0915.cpp:196</div></div>
-<div class="ttc" id="a_k_t0915_8h_html_a74c62040d9bf060c6281703c49412772"><div class="ttname"><a href="_k_t0915_8h.html#a74c62040d9bf060c6281703c49412772">CRYSTAL_12MHZ</a></div><div class="ttdeci">#define CRYSTAL_12MHZ</div><div class="ttdef"><b>Definition:</b> KT0915.h:32</div></div>
+<div class="ttc" id="a_k_t0915_8h_html"><div class="ttname"><a href="_k_t0915_8h.html">KT0915.h</a></div></div>
+<div class="ttc" id="agroup___g_a01_html_class_k_t0915"><div class="ttname"><a href="group___g_a01.html#class_k_t0915">KT0915</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00511">KT0915.h:511</a></div></div>
+<div class="ttc" id="a_k_t0915_8h_html_ab640fa4280beb79f0209204410eac051"><div class="ttname"><a href="_k_t0915_8h.html#ab640fa4280beb79f0209204410eac051">REF_CLOCK_DISABLE</a></div><div class="ttdeci">#define REF_CLOCK_DISABLE</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00040">KT0915.h:40</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_ga6c533ab8c7e645a3e314746f7c9a3276"><div class="ttname"><a href="group___g_a03.html#ga6c533ab8c7e645a3e314746f7c9a3276">KT0915::setup</a></div><div class="ttdeci">void setup(int reset_pin, uint8_t crystal_type=CRYSTAL_32KHZ, uint8_t ref_clock=REF_CLOCK_DISABLE)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00195">KT0915.cpp:195</a></div></div>
+<div class="ttc" id="a_k_t0915_8h_html_a74c62040d9bf060c6281703c49412772"><div class="ttname"><a href="_k_t0915_8h.html#a74c62040d9bf060c6281703c49412772">CRYSTAL_12MHZ</a></div><div class="ttdeci">#define CRYSTAL_12MHZ</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00031">KT0915.h:31</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

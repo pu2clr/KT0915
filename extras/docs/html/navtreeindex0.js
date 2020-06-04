@@ -1,6 +1,7 @@
 var NAVTREEINDEX0 =
 {
 "_k_t0915_8cpp.html":[4,0,0,0],
+"_k_t0915_8cpp_source.html":[4,0,0,0],
 "_k_t0915_8h.html":[4,0,0,1],
 "_k_t0915_8h.html#a025c0404224c77ea7c9e7764ffce3087":[4,0,0,1,4],
 "_k_t0915_8h.html#a0601b5f896fafccb5695d1c0bc95c22d":[4,0,0,1,30],
@@ -172,8 +173,8 @@ var NAVTREEINDEX0 =
 "group___g_a01.html#ad2d6741febb591f1ecf5fe6820503f29":[2,2,48,0],
 "group___g_a01.html#ad55279b1091566622f14d26bd39df8e9":[2,2,51,22],
 "group___g_a01.html#ad8179a090910d4923b044cbce813c8ea":[2,2,22,1],
-"group___g_a01.html#ad8179a090910d4923b044cbce813c8ea":[2,2,26,1],
 "group___g_a01.html#ad8179a090910d4923b044cbce813c8ea":[2,2,8,0],
+"group___g_a01.html#ad8179a090910d4923b044cbce813c8ea":[2,2,26,1],
 "group___g_a01.html#ad8179a090910d4923b044cbce813c8ea":[2,2,30,0],
 "group___g_a01.html#ad8179a090910d4923b044cbce813c8ea":[2,2,10,0],
 "group___g_a01.html#ad8179a090910d4923b044cbce813c8ea":[2,2,32,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "group___g_a01.html#unionkt09xx__amdsp":[2,2,29],
 "group___g_a01.html#unionkt09xx__amdstatusa":[2,2,31],
 "group___g_a01.html#unionkt09xx__amdstatusb":[2,2,33],
-"group___g_a01.html#unionkt09xx__amsyscfg":[2,2,21],
-"group___g_a01.html#unionkt09xx__chip__id":[2,2,0]
+"group___g_a01.html#unionkt09xx__amsyscfg":[2,2,21]
 };
