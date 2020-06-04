@@ -159,7 +159,7 @@ void KT0915::reset()
 
 /**
  * @ingroup GA03
- * @todo Channel Limits
+ * @todo You need to check mechanical Tune features
  * @brief Sets Tune Dial Mode Interface On  
  * @details This method sets the KT0915 to deal with a mechanical tuning via an external 100K resistor.
  * @details KT0915 supports a unique Dial Mode (mechanical tuning wheel with a variable resistor) which is 
@@ -174,6 +174,10 @@ void KT0915::setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequ
 {
     kt09xx_amsyscfg reg;
     kt09xx_gpiocfg gpio;
+    kt09xx_userstartch uf;
+    kt09xx_userguard ug;
+    kt09xx_userchannum uc;
+
     reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value from the register
     reg.refined.USERBAND = this->currentDialMode = DIAL_MODE_ON;
     setRegister(REG_AMSYSCFG, reg.raw); // Strores the new value in the register
@@ -183,6 +187,21 @@ void KT0915::setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequ
     setRegister(REG_GPIOCFG, gpio.raw);  // Stores the new value in the register
 
     // TODO: Sets the frequency limits for user and
+
+    if ( this->currentMode == MODE_AM) {
+        uf.refined.USER_START_CHAN = minimu_frequency;
+        uc.refined.USER_CHAN_NUM = (maximum_frequency - minimu_frequency) / this->currentStep;
+        ug.refined.USER_GUARD = 0x0011;
+    } else {
+        uf.refined.USER_START_CHAN = minimu_frequency / 50;
+        uc.refined.USER_CHAN_NUM = ((maximum_frequency - minimu_frequency) / 50) / this->currentStep;
+        ug.refined.USER_GUARD = 0x001D;
+    }
+
+    setRegister(REG_USERSTARTCH, uf.raw);
+    setRegister(REG_USERGUARD, ug.raw);
+    setRegister(REG_USERCHANNUM, uc.raw);
+
 };
 
 /**
