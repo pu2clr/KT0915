@@ -21,6 +21,10 @@
 
 #define AKC595X_I2C_ADRESS 35  // It is needed to check it when the KT0915 device arrives.
 
+#define MODE_FM     0
+#define MODE_AM     1
+
+
 #define CRYSTAL_32KHZ    0      //  32.768KHz 
 #define CRYSTAL_6_5MHZ   1      //  6.5MHz 
 #define CRYSTAL_7_6MHZ   2      //  7.6MHz
@@ -513,6 +517,8 @@ protected:
     uint8_t volume;                             //!< Store the current volume
     uint16_t currentStep;                       //!< Strore the current step
     uint16_t currentFrequency;                  //!< Store the current frequency
+    uint16_t minimumFrequency;                  //!< Stores the minimum frequency for the current band
+    uint16_t maximumFrequency;                  //!< Stores the maximum frequency for the current band
     uint8_t currentMode;                        //!< Store the current mode
     uint8_t currentCrystalType = CRYSTAL_32KHZ; //!< Store the crystal type
     char    deviceId[3];
@@ -527,5 +533,14 @@ public:
     void setCrystalType(uint8_t crystal, uint8_t ref_clock = 0);
     bool isCrystalReady(); 
     void setup(int reset_pin, uint8_t crystal_type = CRYSTAL_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
+
+
+    void setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
+    void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
+    void setFrequency(uint16_t frequency);
+    void setStep(uint16_t step);
+    uint16_t getFrequency();
+
+
 };
 

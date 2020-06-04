@@ -200,3 +200,37 @@ void KT0915::setup(int reset_pin, uint8_t crystal_type, uint8_t ref_clock) {
     setCrystalType(crystal_type, ref_clock);
 }
 
+/** 
+ * @defgroup GA04 Tune Methods 
+ * @section  GA04 Tune Methods  
+ * @details  Methods to tune and set the receiver mode
+ */
+void KT0915::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step){
+    this->currentStep = step;
+    this->currentFrequency = default_frequency;
+    this->minimumFrequency = minimum_frequency;
+    this->maximumFrequency = maximum_frequency;
+    this->currentMode = MODE_FM; 
+};
+
+void KT0915::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step) {
+    this->currentStep = step;
+    this->currentFrequency = default_frequency;
+    this->minimumFrequency = minimum_frequency;
+    this->maximumFrequency = maximum_frequency;
+    this->currentMode = MODE_FM;
+};
+
+void KT0915::setFrequency(uint16_t frequency) {
+    this->currentFrequency = frequency;
+};
+
+void KT0915::setStep(uint16_t step)
+{
+    this->currentStep = step;
+}
+
+uint16_t KT0915::getFrequency(){
+
+    return this->currentFrequency;
+}
