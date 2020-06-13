@@ -2,6 +2,10 @@
 
 #define RESET_PIN 12
 
+uint32_t currentFM = 103900;
+uint32_t currentAM = 810;
+uint32_t currentFrequency;
+
 KT0915 radio; 
 
 // Set your FM station frequency. Default is 107.5MHz (107500KHz)
@@ -12,69 +16,97 @@ void setup() {
   Serial.begin(9600);
   while(!Serial);
 
-  if ( !checkI2C() ) {
-    Serial.println("Check your circuit!");
-    while(1);
-  }
-
-  Serial.print("\nCHIP ID....................:");
-  Serial.print(radio.getDeviceId(),HEX);
-
   radio.setup(RESET_PIN, OSCILLATOR_32KHZ,0);
-  
-  Serial.print("\nCrystal Ready..............:");
-  Serial.print(radio.isCrystalReady());
+  radio.setVolume(25);
 
-  radio.setVolume(23);
-  // Sets the FM mode and tune on fmFreq and 100KHz step
-  radio.setFM(84000,108000,fmFreq,100);
-  radio.setFrequency(fmFreq);
+  currentFrequency = currentFM;
+  radio.setFM(84000, 108000, currentFrequency, 100);
+  showHelp();
+  showStatus();
+}
+
+
+void showHelp()
+{
+  Serial.println("Type F to FM; A to MW; 1 to SW");
+  Serial.println("Type U to increase and D to decrease the frequency");
+  Serial.println("Type S or s to seek station Up or Down");
+  Serial.println("Type + or - to volume Up or Down");
+  Serial.println("Type 0 to show current status");
+  Serial.println("Type ? to this help.");
+  Serial.println("==================================================");
+  delay(1000);
+}
+
+// Show current frequency
+void showStatus()
+{
+
+  float freq;
+
+  currentFrequency = radio.getFrequency();
+
+  freq = (radio.getCurrentMode() == MODE_FM) ? currentFrequency / 1000.0 : currentFrequency / 1.0;
+
   Serial.print("\nYou are tuned on ");
-  Serial.print(radio.getFrequency()/1000.0);
-  Serial.println(" MHz");
-  Serial.print("\nIf you got here and are listening to a station, your circuit is probably ok!");
-  Serial.print("\nIf you are not listening to a station, try change the value of: fmFreq variable!");
- 
+  Serial.print(freq);
+  // Serial.print("MHz - RSSI: ");
+  // Serial.print(radio.getRSSI());
+  // Serial.print("V - Volume: ");
+  // Serial.print(radio.getVolume());
 }
 
-void loop() {
-  
+void loop()
+{
 
-}
-
-/**
- * Returns true if device found
- */
-bool checkI2C() {
-  byte error, address;
-  int nDevices;
-  Serial.println("I2C bus Scanning...");
-  nDevices = 0;
-  for(address = 1; address < 127; address++ ) {
-    Wire.beginTransmission(address);
-    error = Wire.endTransmission();
-    if (error == 0) {
-      Serial.print("\nI2C device found at address 0x");
-      if (address<16) {
-        Serial.print("0");
-      }
-      Serial.println(address,HEX);
-      nDevices++;
+  if (Serial.available() > 0)
+  {
+    char key = Serial.read();
+    switch (key)
+    {
+    case '+':
+      radio.setVolumeUp();
+      break;
+    case '-':
+      radio.setVolumeDown();
+      break;
+    case 'a':
+    case 'A':
+      currentFM = currentFrequency;
+      radio.setAM(550, 1710, currentAM, 10);
+      break;
+    case 'f':
+    case 'F':
+      currentAM = currentFrequency;
+      radio.setFM(87000, 108000, currentFM, 100);
+      break;
+    case '1':
+      radio.setAM(11400, 12200, 11940, 5);
+      break;
+      break;
+    case 'U':
+    case 'u':
+      radio.frequencyUp();
+      break;
+    case 'D':
+    case 'd':
+      radio.frequencyDown();
+      break;
+    case 'S':
+      // radio.seekStation(1);
+      break;
+    case 's':
+      // radio.seekStation(0);
+      break;
+    case '0':
+      showStatus();
+      break;
+    case '?':
+      showHelp();
+      break;
+    default:
+      break;
     }
-    else if (error==4) {
-      Serial.print("\nUnknow error at address 0x");
-      if (address<16) {
-        Serial.print("0");
-      }
-      Serial.println(address,HEX);
-    }    
-  }
-  if (nDevices == 0) {
-    Serial.println("No I2C devices found\n");
-    return false;
-  }
-  else {
-    Serial.println("done\n");
-    return true;
+    showStatus();
   }
 }

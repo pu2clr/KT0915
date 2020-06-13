@@ -526,6 +526,7 @@ protected:
     uint8_t currentRefClockEnabled = REF_CLOCK_DISABLE;     //!< Strores 0 = Crystal; 1 = Reference clock
     uint8_t currentDialMode = DIAL_MODE_OFF;                //!< Stores the default Dial Mode (OFF)
     uint16_t deviceId;
+    uint8_t currentVolume;
 
 public:
     void setRegister(uint8_t reg, uint16_t parameter);
@@ -544,6 +545,8 @@ public:
     void setVolumeDialModeOff();
 
     void setVolume(uint8_t value);
+    void setVolumeUp(); 
+    void setVolumeDown();
 
     void setDeEmphasis(uint8_t value);
     void setMono(bool on_off);
@@ -555,7 +558,8 @@ public:
     void frequencyUp();
     void frequencyDown();
     uint32_t getFrequency();
-    void setAntennaTuneCapacitor(uint16_t capacitor); 
+    void setAntennaTuneCapacitor(uint16_t capacitor);
 
+    inline uint8_t getCurrentMode() { return this->currentMode; };
 };
 

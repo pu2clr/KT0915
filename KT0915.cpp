@@ -258,6 +258,18 @@ void KT0915::setVolume(uint8_t volume) {
     rx.raw = getRegister(REG_RXCFG);
     rx.refined.VOLUME = volume;
     setRegister(REG_RXCFG, rx.raw);
+    this->currentVolume = volume;
+}
+
+void KT0915::setVolumeUp()
+{
+    if (this->currentVolume == 31 ) return;
+    setVolume(this->currentVolume + 1);
+}
+void KT0915::setVolumeDown()
+{
+    if (this->currentVolume == 0) return;
+    setVolume(this->currentVolume - 1);
 }
 
     /**
