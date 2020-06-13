@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['implied_26',['IMPLIED',['../license_8txt.html#a9c731e523f6a35737f231bf24431695d',1,'license.txt']]],
-  ['iscrystalready_27',['isCrystalReady',['../group___g_a01.html#a8efae1e4921f13b904a1477a94c02c51',1,'KT0915']]]
+  ['getdeviceid_26',['getDeviceId',['../group___g_a03.html#ga86ca0155e1235f35bd68c5344195ed95',1,'KT0915']]],
+  ['getfrequency_27',['getFrequency',['../group___g_a04.html#ga27fe68f4550dc8412bf870b982d09828',1,'KT0915']]],
+  ['getregister_28',['getRegister',['../group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e',1,'KT0915']]]
 ];

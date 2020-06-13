@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kind_259',['KIND',['../license_8txt.html#a21bee792560027a3b96a9a882b5828d5',1,'license.txt']]]
+  ['implied_267',['IMPLIED',['../license_8txt.html#a9c731e523f6a35737f231bf24431695d',1,'license.txt']]]
 ];

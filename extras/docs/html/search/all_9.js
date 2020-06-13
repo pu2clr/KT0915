@@ -1,14 +1,10 @@
 var searchData=
 [
-  ['oscillator_5f12mhz_92',['OSCILLATOR_12MHZ',['../_k_t0915_8h.html#a7944cc565f358d9be2bc11096a3f2f64',1,'KT0915.h']]],
-  ['oscillator_5f13mhz_93',['OSCILLATOR_13MHZ',['../_k_t0915_8h.html#a022af98cf3fe9a2be210e9f698be7352',1,'KT0915.h']]],
-  ['oscillator_5f15_5f2mhz_94',['OSCILLATOR_15_2MHZ',['../_k_t0915_8h.html#addb859d6d5d9519d837a768f8316be48',1,'KT0915.h']]],
-  ['oscillator_5f19_5f2mhz_95',['OSCILLATOR_19_2MHZ',['../_k_t0915_8h.html#a722480a5ea5f41bd7b4e03b318440827',1,'KT0915.h']]],
-  ['oscillator_5f24mhz_96',['OSCILLATOR_24MHZ',['../_k_t0915_8h.html#a7d305f054790377dbbe330c0d585802f',1,'KT0915.h']]],
-  ['oscillator_5f26mhz_97',['OSCILLATOR_26MHZ',['../_k_t0915_8h.html#a0e846dc3436f81969073d0525d5c2113',1,'KT0915.h']]],
-  ['oscillator_5f32khz_98',['OSCILLATOR_32KHZ',['../_k_t0915_8h.html#a43a042a97315308b5845013f8511bb9c',1,'KT0915.h']]],
-  ['oscillator_5f38khz_99',['OSCILLATOR_38KHz',['../_k_t0915_8h.html#a22b3ace50b4094e1e38e93a52150184b',1,'KT0915.h']]],
-  ['oscillator_5f6_5f5mhz_100',['OSCILLATOR_6_5MHZ',['../_k_t0915_8h.html#a374287261975d5d1a2305ccd70dfd382',1,'KT0915.h']]],
-  ['oscillator_5f7_5f6mhz_101',['OSCILLATOR_7_6MHZ',['../_k_t0915_8h.html#aed7ca3c077389e5f8aa9e443ae1ebaa3',1,'KT0915.h']]],
-  ['otherwise_102',['OTHERWISE',['../license_8txt.html#a511c87561dea0d59cb52a8dccf4f47b7',1,'license.txt']]]
+  ['maximumfrequency_88',['maximumFrequency',['../group___g_a01.html#ae95f609a66e5da0432f1e5255955a871',1,'KT0915']]],
+  ['merchantability_89',['MERCHANTABILITY',['../license_8txt.html#a383a15303ad81a4fe142cc242a159500',1,'license.txt']]],
+  ['merge_90',['merge',['../license_8txt.html#aad4b713ca657a67ecbb454b02ceabff8',1,'license.txt']]],
+  ['minimumfrequency_91',['minimumFrequency',['../group___g_a01.html#a5ba74c1edc1401aed676ff83559d2b33',1,'KT0915']]],
+  ['mode_5fam_92',['MODE_AM',['../_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd',1,'KT0915.h']]],
+  ['mode_5ffm_93',['MODE_FM',['../_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55',1,'KT0915.h']]],
+  ['modify_94',['modify',['../license_8txt.html#a84db115c842c0bc29f97fd73629d8163',1,'license.txt']]]
 ];

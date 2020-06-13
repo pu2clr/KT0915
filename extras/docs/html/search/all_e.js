@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['union_2c_20structure_20and_20defined_20data_20types_158',['Union, Structure and Defined Data Types',['../group___g_a01.html',1,'']]],
-  ['use_159',['use',['../license_8txt.html#a7388852deccfa55d4e4bca59a3355748',1,'license.txt']]]
+  ['tune_20methods_160',['Tune Methods',['../group___g_a04.html',1,'']]],
+  ['todo_20list_161',['Todo List',['../todo.html',1,'']]]
 ];

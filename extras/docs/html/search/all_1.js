@@ -8,9 +8,10 @@ var searchData=
   ['contract_6',['CONTRACT',['../license_8txt.html#a11bbb92d08ed0375aed257ed87428ab5',1,'license.txt']]],
   ['copy_7',['copy',['../license_8txt.html#a5fc027ff17a37592346d4ce949961132',1,'license.txt']]],
   ['copyright_8',['Copyright',['../license_8txt.html#a6d046fad0357ac1277fe46baca5cc7de',1,'license.txt']]],
-  ['currentcrystaltype_9',['currentCrystalType',['../group___g_a01.html#aa09c21de952007fb4de4f5be2fd6e01d',1,'KT0915']]],
-  ['currentdialmode_10',['currentDialMode',['../group___g_a01.html#ac2cef3eb6691553e5b0c7ac0b9af719e',1,'KT0915']]],
-  ['currentfrequency_11',['currentFrequency',['../group___g_a01.html#aa3a9570080a99ec2ffa390ede02b38b6',1,'KT0915']]],
-  ['currentmode_12',['currentMode',['../group___g_a01.html#a7939c5335f901dae8b2fe68a3204c296',1,'KT0915']]],
-  ['currentstep_13',['currentStep',['../group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361',1,'KT0915']]]
+  ['currentdialmode_9',['currentDialMode',['../group___g_a01.html#ac2cef3eb6691553e5b0c7ac0b9af719e',1,'KT0915']]],
+  ['currentfrequency_10',['currentFrequency',['../group___g_a01.html#a3533ee5bbbdc7ba6cba97af7b3c7ea32',1,'KT0915']]],
+  ['currentmode_11',['currentMode',['../group___g_a01.html#a7939c5335f901dae8b2fe68a3204c296',1,'KT0915']]],
+  ['currentrefclockenabled_12',['currentRefClockEnabled',['../group___g_a01.html#abf4b56d83961d4166697f2980e12534b',1,'KT0915']]],
+  ['currentrefclocktype_13',['currentRefClockType',['../group___g_a01.html#a54a26e685c91a31d3f3d88c1b967de49',1,'KT0915']]],
+  ['currentstep_14',['currentStep',['../group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361',1,'KT0915']]]
 ];

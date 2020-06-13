@@ -95,6 +95,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gaee03f6351e9ac697822983d839cb06f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">KT0915::setAntennaTuneCapacitor</a> (uint16_t capacitor)</td></tr>
 <tr class="memdesc:gaee03f6351e9ac697822983d839cb06f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set AM the Antenna Tune Capacitor.  <a href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">More...</a><br /></td></tr>
 <tr class="separator:gaee03f6351e9ac697822983d839cb06f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga64982e34b6f55a63effad685b95c6c44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga64982e34b6f55a63effad685b95c6c44">KT0915::setMono</a> (bool on_off)</td></tr>
+<tr class="memdesc:ga64982e34b6f55a63effad685b95c6c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receiver Stereo or Mono.  <a href="group___g_a04.html#ga64982e34b6f55a63effad685b95c6c44">More...</a><br /></td></tr>
+<tr class="separator:ga64982e34b6f55a63effad685b95c6c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga910291c7360265215e3962d03be780ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga910291c7360265215e3962d03be780ee">KT0915::setDeEmphasis</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ga910291c7360265215e3962d03be780ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the De-emphasis Time Constant Selection.  <a href="group___g_a04.html#ga910291c7360265215e3962d03be780ee">More...</a><br /></td></tr>
+<tr class="separator:ga910291c7360265215e3962d03be780ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3affa4b75d836a9792b43f3a58b47633"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633">KT0915::setFM</a> (uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)</td></tr>
 <tr class="memdesc:ga3affa4b75d836a9792b43f3a58b47633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receiver to FM mode.  <a href="group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633">More...</a><br /></td></tr>
 <tr class="separator:ga3affa4b75d836a9792b43f3a58b47633"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,6 +119,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6c5890f59ddf05de366df69d80591b6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d">KT0915::setStep</a> (uint16_t step)</td></tr>
 <tr class="memdesc:ga6c5890f59ddf05de366df69d80591b6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the frequency step.  <a href="group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d">More...</a><br /></td></tr>
 <tr class="separator:ga6c5890f59ddf05de366df69d80591b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga27fe68f4550dc8412bf870b982d09828"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga27fe68f4550dc8412bf870b982d09828">KT0915::getFrequency</a> ()</td></tr>
+<tr class="memdesc:ga27fe68f4550dc8412bf870b982d09828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current frequency.  <a href="group___g_a04.html#ga27fe68f4550dc8412bf870b982d09828">More...</a><br /></td></tr>
+<tr class="separator:ga27fe68f4550dc8412bf870b982d09828"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h1><a class="anchor" id="GA04"></a>
@@ -145,7 +154,63 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00319">319</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00335">335</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga64982e34b6f55a63effad685b95c6c44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga64982e34b6f55a63effad685b95c6c44">&#9670;&nbsp;</a></span>setMono()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KT0915::setMono </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>on_off</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the receiver Stereo or Mono. </p>
+<p>Set this parameter to true to force mono or false to stereo </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">on_off</td><td>true = mono; fale = stereo </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00348">348</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga910291c7360265215e3962d03be780ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga910291c7360265215e3962d03be780ee">&#9670;&nbsp;</a></span>setDeEmphasis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KT0915::setDeEmphasis </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the De-emphasis Time Constant Selection. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>0 = 75us; 1 = 50us </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00361">361</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -200,7 +265,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00338">338</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00380">380</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -255,7 +320,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00370">370</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00417">417</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -283,7 +348,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00396">396</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00443">443</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -307,7 +372,7 @@ Tune Methods</h1>
 <p>tne current frequency will be set to minimum frequency.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323" title="Sets the current frequency.">setFrequency</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00425">425</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00473">473</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -331,7 +396,7 @@ Tune Methods</h1>
 <p>tne current frequency will be set to minimum frequency.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323" title="Sets the current frequency.">setFrequency</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00441">441</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00489">489</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -354,12 +419,34 @@ Tune Methods</h1>
 <p>Sets the frequency step. </p>
 <p>Sets increment and decrement frequency </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">step</td><td>Values: 1, 5, 9, 10, 100, 200 </td></tr>
+    <tr><td class="paramname">step</td><td>Values: 1, 5, 9, 10, 100, 200 in KHz </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00455">455</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00503">503</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga27fe68f4550dc8412bf870b982d09828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga27fe68f4550dc8412bf870b982d09828">&#9670;&nbsp;</a></span>getFrequency()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t KT0915::getFrequency </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current frequency. </p>
+<dl class="section return"><dt>Returns</dt><dd>frequency in KHz </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00513">513</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
