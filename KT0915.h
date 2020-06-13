@@ -19,7 +19,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#define KT0915_I2C_ADDRESS 35  // It is needed to check it when the KT0915 device arrives.
+#define KT0915_I2C_ADDRESS 0x35  // It is needed to check it when the KT0915 device arrives.
 
 #define MODE_FM     0
 #define MODE_AM     1
@@ -220,7 +220,7 @@ typedef union {
         uint8_t LO_LOCK : 1;        //!< LO Synthesizer Ready Indicator; 0 = Not ready; 1 = Ready
         uint8_t PLL_LOCK : 1;       //!< System PLL Ready Indicator; 0 = Not ready; 1 = System PLL ready
         uint8_t RESERVED2 : 2;      //!< Reserved
-        uint8_t STC : 1;            //!< Seek/Tune Complete; 0 = Not Complete; 1 = Complete; Every time the Seek/tune process begins, the STC bit will clear to zero by hardware.
+        uint8_t STC     : 1;        //!< Seek/Tune Complete; 0 = Not Complete; 1 = Complete; Every time the Seek/tune process begins, the STC bit will clear to zero by hardware.
         uint8_t XTAL_OK : 1;        //!< Crystal ready indictor; 0 = Not ready; 1 = Crystal is ok
     } refined;
     uint16_t raw;
@@ -514,33 +514,39 @@ class KT0915 {
 
 protected:
     int deviceAddress = KT0915_I2C_ADDRESS;
-    int resetPin = -1;
+    int enablePin = -1;
 
-    uint8_t volume;                                 //!< Stores the current volume
-    uint16_t currentStep;                           //!< Stores the current step
-    uint16_t currentFrequency;                      //!< Stores the current frequency
-    uint16_t minimumFrequency;                      //!< Stores the minimum frequency for the current band
-    uint16_t maximumFrequency;                      //!< Stores the maximum frequency for the current band
-    uint8_t currentMode;                            //!< Stores the current mode
-    uint8_t currentCrystalType = OSCILLATOR_32KHZ;  //!< Stores the crystal type
-    uint8_t currentDialMode = DIAL_MODE_OFF;        //!< Stores the default Dial Mode (OFF)
-    char    deviceId[3];
+    uint8_t volume;                                         //!< Stores the current volume
+    uint16_t currentStep;                                   //!< Stores the current step
+    uint32_t currentFrequency;                              //!< Stores the current frequency
+    uint32_t minimumFrequency;                              //!< Stores the minimum frequency for the current band
+    uint32_t maximumFrequency;                              //!< Stores the maximum frequency for the current band
+    uint8_t currentMode;                                    //!< Stores the current mode
+    uint8_t currentRefClockType = OSCILLATOR_32KHZ;         //!< Stores the crystal type
+    uint8_t currentRefClockEnabled = REF_CLOCK_DISABLE;     //!< Strores 0 = Crystal; 1 = Reference clock
+    uint8_t currentDialMode = DIAL_MODE_OFF;                //!< Stores the default Dial Mode (OFF)
+    uint16_t deviceId;
 
 public:
     void setRegister(uint8_t reg, uint16_t parameter);
     uint16_t getRegister(uint8_t reg);
 
-    char *getDeviceId();
-    void reset();
+    uint16_t getDeviceId();
+    void enable(uint8_t on_off);
     void setI2CBusAddress(int deviceAddress);
     void setReferenceClockType(uint8_t crystal, uint8_t ref_clock = 0);
-    bool isCrystalReady(); 
-    void setup(int reset_pin, uint8_t OSCILLATOR_type = OSCILLATOR_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
+    bool isCrystalReady();
+    void setup(int enable_pin, uint8_t oscillator_type = OSCILLATOR_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
 
     void setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequency);
     void setTuneDialModeOff();
     void setVolumeDialModeOn();
     void setVolumeDialModeOff();
+
+    void setVolume(uint8_t value);
+
+    void setDeEmphasis(uint8_t value);
+    void setMono(bool on_off);
 
     void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
     void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);

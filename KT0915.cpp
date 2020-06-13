@@ -43,8 +43,10 @@ void KT0915::setRegister(uint8_t reg, uint16_t parameter) {
 
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
-    Wire.write(param.refined.highByte);             
-    Wire.write(param.refined.lowByte);              
+    Wire.write(param.refined.highByte);  
+    delay(5);         
+    Wire.write(param.refined.lowByte);   
+    delay(5);
     Wire.endTransmission();
     delayMicroseconds(3000);
 }
@@ -63,13 +65,11 @@ uint16_t KT0915::getRegister(uint8_t reg) {
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
     Wire.endTransmission();
-
     delayMicroseconds(3000);
     Wire.requestFrom(this->deviceAddress, 2);
-    result.refined.lowByte = Wire.read();
     result.refined.highByte = Wire.read();
-    
-    delayMicroseconds(2000);
+    result.refined.lowByte = Wire.read();
+    delayMicroseconds(3000);
 
     return result.raw;
 }
@@ -79,13 +79,9 @@ uint16_t KT0915::getRegister(uint8_t reg) {
  * @brief Gets the Device Id 
  * @return uint16_t 16 bits word with the device id number
  */
-char * KT0915::getDeviceId()
+uint16_t KT0915::getDeviceId()
 {
-    word16_to_bytes deviceIdNumber;
-    deviceIdNumber.raw = getRegister(REG_CHIP_ID);
-    this->deviceId[0] = deviceIdNumber.refined.highByte;
-    this->deviceId[1] = deviceIdNumber.refined.lowByte;
-    this->deviceId[2] = '\0';
+    this->deviceId  = getRegister(REG_CHIP_ID);
     return this->deviceId;
 }
 
@@ -138,22 +134,19 @@ void KT0915::setReferenceClockType(uint8_t crystal, uint8_t ref_clock)
 
 /**
  * @ingroup GA03
- * @brief Resets the system. 
- * @details This function can be used to reset the KT0915 device. you can also use the RTS pin of your MCU. 
- * @details In this case, the RESET pin have to be set to  -1. This setup can be configured calling KT0915::setup method.
+ * @brief Sets the enable pin (9) of the KT0915 high or low
+ * @details This function can be used to enable (1) and disable (0) the KT0915 device. You have to select a MCU (Arduino) pin for this function. 
+ * @details Also, you can set -1 to used this control via circuit. 
  * 
  * @see setup
+ * 
+ * @param on_off  1 = enable; 0 = disable
  */
-void KT0915::reset()
+void KT0915::enable( uint8_t on_off)
 {
-    if (this->resetPin < 0)
-        return; // Do nothing.
-
-    pinMode(this->resetPin, OUTPUT);
-    delay(10);
-    digitalWrite(this->resetPin, LOW);
-    delay(10);
-    digitalWrite(this->resetPin, HIGH);
+    if (this->enablePin < 0)
+        return; 
+    digitalWrite(this->enablePin, on_off);
     delay(10);
 }
 
@@ -254,8 +247,20 @@ void KT0915::setVolumeDialModeOff()
     setRegister(REG_GPIOCFG, gpio.raw);  // Stores the new value in the register
 }
 
-
 /**
+ * @brief Sets the audio volume level
+ * @details This method is used to control the audio volume level. The value 0 mutes the  device and 31 sets the device to the maximum volume.
+ * @param volume between 0 and 31. 
+ */
+void KT0915::setVolume(uint8_t volume) {
+    kt09xx_rxcfg rx;
+    if ( volume > 31) return;
+    rx.raw = getRegister(REG_RXCFG);
+    rx.refined.VOLUME = volume;
+    setRegister(REG_RXCFG, rx.raw);
+}
+
+    /**
  * @ingroup GA03
  * @brief   Receiver startup 
  * @details Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using. 
@@ -294,14 +299,25 @@ void KT0915::setVolumeDialModeOff()
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); 3.6 Crystal and reference clock; page 9. 
  * @see setReferenceClockType 
  * 
- * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. 
- * @param OSCILLATOR_type  Crystal type. See the table above.
+ * @param enablePin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. 
+ * @param oscillator_type  Crystal type. See the table above.
  * @param ref_clock     0 = Crystal (Reference clock enabled disabled - default); 1 = Reference clock enabled.
  */
-void KT0915::setup(int reset_pin, uint8_t OSCILLATOR_type, uint8_t ref_clock) {
-    this->resetPin = reset_pin;
-    reset();
-    setReferenceClockType(OSCILLATOR_type, ref_clock);
+void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
+{
+    this->enablePin = enable_pin;
+    pinMode(this->enablePin, OUTPUT);
+
+    enable(1);
+
+    // Sets some registers with custom default value
+    // setRegister(REG_RXCFG, 0b1000100000000000);
+    // setRegister(REG_SOFTMUTE, 0b0010100010001100);
+    // setRegister(REG_AMDSP, 0b1010001010001100);
+    // setRegister(REG_AMCFG, 0b1101010000000001);
+
+    setReferenceClockType(oscillator_type, ref_clock);
+
 }
 
 /** 
@@ -323,6 +339,32 @@ void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
     setRegister(REG_AMCALI, reg.raw);    // Strores the new value to the register
 };
 
+/**
+ * @ingroup GA04
+ * @brief Sets the receiver Stereo or Mono
+ * @details Set this parameter to true to force mono or false to stereo
+ * @param on_off true = mono; fale = stereo
+ */
+void KT0915::setMono(bool on_off) 
+{
+    kt09xx_dspcfga reg;
+    reg.raw = getRegister(REG_DSPCFGA);
+    reg.refined.MONO = on_off;
+    setRegister(REG_DSPCFGA,reg.raw);
+}
+
+/**
+ * @ingroup GA04
+ * @brief Sets the De-emphasis Time Constant Selection
+ * @param value 0 = 75us; 1 = 50us 
+ */
+void KT0915::setDeEmphasis(uint8_t value) 
+{
+    kt09xx_dspcfga reg;
+    reg.raw = getRegister(REG_DSPCFGA);
+    reg.refined.DE = value;
+    setRegister(REG_DSPCFGA, reg.raw);
+}
 
 /**
  * @todo Adjust setTuneDialOn()
@@ -335,25 +377,30 @@ void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
  * @param default_frequency  default freuency
  * @param step  increment and decrement frequency step
  */
-    void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
+void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
 {
     kt09xx_amsyscfg reg;
 
+   
     this->currentStep = step;
     this->currentFrequency = default_frequency;
     this->minimumFrequency = minimum_frequency;
     this->maximumFrequency = maximum_frequency;
     this->currentMode = MODE_FM;
 
-    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value from the register
+    reg.raw = 0;
+    reg.refined.RESERVED1 = 1;
     reg.refined.AM_FM = MODE_FM;
-    reg.refined.USERBAND = this->currentDialMode;
+    reg.refined.USERBAND =  this->currentDialMode;
+    reg.refined.REFCLK = this->currentRefClockType;
+    reg.refined.RCLK_EN = this->currentRefClockEnabled;
     setRegister(REG_AMSYSCFG, reg.raw); // Stores the new value in the register
 
     if (this->currentDialMode == DIAL_MODE_ON) 
         setTuneDialModeOn(minimum_frequency, maximum_frequency);
     else
         setFrequency(default_frequency);
+  
 };
 
 /**
@@ -400,13 +447,14 @@ void KT0915::setFrequency(uint32_t frequency)
 
     if (this->currentMode == MODE_AM)
     {
-        reg_amchan.refined.AMTUNE = 1;
+        reg_amchan.refined.AMTUNE = 0;      // TODO Check        
         reg_amchan.refined.AMCHAN = frequency;
         setRegister(REG_AMCHAN,reg_amchan.raw);
     }
     else
     {
-        reg_tune.refined.FMTUNE = 1;
+        reg_tune.refined.FMTUNE = 0; // // TODO Check
+        reg_tune.refined.RESERVED = 0;
         reg_tune.refined.FMCHAN = frequency / 50;
         setRegister(REG_TUNE, reg_tune.raw);
     }
@@ -450,13 +498,18 @@ void KT0915::frequencyDown(){
  * @ingroup GA04
  * @brief Sets the frequency step
  * @details Sets increment and decrement frequency 
- * @param step  Values: 1, 5, 9, 10, 100, 200 
+ * @param step  Values: 1, 5, 9, 10, 100, 200  in KHz
  */
 void KT0915::setStep(uint16_t step)
 {
     this->currentStep = step;
 }
 
+/**
+ * @ingroup GA04
+ * @brief Gets the current frequency 
+ * @return frequency in KHz
+ */
 uint32_t KT0915::getFrequency()
 {
     return this->currentFrequency;
