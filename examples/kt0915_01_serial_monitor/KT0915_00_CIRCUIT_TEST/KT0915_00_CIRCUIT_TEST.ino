@@ -5,7 +5,7 @@
 KT0915 radio; 
 
 // Set your FM station frequency. Default is 107.5MHz (107500KHz)
-uint32_t fmFreq = 105700;
+uint32_t fmFreq = 106500;
 
 void setup() {
 
@@ -21,12 +21,14 @@ void setup() {
   Serial.print(radio.getDeviceId(),HEX);
 
   radio.setup(RESET_PIN, OSCILLATOR_32KHZ,0);
+  
   Serial.print("\nCrystal Ready..............:");
   Serial.print(radio.isCrystalReady());
 
   radio.setVolume(23);
   // Sets the FM mode and tune on fmFreq and 100KHz step
   radio.setFM(84000,108000,fmFreq,100);
+  radio.setFrequency(fmFreq);
   Serial.print("\nYou are tuned on ");
   Serial.print(radio.getFrequency()/1000.0);
   Serial.println(" MHz");
