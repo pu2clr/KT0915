@@ -13,6 +13,8 @@ var group___g_a01_class_k_t0915 =
     [ "setVolumeDialModeOn", "group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9", null ],
     [ "setVolumeDialModeOff", "group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1", null ],
     [ "setVolume", "group___g_a01.html#a34e84d857bb6010f42057011ed258922", null ],
+    [ "setVolumeUp", "group___g_a01.html#abc78db223c9ab4c42cde9d4a749aabe9", null ],
+    [ "setVolumeDown", "group___g_a01.html#a3f223aba4503eefaf34949b2a25861e9", null ],
     [ "setDeEmphasis", "group___g_a04.html#ga910291c7360265215e3962d03be780ee", null ],
     [ "setMono", "group___g_a04.html#ga64982e34b6f55a63effad685b95c6c44", null ],
     [ "setFM", "group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633", null ],
@@ -23,6 +25,7 @@ var group___g_a01_class_k_t0915 =
     [ "frequencyDown", "group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4", null ],
     [ "getFrequency", "group___g_a04.html#ga27fe68f4550dc8412bf870b982d09828", null ],
     [ "setAntennaTuneCapacitor", "group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0", null ],
+    [ "getCurrentMode", "group___g_a01.html#a44a698eed131e9d8e4d309cc69abdf16", null ],
     [ "deviceAddress", "group___g_a01.html#ae18a907888005f0a781600e2b8ca9daf", null ],
     [ "enablePin", "group___g_a01.html#a2d46a1bc8b3b657f1e81c59a07d2237c", null ],
     [ "volume", "group___g_a01.html#a0ad4b90daf25b3869b75d60bc71ea826", null ],
@@ -34,5 +37,6 @@ var group___g_a01_class_k_t0915 =
     [ "currentRefClockType", "group___g_a01.html#a54a26e685c91a31d3f3d88c1b967de49", null ],
     [ "currentRefClockEnabled", "group___g_a01.html#abf4b56d83961d4166697f2980e12534b", null ],
     [ "currentDialMode", "group___g_a01.html#ac2cef3eb6691553e5b0c7ac0b9af719e", null ],
-    [ "deviceId", "group___g_a01.html#a3440fdf17cc73eb8193cc357aba3218d", null ]
+    [ "deviceId", "group___g_a01.html#a3440fdf17cc73eb8193cc357aba3218d", null ],
+    [ "currentVolume", "group___g_a01.html#afe7b4225bac1d1ebaeeb7078261ad33a", null ]
 ];

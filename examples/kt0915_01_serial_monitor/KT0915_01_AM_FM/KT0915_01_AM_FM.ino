@@ -80,12 +80,6 @@ void loop()
       currentAM = currentFrequency;
       radio.setFM(87000, 108000, currentFM, 100);
       break;
-    case '1':
-      radio.setAM(7000, 7500, 7205, 5);
-      break;
-    case '2':
-      radio.setAM(11500, 12000, 11940, 5);      
-      break;
     case 'U':
     case 'u':
       radio.frequencyUp();

@@ -2241,6 +2241,10 @@ highByte</td>
 <tr class="memitem:a34e84d857bb6010f42057011ed258922"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a34e84d857bb6010f42057011ed258922">setVolume</a> (uint8_t value)</td></tr>
 <tr class="memdesc:a34e84d857bb6010f42057011ed258922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the audio volume level.  <a href="group___g_a01.html#a34e84d857bb6010f42057011ed258922">More...</a><br /></td></tr>
 <tr class="separator:a34e84d857bb6010f42057011ed258922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc78db223c9ab4c42cde9d4a749aabe9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#abc78db223c9ab4c42cde9d4a749aabe9">setVolumeUp</a> ()</td></tr>
+<tr class="separator:abc78db223c9ab4c42cde9d4a749aabe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f223aba4503eefaf34949b2a25861e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a3f223aba4503eefaf34949b2a25861e9">setVolumeDown</a> ()</td></tr>
+<tr class="separator:a3f223aba4503eefaf34949b2a25861e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga910291c7360265215e3962d03be780ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga910291c7360265215e3962d03be780ee">setDeEmphasis</a> (uint8_t value)</td></tr>
 <tr class="memdesc:ga910291c7360265215e3962d03be780ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the De-emphasis Time Constant Selection.  <a href="group___g_a04.html#ga910291c7360265215e3962d03be780ee">More...</a><br /></td></tr>
 <tr class="separator:ga910291c7360265215e3962d03be780ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2271,6 +2275,8 @@ highByte</td>
 <tr class="memitem:gaee03f6351e9ac697822983d839cb06f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">setAntennaTuneCapacitor</a> (uint16_t capacitor)</td></tr>
 <tr class="memdesc:gaee03f6351e9ac697822983d839cb06f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set AM the Antenna Tune Capacitor.  <a href="group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0">More...</a><br /></td></tr>
 <tr class="separator:gaee03f6351e9ac697822983d839cb06f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a698eed131e9d8e4d309cc69abdf16"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a44a698eed131e9d8e4d309cc69abdf16">getCurrentMode</a> ()</td></tr>
+<tr class="separator:a44a698eed131e9d8e4d309cc69abdf16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><h3>Protected Attributes</h3></td></tr>
 <tr class="memitem:ae18a907888005f0a781600e2b8ca9daf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#ae18a907888005f0a781600e2b8ca9daf">deviceAddress</a> = <a class="el" href="_k_t0915_8h.html#aa709b65c74553a73a062cfdf66b42b0c">KT0915_I2C_ADDRESS</a></td></tr>
 <tr class="separator:ae18a907888005f0a781600e2b8ca9daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2305,6 +2311,8 @@ highByte</td>
 <tr class="separator:ac2cef3eb6691553e5b0c7ac0b9af719e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3440fdf17cc73eb8193cc357aba3218d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a3440fdf17cc73eb8193cc357aba3218d">deviceId</a></td></tr>
 <tr class="separator:a3440fdf17cc73eb8193cc357aba3218d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe7b4225bac1d1ebaeeb7078261ad33a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#afe7b4225bac1d1ebaeeb7078261ad33a">currentVolume</a></td></tr>
+<tr class="separator:afe7b4225bac1d1ebaeeb7078261ad33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Member Function Documentation</h4>
 <a id="a8efae1e4921f13b904a1477a94c02c51"></a>
@@ -2356,7 +2364,72 @@ false </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00255">255</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00258">258</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abc78db223c9ab4c42cde9d4a749aabe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc78db223c9ab4c42cde9d4a749aabe9">&#9670;&nbsp;</a></span>setVolumeUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KT0915::setVolumeUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00267">267</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3f223aba4503eefaf34949b2a25861e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f223aba4503eefaf34949b2a25861e9">&#9670;&nbsp;</a></span>setVolumeDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KT0915::setVolumeDown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00272">272</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a44a698eed131e9d8e4d309cc69abdf16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a698eed131e9d8e4d309cc69abdf16">&#9670;&nbsp;</a></span>getCurrentMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t KT0915::getCurrentMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8h_source.html#l00563">563</a> of file <a class="el" href="_k_t0915_8h_source.html">KT0915.h</a>.</p>
 
 </div>
 </div>
@@ -2409,7 +2482,7 @@ false </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_k_t0915_8h_source.html#l00517">517</a> of file <a class="el" href="_k_t0915_8h_source.html">KT0915.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_k_t0915_8cpp_source.html#l00145">enable()</a>, and <a class="el" href="_k_t0915_8cpp_source.html#l00306">setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_k_t0915_8cpp_source.html#l00148">enable()</a>, and <a class="el" href="_k_t0915_8cpp_source.html#l00322">setup()</a>.</p>
 
 </div>
 </div>
@@ -2668,6 +2741,30 @@ false </dd></dl>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_k_t0915_8h_source.html#l00528">528</a> of file <a class="el" href="_k_t0915_8h_source.html">KT0915.h</a>.</p>
+
+</div>
+</div>
+<a id="afe7b4225bac1d1ebaeeb7078261ad33a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe7b4225bac1d1ebaeeb7078261ad33a">&#9670;&nbsp;</a></span>currentVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t KT0915::currentVolume</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8h_source.html#l00529">529</a> of file <a class="el" href="_k_t0915_8h_source.html">KT0915.h</a>.</p>
 
 </div>
 </div>

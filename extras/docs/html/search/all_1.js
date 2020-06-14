@@ -13,5 +13,6 @@ var searchData=
   ['currentmode_11',['currentMode',['../group___g_a01.html#a7939c5335f901dae8b2fe68a3204c296',1,'KT0915']]],
   ['currentrefclockenabled_12',['currentRefClockEnabled',['../group___g_a01.html#abf4b56d83961d4166697f2980e12534b',1,'KT0915']]],
   ['currentrefclocktype_13',['currentRefClockType',['../group___g_a01.html#a54a26e685c91a31d3f3d88c1b967de49',1,'KT0915']]],
-  ['currentstep_14',['currentStep',['../group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361',1,'KT0915']]]
+  ['currentstep_14',['currentStep',['../group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361',1,'KT0915']]],
+  ['currentvolume_15',['currentVolume',['../group___g_a01.html#afe7b4225bac1d1ebaeeb7078261ad33a',1,'KT0915']]]
 ];

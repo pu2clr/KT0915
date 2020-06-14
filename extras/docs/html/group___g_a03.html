@@ -361,7 +361,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00145">145</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00148">148</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_k_t0915_8h_source.html#l00517">KT0915::enablePin</a>.</p>
 
@@ -410,7 +410,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00166">166</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00169">169</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -434,7 +434,7 @@ Basic</h1>
 <dd>
 <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a>; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00206">206</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00209">209</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -459,7 +459,7 @@ Basic</h1>
 <p>The dial can be a variable resistor with the tap connected to VOL (pin 16).</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a>; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00228">228</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00231">231</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -483,7 +483,7 @@ Basic</h1>
 <dd>
 <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a>; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00242">242</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00245">245</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -520,22 +520,23 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Receiver startup. </p>
-<p>Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using.</p>
-<p>The options for the crystal can be seen in the table below.</p>
+<p>You have to use this method to configure the way that the device will work. For example: enable and disable device control; oscillator type and reference clock type (crystal or external)</p>
+<p>The tabe below shows the oscillator frequencies supported by the device.</p>
 <p>If you omit the crystal type parameter, will be considered 0 (32.768KHz).</p>
 <p>For a low frequency crystal oscillator, selects 32.768KHz or 38KHz crystals.</p>
 <p>Alternatively, you can use a CMOS level external reference clock may be used by setting</p>
 <p>the parameter ref_clock to 1 (REF_CLOCK_ENABLE) and setting the reference clock according to the table below.</p>
 <p>The code below shows how to use the setup function.</p>
+<p>the enable_pin parameter sets the way you are controlling the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> pin 9.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_k_t0915_8h.html">KT0915.h</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.</span></div>
 <div class="line"><a class="code" href="group___g_a01.html#class_k_t0915">KT0915</a> radio;</div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="group___g_a03.html#ga7004264a35366d5fd2ede1c43789f02b">setup</a>() {</div>
-<div class="line">   <span class="comment">// Set RESET_PIN to -1 if you are using the Arduino RST pin; Select OSCILLATOR_32KHZ, OSCILLATOR_12MHZ etc</span></div>
+<div class="line">   <span class="comment">// Set the parameter enablePin to -1 if you are controlling the enable status via circuit; Select OSCILLATOR_32KHZ, OSCILLATOR_12MHZ etc</span></div>
 <div class="line">   <span class="comment">// radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   </span></div>
 <div class="line">   radio.<a class="code" href="group___g_a03.html#ga7004264a35366d5fd2ede1c43789f02b">setup</a>(RESET_PIN, <a class="code" href="_k_t0915_8h.html#a7944cc565f358d9be2bc11096a3f2f64">OSCILLATOR_12MHZ</a>, <a class="code" href="_k_t0915_8h.html#ab640fa4280beb79f0209204410eac051">REF_CLOCK_DISABLE</a> );</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Crystal type table </p><table class="markdownTable">
+</div><!-- fragment --><p>Oscillator frequencies supported </p><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Dec </th><th class="markdownTableHeadNone">binary </th><th class="markdownTableHeadNone">Description </th><th class="markdownTableHeadNone">defined constant  </th></tr>
 <tr class="markdownTableRowOdd">
@@ -564,14 +565,14 @@ Basic</h1>
 <a class="el" href="group___g_a03.html#gaea3de0c32d82b229aff25e66c8a1fdc9" title="Sets the Crystal Type.">setReferenceClockType</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">enablePin</td><td>if &gt;= 0, then you control the RESET. if -1, you are using ths Arduino RST pin. </td></tr>
-    <tr><td class="paramname">oscillator_type</td><td>Crystal type. See the table above. </td></tr>
-    <tr><td class="paramname">ref_clock</td><td>0 = Crystal (Reference clock enabled disabled - default); 1 = Reference clock enabled. </td></tr>
+    <tr><td class="paramname">enablePin</td><td>if &gt;= 0, then you control the device enable or disable status. if -1, you are using the circuit to crontole that. </td></tr>
+    <tr><td class="paramname">oscillator_type</td><td>oscillator type. You can use crystal or external clock. See comments and table above. </td></tr>
+    <tr><td class="paramname">ref_clock</td><td>set to 0 if you are using crystal (Reference clock disabled - default); set to 1 if you are using an external reference clock. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00306">306</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00322">322</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_k_t0915_8h_source.html#l00517">KT0915::enablePin</a>.</p>
 
@@ -583,7 +584,7 @@ Basic</h1>
 <div class="ttc" id="a_k_t0915_8h_html"><div class="ttname"><a href="_k_t0915_8h.html">KT0915.h</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_class_k_t0915"><div class="ttname"><a href="group___g_a01.html#class_k_t0915">KT0915</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00513">KT0915.h:513</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_ab640fa4280beb79f0209204410eac051"><div class="ttname"><a href="_k_t0915_8h.html#ab640fa4280beb79f0209204410eac051">REF_CLOCK_DISABLE</a></div><div class="ttdeci">#define REF_CLOCK_DISABLE</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00040">KT0915.h:40</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_ga7004264a35366d5fd2ede1c43789f02b"><div class="ttname"><a href="group___g_a03.html#ga7004264a35366d5fd2ede1c43789f02b">KT0915::setup</a></div><div class="ttdeci">void setup(int enable_pin, uint8_t oscillator_type=OSCILLATOR_32KHZ, uint8_t ref_clock=REF_CLOCK_DISABLE)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00306">KT0915.cpp:306</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_ga7004264a35366d5fd2ede1c43789f02b"><div class="ttname"><a href="group___g_a03.html#ga7004264a35366d5fd2ede1c43789f02b">KT0915::setup</a></div><div class="ttdeci">void setup(int enable_pin, uint8_t oscillator_type=OSCILLATOR_32KHZ, uint8_t ref_clock=REF_CLOCK_DISABLE)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00322">KT0915.cpp:322</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

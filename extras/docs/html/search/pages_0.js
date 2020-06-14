@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pu2clr_20kt0915_20arduino_20library_331',['PU2CLR KT0915 Arduino Library',['../index.html',1,'']]],
-  ['pu2clr_20kt0915_20arduino_20library_332',['PU2CLR KT0915 Arduino Library',['../md__k_t0915__r_e_a_d_m_e.html',1,'']]]
+  ['pu2clr_20kt0915_20arduino_20library_339',['PU2CLR KT0915 Arduino Library',['../index.html',1,'']]],
+  ['pu2clr_20kt0915_20arduino_20library_340',['PU2CLR KT0915 Arduino Library',['../md__k_t0915__r_e_a_d_m_e.html',1,'']]]
 ];
