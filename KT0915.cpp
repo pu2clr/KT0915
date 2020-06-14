@@ -320,7 +320,7 @@ void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
     this->enablePin = enable_pin;
     pinMode(this->enablePin, OUTPUT);
 
-    // enable(1);
+    enable(1);
 
     // Sets some registers with custom default value
     // setRegister(REG_RXCFG, 0b1000100000000000);
@@ -439,10 +439,14 @@ void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
     this->maximumFrequency = maximum_frequency;
     this->currentMode = MODE_AM;
 
-    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value from the register
+    reg.raw = 0;
+    reg.refined.RESERVED1 = 1;
     reg.refined.AM_FM = MODE_AM;
-    reg.refined.USERBAND = this->currentDialMode;           
-    setRegister(REG_AMSYSCFG, reg.raw);  // Strores the new value in the register
+    reg.refined.USERBAND = this->currentDialMode;
+    reg.refined.REFCLK = this->currentRefClockType;
+    reg.refined.RCLK_EN = this->currentRefClockEnabled;
+    setRegister(REG_AMSYSCFG, reg.raw); // Stores the new value in the register
+
     if (this->currentDialMode == DIAL_MODE_ON)
         setTuneDialModeOn(minimum_frequency, maximum_frequency);
     else
@@ -462,7 +466,7 @@ void KT0915::setFrequency(uint32_t frequency)
 
     if (this->currentMode == MODE_AM)
     {
-        reg_amchan.refined.AMTUNE = 0;      // TODO Check        
+        reg_amchan.refined.AMTUNE = 1;      // TODO Check        
         reg_amchan.refined.AMCHAN = frequency;
         setRegister(REG_AMCHAN,reg_amchan.raw);
     }
