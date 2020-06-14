@@ -1,6 +1,6 @@
 #include <KT0915.h>
 
-#define RESET_PIN 12
+#define RADIO_ENABLE_PIN 12    // When this pin is high, the radio becomes enable. You can set -1 to control or setup it via circuit.
 
 uint32_t currentFM = 103900;
 uint32_t currentAM = 810;
@@ -16,7 +16,7 @@ void setup() {
   Serial.begin(9600);
   while(!Serial);
 
-  radio.setup(RESET_PIN, OSCILLATOR_32KHZ,0);
+  radio.setup(RADIO_ENABLE_PIN, OSCILLATOR_32KHZ,0);
   radio.setVolume(25);
 
   currentFrequency = currentFM;
@@ -81,8 +81,10 @@ void loop()
       radio.setFM(87000, 108000, currentFM, 100);
       break;
     case '1':
-      radio.setAM(11400, 12200, 11940, 5);
+      radio.setAM(7000, 7500, 7205, 5);
       break;
+    case '2':
+      radio.setAM(11500, 12000, 11940, 5);      
       break;
     case 'U':
     case 'u':

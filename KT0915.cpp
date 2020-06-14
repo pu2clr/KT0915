@@ -128,7 +128,10 @@ void KT0915::setReferenceClockType(uint8_t crystal, uint8_t ref_clock)
     reg.raw = getRegister(REG_AMSYSCFG);  // Gets the current value of the register
     reg.refined.REFCLK = crystal;         // Changes just crystal parameter
     reg.refined.RCLK_EN = ref_clock;      // Reference Clock Enable => Crystal
-    setRegister(REG_AMSYSCFG, reg.raw);   // Strores the new value to the register 
+    setRegister(REG_AMSYSCFG, reg.raw);   // Strores the new value to the register
+
+    this->currentRefClockType = crystal;
+    this->currentRefClockEnabled = ref_clock;
 }
 
 
@@ -272,29 +275,30 @@ void KT0915::setVolumeDown()
     setVolume(this->currentVolume - 1);
 }
 
-    /**
+/**
  * @ingroup GA03
  * @brief   Receiver startup 
- * @details Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using. 
- * @details The options for the crystal can be seen in the table below.
+ * @details You have to use this method to configure the way that the device will work. For example: enable and disable device control; oscillator type and reference clock type (crystal or external) 
+ * @details The tabe below shows  the oscillator frequencies supported by the device.
  * @details If you omit the crystal type parameter, will be considered  0 (32.768KHz). 
  * @details For a low frequency crystal oscillator, selects 32.768KHz or 38KHz crystals. 
  * @details Alternatively, you can use a CMOS level external reference clock may be used by setting 
  * @details the parameter ref_clock to 1 (REF_CLOCK_ENABLE) and setting the reference clock according to the table below.
  * @details The code below shows how to use the setup function.
+ * @details the enable_pin parameter sets the way you are controlling the KT0915 pin 9. 
  * 
  * @code
  * #include <KT0915.h>
  * #define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.
  * KT0915 radio;
  * void setup() {
- *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select OSCILLATOR_32KHZ, OSCILLATOR_12MHZ etc
+ *    // Set the parameter enablePin to -1 if you are controlling the enable status via circuit; Select OSCILLATOR_32KHZ, OSCILLATOR_12MHZ etc
  *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   
  *    radio.setup(RESET_PIN, OSCILLATOR_12MHZ, REF_CLOCK_DISABLE );
  * }
  * @endcode
  * 
- * Crystal type table
+ * Oscillator frequencies supported
  * | Dec | binary | Description | defined constant    |
  * | --  | ------ | ----------- | ---------------     |
  * | 0   | 0000   | 32.768KHz   | OSCILLATOR_32KHZ    |
@@ -311,9 +315,9 @@ void KT0915::setVolumeDown()
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); 3.6 Crystal and reference clock; page 9. 
  * @see setReferenceClockType 
  * 
- * @param enablePin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. 
- * @param oscillator_type  Crystal type. See the table above.
- * @param ref_clock     0 = Crystal (Reference clock enabled disabled - default); 1 = Reference clock enabled.
+ * @param enablePin         if >= 0,  then you control the device enable or disable status. if -1, you are using the circuit to crontole that. 
+ * @param oscillator_type   oscillator type. You can use crystal or external clock. See comments and table above.
+ * @param ref_clock         set to 0 if you are using crystal (Reference clock disabled - default); set to 1 if you are using an external reference clock.
  */
 void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
 {
@@ -322,14 +326,7 @@ void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
 
     enable(1);
 
-    // Sets some registers with custom default value
-    // setRegister(REG_RXCFG, 0b1000100000000000);
-    // setRegister(REG_SOFTMUTE, 0b0010100010001100);
-    // setRegister(REG_AMDSP, 0b1010001010001100);
-    // setRegister(REG_AMCFG, 0b1101010000000001);
-
     setReferenceClockType(oscillator_type, ref_clock);
-
 }
 
 /** 
