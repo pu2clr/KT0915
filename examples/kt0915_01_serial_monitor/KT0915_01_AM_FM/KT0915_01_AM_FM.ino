@@ -1,3 +1,4 @@
+
 #include <KT0915.h>
 
 #define RADIO_ENABLE_PIN 12    // When this pin is high, the radio becomes enable. You can set -1 to control or setup it via circuit.
@@ -28,7 +29,7 @@ void setup() {
 
 void showHelp()
 {
-  Serial.println("Type F to FM; A to MW; 1 to SW");
+  Serial.println("Type F to FM; A to MW");
   Serial.println("Type U to increase and D to decrease the frequency");
   Serial.println("Type S or s to seek station Up or Down");
   Serial.println("Type + or - to volume Up or Down");

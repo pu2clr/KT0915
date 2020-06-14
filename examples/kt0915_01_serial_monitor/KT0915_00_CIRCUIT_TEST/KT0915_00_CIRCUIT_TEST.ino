@@ -1,3 +1,37 @@
+/*
+   Test and validation of the circuit.
+   This sketch will check the I2C communication bus and try to tune the receiver on a given frequency.
+ 
+   ATTENTION:  Please, avoid using the computer connected to the mains during testing.
+
+   The main advantages of using this sketch are: 
+    1) It is a easy way to check if your circuit is working;
+    2) You do not need to connect any display device to make your radio works;
+    3) You do not need connect any push buttons or encoders to change volume and frequency;
+    4) The Arduino IDE is all you need to check your circuit.  
+   
+   This sketch has been successfully tested on:
+    1) Pro Mini 3.3V; 
+    2) UNO (by using a voltage converter); 
+
+    The table below shows the Si4735 and Arduino Pro Mini pin connections 
+    
+    | KT0915 pin      |  Arduino Pin  |
+    | ----------------| ------------  |
+    | ENABLE (pin )   |     12        |
+    | SDA  (pin 15)   |     A4        |
+    | CLK  (pin 16)   |     A5        |
+
+
+  I strongly recommend starting with this sketch.
+
+  See schematic: https://pu2clr.github.io/KT0915/
+
+  PU2CLR KT0915 API documentation: https://pu2clr.github.io/KT0915/extras/docs/html/index.html
+
+  By Ricardo Lima Caratti, 2020.
+*/
+
 #include <KT0915.h>
 
 #define RESET_PIN 12
