@@ -33,10 +33,7 @@ The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provid
 
 In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and the KT0915 device.  The project and examples shown here do not intend to be a real receiver for exigent listener. However, it is possible to start with it and after add some improvements. On the other hand, with the simple circuits shown here, the experimenter may be surprised with its performance.
 
-
 {% include video01.html %} 
-
-
 
 ## See also
 
