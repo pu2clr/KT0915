@@ -528,14 +528,8 @@ protected:
     uint8_t currentRefClockEnabled = REF_CLOCK_DISABLE;     //!< Strores 0 = Crystal; 1 = Reference clock
     uint8_t currentDialMode = DIAL_MODE_OFF;                //!< Stores the default Dial Mode (OFF)
     uint16_t deviceId;
-    
 
     uint8_t currentVolume = 0;
-    // uint8_t currentSoftMute = 1;                                //!< Stores current softmute for AM and FM (0 = enable; 1 = disable )
-    // uint8_t currentAudioMute = 1;                               //!< Stores the current audio mute.
-    // uint8_t currentAudioBass = 0;                               //!< Stores the current audio basss value. See Register VOLUME (Address 0x04)
-    // uint8_t currentAntiPop = 0;
-
 
 
 
@@ -572,7 +566,12 @@ public:
     void setAmAfc(uint8_t on_off);
 
     void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
-    void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
+    
+    void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step, uint8_t am_space = 0);
+    void setAmSpace(uint8_t value);
+    void setAmBandwidth(uint8_t value);
+    uint8_t getAmBandwidth();
+
     void setFrequency(uint32_t frequency);
     void setStep(uint16_t step);
     void frequencyUp();

@@ -53,7 +53,7 @@
 
 long elapsedButton = millis();
 
-byte idxBass = 0;
+byte idx = 0;
 
 typedef struct
 {
@@ -64,9 +64,12 @@ typedef struct
   uint16_t step;               // step used (KHz)
 } akc_band;
 
+
+char am_bw[] = {'2', '2', '4','6','X'}; 
+
 akc_band band[] = {
     {MODE_FM, 76000, 108000, 103900, 100},
-    {MODE_AM, 520, 1710, 810, 5},
+    {MODE_AM, 520, 1710, 810, 10},
     {MODE_AM, 4700, 5600, 4885, 5}, 
     {MODE_AM, 5700, 6400, 6100, 5},    
     {MODE_AM, 6800, 7600, 7205, 5},
@@ -87,8 +90,8 @@ char oldMode[20];
 char oldUnit[20];
 char oldStep[20];
 char oldRssi[20];
-char oldVolume[20];
-char oldVbat[20];
+char oldBW[10];
+char oldVolume[15];
 char oldStereo[20];
 
 Rotary encoder = Rotary(ENCODER_PIN_A, ENCODER_PIN_B);
@@ -134,6 +137,8 @@ void setup()
   radio.setVolume(20); 
   radio.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
 
+  delay(500);
+  
   showStatus();
 }
 
@@ -174,8 +179,8 @@ void resetBuffer()
   clearBuffer(oldStep);
   clearBuffer(oldRssi);
   clearBuffer(oldVolume);
-  clearBuffer(oldVbat);
   clearBuffer(oldStereo);
+  clearBuffer(oldBW);
 }
 
 /**
@@ -310,7 +315,6 @@ void showFrequency()
 // Show current frequency
 void showStatus()
 {
-  
   oled.clearDisplay();
   resetBuffer();
 
@@ -320,8 +324,28 @@ void showStatus()
   showFrequency();
 
   showVolume();
-
+  // showBandwidth();
+  
   oled.display();
+}
+
+
+
+void showBandwidth() {
+  /*
+  char sBw[20];
+
+  uint8_t i = radio.getAmBandwidth();
+  if (i > 3 ) return;  
+  
+  if (band[bandIdx].mode ==  MODE_AM)  
+     sprintf(sBw,"%cKHz",am_bw[i]);
+  else    
+     strcpy(sBw,"          ");
+      
+   printValue(0, 26, oldBW, sBw, 6, 1);
+   oled.display();
+   */  
 }
 
 /* *******************************
@@ -330,13 +354,11 @@ void showStatus()
 void showRSSI()
 {
   char sR[20];
-  
+
   sprintf(sR,"RSSI:%3.3idBuV", (band[bandIdx].mode ==  MODE_FM)? radio.getFmRssi() : radio.getAmRssi());
 
   printValue(0, 40, oldRssi, sR, 6, 1);
   oled.display();
-
-
 }
 
 /*
@@ -351,7 +373,6 @@ void showVolume()
 }
 
 
-/*********************************************************/
 
 /*
  * Button - Volume control
@@ -372,13 +393,14 @@ void volumeButton(byte d)
 void seekButton( uint8_t up_down ) {
 
     radio.seekStation(1);
-    // if (idxBass == 3) idxBass = 0;
-    // idxBass++;
-    // radio.setAudioBass(idxBass); 
-    // idxBass = !idxBass;
-    // radio.setAudioMute(idxBass);
-    // showFrequency();
-    delay(200);
+    if (idx == 3) idx = 0;
+    idx++;
+    radio.setAmBandwidth(idx);
+    // radio.setAudioBass(idx); 
+    // idx = !idx;
+    // radio.setAudioMute(idx);
+    showBandwidth();
+    delay(300);
 }
 
 

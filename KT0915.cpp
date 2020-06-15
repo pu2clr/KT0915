@@ -511,6 +511,72 @@ void KT0915::setAmAfc(uint8_t on_off)
 }
 
 /**
+ * @ingroup GA04
+ * @brief Sets the AM Space 
+ * @details Selects AM channel space 
+ * 
+ * | value | space |
+ * | ----- | ----- | 
+ * |   0   |  1KHz | 
+ * |   1   |  9KHz |
+ * |   2   | 10KHz |
+ * |   3   | 10KHz |
+ * 
+ * @param value  See table above
+ */
+void KT0915::setAmSpace(uint8_t value)
+{
+    kt09xx_amcfg r; 
+    r.raw = getRegister(REG_AMCFG);
+    r.refined.AMSPACE = value;
+    setRegister(REG_AMCFG, r.raw);
+}
+
+/**
+ * @ingroup GA04
+ * @brief Sets AM Channel Bandwidth Selection
+ * @details Configures the AM Bandwidth 
+ * 
+ * | value | Bandwidth |
+ * | ----- | --------- | 
+ * |   0   |  2KHz     | 
+ * |   1   |  2KHz     |
+ * |   2   |  4KHz     |
+ * |   3   |  6KHz     |
+ * 
+ * @param value  See table above
+ */
+void KT0915::setAmBandwidth(uint8_t value)
+{
+    kt09xx_amdsp r;
+    r.raw = getRegister(REG_AMDSP);
+    r.refined.AM_BW = value;
+    setRegister(REG_AMDSP, r.raw);
+}
+
+/**
+ * @ingroup GA04
+ * @brief Gets current AM Channel Bandwidth Selection
+ * 
+ * | value | Bandwidth |
+ * | ----- | --------- | 
+ * |   0   |  2KHz     | 
+ * |   1   |  2KHz     |
+ * |   2   |  4KHz     |
+ * |   3   |  6KHz     |
+ * 
+ * @return See table above
+ */
+uint8_t KT0915::getAmBandwidth()
+{
+    kt09xx_amdsp r;
+    r.raw = getRegister(REG_AMDSP);
+    return r.refined.AM_BW;
+}
+
+
+
+/**
  * @todo Adjust setTuneDialOn()
  * @ingroup GA04
  * @brief Sets the receiver to FM mode
@@ -555,7 +621,7 @@ void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
  * @param default_frequency  default freuency
  * @param step  increment and decrement frequency step
  */
-void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
+void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step, uint8_t am_space)
 {
     kt09xx_amsyscfg reg;
 
@@ -571,6 +637,7 @@ void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
     reg.refined.REFCLK = this->currentRefClockType;
     reg.refined.RCLK_EN = this->currentRefClockEnabled;
     setRegister(REG_AMSYSCFG, reg.raw); // Stores the new value in the register
+    setAmSpace(am_space);
 
     if (this->currentDialMode == DIAL_MODE_ON)
         setTuneDialModeOn(minimum_frequency, maximum_frequency);

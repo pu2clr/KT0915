@@ -34,6 +34,10 @@ The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provid
 In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and the KT0915 device.  The project and examples shown here do not intend to be a real receiver for exigent listener. However, it is possible to start with it and after add some improvements. On the other hand, with the simple circuits shown here, the experimenter may be surprised with its performance.
 
 
+{% include video01.html %} 
+
+
+
 ## See also
 
 1. [PU2CLR Si4735 Library for Arduino](https://pu2clr.github.io/SI4735/). This library was built based on “Si47XX PROGRAMMING GUIDE; AN332” and it has support to FM, AM and SSB modes (LW, MW and SW). It also can be used on all members of the SI47XX family respecting, of course, the features available for each IC version; 
