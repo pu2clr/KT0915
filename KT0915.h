@@ -530,18 +530,18 @@ protected:
     uint16_t deviceId;
     
 
-    uint8_t currentVolume;
-    uint8_t currentSoftMute = 1;                                //!< Stores current softmute for AM and FM (0 = enable; 1 = disable )
-    uint8_t currentAudioMute = 1;                               //!< Stores the current audio mute.
-    uint8_t currentAudioBass = 0;                               //!< Stores the current audio basss value. See Register VOLUME (Address 0x04)
-    uint8_t currentAntiPop = 0;
+    uint8_t currentVolume = 0;
+    // uint8_t currentSoftMute = 1;                                //!< Stores current softmute for AM and FM (0 = enable; 1 = disable )
+    // uint8_t currentAudioMute = 1;                               //!< Stores the current audio mute.
+    // uint8_t currentAudioBass = 0;                               //!< Stores the current audio basss value. See Register VOLUME (Address 0x04)
+    // uint8_t currentAntiPop = 0;
 
 
 
 
 public:
-    void setRegister(uint8_t reg, uint16_t parameter);
-    uint16_t getRegister(uint8_t reg);
+    void setRegister(int reg, uint16_t parameter);
+    uint16_t getRegister(int reg);
 
     uint16_t getDeviceId();
     void enable(uint8_t on_off);
@@ -580,10 +580,14 @@ public:
     uint32_t getFrequency();
 
     void seekStation(uint8_t up_down);
-
-
     void setAntennaTuneCapacitor(uint16_t capacitor);
 
     inline uint8_t getCurrentMode() { return this->currentMode; };
+
+    int getFmRssi();
+    int getAmRssi();
+
+
+
 };
 

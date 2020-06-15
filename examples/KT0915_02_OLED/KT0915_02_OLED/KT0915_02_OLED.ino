@@ -131,11 +131,9 @@ void setup()
   // You can select the RESET pin and Crystal type you are using in your circuit. 
   // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
   radio.setup(RESET_PIN);
-
-  radio.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
   radio.setVolume(20); 
-  radio.setAudioBass(3);
-  
+  radio.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
+
   showStatus();
 }
 
@@ -331,13 +329,13 @@ void showStatus()
 */
 void showRSSI()
 {
-  /*
   char sR[20];
+  
+  sprintf(sR,"RSSI:%3.3idBuV", (band[bandIdx].mode ==  MODE_FM)? radio.getFmRssi() : radio.getAmRssi());
 
-  sprintf(sR,"RSSI:%3.3idBuV", radio.getRSSI());
   printValue(0, 40, oldRssi, sR, 6, 1);
   oled.display();
-  */
+
 
 }
 
@@ -373,13 +371,14 @@ void volumeButton(byte d)
 
 void seekButton( uint8_t up_down ) {
 
-    if (idxBass == 3) idxBass = 0;
-    idxBass++;
-    radio.setAudioBass(idxBass); 
+    radio.seekStation(1);
+    // if (idxBass == 3) idxBass = 0;
+    // idxBass++;
+    // radio.setAudioBass(idxBass); 
     // idxBass = !idxBass;
     // radio.setAudioMute(idxBass);
     // showFrequency();
-    delay(100);
+    delay(200);
 }
 
 

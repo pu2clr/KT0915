@@ -35,7 +35,7 @@ void KT0915::setI2CBusAddress(int deviceAddress)
  * @param reg        register number to be written (0x1 ~ 0x3C) - See #define REG_ in KT0915.h 
  * @param parameter  content you want to store 
  */
-void KT0915::setRegister(uint8_t reg, uint16_t parameter)
+void KT0915::setRegister(int reg, uint16_t parameter)
 {
 
     word16_to_bytes param;
@@ -59,17 +59,19 @@ void KT0915::setRegister(uint8_t reg, uint16_t parameter)
  * @param reg  register number to be read (0x1 ~ 0x3C) - See #define REG_ in KT0915.h 
  * @return the register content
  */
-uint16_t KT0915::getRegister(uint8_t reg)
+uint16_t KT0915::getRegister(int reg)
 {
 
     word16_to_bytes result;
 
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
-    Wire.endTransmission();
+    Wire.endTransmission(false);
+    delayMicroseconds(6000);
     Wire.requestFrom(this->deviceAddress, 2);
     result.refined.highByte = Wire.read();
     result.refined.lowByte = Wire.read();
+    Wire.endTransmission(true);
     delayMicroseconds(6000);
 
     return result.raw;
@@ -262,10 +264,12 @@ void KT0915::setVolumeDialModeOff()
 void KT0915::setVolume(uint8_t volume)
 {
     kt09xx_rxcfg rx;
-    if (volume > 31)
-        return;
+
     rx.raw = getRegister(REG_RXCFG);
     rx.refined.VOLUME = volume;
+    rx.refined.RESERVED1 = 0b1000000;
+    rx.refined.RESERVED2 = 0b100;
+    rx.refined.STDBY = 0;
     setRegister(REG_RXCFG, rx.raw);
     this->currentVolume = volume;
 }
@@ -315,16 +319,8 @@ uint8_t KT0915::getVolume()
 void KT0915::setSoftMute(uint8_t on_off)
 {
     kt09xx_volume v;
-
-    v.refined.AMDSMUTE = v.refined.FMDSMUTE = this->currentSoftMute = !on_off;
-
-    v.refined.BASS = this->currentAudioBass;
-    v.refined.DMUTE = this->currentAudioMute;
-
-    v.refined.RESERVED3 = v.refined.RESERVED1 = 0;
-    v.refined.RESERVED2 = 2;
-    v.refined.POP = this->currentAntiPop;
-
+    v.raw = getRegister(REG_VOLUME);
+    v.refined.AMDSMUTE = v.refined.FMDSMUTE  = !on_off;
     setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
 }
 
@@ -344,13 +340,8 @@ void KT0915::setSoftMute(uint8_t on_off)
 void KT0915::setAudioBass(uint8_t bass)
 {
     kt09xx_volume v;
-
-    v.refined.BASS = this->currentAudioBass = bass;
-    v.refined.DMUTE = this->currentAudioMute;
-    v.refined.AMDSMUTE = v.refined.FMDSMUTE = this->currentSoftMute;
-    v.refined.RESERVED3 = v.refined.RESERVED1 = 0;
-    v.refined.RESERVED2 = 2;
-    v.refined.POP = this->currentAntiPop;
+    v.raw = getRegister(REG_VOLUME);
+    v.refined.BASS = bass;
     setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
 }
 
@@ -363,12 +354,8 @@ void KT0915::setAudioMute(uint8_t mute_on_off)
 {
     kt09xx_volume v;
 
-    v.refined.DMUTE = this->currentAudioMute = !mute_on_off;
-    v.refined.BASS = this->currentAudioBass;
-    v.refined.AMDSMUTE = v.refined.FMDSMUTE = this->currentSoftMute;
-    v.refined.RESERVED3 = v.refined.RESERVED1 = 0;
-    v.refined.RESERVED2 = 2;
-    v.refined.POP = this->currentAntiPop;
+    v.raw = getRegister(REG_VOLUME);
+    v.refined.DMUTE = !mute_on_off;
     setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
 }
 
@@ -389,12 +376,7 @@ void KT0915::setAudioMute(uint8_t mute_on_off)
 void KT0915::setAudioAntiPop(uint8_t value)
 {
     kt09xx_volume v;
-    v.refined.POP = this->currentAntiPop = value;
-    v.refined.DMUTE = this->currentAudioMute;
-    v.refined.BASS = this->currentAudioBass;
-    v.refined.AMDSMUTE = v.refined.FMDSMUTE = this->currentSoftMute;
-    v.refined.RESERVED3 = v.refined.RESERVED1 = 0;
-    v.refined.RESERVED2 = 2;
+    v.refined.POP = value;
     setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
 }
 
@@ -543,17 +525,13 @@ void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
 {
     kt09xx_amsyscfg reg;
 
-    // setRegister(0x16, 0b0000000000000010);
-    // setRegister(0x0F, 0b1000100000011001);
-
     this->currentStep = step;
     this->currentFrequency = default_frequency;
     this->minimumFrequency = minimum_frequency;
     this->maximumFrequency = maximum_frequency;
     this->currentMode = MODE_FM;
 
-    reg.raw = 0;
-    reg.refined.RESERVED1 = 1;
+    reg.raw = getRegister(REG_AMSYSCFG);
     reg.refined.AM_FM = MODE_FM;
     reg.refined.USERBAND = this->currentDialMode;
     reg.refined.REFCLK = this->currentRefClockType;
@@ -587,8 +565,7 @@ void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
     this->maximumFrequency = maximum_frequency;
     this->currentMode = MODE_AM;
 
-    reg.raw = 0;
-    reg.refined.RESERVED1 = 1;
+    reg.raw = getRegister(REG_AMSYSCFG);
     reg.refined.AM_FM = MODE_AM;
     reg.refined.USERBAND = this->currentDialMode;
     reg.refined.REFCLK = this->currentRefClockType;
@@ -627,6 +604,7 @@ void KT0915::setFrequency(uint32_t frequency)
     }
 
     this->currentFrequency = frequency;
+
     delay(30);
 }
 
@@ -707,4 +685,17 @@ void KT0915::seekStation(uint8_t up_down)
         this->currentFrequency = t.refined.FMCHAN * 50;
     } while (st.refined.STC == 0 );
     */
+
 }
+
+int KT0915::getFmRssi() {
+    kt09xx_statusa r;
+    r.raw = getRegister(REG_STATUSA);
+    return (r.refined.FMRSSI * 3);   
+};
+
+int KT0915::getAmRssi(){
+    kt09xx_amdstatusa r;
+    r.raw = getRegister(REG_AMSTATUSA);
+    return (r.refined.AMRSSI * 3);
+};
