@@ -24,6 +24,8 @@
 #define MODE_FM     0
 #define MODE_AM     1
 
+#define TURN_ON     1
+#define TURN_OFF    0
 
 #define OSCILLATOR_32KHZ    0      //  32.768KHz 
 #define OSCILLATOR_6_5MHZ   1      //  6.5MHz 
@@ -513,10 +515,10 @@ typedef union {
 class KT0915 {
 
 protected:
+
     int deviceAddress = KT0915_I2C_ADDRESS;
     int enablePin = -1;
 
-    uint8_t volume;                                         //!< Stores the current volume
     uint16_t currentStep;                                   //!< Stores the current step
     uint32_t currentFrequency;                              //!< Stores the current frequency
     uint32_t minimumFrequency;                              //!< Stores the minimum frequency for the current band
@@ -526,7 +528,16 @@ protected:
     uint8_t currentRefClockEnabled = REF_CLOCK_DISABLE;     //!< Strores 0 = Crystal; 1 = Reference clock
     uint8_t currentDialMode = DIAL_MODE_OFF;                //!< Stores the default Dial Mode (OFF)
     uint16_t deviceId;
+    
+
     uint8_t currentVolume;
+    uint8_t currentSoftMute = 1;                                //!< Stores current softmute for AM and FM (0 = enable; 1 = disable )
+    uint8_t currentAudioMute = 1;                               //!< Stores the current audio mute.
+    uint8_t currentAudioBass = 0;                               //!< Stores the current audio basss value. See Register VOLUME (Address 0x04)
+    uint8_t currentAntiPop = 0;
+
+
+
 
 public:
     void setRegister(uint8_t reg, uint16_t parameter);
@@ -547,9 +558,18 @@ public:
     void setVolume(uint8_t value);
     void setVolumeUp(); 
     void setVolumeDown();
+    uint8_t getVolume();
+
+    void setSoftMute(uint8_t on_off);
+    void setAudioBass(uint8_t bass);
+    void setAudioAntiPop(uint8_t value);
+    void setAudioMute(uint8_t mute_on_off);
 
     void setDeEmphasis(uint8_t value);
     void setMono(bool on_off);
+
+    void setFmAfc(uint8_t on_off);
+    void setAmAfc(uint8_t on_off);
 
     void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
     void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
@@ -558,6 +578,10 @@ public:
     void frequencyUp();
     void frequencyDown();
     uint32_t getFrequency();
+
+    void seekStation(uint8_t up_down);
+
+
     void setAntennaTuneCapacitor(uint16_t capacitor);
 
     inline uint8_t getCurrentMode() { return this->currentMode; };

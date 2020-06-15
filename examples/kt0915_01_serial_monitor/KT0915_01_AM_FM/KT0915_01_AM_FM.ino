@@ -1,3 +1,36 @@
+/*
+   Test and validation of the PU2CLR KT0915 Arduino Library.
+   It is a FM, MW (520 to 1710Khz)
+   
+   ATTENTION:  Please, avoid using the computer connected to the mains during testing.
+
+   The main advantages of using this sketch are: 
+    1) It is a easy way to check if your circuit is working;
+    2) You do not need to connect any display device to make your radio works;
+    3) You do not need connect any push buttons or encoders to change volume and frequency;
+    4) The Arduino IDE is all you need to control the radio.  
+   
+   This sketch has been successfully tested on:
+    1) Pro Mini 3.3V; 
+    2) UNO (by using a voltage converter); 
+
+  KT0915 and Arduino Pro Mini wire up
+  
+   | KT0915 pin     | Arduino pin | Description | 
+   | -----------    | ----------- | ----------- |
+   | ENABLE (pin 9) |   12        | It is optional. The KT0915 pin 9 can be connected to +Vcc directly |
+   | CLK  (pin 14)  |   A5        |             |
+   | SDA  (pin 15)  |   A4        |             |
+
+
+  I strongly recommend starting with this sketch.
+
+  See schematic: https://pu2clr.github.io/KT0915/
+
+  PU2CLR KT0915 API documentation: https://pu2clr.github.io/KT0915/extras/docs/html/index.html
+
+  By Ricardo Lima Caratti, 2020.
+*/
 
 #include <KT0915.h>
 
@@ -29,7 +62,9 @@ void setup() {
 
 void showHelp()
 {
-  Serial.println("Type F to FM; A to MW");
+  Serial.print("\nCommands\n");
+  Serial.println("==================================================");
+  Serial.println("Type F to FM; A to MW; 1 to SW");
   Serial.println("Type U to increase and D to decrease the frequency");
   Serial.println("Type S or s to seek station Up or Down");
   Serial.println("Type + or - to volume Up or Down");
@@ -90,7 +125,7 @@ void loop()
       radio.frequencyDown();
       break;
     case 'S':
-      // radio.seekStation(1);
+      // radio.seekStation();
       break;
     case 's':
       // radio.seekStation(0);

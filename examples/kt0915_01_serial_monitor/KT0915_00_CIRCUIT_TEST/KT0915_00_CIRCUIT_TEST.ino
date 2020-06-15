@@ -14,14 +14,13 @@
     1) Pro Mini 3.3V; 
     2) UNO (by using a voltage converter); 
 
-    The table below shows the Si4735 and Arduino Pro Mini pin connections 
-    
-    | KT0915 pin      |  Arduino Pin  |
-    | ----------------| ------------  |
-    | ENABLE (pin )   |     12        |
-    | SDA  (pin 15)   |     A4        |
-    | CLK  (pin 16)   |     A5        |
-
+  KT0915 and Arduino Pro Mini wire up
+  
+   | KT0915 pin     | Arduino pin | Description | 
+   | -----------    | ----------- | ----------- |
+   | ENABLE (pin 9) |   12        | It is optional. The KT0915 pin 9 can be connected to +Vcc directly |
+   | CLK  (pin 14)  |   A5        |             |
+   | SDA  (pin 15)  |   A4        |             |
 
   I strongly recommend starting with this sketch.
 
@@ -59,6 +58,7 @@ void setup() {
   Serial.print("\nCrystal Ready..............:");
   Serial.print(radio.isCrystalReady());
 
+
   radio.setVolume(23);
   // Sets the FM mode and tune on fmFreq and 100KHz step
   radio.setFM(84000,108000,fmFreq,100);
@@ -68,6 +68,12 @@ void setup() {
   Serial.println(" MHz");
   Serial.print("\nIf you got here and are listening to a station, your circuit is probably ok!");
   Serial.print("\nIf you are not listening to a station, try change the value of: fmFreq variable!");
+
+  kt09xx_volume x;
+  x.refined.DMUTE = 0;
+  radio.setRegister(REG_VOLUME,x.raw);
+  Serial.print("\nVOLUME REGISTER: ");
+  Serial.print(radio.getRegister(REG_VOLUME),BIN);  
  
 }
 

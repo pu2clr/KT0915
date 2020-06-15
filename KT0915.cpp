@@ -35,20 +35,21 @@ void KT0915::setI2CBusAddress(int deviceAddress)
  * @param reg        register number to be written (0x1 ~ 0x3C) - See #define REG_ in KT0915.h 
  * @param parameter  content you want to store 
  */
-void KT0915::setRegister(uint8_t reg, uint16_t parameter) {
+void KT0915::setRegister(uint8_t reg, uint16_t parameter)
+{
 
-    word16_to_bytes param; 
-    
+    word16_to_bytes param;
+
     param.raw = parameter;
 
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
-    Wire.write(param.refined.highByte);  
-    delay(5);         
-    Wire.write(param.refined.lowByte);   
-    delay(5);
+
+    Wire.write(param.refined.highByte);
+    Wire.write(param.refined.lowByte);
+
     Wire.endTransmission();
-    delayMicroseconds(3000);
+    delayMicroseconds(6000);
 }
 
 /**
@@ -58,18 +59,18 @@ void KT0915::setRegister(uint8_t reg, uint16_t parameter) {
  * @param reg  register number to be read (0x1 ~ 0x3C) - See #define REG_ in KT0915.h 
  * @return the register content
  */
-uint16_t KT0915::getRegister(uint8_t reg) {
+uint16_t KT0915::getRegister(uint8_t reg)
+{
 
     word16_to_bytes result;
 
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
     Wire.endTransmission();
-    delayMicroseconds(3000);
     Wire.requestFrom(this->deviceAddress, 2);
     result.refined.highByte = Wire.read();
     result.refined.lowByte = Wire.read();
-    delayMicroseconds(3000);
+    delayMicroseconds(6000);
 
     return result.raw;
 }
@@ -81,7 +82,7 @@ uint16_t KT0915::getRegister(uint8_t reg) {
  */
 uint16_t KT0915::getDeviceId()
 {
-    this->deviceId  = getRegister(REG_CHIP_ID);
+    this->deviceId = getRegister(REG_CHIP_ID);
     return this->deviceId;
 }
 
@@ -91,7 +92,8 @@ uint16_t KT0915::getDeviceId()
  * @return true  
  * @return false 
  */
-bool KT0915::isCrystalReady() {
+bool KT0915::isCrystalReady()
+{
     kt09xx_statusa reg;
     reg.raw = getRegister(REG_STATUSA);
     return reg.refined.XTAL_OK;
@@ -125,15 +127,14 @@ bool KT0915::isCrystalReady() {
 void KT0915::setReferenceClockType(uint8_t crystal, uint8_t ref_clock)
 {
     kt09xx_amsyscfg reg;
-    reg.raw = getRegister(REG_AMSYSCFG);  // Gets the current value of the register
-    reg.refined.REFCLK = crystal;         // Changes just crystal parameter
-    reg.refined.RCLK_EN = ref_clock;      // Reference Clock Enable => Crystal
-    setRegister(REG_AMSYSCFG, reg.raw);   // Strores the new value to the register
+    reg.raw = getRegister(REG_AMSYSCFG); // Gets the current value of the register
+    reg.refined.REFCLK = crystal;        // Changes just crystal parameter
+    reg.refined.RCLK_EN = ref_clock;     // Reference Clock Enable => Crystal
+    setRegister(REG_AMSYSCFG, reg.raw);  // Strores the new value to the register
 
     this->currentRefClockType = crystal;
     this->currentRefClockEnabled = ref_clock;
 }
-
 
 /**
  * @ingroup GA03
@@ -145,10 +146,10 @@ void KT0915::setReferenceClockType(uint8_t crystal, uint8_t ref_clock)
  * 
  * @param on_off  1 = enable; 0 = disable
  */
-void KT0915::enable( uint8_t on_off)
+void KT0915::enable(uint8_t on_off)
 {
     if (this->enablePin < 0)
-        return; 
+        return;
     digitalWrite(this->enablePin, on_off);
     delay(10);
 }
@@ -184,11 +185,14 @@ void KT0915::setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequ
 
     // TODO: Sets the frequency limits for user and
 
-    if ( this->currentMode == MODE_AM) {
+    if (this->currentMode == MODE_AM)
+    {
         uf.refined.USER_START_CHAN = minimu_frequency;
         uc.refined.USER_CHAN_NUM = (maximum_frequency - minimu_frequency) / this->currentStep;
         ug.refined.USER_GUARD = 0x0011;
-    } else {
+    }
+    else
+    {
         uf.refined.USER_START_CHAN = minimu_frequency / 50;
         uc.refined.USER_CHAN_NUM = ((maximum_frequency - minimu_frequency) / 50) / this->currentStep;
         ug.refined.USER_GUARD = 0x001D;
@@ -197,7 +201,6 @@ void KT0915::setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequ
     setRegister(REG_USERSTARTCH, uf.raw);
     setRegister(REG_USERGUARD, ug.raw);
     setRegister(REG_USERCHANNUM, uc.raw);
-
 };
 
 /**
@@ -251,28 +254,148 @@ void KT0915::setVolumeDialModeOff()
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets the audio volume level
  * @details This method is used to control the audio volume level. The value 0 mutes the  device and 31 sets the device to the maximum volume.
  * @param volume between 0 and 31. 
  */
-void KT0915::setVolume(uint8_t volume) {
+void KT0915::setVolume(uint8_t volume)
+{
     kt09xx_rxcfg rx;
-    if ( volume > 31) return;
+    if (volume > 31)
+        return;
     rx.raw = getRegister(REG_RXCFG);
     rx.refined.VOLUME = volume;
     setRegister(REG_RXCFG, rx.raw);
     this->currentVolume = volume;
 }
 
+/**
+ * @ingroup GA03
+ * @brief Increases the audio volume
+ * 
+ */
 void KT0915::setVolumeUp()
 {
-    if (this->currentVolume == 31 ) return;
+    if (this->currentVolume == 31)
+        return;
     setVolume(this->currentVolume + 1);
 }
+
+/**
+ * @ingroup GA03
+ * @brief Decreases the audio volume
+ * 
+ */
 void KT0915::setVolumeDown()
 {
-    if (this->currentVolume == 0) return;
+    if (this->currentVolume == 0)
+        return;
     setVolume(this->currentVolume - 1);
+}
+
+/**
+ * @ingroup GA03
+ * @brief Returns the current audio volume 
+ * @details Returns a value between 0 and 31.
+ * @return uint8_t Value between 0 and 31.
+ */
+uint8_t KT0915::getVolume()
+{
+    return this->currentVolume;
+}
+
+/**
+ * @ingroup GA03
+ * @brief AM and FM Softmute control
+ * @details The internal KT0915 device register, FM and AM SMUTE 0 means enable and 1 disable. This function inverts this concept. So 1 means enable and 0 disable.
+ *  
+ * @param on_off 1 = ON (enable); 0 = OFF disable
+ */
+void KT0915::setSoftMute(uint8_t on_off)
+{
+    kt09xx_volume v;
+
+    v.refined.AMDSMUTE = v.refined.FMDSMUTE = this->currentSoftMute = !on_off;
+
+    v.refined.BASS = this->currentAudioBass;
+    v.refined.DMUTE = this->currentAudioMute;
+
+    v.refined.RESERVED3 = v.refined.RESERVED1 = 0;
+    v.refined.RESERVED2 = 2;
+    v.refined.POP = this->currentAntiPop;
+
+    setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
+}
+
+/**
+ * @ingroup GA03
+ * @brief Sets the bass level
+ * @details  Bass Boost Effect Mode Selection
+ * | Value | Level   |
+ * | ----- | ------- |
+ * |   0   | Disable |
+ * |   1   | Low     |
+ * |   2   | Med     |
+ * |   3   | High    | 
+ *  
+ * @param on_off  see table above
+ */
+void KT0915::setAudioBass(uint8_t bass)
+{
+    kt09xx_volume v;
+
+    v.refined.BASS = this->currentAudioBass = bass;
+    v.refined.DMUTE = this->currentAudioMute;
+    v.refined.AMDSMUTE = v.refined.FMDSMUTE = this->currentSoftMute;
+    v.refined.RESERVED3 = v.refined.RESERVED1 = 0;
+    v.refined.RESERVED2 = 2;
+    v.refined.POP = this->currentAntiPop;
+    setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
+}
+
+/**
+ * @brief  Sets the output audio mute
+ * 
+ * @param mute_on_off 1 = mute; 0 unmute
+ */
+void KT0915::setAudioMute(uint8_t mute_on_off)
+{
+    kt09xx_volume v;
+
+    v.refined.DMUTE = this->currentAudioMute = !mute_on_off;
+    v.refined.BASS = this->currentAudioBass;
+    v.refined.AMDSMUTE = v.refined.FMDSMUTE = this->currentSoftMute;
+    v.refined.RESERVED3 = v.refined.RESERVED1 = 0;
+    v.refined.RESERVED2 = 2;
+    v.refined.POP = this->currentAntiPop;
+    setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
+}
+
+/**
+ * @ingroup GA03
+ * @brief Sets Audio DAC Anti-pop Configuration
+ * 
+ * @details  Bass Boost Effect Mode Selection
+ * | Value | AC - coupling capacitor   |
+ * | ----- | ------------------------- |
+ * |   0   | 100uF   |
+ * |   1   | 60uF    |
+ * |   2   | 20uF    |
+ * |   3   | 10uF    | 
+ *  
+ * @param on_off  see table above
+ */
+void KT0915::setAudioAntiPop(uint8_t value)
+{
+    kt09xx_volume v;
+    v.refined.POP = this->currentAntiPop = value;
+    v.refined.DMUTE = this->currentAudioMute;
+    v.refined.BASS = this->currentAudioBass;
+    v.refined.AMDSMUTE = v.refined.FMDSMUTE = this->currentSoftMute;
+    v.refined.RESERVED3 = v.refined.RESERVED1 = 0;
+    v.refined.RESERVED2 = 2;
+    setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
 }
 
 /**
@@ -327,6 +450,8 @@ void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
     enable(1);
 
     setReferenceClockType(oscillator_type, ref_clock);
+
+    setRegister(REG_VOLUME, 0b1100000010000000); // Audio volume default values
 }
 
 /** 
@@ -344,8 +469,8 @@ void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
 void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
 {
     kt09xx_amcali reg;
-    reg.refined.CAP_INDEX = capacitor; 
-    setRegister(REG_AMCALI, reg.raw);    // Strores the new value to the register
+    reg.refined.CAP_INDEX = capacitor;
+    setRegister(REG_AMCALI, reg.raw); // Strores the new value to the register
 };
 
 /**
@@ -354,12 +479,12 @@ void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
  * @details Set this parameter to true to force mono or false to stereo
  * @param on_off true = mono; fale = stereo
  */
-void KT0915::setMono(bool on_off) 
+void KT0915::setMono(bool on_off)
 {
     kt09xx_dspcfga reg;
     reg.raw = getRegister(REG_DSPCFGA);
     reg.refined.MONO = on_off;
-    setRegister(REG_DSPCFGA,reg.raw);
+    setRegister(REG_DSPCFGA, reg.raw);
 }
 
 /**
@@ -367,12 +492,40 @@ void KT0915::setMono(bool on_off)
  * @brief Sets the De-emphasis Time Constant Selection
  * @param value 0 = 75us; 1 = 50us 
  */
-void KT0915::setDeEmphasis(uint8_t value) 
+void KT0915::setDeEmphasis(uint8_t value)
 {
     kt09xx_dspcfga reg;
     reg.raw = getRegister(REG_DSPCFGA);
     reg.refined.DE = value;
     setRegister(REG_DSPCFGA, reg.raw);
+}
+
+/**
+ * @ingroup GA04
+ * @brief Sets FM AFC Disable Control 
+ * @details This function inverts the register enable/disable concept. So, here, 1 means enable and 0 disable.
+ * @param  on_off  1 = enable AFC; 0 = disable AFC.
+ */
+void KT0915::setFmAfc(uint8_t on_off)
+{
+    kt09xx_locfga r;
+    r.refined.FMAFCD = !on_off;
+    setRegister(REG_LOCFGA, r.raw);
+}
+
+/**
+ * @ingroup GA04
+ * @brief Sets AM AFC Disable Control 
+ * @details This function inverts the register enable/disable concept. So, here, 1 means enable and 0 disable.
+ * @param  on_off  1 = enable AFC; 0 = disable AFC.
+ */
+void KT0915::setAmAfc(uint8_t on_off)
+{
+    kt09xx_amsyscfg r;
+    r.raw = getRegister(REG_AMSYSCFG); // Gets the current value of the register
+    r.refined.RESERVED1 = 1;
+    r.refined.AMAFCD = !on_off;
+    setRegister(REG_AMSYSCFG, r.raw);
 }
 
 /**
@@ -402,17 +555,15 @@ void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
     reg.raw = 0;
     reg.refined.RESERVED1 = 1;
     reg.refined.AM_FM = MODE_FM;
-    reg.refined.USERBAND =  this->currentDialMode;
+    reg.refined.USERBAND = this->currentDialMode;
     reg.refined.REFCLK = this->currentRefClockType;
     reg.refined.RCLK_EN = this->currentRefClockEnabled;
     setRegister(REG_AMSYSCFG, reg.raw); // Stores the new value in the register
-  
 
-    if (this->currentDialMode == DIAL_MODE_ON) 
+    if (this->currentDialMode == DIAL_MODE_ON)
         setTuneDialModeOn(minimum_frequency, maximum_frequency);
     else
         setFrequency(default_frequency);
-  
 };
 
 /**
@@ -463,9 +614,9 @@ void KT0915::setFrequency(uint32_t frequency)
 
     if (this->currentMode == MODE_AM)
     {
-        reg_amchan.refined.AMTUNE = 1;      // TODO Check        
+        reg_amchan.refined.AMTUNE = 1; // TODO Check
         reg_amchan.refined.AMCHAN = frequency;
-        setRegister(REG_AMCHAN,reg_amchan.raw);
+        setRegister(REG_AMCHAN, reg_amchan.raw);
     }
     else
     {
@@ -476,6 +627,7 @@ void KT0915::setFrequency(uint32_t frequency)
     }
 
     this->currentFrequency = frequency;
+    delay(30);
 }
 
 /**
@@ -486,7 +638,8 @@ void KT0915::setFrequency(uint32_t frequency)
  * 
  * @see setFrequency
  */
-void KT0915::frequencyUp(){
+void KT0915::frequencyUp()
+{
     this->currentFrequency += this->currentStep;
     if (this->currentFrequency > this->maximumFrequency)
         this->currentFrequency = this->minimumFrequency;
@@ -502,7 +655,8 @@ void KT0915::frequencyUp(){
  * 
  * @see setFrequency
  */
-void KT0915::frequencyDown(){
+void KT0915::frequencyDown()
+{
     this->currentFrequency -= this->currentStep;
     if (this->currentFrequency < this->minimumFrequency)
         this->currentFrequency = this->maximumFrequency;
@@ -529,4 +683,28 @@ void KT0915::setStep(uint16_t step)
 uint32_t KT0915::getFrequency()
 {
     return this->currentFrequency;
+}
+
+/**
+ * @ingroup GA04
+ * @todo  Make it works
+ * @brief Seeks a station
+ */
+void KT0915::seekStation(uint8_t up_down)
+{
+    /*
+    kt09xx_seek s;
+    kt09xx_tune t;
+    kt09xx_statusa st;
+
+    do {
+        s.raw = 0;
+        s.refinied.DMUTEL = s.refinied.DMUTER = 1;
+        s.refinied.FMSPACE = 1;
+        setRegister(REG_SEEK, s.raw);
+        delay(50);
+        st.raw = getRegister(REG_STATUSA);
+        this->currentFrequency = t.refined.FMCHAN * 50;
+    } while (st.refined.STC == 0 );
+    */
 }
