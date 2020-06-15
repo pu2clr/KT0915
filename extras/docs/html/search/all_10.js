@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['volume_168',['volume',['../group___g_a01.html#a0ad4b90daf25b3869b75d60bc71ea826',1,'KT0915']]]
+  ['word16_5fto_5fbytes_182',['word16_to_bytes',['../group___g_a01.html#unionword16__to__bytes',1,'']]],
+  ['word16_5fto_5fbytes_2erefined_183',['word16_to_bytes.refined',['../group___g_a01.html#structword16__to__bytes_8refined',1,'']]]
 ];

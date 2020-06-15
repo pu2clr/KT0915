@@ -3,6 +3,8 @@ var _k_t0915_8h =
     [ "KT0915_I2C_ADDRESS", "_k_t0915_8h.html#aa709b65c74553a73a062cfdf66b42b0c", null ],
     [ "MODE_FM", "_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55", null ],
     [ "MODE_AM", "_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd", null ],
+    [ "TURN_ON", "_k_t0915_8h.html#a96701203b8a7febc3b53a7eede64433d", null ],
+    [ "TURN_OFF", "_k_t0915_8h.html#a20b9dd82db1ddc2ec72f24580fc5254f", null ],
     [ "OSCILLATOR_32KHZ", "_k_t0915_8h.html#a43a042a97315308b5845013f8511bb9c", null ],
     [ "OSCILLATOR_6_5MHZ", "_k_t0915_8h.html#a374287261975d5d1a2305ccd70dfd382", null ],
     [ "OSCILLATOR_7_6MHZ", "_k_t0915_8h.html#aed7ca3c077389e5f8aa9e443ae1ebaa3", null ],
