@@ -8,15 +8,11 @@ var searchData=
   ['contract_6',['CONTRACT',['../license_8txt.html#a11bbb92d08ed0375aed257ed87428ab5',1,'license.txt']]],
   ['copy_7',['copy',['../license_8txt.html#a5fc027ff17a37592346d4ce949961132',1,'license.txt']]],
   ['copyright_8',['Copyright',['../license_8txt.html#a6d046fad0357ac1277fe46baca5cc7de',1,'license.txt']]],
-  ['currentantipop_9',['currentAntiPop',['../group___g_a01.html#a9aefaffb66e5fd464cf9947fdf040c15',1,'KT0915']]],
-  ['currentaudiobass_10',['currentAudioBass',['../group___g_a01.html#aedb89a6c356385a1bbc2a9129ba27721',1,'KT0915']]],
-  ['currentaudiomute_11',['currentAudioMute',['../group___g_a01.html#ab83efc44bc7084427563249369a8f45b',1,'KT0915']]],
-  ['currentdialmode_12',['currentDialMode',['../group___g_a01.html#ac2cef3eb6691553e5b0c7ac0b9af719e',1,'KT0915']]],
-  ['currentfrequency_13',['currentFrequency',['../group___g_a01.html#a3533ee5bbbdc7ba6cba97af7b3c7ea32',1,'KT0915']]],
-  ['currentmode_14',['currentMode',['../group___g_a01.html#a7939c5335f901dae8b2fe68a3204c296',1,'KT0915']]],
-  ['currentrefclockenabled_15',['currentRefClockEnabled',['../group___g_a01.html#abf4b56d83961d4166697f2980e12534b',1,'KT0915']]],
-  ['currentrefclocktype_16',['currentRefClockType',['../group___g_a01.html#a54a26e685c91a31d3f3d88c1b967de49',1,'KT0915']]],
-  ['currentsoftmute_17',['currentSoftMute',['../group___g_a01.html#afef24b1b9048281ac5afb1d764071a59',1,'KT0915']]],
-  ['currentstep_18',['currentStep',['../group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361',1,'KT0915']]],
-  ['currentvolume_19',['currentVolume',['../group___g_a01.html#afe7b4225bac1d1ebaeeb7078261ad33a',1,'KT0915']]]
+  ['currentdialmode_9',['currentDialMode',['../group___g_a01.html#ac2cef3eb6691553e5b0c7ac0b9af719e',1,'KT0915']]],
+  ['currentfrequency_10',['currentFrequency',['../group___g_a01.html#a3533ee5bbbdc7ba6cba97af7b3c7ea32',1,'KT0915']]],
+  ['currentmode_11',['currentMode',['../group___g_a01.html#a7939c5335f901dae8b2fe68a3204c296',1,'KT0915']]],
+  ['currentrefclockenabled_12',['currentRefClockEnabled',['../group___g_a01.html#abf4b56d83961d4166697f2980e12534b',1,'KT0915']]],
+  ['currentrefclocktype_13',['currentRefClockType',['../group___g_a01.html#a54a26e685c91a31d3f3d88c1b967de49',1,'KT0915']]],
+  ['currentstep_14',['currentStep',['../group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361',1,'KT0915']]],
+  ['currentvolume_15',['currentVolume',['../group___g_a01.html#afe7b4225bac1d1ebaeeb7078261ad33a',1,'KT0915']]]
 ];

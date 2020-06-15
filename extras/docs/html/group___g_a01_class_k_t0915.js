@@ -1,7 +1,7 @@
 var group___g_a01_class_k_t0915 =
 [
-    [ "setRegister", "group___g_a03.html#ga666259e108dcdea1e2f62af98697561c", null ],
-    [ "getRegister", "group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e", null ],
+    [ "setRegister", "group___g_a03.html#gae6726c32ff9af30dddff3b5a260fe95f", null ],
+    [ "getRegister", "group___g_a03.html#ga4d3066dd825da6d9950582038fa7e58e", null ],
     [ "getDeviceId", "group___g_a03.html#ga86ca0155e1235f35bd68c5344195ed95", null ],
     [ "enable", "group___g_a03.html#gac741d1e6ed6c02b80166ee1abfb591b1", null ],
     [ "setI2CBusAddress", "group___g_a03.html#ga93df47f64b36e60d25332990bfa02baf", null ],
@@ -25,7 +25,10 @@ var group___g_a01_class_k_t0915 =
     [ "setFmAfc", "group___g_a04.html#ga0a093372898d7699e03089b9dfd9dc1c", null ],
     [ "setAmAfc", "group___g_a04.html#ga39c12beb17131b09f1a91de0d3e55b30", null ],
     [ "setFM", "group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633", null ],
-    [ "setAM", "group___g_a04.html#ga55b63fb7158d156249eefad8b27943e2", null ],
+    [ "setAM", "group___g_a04.html#ga8312ad7dcfe6e854bb0c07d0804000c4", null ],
+    [ "setAmSpace", "group___g_a04.html#gab4dd1faf6eeabcf5a838dbf6cf36f08e", null ],
+    [ "setAmBandwidth", "group___g_a04.html#ga0d56d4b56e4cf9021d5e0934b7c54940", null ],
+    [ "getAmBandwidth", "group___g_a04.html#ga8fe4637f04c8c2955d4f411871134cce", null ],
     [ "setFrequency", "group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323", null ],
     [ "setStep", "group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d", null ],
     [ "frequencyUp", "group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7", null ],
@@ -34,6 +37,8 @@ var group___g_a01_class_k_t0915 =
     [ "seekStation", "group___g_a04.html#ga37d377dec717d39933fd351d725ac80b", null ],
     [ "setAntennaTuneCapacitor", "group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0", null ],
     [ "getCurrentMode", "group___g_a01.html#a44a698eed131e9d8e4d309cc69abdf16", null ],
+    [ "getFmRssi", "group___g_a01.html#a30345781168d0664eaf8296a03d76d45", null ],
+    [ "getAmRssi", "group___g_a01.html#a90db469906bcb6a8691dc0c0c44c91c1", null ],
     [ "deviceAddress", "group___g_a01.html#ae18a907888005f0a781600e2b8ca9daf", null ],
     [ "enablePin", "group___g_a01.html#a2d46a1bc8b3b657f1e81c59a07d2237c", null ],
     [ "currentStep", "group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361", null ],
@@ -45,9 +50,5 @@ var group___g_a01_class_k_t0915 =
     [ "currentRefClockEnabled", "group___g_a01.html#abf4b56d83961d4166697f2980e12534b", null ],
     [ "currentDialMode", "group___g_a01.html#ac2cef3eb6691553e5b0c7ac0b9af719e", null ],
     [ "deviceId", "group___g_a01.html#a3440fdf17cc73eb8193cc357aba3218d", null ],
-    [ "currentVolume", "group___g_a01.html#afe7b4225bac1d1ebaeeb7078261ad33a", null ],
-    [ "currentSoftMute", "group___g_a01.html#afef24b1b9048281ac5afb1d764071a59", null ],
-    [ "currentAudioMute", "group___g_a01.html#ab83efc44bc7084427563249369a8f45b", null ],
-    [ "currentAudioBass", "group___g_a01.html#aedb89a6c356385a1bbc2a9129ba27721", null ],
-    [ "currentAntiPop", "group___g_a01.html#a9aefaffb66e5fd464cf9947fdf040c15", null ]
+    [ "currentVolume", "group___g_a01.html#afe7b4225bac1d1ebaeeb7078261ad33a", null ]
 ];

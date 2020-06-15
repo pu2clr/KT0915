@@ -1,8 +1,8 @@
 var group___g_a03 =
 [
     [ "setI2CBusAddress", "group___g_a03.html#ga93df47f64b36e60d25332990bfa02baf", null ],
-    [ "setRegister", "group___g_a03.html#ga666259e108dcdea1e2f62af98697561c", null ],
-    [ "getRegister", "group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e", null ],
+    [ "setRegister", "group___g_a03.html#gae6726c32ff9af30dddff3b5a260fe95f", null ],
+    [ "getRegister", "group___g_a03.html#ga4d3066dd825da6d9950582038fa7e58e", null ],
     [ "getDeviceId", "group___g_a03.html#ga86ca0155e1235f35bd68c5344195ed95", null ],
     [ "setReferenceClockType", "group___g_a03.html#gaea3de0c32d82b229aff25e66c8a1fdc9", null ],
     [ "enable", "group___g_a03.html#gac741d1e6ed6c02b80166ee1abfb591b1", null ],

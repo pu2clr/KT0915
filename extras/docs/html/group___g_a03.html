@@ -98,12 +98,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga93df47f64b36e60d25332990bfa02baf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga93df47f64b36e60d25332990bfa02baf">KT0915::setI2CBusAddress</a> (int <a class="el" href="group___g_a01.html#ae18a907888005f0a781600e2b8ca9daf">deviceAddress</a>)</td></tr>
 <tr class="memdesc:ga93df47f64b36e60d25332990bfa02baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set I2C bus address.  <a href="group___g_a03.html#ga93df47f64b36e60d25332990bfa02baf">More...</a><br /></td></tr>
 <tr class="separator:ga93df47f64b36e60d25332990bfa02baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga666259e108dcdea1e2f62af98697561c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga666259e108dcdea1e2f62af98697561c">KT0915::setRegister</a> (uint8_t reg, uint16_t parameter)</td></tr>
-<tr class="memdesc:ga666259e108dcdea1e2f62af98697561c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the a value to a given KT09XX register.  <a href="group___g_a03.html#ga666259e108dcdea1e2f62af98697561c">More...</a><br /></td></tr>
-<tr class="separator:ga666259e108dcdea1e2f62af98697561c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa76e7e46c4bcfff5ac46b68cb772ff4e"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e">KT0915::getRegister</a> (uint8_t reg)</td></tr>
-<tr class="memdesc:gaa76e7e46c4bcfff5ac46b68cb772ff4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a given KT09XX register content.  <a href="group___g_a03.html#gaa76e7e46c4bcfff5ac46b68cb772ff4e">More...</a><br /></td></tr>
-<tr class="separator:gaa76e7e46c4bcfff5ac46b68cb772ff4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6726c32ff9af30dddff3b5a260fe95f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gae6726c32ff9af30dddff3b5a260fe95f">KT0915::setRegister</a> (int reg, uint16_t parameter)</td></tr>
+<tr class="memdesc:gae6726c32ff9af30dddff3b5a260fe95f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the a value to a given KT09XX register.  <a href="group___g_a03.html#gae6726c32ff9af30dddff3b5a260fe95f">More...</a><br /></td></tr>
+<tr class="separator:gae6726c32ff9af30dddff3b5a260fe95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d3066dd825da6d9950582038fa7e58e"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga4d3066dd825da6d9950582038fa7e58e">KT0915::getRegister</a> (int reg)</td></tr>
+<tr class="memdesc:ga4d3066dd825da6d9950582038fa7e58e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a given KT09XX register content.  <a href="group___g_a03.html#ga4d3066dd825da6d9950582038fa7e58e">More...</a><br /></td></tr>
+<tr class="separator:ga4d3066dd825da6d9950582038fa7e58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga86ca0155e1235f35bd68c5344195ed95"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga86ca0155e1235f35bd68c5344195ed95">KT0915::getDeviceId</a> ()</td></tr>
 <tr class="memdesc:ga86ca0155e1235f35bd68c5344195ed95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Device Id.  <a href="group___g_a03.html#ga86ca0155e1235f35bd68c5344195ed95">More...</a><br /></td></tr>
 <tr class="separator:ga86ca0155e1235f35bd68c5344195ed95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,8 +195,8 @@ Basic</h1>
 
 </div>
 </div>
-<a id="ga666259e108dcdea1e2f62af98697561c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga666259e108dcdea1e2f62af98697561c">&#9670;&nbsp;</a></span>setRegister()</h2>
+<a id="gae6726c32ff9af30dddff3b5a260fe95f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae6726c32ff9af30dddff3b5a260fe95f">&#9670;&nbsp;</a></span>setRegister()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,7 +204,7 @@ Basic</h1>
         <tr>
           <td class="memname">void KT0915::setRegister </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>reg</em>, </td>
         </tr>
         <tr>
@@ -234,8 +234,8 @@ Basic</h1>
 
 </div>
 </div>
-<a id="gaa76e7e46c4bcfff5ac46b68cb772ff4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa76e7e46c4bcfff5ac46b68cb772ff4e">&#9670;&nbsp;</a></span>getRegister()</h2>
+<a id="ga4d3066dd825da6d9950582038fa7e58e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4d3066dd825da6d9950582038fa7e58e">&#9670;&nbsp;</a></span>getRegister()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -243,7 +243,7 @@ Basic</h1>
         <tr>
           <td class="memname">uint16_t KT0915::getRegister </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>reg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -281,7 +281,7 @@ Basic</h1>
 <p>Gets the Device Id. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint16_t 16 bits word with the device id number </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00083">83</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00085">85</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -351,7 +351,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00127">127</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00129">129</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -382,7 +382,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00149">149</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00151">151</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_k_t0915_8h_source.html#l00520">KT0915::enablePin</a>.</p>
 
@@ -431,7 +431,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00170">170</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00172">172</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -455,7 +455,7 @@ Basic</h1>
 <dd>
 <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a>; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00212">212</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00214">214</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +480,7 @@ Basic</h1>
 <p>The dial can be a variable resistor with the tap connected to VOL (pin 16).</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a>; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00234">234</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00236">236</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -504,7 +504,7 @@ Basic</h1>
 <dd>
 <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a>; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00248">248</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00250">250</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -532,7 +532,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00262">262</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00264">264</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -553,7 +553,7 @@ Basic</h1>
 
 <p>Increases the audio volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00278">278</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00282">282</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -574,7 +574,7 @@ Basic</h1>
 
 <p>Decreases the audio volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00290">290</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00294">294</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -596,7 +596,7 @@ Basic</h1>
 <p>Returns the current audio volume. </p>
 <p>Returns a value between 0 and 31. </p><dl class="section return"><dt>Returns</dt><dd>uint8_t Value between 0 and 31. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00303">303</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00307">307</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -625,7 +625,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00315">315</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00319">319</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -665,7 +665,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00344">344</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00340">340</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -705,7 +705,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00389">389</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00376">376</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -794,7 +794,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00445">445</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00427">427</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_k_t0915_8h_source.html#l00520">KT0915::enablePin</a>.</p>
 
@@ -806,7 +806,7 @@ Basic</h1>
 <div class="ttc" id="a_k_t0915_8h_html"><div class="ttname"><a href="_k_t0915_8h.html">KT0915.h</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_class_k_t0915"><div class="ttname"><a href="group___g_a01.html#class_k_t0915">KT0915</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00515">KT0915.h:515</a></div></div>
 <div class="ttc" id="a_k_t0915_8h_html_ab640fa4280beb79f0209204410eac051"><div class="ttname"><a href="_k_t0915_8h.html#ab640fa4280beb79f0209204410eac051">REF_CLOCK_DISABLE</a></div><div class="ttdeci">#define REF_CLOCK_DISABLE</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8h_source.html#l00042">KT0915.h:42</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_ga7004264a35366d5fd2ede1c43789f02b"><div class="ttname"><a href="group___g_a03.html#ga7004264a35366d5fd2ede1c43789f02b">KT0915::setup</a></div><div class="ttdeci">void setup(int enable_pin, uint8_t oscillator_type=OSCILLATOR_32KHZ, uint8_t ref_clock=REF_CLOCK_DISABLE)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00445">KT0915.cpp:445</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_ga7004264a35366d5fd2ede1c43789f02b"><div class="ttname"><a href="group___g_a03.html#ga7004264a35366d5fd2ede1c43789f02b">KT0915::setup</a></div><div class="ttdeci">void setup(int enable_pin, uint8_t oscillator_type=OSCILLATOR_32KHZ, uint8_t ref_clock=REF_CLOCK_DISABLE)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> <a href="_k_t0915_8cpp_source.html#l00427">KT0915.cpp:427</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

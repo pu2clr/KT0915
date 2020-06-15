@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['maximumfrequency_95',['maximumFrequency',['../group___g_a01.html#ae95f609a66e5da0432f1e5255955a871',1,'KT0915']]],
-  ['merchantability_96',['MERCHANTABILITY',['../license_8txt.html#a383a15303ad81a4fe142cc242a159500',1,'license.txt']]],
-  ['merge_97',['merge',['../license_8txt.html#aad4b713ca657a67ecbb454b02ceabff8',1,'license.txt']]],
-  ['minimumfrequency_98',['minimumFrequency',['../group___g_a01.html#a5ba74c1edc1401aed676ff83559d2b33',1,'KT0915']]],
-  ['mode_5fam_99',['MODE_AM',['../_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd',1,'KT0915.h']]],
-  ['mode_5ffm_100',['MODE_FM',['../_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55',1,'KT0915.h']]],
-  ['modify_101',['modify',['../license_8txt.html#a84db115c842c0bc29f97fd73629d8163',1,'license.txt']]]
+  ['maximumfrequency_94',['maximumFrequency',['../group___g_a01.html#ae95f609a66e5da0432f1e5255955a871',1,'KT0915']]],
+  ['merchantability_95',['MERCHANTABILITY',['../license_8txt.html#a383a15303ad81a4fe142cc242a159500',1,'license.txt']]],
+  ['merge_96',['merge',['../license_8txt.html#aad4b713ca657a67ecbb454b02ceabff8',1,'license.txt']]],
+  ['minimumfrequency_97',['minimumFrequency',['../group___g_a01.html#a5ba74c1edc1401aed676ff83559d2b33',1,'KT0915']]],
+  ['mode_5fam_98',['MODE_AM',['../_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd',1,'KT0915.h']]],
+  ['mode_5ffm_99',['MODE_FM',['../_k_t0915_8h.html#a46befaec21d3091b4530cdf8a6f93c55',1,'KT0915.h']]],
+  ['modify_100',['modify',['../license_8txt.html#a84db115c842c0bc29f97fd73629d8163',1,'license.txt']]]
 ];
