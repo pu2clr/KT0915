@@ -89,6 +89,7 @@ uint16_t KT0915::getDeviceId()
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets the Crystal Status information
  * 
  * @return true  
@@ -257,6 +258,27 @@ void KT0915::setVolumeDialModeOff()
 
 /**
  * @ingroup GA03
+ * @brief Audio Gain 
+ * @details This function set the audio gain you want to use. See table below.
+ * | value | Gain Selection |
+ * | ----- | -------------- | 
+ * |   0   |      3dB       |
+ * |   1   |      6dB       |
+ * |   2   |     -3dB       | 
+ * |   3   |      0dB       |         
+ * 
+ * @param gain  See table above
+ */
+void KT0915::setAudioGain(uint8_t gain)
+{
+    kt09xx_amsyscfg r;
+    r.raw = getRegister(REG_AMSYSCFG);
+    r.refined.AU_GAIN = gain;
+    setRegister(REG_AMSYSCFG, r.raw);
+}
+
+/**
+ * @ingroup GA03
  * @brief Sets the audio volume level
  * @details This method is used to control the audio volume level. The value 0 mutes the  device and 31 sets the device to the maximum volume.
  * @param volume between 0 and 31. 
@@ -267,9 +289,6 @@ void KT0915::setVolume(uint8_t volume)
 
     rx.raw = getRegister(REG_RXCFG);
     rx.refined.VOLUME = volume;
-    rx.refined.RESERVED1 = 0b1000000;
-    rx.refined.RESERVED2 = 0b100;
-    rx.refined.STDBY = 0;
     setRegister(REG_RXCFG, rx.raw);
     this->currentVolume = volume;
 }
@@ -428,12 +447,9 @@ void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
 {
     this->enablePin = enable_pin;
     pinMode(this->enablePin, OUTPUT);
-
     enable(1);
-
     setReferenceClockType(oscillator_type, ref_clock);
-
-    setRegister(REG_VOLUME, 0b1100000010000000); // Audio volume default values
+    setRegister(REG_VOLUME, 0b0000000010000000);  // Sets the VOLUME register with default values
 }
 
 /** 
@@ -468,6 +484,58 @@ void KT0915::setMono(bool on_off)
     reg.refined.MONO = on_off;
     setRegister(REG_DSPCFGA, reg.raw);
 }
+
+/**
+ * @ingroup GA04
+ * @brief Return true if the stereo indicator is set to 3;
+ * @return true is stereo
+ */
+bool KT0915::isFmStereo()
+{
+    kt09xx_statusa r;
+    r.raw = getRegister(REG_STATUSA);
+    return (r.refined.ST == 3);
+}
+
+/**
+ * @ingroup GA04
+ * @brief Gets the current FM RSSI 
+ * 
+ * @return int RSSI value
+ */
+int KT0915::getFmRssi()
+{
+    kt09xx_statusa r;
+    r.raw = getRegister(REG_STATUSA);
+    return (r.refined.FMRSSI * 3);
+};
+
+/**
+ * @ingroup GA04
+ * @brief Gets the current AM RSSI  
+ * 
+ * @return int RSSI value
+ */
+int KT0915::getAmRssi()
+{
+    kt09xx_amdstatusa r;
+    r.raw = getRegister(REG_AMSTATUSA);
+    return (r.refined.AMRSSI * 3);
+};
+
+/**
+ * @ingroup GA04
+ * @brief Gets current SNR value
+ * 
+ * @return int  FM SNR value
+ */
+int KT0915::getFmSnr()
+{
+    kt09xx_statusc r;
+    r.raw = getRegister(REG_STATUSC);
+    return (r.refined.FMSNR);
+};
+
 
 /**
  * @ingroup GA04
@@ -755,14 +823,3 @@ void KT0915::seekStation(uint8_t up_down)
 
 }
 
-int KT0915::getFmRssi() {
-    kt09xx_statusa r;
-    r.raw = getRegister(REG_STATUSA);
-    return (r.refined.FMRSSI * 3);   
-};
-
-int KT0915::getAmRssi(){
-    kt09xx_amdstatusa r;
-    r.raw = getRegister(REG_AMSTATUSA);
-    return (r.refined.AMRSSI * 3);
-};

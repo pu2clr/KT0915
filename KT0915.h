@@ -27,6 +27,9 @@
 #define TURN_ON     1
 #define TURN_OFF    0
 
+#define DE_EMPHASIS_75 0
+#define DE_EMPHASIS_50 1
+
 #define OSCILLATOR_32KHZ    0      //  32.768KHz 
 #define OSCILLATOR_6_5MHZ   1      //  6.5MHz 
 #define OSCILLATOR_7_6MHZ   2      //  7.6MHz
@@ -529,7 +532,7 @@ protected:
     uint8_t currentDialMode = DIAL_MODE_OFF;                //!< Stores the default Dial Mode (OFF)
     uint16_t deviceId;
 
-    uint8_t currentVolume = 0;
+    uint8_t currentVolume = 15;
 
 
 
@@ -549,6 +552,8 @@ public:
     void setVolumeDialModeOn();
     void setVolumeDialModeOff();
 
+    void setAudioGain(uint8_t gain);
+    
     void setVolume(uint8_t value);
     void setVolumeUp(); 
     void setVolumeDown();
@@ -572,6 +577,8 @@ public:
     void setAmBandwidth(uint8_t value);
     uint8_t getAmBandwidth();
 
+    bool isFmStereo();
+
     void setFrequency(uint32_t frequency);
     void setStep(uint16_t step);
     void frequencyUp();
@@ -585,8 +592,7 @@ public:
 
     int getFmRssi();
     int getAmRssi();
-
-
+    int getFmSnr();
 
 };
 

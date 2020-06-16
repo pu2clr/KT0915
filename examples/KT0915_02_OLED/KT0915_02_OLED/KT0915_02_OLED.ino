@@ -46,14 +46,17 @@
 #define BAND_MODE_SWITCH_DOWN 5   //
 #define VOL_UP    6               // Volume Up
 #define VOL_DOWN  7               // Volume Down
-#define SEEK_UP   8               // Seek Station Up
-#define SEEK_DOWN 9               // Seek Station Down
+#define TEST_BUTTON1   8               // Seek Station Up
+#define TEST_BUTTON2 9               // Seek Station Down
 
 #define MIN_ELAPSED_TIME 100
 
-long elapsedButton = millis();
 
-byte idx = 0;
+long elapsedButton = millis();
+long elapsedPull = millis();
+
+byte idxTest1 = 0;
+byte idxTest2 = 0;
 
 typedef struct
 {
@@ -63,6 +66,7 @@ typedef struct
   uint32_t default_frequency; // default frequency (KHz)
   uint16_t step;               // step used (KHz)
 } akc_band;
+
 
 
 char am_bw[] = {'2', '2', '4','6','X'}; 
@@ -85,14 +89,14 @@ const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
 
 // The array sizes below can be optimized. 
-char oldFreq[20];
-char oldMode[20];
-char oldUnit[20];
-char oldStep[20];
-char oldRssi[20];
-char oldBW[10];
+char oldFreq[15];
+char oldMode[15];
+char oldUnit[15];
+char oldStep[15];
+char oldRssi[15];
 char oldVolume[15];
-char oldStereo[20];
+char oldStereo[15];
+char oldBW[15];
 
 Rotary encoder = Rotary(ENCODER_PIN_A, ENCODER_PIN_B);
 // Encoder control variables
@@ -117,8 +121,8 @@ void setup()
   pinMode(BAND_MODE_SWITCH_DOWN, INPUT_PULLUP);
   pinMode(VOL_UP, INPUT_PULLUP);
   pinMode(VOL_DOWN, INPUT_PULLUP);
-  pinMode(SEEK_UP, INPUT_PULLUP);
-  pinMode(SEEK_DOWN, INPUT_PULLUP);  
+  pinMode(TEST_BUTTON1, INPUT_PULLUP);
+  pinMode(TEST_BUTTON2, INPUT_PULLUP);  
 
   // Encoder interrupt
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_A), rotaryEncoder, CHANGE);
@@ -134,11 +138,13 @@ void setup()
   // You can select the RESET pin and Crystal type you are using in your circuit. 
   // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
   radio.setup(RESET_PIN);
-  radio.setVolume(20); 
-  radio.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
 
-  delay(500);
+  radio.setTuneDialModeOff();   // Sets the KT0915 device to Digital control
+  radio.setVolumeDialModeOff();
   
+  radio.setVolume(20);
+  radio.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
+ 
   showStatus();
 }
 
@@ -159,28 +165,20 @@ void rotaryEncoder()
 }
 
 /**
- * Clear a given array char string
- */
-inline void clearBuffer(char *p)
-{
-  p[0] = '\0';
-}
-
-/**
  * Chear all string buffer information
  * These strings are used to avoid blinking on display.
  * See printValue function.
  */
 void resetBuffer()
 {
-  clearBuffer(oldFreq);
-  clearBuffer(oldMode);
-  clearBuffer(oldUnit);
-  clearBuffer(oldStep);
-  clearBuffer(oldRssi);
-  clearBuffer(oldVolume);
-  clearBuffer(oldStereo);
-  clearBuffer(oldBW);
+  oldFreq[0] = '\0';
+  oldMode[0] = '\0';
+  oldUnit[0] = '\0';
+  oldStep[0] = '\0';
+  oldRssi[0] = '\0';
+  oldVolume[0] = '\0';
+  oldStereo[0] = '\0';
+  oldBW[0] = '\0';
 }
 
 /**
@@ -200,7 +198,7 @@ void splash()
   oled.setCursor(10, 50);
   oled.print("V1.0.1 - By PU2CLR");
   oled.display();
-  delay(4000);
+  delay(3000);
 }
 
 /*
@@ -268,7 +266,6 @@ void showFrequency()
   char tmp[15];
   char *unit;
   char *bandMode;
-  char *stereo;
   
   currentFrequency = radio.getFrequency();
 
@@ -284,7 +281,6 @@ void showFrequency()
     freq[5] = '\0';
     unit = (char *) "MHz";
     bandMode =  (char *) "FM";
-    // stereo = (radio.isFmStereo())? (char *) "Stereo": (char *)"Mono";
   }
   else // AM
   {
@@ -295,16 +291,11 @@ void showFrequency()
     freq[3] = tmp[3];
     freq[4] = tmp[4];   
     freq[5] = '\0';
-
     unit = (char *) "KHz";
     bandMode = (char *) "AM";
-    // stereo = (char *) "       ";
   }
 
   printValue(23, 0, oldFreq, freq, 12, 2);
-
-  // printValue(0, 20, oldStereo, stereo, 6, 1);
-
   printValue(0, 0, oldMode, bandMode, 7, 1);
   printValue(105, 0, oldUnit, unit, 7, 1);
   showRSSI();
@@ -324,7 +315,7 @@ void showStatus()
   showFrequency();
 
   showVolume();
-  // showBandwidth();
+  showBandwidth();
   
   oled.display();
 }
@@ -332,20 +323,19 @@ void showStatus()
 
 
 void showBandwidth() {
-  /*
-  char sBw[20];
-
+  char sBw[15];
   uint8_t i = radio.getAmBandwidth();
   if (i > 3 ) return;  
-  
+
   if (band[bandIdx].mode ==  MODE_AM)  
      sprintf(sBw,"%cKHz",am_bw[i]);
   else    
      strcpy(sBw,"          ");
+  
       
-   printValue(0, 26, oldBW, sBw, 6, 1);
+   printValue(0, 56, oldBW, sBw, 6, 1);
    oled.display();
-   */  
+
 }
 
 /* *******************************
@@ -353,7 +343,7 @@ void showBandwidth() {
 */
 void showRSSI()
 {
-  char sR[20];
+  char sR[15];
 
   sprintf(sR,"RSSI:%3.3idBuV", (band[bandIdx].mode ==  MODE_FM)? radio.getFmRssi() : radio.getAmRssi());
 
@@ -361,12 +351,20 @@ void showRSSI()
   oled.display();
 }
 
+
+void showStereo() {
+    char *stereo;
+    stereo = (radio.isFmStereo())? (char *) "Stereo": (char *)"Mono";
+    printValue(0, 20, oldStereo, stereo, 6, 1);
+    oled.display();
+}
+
 /*
    Shows the volume level on LCD
 */
 void showVolume()
 {
-  char sVolume[20];
+  char sVolume[15];
   sprintf(sVolume, "Vol: %2.2u", radio.getVolume());
   printValue(80, 56, oldVolume, sVolume, 6, 1);
   oled.display();
@@ -387,20 +385,6 @@ void volumeButton(byte d)
 
   showVolume();
   delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
-}
-
-
-void seekButton( uint8_t up_down ) {
-
-    radio.seekStation(1);
-    if (idx == 3) idx = 0;
-    idx++;
-    radio.setAmBandwidth(idx);
-    // radio.setAudioBass(idx); 
-    // idx = !idx;
-    // radio.setAudioMute(idx);
-    showBandwidth();
-    delay(300);
 }
 
 
@@ -444,16 +428,49 @@ void useBand() {
   if (band[bandIdx].mode ==  MODE_FM) 
   {
     radio.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    radio.setDeEmphasis(DE_EMPHASIS_75);
+    // radio.setSoftMute(TURN_OFF);
+    radio.setFmAfc(TURN_ON);
+    radio.setMono(TURN_OFF); // Force stereo
   }
   else
   {
     radio.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    radio.setAmAfc(TURN_ON);
+    radio.setSoftMute(TURN_OFF);
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;
   radio.setFrequency(currentFrequency);
-
   showStatus();
+}
+
+
+/**
+ * Used to test the receiver functions implemented by the library
+ */
+void testButton1() {
+    if (idxTest1 == 3) idxTest1 = 0;
+    idxTest1++;
+    radio.setAmBandwidth(idxTest1);
+    showBandwidth();
+    showFrequency();
+    delay(300);
+}
+
+/**
+ * Used to test the receiver functions implemented by the library
+ */
+void testButton2() {
+    if (idxTest2 == 3) idxTest2 = 0;
+    idxTest2++;
+    radio.setAudioGain(idxTest2);
+    // radio.setAudioBass(idxTest2); 
+    // radio.setAudioMute(idx);
+    showBandwidth();
+    showFrequency();
+    delay(300);
+  
 }
 
 void loop()
@@ -482,11 +499,18 @@ void loop()
       volumeButton(1);
     else if (digitalRead(VOL_DOWN) == LOW)
       volumeButton(-1);
-    else if  (digitalRead(SEEK_UP) == LOW)
-      seekButton(1);
-    else if  (digitalRead(SEEK_DOWN) == LOW)
-      seekButton(0);
+    else if  (digitalRead(TEST_BUTTON1) == LOW)
+      testButton1();
+    else if  (digitalRead(TEST_BUTTON2) == LOW)
+      testButton2();
   }  
 
+  if ( (millis() - elapsedPull) > MIN_ELAPSED_TIME * 15 ) {
+    if ( radio.getCurrentMode() == MODE_FM ) {
+      showStereo();
+    }
+    showRSSI();
+    elapsedPull = millis();
+  }
   delay(10);
 }
