@@ -203,6 +203,7 @@ __The KT0915 is a 3.3V part. If you are not using a 3.3V version of Arduino, you
 |  R1, R2    |  10K      | I2C buss Pull up ristors | 
 | Arduino    | Pro Mini  | 3.3V 8Mhz | 
 | KT0915     | DSP       | FM and AM receiver | 
+| VCC        | 3.3V      | Baterry |
      
 
 <BR>
