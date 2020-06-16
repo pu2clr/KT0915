@@ -591,8 +591,7 @@ public:
     uint16_t getAmCurrentChannel(); 
 
     void seekStation();
-    void setAntennaTuneCapacitor(uint16_t capacitor);
-
+ 
     inline uint8_t getCurrentMode() { return this->currentMode; };
 
     int getFmRssi();

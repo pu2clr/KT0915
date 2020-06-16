@@ -473,18 +473,6 @@ void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
  * @details  Methods to tune and set the receiver mode
  */
 
-/**
- * @ingroup GA04
- * @brief Set AM the Antenna Tune Capacitor 
- * @details Sets a value between 0 and 16383 for AM Antenna Calibration 
- * @param capacitor value between 0 and 16383
- */
-void KT0915::setAntennaTuneCapacitor(uint16_t capacitor)
-{
-    kt09xx_amcali reg;
-    reg.refined.CAP_INDEX = capacitor;
-    setRegister(REG_AMCALI, reg.raw); // Strores the new value to the register
-};
 
 /**
  * @ingroup GA04
