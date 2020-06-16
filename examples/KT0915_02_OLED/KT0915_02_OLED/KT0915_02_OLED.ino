@@ -438,6 +438,7 @@ void useBand() {
     radio.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
     radio.setAmAfc(TURN_ON);
     radio.setSoftMute(TURN_OFF);
+    radio.setAmSpace(0); // Sets Am space channel to 1Khz. 
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;

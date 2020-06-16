@@ -401,6 +401,21 @@ void KT0915::setAudioAntiPop(uint8_t value)
 
 /**
  * @ingroup GA03
+ * @brief Sets the Left Channel Inverse Control 
+ * @details If enable, inverts the left channel audio signal
+ * @details A fully differential audio signal can be got from LOUT an ROUT if the INV_LEFT_AUDIO bit and MONO bit are set to 1.
+ * @param value  ENABLE_ON (1); ENABLE_OFF (0)
+ */
+void KT0915::setLeftChannelInverseControl(uint8_t enable_disable)
+{
+    kt09xx_amdsp r;
+    r.raw = getRegister(REG_AMDSP);
+    r.refined.INV_LEFT_AUDIO = enable_disable;
+    setRegister(REG_AMDSP,r.raw);
+}
+
+/**
+ * @ingroup GA03
  * @brief   Receiver startup 
  * @details You have to use this method to configure the way that the device will work. For example: enable and disable device control; oscillator type and reference clock type (crystal or external) 
  * @details The tabe below shows  the oscillator frequencies supported by the device.
@@ -449,7 +464,7 @@ void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
     pinMode(this->enablePin, OUTPUT);
     enable(1);
     setReferenceClockType(oscillator_type, ref_clock);
-    setRegister(REG_VOLUME, 0b0000000010000000);  // Sets the VOLUME register with default values
+    setVolume(this->currentVolume);
 }
 
 /** 

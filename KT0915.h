@@ -24,8 +24,10 @@
 #define MODE_FM     0
 #define MODE_AM     1
 
-#define TURN_ON     1
-#define TURN_OFF    0
+#define TURN_ON      1
+#define TURN_OFF     0
+#define ENABLE_ON    1
+#define ENABLE_OFF   0
 
 #define DE_EMPHASIS_75 0
 #define DE_EMPHASIS_50 1
@@ -551,9 +553,10 @@ public:
     void setTuneDialModeOff();
     void setVolumeDialModeOn();
     void setVolumeDialModeOff();
-
     void setAudioGain(uint8_t gain);
-    
+
+    void setLeftChannelInverseControl(uint8_t enable_disable);
+
     void setVolume(uint8_t value);
     void setVolumeUp(); 
     void setVolumeDown();
