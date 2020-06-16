@@ -177,6 +177,13 @@ See the KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); pag
 
 ## SCHEMATIC
 
+You can use the Typical Application Circuit suggested by the KTMicro. This circuit can be found in the document KT0915-Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip. 
+
+
+
+## Photos
+
+![]()
 
 
 
