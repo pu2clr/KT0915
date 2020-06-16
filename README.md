@@ -190,6 +190,10 @@ The schematic below does not use the firrite antenna as suggested by KTMicro.
 
 __The KT0915 is a 3.3V part. If you are not using a 3.3V version of Arduino, you have to use a kind of 5V to 3.3V bidirectional converter. It is important to say that just power the KT0915 device with 3.3V from Arduino board is not enough. You have to be aware that the Arduino that operates with 5V, the digital pins and the I2C bus will send 5V signals to the KT0915 device. That configuration can make the system unstable or damage the device__.  
 
+### Parts
+
+The table below shows the component parts used to build the receiver prototype based on KT0915
+
 <BR>
 
 | Components |  Value    | Description |
