@@ -841,7 +841,7 @@ uint16_t KT0915::getAmCurrentChannel() {
 
 
 /**
- * @todo Not enough information to do that so far. 
+ * @todo Not enough information to do this so far. 
  * @ingroup GA04
  * @brief Should Seek a station
  * @details However, there no enough information to implement it.
