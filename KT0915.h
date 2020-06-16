@@ -590,8 +590,6 @@ public:
     uint16_t getFmCurrentChannel();
     uint16_t getAmCurrentChannel(); 
 
-
-
     void seekStation();
     void setAntennaTuneCapacitor(uint16_t capacitor);
 
