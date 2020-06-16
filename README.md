@@ -124,7 +124,7 @@ With high audio performance, fully integrated features and low BOM cost, KT0915 
 8. Adjustable AM channel filters (2k/4k/6KHz)
 9. Embedded FM SNR meter
 10. Fast seek/Tune
-11. Integrated stereo headphone driver I2C control interface for MCU
+11. Integrated stereo headphone driver I²C control interface for MCU
 12. Support traditional dial and digital key for frequency tuning and volume control
 13. Memorize channel and volume in standby mode 
 14. Low Supply Current - 22mA (operating) <15uA (standby) 
@@ -152,8 +152,8 @@ Source: __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"_
  | 11          | AMINP     | AM RF positive input |
  | 12          | RFINP     | FM RF input | 
  | 13          | RFGND     | RF ground | 
- | 14          | SCL       | SCL of I2C bus. Tied to an internal 47kohm pull-up resistor |
- | 15          | SDA       | SDA of I2C bus. Tied to an internal 47kohm pull-up resistor |
+ | 14          | SCL       | SCL of I²C bus. Tied to an internal 47kohm pull-up resistor |
+ | 15          | SDA       | SDA of I²C bus. Tied to an internal 47kohm pull-up resistor |
  | 16          | VOL       | Volume adjustment. Used to deal with mechanical volume control |
 
 
@@ -177,9 +177,7 @@ See the KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); pag
 
 ## SCHEMATIC
 
-You can use the Typical Application Circuit suggested by the KTMicro. This circuit can be found in the document KT0915-Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip. 
-
-The schematic below does not use the firrite antenna as suggested by KTMicro.  
+You can use the Typical Application Circuit suggested by the KTMicro. This circuit can be found in the document KT0915-Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip.  The main porpuse of this prototype below is testing de KT0915 Arduino Library. It does not intend to be a real radio for exigent listener. However, it is possible to start with it and after include some devices to improve, for example,  its sensibility beyond other desired features.  The schematic below does not use the ferrite antenna as suggested by KTMicro and no front-en as well.  
 
 <BR>
 
@@ -188,7 +186,7 @@ The schematic below does not use the firrite antenna as suggested by KTMicro.
 
 <BR>
 
-__The KT0915 is a 3.3V part. If you are not using a 3.3V version of Arduino, you have to use a kind of 5V to 3.3V bidirectional converter. It is important to say that just power the KT0915 device with 3.3V from Arduino board is not enough. You have to be aware that the Arduino that operates with 5V, the digital pins and the I2C bus will send 5V signals to the KT0915 device. That configuration can make the system unstable or damage the device__.  
+__The KT0915 is a 3.3V part. If you are not using a 3.3V version of Arduino, you have to use a kind of 5V to 3.3V bidirectional converter. It is important to say that just power the KT0915 device with 3.3V from Arduino board is not enough. You have to be aware that the Arduino that operates with 5V, the digital pins and the I²C bus will send 5V signals to the KT0915 device. That configuration can make the system unstable or damage the device__.  
 
 ### Parts
 
@@ -204,7 +202,7 @@ The table below shows the component parts used to build the receiver prototype b
 |   C5, C6   |  10uF     | Electrolytic or tantalum capacitor | 
 |    C7      |  100nF    | AC coupling capacitor |  
 |    Q1      | 32.768KHz | Crystal | 
-|  R1, R2    |  10K      | I2C buss Pull up ristors | 
+|  R1, R2    |  10K      | I²C buss Pull up ristors | 
 | Arduino    | Pro Mini  | 3.3V 8Mhz | 
 | KT0915     | DSP       | FM and AM receiver | 
 | VCC        | 3.3V      | Baterry |
