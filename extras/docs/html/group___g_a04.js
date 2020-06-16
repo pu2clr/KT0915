@@ -1,6 +1,5 @@
 var group___g_a04 =
 [
-    [ "setAntennaTuneCapacitor", "group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0", null ],
     [ "setMono", "group___g_a04.html#ga64982e34b6f55a63effad685b95c6c44", null ],
     [ "isFmStereo", "group___g_a04.html#gaf0c38225d78c6b29db86a628d4f69a10", null ],
     [ "getFmRssi", "group___g_a04.html#ga30345781168d0664eaf8296a03d76d45", null ],

@@ -40,7 +40,6 @@ var group___g_a01_class_k_t0915 =
     [ "getFmCurrentChannel", "group___g_a04.html#gaed1602510e17de28e8f1aa275d02110d", null ],
     [ "getAmCurrentChannel", "group___g_a04.html#ga781bec3264c082bb77236a65da8e024b", null ],
     [ "seekStation", "group___g_a04.html#gad167048c7c2c459b65a5988621228209", null ],
-    [ "setAntennaTuneCapacitor", "group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0", null ],
     [ "getCurrentMode", "group___g_a01.html#a44a698eed131e9d8e4d309cc69abdf16", null ],
     [ "getFmRssi", "group___g_a04.html#ga30345781168d0664eaf8296a03d76d45", null ],
     [ "getAmRssi", "group___g_a04.html#ga90db469906bcb6a8691dc0c0c44c91c1", null ],
