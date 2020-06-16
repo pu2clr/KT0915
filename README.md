@@ -234,6 +234,8 @@ The table below shows the component parts used to build the receiver prototype b
 
 ## References
 
-[Radio, yes AM-SW-FM radio by DSP radio chip](https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip)
-[KT0915_DSP_RADIO-fullscreen-info](https://github.com/kodera2t/KT0915_DSP_RADIO-fullscreen-info)
-[KT0915 Arduino](https://easyeda.com/wolfezrawilliam/KT0915-Arduino)
+* [KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™](http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf)
+* [Radio, yes AM-SW-FM radio by DSP radio chip](https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip)
+* [KT0915_DSP_RADIO-fullscreen-info](https://github.com/kodera2t/KT0915_DSP_RADIO-fullscreen-info)
+* [KT0915 Arduino](https://easyeda.com/wolfezrawilliam/KT0915-Arduino)
+  
