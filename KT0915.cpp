@@ -815,26 +815,39 @@ uint32_t KT0915::getFrequency()
 
 /**
  * @ingroup GA04
- * @todo  Make it works
- * @brief Seeks a station
+ * @brief Gets the FM Channel Setting 
+ * @details This method returns the current channel value for FM tune. 
+ * @details The channel value multiplied by 50 is the current FM frequency in KHz.  
+ * @return  FM Channel number 
  */
-void KT0915::seekStation(uint8_t up_down)
+uint16_t KT0915::getFmCurrentChannel() {
+    kt09xx_tune r;
+    r.raw = getRegister(REG_TUNE);
+    return r.refined.FMCHAN;
+};
+
+/**
+ * @ingroup GA04
+ * @brief Gets the current AM Channel Setting
+ * @details This method returns the current channel value for AM tune
+ * @details Actually this value is the AM current frequency in KHz
+ * @return  AM Channel number (frequency in KHz) 
+ */
+uint16_t KT0915::getAmCurrentChannel() {
+    kt09xx_amchan r;
+    r.raw = getRegister(REG_AMCHAN);
+    return r.refined.AMCHAN;
+};
+
+
+/**
+ * @todo Not enough information to do that so far. 
+ * @ingroup GA04
+ * @brief Should Seek a station
+ * @details However, there no enough information to implement it.
+ */
+void KT0915::seekStation()
 {
-    /*
-    kt09xx_seek s;
-    kt09xx_tune t;
-    kt09xx_statusa st;
-
-    do {
-        s.raw = 0;
-        s.refinied.DMUTEL = s.refinied.DMUTER = 1;
-        s.refinied.FMSPACE = 1;
-        setRegister(REG_SEEK, s.raw);
-        delay(50);
-        st.raw = getRegister(REG_STATUSA);
-        this->currentFrequency = t.refined.FMCHAN * 50;
-    } while (st.refined.STC == 0 );
-    */
-
+    // TODO
 }
 

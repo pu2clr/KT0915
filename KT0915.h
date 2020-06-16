@@ -537,7 +537,6 @@ protected:
     uint8_t currentVolume = 15;
 
 
-
 public:
     void setRegister(int reg, uint16_t parameter);
     uint16_t getRegister(int reg);
@@ -588,7 +587,12 @@ public:
     void frequencyDown();
     uint32_t getFrequency();
 
-    void seekStation(uint8_t up_down);
+    uint16_t getFmCurrentChannel();
+    uint16_t getAmCurrentChannel(); 
+
+
+
+    void seekStation();
     void setAntennaTuneCapacitor(uint16_t capacitor);
 
     inline uint8_t getCurrentMode() { return this->currentMode; };

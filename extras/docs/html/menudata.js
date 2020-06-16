@@ -56,6 +56,7 @@ var menudata={children:[
 {text:"All",url:"globals.html",children:[
 {text:"c",url:"globals.html#index_c"},
 {text:"d",url:"globals.html#index_d"},
+{text:"e",url:"globals.html#index_e"},
 {text:"f",url:"globals.html#index_f"},
 {text:"i",url:"globals.html#index_i"},
 {text:"k",url:"globals.html#index_k"},
@@ -71,6 +72,7 @@ var menudata={children:[
 {text:"Variables",url:"globals_vars.html"},
 {text:"Macros",url:"globals_defs.html",children:[
 {text:"d",url:"globals_defs.html#index_d"},
+{text:"e",url:"globals_defs.html#index_e"},
 {text:"k",url:"globals_defs.html#index_k"},
 {text:"m",url:"globals_defs.html#index_m"},
 {text:"o",url:"globals_defs.html#index_o"},

@@ -19,5 +19,7 @@ var group___g_a04 =
     [ "frequencyDown", "group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4", null ],
     [ "setStep", "group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d", null ],
     [ "getFrequency", "group___g_a04.html#ga27fe68f4550dc8412bf870b982d09828", null ],
-    [ "seekStation", "group___g_a04.html#ga37d377dec717d39933fd351d725ac80b", null ]
+    [ "getFmCurrentChannel", "group___g_a04.html#gaed1602510e17de28e8f1aa275d02110d", null ],
+    [ "getAmCurrentChannel", "group___g_a04.html#ga781bec3264c082bb77236a65da8e024b", null ],
+    [ "seekStation", "group___g_a04.html#gad167048c7c2c459b65a5988621228209", null ]
 ];

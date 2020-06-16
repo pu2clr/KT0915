@@ -150,9 +150,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ga27fe68f4550dc8412bf870b982d09828"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga27fe68f4550dc8412bf870b982d09828">KT0915::getFrequency</a> ()</td></tr>
 <tr class="memdesc:ga27fe68f4550dc8412bf870b982d09828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current frequency.  <a href="group___g_a04.html#ga27fe68f4550dc8412bf870b982d09828">More...</a><br /></td></tr>
 <tr class="separator:ga27fe68f4550dc8412bf870b982d09828"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga37d377dec717d39933fd351d725ac80b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga37d377dec717d39933fd351d725ac80b">KT0915::seekStation</a> (uint8_t up_down)</td></tr>
-<tr class="memdesc:ga37d377dec717d39933fd351d725ac80b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seeks a station.  <a href="group___g_a04.html#ga37d377dec717d39933fd351d725ac80b">More...</a><br /></td></tr>
-<tr class="separator:ga37d377dec717d39933fd351d725ac80b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed1602510e17de28e8f1aa275d02110d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaed1602510e17de28e8f1aa275d02110d">KT0915::getFmCurrentChannel</a> ()</td></tr>
+<tr class="memdesc:gaed1602510e17de28e8f1aa275d02110d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the FM Channel Setting.  <a href="group___g_a04.html#gaed1602510e17de28e8f1aa275d02110d">More...</a><br /></td></tr>
+<tr class="separator:gaed1602510e17de28e8f1aa275d02110d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga781bec3264c082bb77236a65da8e024b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga781bec3264c082bb77236a65da8e024b">KT0915::getAmCurrentChannel</a> ()</td></tr>
+<tr class="memdesc:ga781bec3264c082bb77236a65da8e024b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current AM Channel Setting.  <a href="group___g_a04.html#ga781bec3264c082bb77236a65da8e024b">More...</a><br /></td></tr>
+<tr class="separator:ga781bec3264c082bb77236a65da8e024b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad167048c7c2c459b65a5988621228209"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gad167048c7c2c459b65a5988621228209">KT0915::seekStation</a> ()</td></tr>
+<tr class="memdesc:gad167048c7c2c459b65a5988621228209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Should Seek a station.  <a href="group___g_a04.html#gad167048c7c2c459b65a5988621228209">More...</a><br /></td></tr>
+<tr class="separator:gad167048c7c2c459b65a5988621228209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h1><a class="anchor" id="GA04"></a>
@@ -185,7 +191,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00467">467</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00482">482</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -213,7 +219,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00480">480</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00495">495</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -235,7 +241,7 @@ Tune Methods</h1>
 <p>Return true if the stereo indicator is set to 3;. </p>
 <dl class="section return"><dt>Returns</dt><dd>true is stereo </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00493">493</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00508">508</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -257,7 +263,7 @@ Tune Methods</h1>
 <p>Gets the current FM RSSI. </p>
 <dl class="section return"><dt>Returns</dt><dd>int RSSI value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00506">506</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00521">521</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -280,7 +286,7 @@ Tune Methods</h1>
  </p>
 <dl class="section return"><dt>Returns</dt><dd>int RSSI value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00519">519</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00534">534</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -302,7 +308,7 @@ Tune Methods</h1>
 <p>Gets current SNR value. </p>
 <dl class="section return"><dt>Returns</dt><dd>int FM SNR value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00532">532</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00547">547</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -330,7 +336,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00545">545</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00560">560</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -358,7 +364,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00559">559</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00574">574</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -386,7 +392,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00572">572</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00587">587</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -427,7 +433,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00595">595</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00610">610</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -468,7 +474,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00617">617</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00632">632</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -502,7 +508,7 @@ Tune Methods</h1>
 </table>
 <dl class="section return"><dt>Returns</dt><dd>See table above </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00638">638</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00653">653</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -557,7 +563,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00658">658</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00673">673</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -618,7 +624,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00692">692</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00707">707</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -646,7 +652,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00722">722</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00737">737</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -670,7 +676,7 @@ Tune Methods</h1>
 <p>tne current frequency will be set to minimum frequency.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323" title="Sets the current frequency.">setFrequency</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00754">754</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00769">769</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -694,7 +700,7 @@ Tune Methods</h1>
 <p>tne current frequency will be set to minimum frequency.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323" title="Sets the current frequency.">setFrequency</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00771">771</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00786">786</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -722,7 +728,7 @@ Tune Methods</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00786">786</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00801">801</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
@@ -744,12 +750,59 @@ Tune Methods</h1>
 <p>Gets the current frequency. </p>
 <dl class="section return"><dt>Returns</dt><dd>frequency in KHz </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00796">796</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00811">811</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ga37d377dec717d39933fd351d725ac80b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga37d377dec717d39933fd351d725ac80b">&#9670;&nbsp;</a></span>seekStation()</h2>
+<a id="gaed1602510e17de28e8f1aa275d02110d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaed1602510e17de28e8f1aa275d02110d">&#9670;&nbsp;</a></span>getFmCurrentChannel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t KT0915::getFmCurrentChannel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the FM Channel Setting. </p>
+<p>This method returns the current channel value for FM tune.</p>
+<p>The channel value multiplied by 50 is the current FM frequency in KHz. <br  />
+ </p><dl class="section return"><dt>Returns</dt><dd>FM Channel number </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00823">823</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga781bec3264c082bb77236a65da8e024b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga781bec3264c082bb77236a65da8e024b">&#9670;&nbsp;</a></span>getAmCurrentChannel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t KT0915::getAmCurrentChannel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current AM Channel Setting. </p>
+<p>This method returns the current channel value for AM tune</p>
+<p>Actually this value is the AM current frequency in KHz </p><dl class="section return"><dt>Returns</dt><dd>AM Channel number (frequency in KHz) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00836">836</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+
+</div>
+</div>
+<a id="gad167048c7c2c459b65a5988621228209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad167048c7c2c459b65a5988621228209">&#9670;&nbsp;</a></span>seekStation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -757,17 +810,17 @@ Tune Methods</h1>
         <tr>
           <td class="memname">void KT0915::seekStation </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>up_down</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Seeks a station. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Make it works </dd></dl>
+<p>Should Seek a station. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Not enough information to do that so far. </dd></dl>
+<p>However, there no enough information to implement it. </p>
 
-<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00806">806</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_k_t0915_8cpp_source.html#l00849">849</a> of file <a class="el" href="_k_t0915_8cpp_source.html">KT0915.cpp</a>.</p>
 
 </div>
 </div>
