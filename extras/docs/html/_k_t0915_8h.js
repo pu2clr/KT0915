@@ -5,6 +5,8 @@ var _k_t0915_8h =
     [ "MODE_AM", "_k_t0915_8h.html#a27aa705095a6b6dad7db24441132f9bd", null ],
     [ "TURN_ON", "_k_t0915_8h.html#a96701203b8a7febc3b53a7eede64433d", null ],
     [ "TURN_OFF", "_k_t0915_8h.html#a20b9dd82db1ddc2ec72f24580fc5254f", null ],
+    [ "DE_EMPHASIS_75", "_k_t0915_8h.html#a4be511c16b6bb86f88c9993438840d7f", null ],
+    [ "DE_EMPHASIS_50", "_k_t0915_8h.html#a620fa26e90cf0ac0645dc2ec73cf42f9", null ],
     [ "OSCILLATOR_32KHZ", "_k_t0915_8h.html#a43a042a97315308b5845013f8511bb9c", null ],
     [ "OSCILLATOR_6_5MHZ", "_k_t0915_8h.html#a374287261975d5d1a2305ccd70dfd382", null ],
     [ "OSCILLATOR_7_6MHZ", "_k_t0915_8h.html#aed7ca3c077389e5f8aa9e443ae1ebaa3", null ],

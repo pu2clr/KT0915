@@ -71,7 +71,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_k_t0915_8cpp.html",
-"group___g_a01.html#structkt09xx__volume_8refined"
+"group___g_a01.html#structword16__to__bytes_8refined"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

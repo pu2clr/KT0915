@@ -2,6 +2,10 @@ var group___g_a04 =
 [
     [ "setAntennaTuneCapacitor", "group___g_a04.html#gaee03f6351e9ac697822983d839cb06f0", null ],
     [ "setMono", "group___g_a04.html#ga64982e34b6f55a63effad685b95c6c44", null ],
+    [ "isFmStereo", "group___g_a04.html#gaf0c38225d78c6b29db86a628d4f69a10", null ],
+    [ "getFmRssi", "group___g_a04.html#ga30345781168d0664eaf8296a03d76d45", null ],
+    [ "getAmRssi", "group___g_a04.html#ga90db469906bcb6a8691dc0c0c44c91c1", null ],
+    [ "getFmSnr", "group___g_a04.html#gae6b06bd1d58aee5c8f29299742b6006f", null ],
     [ "setDeEmphasis", "group___g_a04.html#ga910291c7360265215e3962d03be780ee", null ],
     [ "setFmAfc", "group___g_a04.html#ga0a093372898d7699e03089b9dfd9dc1c", null ],
     [ "setAmAfc", "group___g_a04.html#ga39c12beb17131b09f1a91de0d3e55b30", null ],
