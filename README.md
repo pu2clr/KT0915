@@ -194,10 +194,6 @@ You can use the Typical Application Circuit suggested by the KTMicro. This circu
 ![Photo 03](extras/images/F003.png)
 
 
-<BR>
-
-![Photo 05](extras/images/F005.png)
-
 
 
 ## Videos
