@@ -186,6 +186,24 @@ The schematic below does not use the firrite antenna as suggested by KTMicro.
 ![Picture Schematic](extras/images/basic_schematic.png)
 
 
+<BR>
+
+__The KT0915 is a 3.3V part. If you are not using a 3.3V version of Arduino, you have to use a kind of 5V to 3.3V bidirectional converter. It is important to say that just power the KT0915 device with 3.3V from Arduino board is not enough. You have to be aware that the Arduino that operates with 5V, the digital pins and the I2C bus will send 5V signals to the KT0915 device. That configuration can make the system unstable or damage the Si47XX device__.  
+
+<BR>
+
+| Components |  Value    | Description |
+| ---------- |  -------- | ----------- | 
+|    C1      |  10uF     | Ceramic or tantalum capacitor | 
+|    C2      |  100nF    | Ceramic or tantalum capacitor | 
+|   C3, C4   |  22pF     | Supply decoupling capacitor - Ceramic or tantalum capacitor | 
+|   C5, C6   |  10uF     | Electrolytic or tantalum capacitor | 
+|    C7      |  100nF    | AC coupling capacitor |  
+|    Q1      | 32.768KHz | Crystal | 
+|  R1, R2    |  10K      | I2C buss Pull up ristors | 
+| Arduino    | Pro Mini  | 3.3V 8Mhz | 
+| KT0915     | DSP       | FM and AM receiver | 
+     
 
 
 <BR>
