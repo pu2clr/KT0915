@@ -5673,7 +5673,7 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <attribute name="VALUE" x="54.102" y="67.31" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="SUPPLY4" gate="G$1" x="40.64" y="53.34" smashed="yes" rot="R180">
-<attribute name="VALUE" x="42.545" y="50.165" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="37.465" y="50.165" size="1.778" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
