@@ -5857,11 +5857,9 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="59.69" y1="99.06" x2="60.96" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="99.06" x2="40.64" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="99.06" x2="40.64" y2="134.62" width="0.1524" layer="91"/>
-<junction x="60.96" y="99.06"/>
 <wire x1="40.64" y1="134.62" x2="30.48" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="ANT2" gate="A" pin="1"/>
 <wire x1="30.48" y1="134.62" x2="30.48" y2="142.24" width="0.1524" layer="91"/>
-<junction x="30.48" y="142.24"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -5869,11 +5867,9 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <pinref part="KT0915" gate="G$1" pin="ROUT"/>
 <wire x1="95.25" y1="88.9" x2="96.52" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="88.9" x2="142.24" y2="88.9" width="0.1524" layer="91"/>
-<junction x="96.52" y="88.9"/>
 <wire x1="142.24" y1="88.9" x2="142.24" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="C5" gate="G$1" pin="1"/>
 <wire x1="142.24" y1="81.28" x2="144.78" y2="81.28" width="0.1524" layer="91"/>
-<junction x="144.78" y="81.28"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -5886,19 +5882,15 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="119.38" y1="101.6" x2="127" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="127" y1="99.06" x2="127" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="127" y1="101.6" x2="129.54" y2="101.6" width="0.1524" layer="91"/>
-<junction x="127" y="99.06"/>
 </segment>
 <segment>
 <pinref part="X1" gate="G$1" pin="1"/>
 <pinref part="GND4" gate="1" pin="GND"/>
 <wire x1="162.56" y1="83.82" x2="162.56" y2="73.66" width="0.1524" layer="91"/>
-<junction x="162.56" y="83.82"/>
-<junction x="162.56" y="73.66"/>
 <pinref part="KT0915" gate="G$1" pin="DVSS"/>
 <wire x1="96.52" y1="83.82" x2="127" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="127" y1="83.82" x2="127" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="127" y1="73.66" x2="162.56" y2="73.66" width="0.1524" layer="91"/>
-<junction x="96.52" y="83.82"/>
 </segment>
 <segment>
 <pinref part="C7" gate="G$1" pin="1"/>
@@ -5909,26 +5901,19 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <pinref part="GND6" gate="1" pin="GND"/>
 <pinref part="KT0915" gate="G$1" pin="RFGND"/>
 <wire x1="40.64" y1="93.98" x2="60.96" y2="93.98" width="0.1524" layer="91"/>
-<junction x="40.64" y="93.98"/>
-<junction x="60.96" y="93.98"/>
 </segment>
 <segment>
 <pinref part="GND1" gate="1" pin="GND"/>
 <pinref part="ARDUINO1" gate="G$1" pin="GND"/>
 <wire x1="-30.48" y1="104.14" x2="-15.24" y2="104.14" width="0.1524" layer="91"/>
-<junction x="-30.48" y="104.14"/>
-<junction x="-15.24" y="104.14"/>
 <pinref part="FM" gate="G$1" pin="P$1"/>
 <pinref part="AM" gate="G$1" pin="P$1"/>
 <wire x1="-35.56" y1="91.44" x2="-35.56" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="UP" gate="G$1" pin="P$1"/>
 <wire x1="-35.56" y1="76.2" x2="-35.56" y2="83.82" width="0.1524" layer="91"/>
-<junction x="-35.56" y="83.82"/>
 <pinref part="DOWN" gate="G$1" pin="P$1"/>
 <wire x1="-35.56" y1="68.58" x2="-35.56" y2="76.2" width="0.1524" layer="91"/>
-<junction x="-35.56" y="76.2"/>
 <wire x1="-35.56" y1="91.44" x2="-35.56" y2="104.14" width="0.1524" layer="91"/>
-<junction x="-35.56" y="91.44"/>
 <wire x1="-35.56" y1="104.14" x2="-30.48" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -5939,8 +5924,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="119.38" y1="137.16" x2="127" y2="137.16" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="144.78" x2="119.38" y2="137.16" width="0.1524" layer="91"/>
 <junction x="119.38" y="137.16"/>
-<junction x="114.3" y="137.16"/>
-<junction x="127" y="137.16"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -5950,7 +5933,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="25.4" y1="101.6" x2="25.4" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="KT0915" gate="G$1" pin="SDA"/>
 <wire x1="25.4" y1="83.82" x2="33.02" y2="83.82" width="0.1524" layer="91"/>
-<junction x="15.24" y="101.6"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="33.02" y1="83.82" x2="60.96" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="76.2" x2="33.02" y2="83.82" width="0.1524" layer="91"/>
@@ -5964,7 +5946,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="27.94" y1="104.14" x2="27.94" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="KT0915" gate="G$1" pin="SCL"/>
 <wire x1="27.94" y1="88.9" x2="50.8" y2="88.9" width="0.1524" layer="91"/>
-<junction x="15.24" y="104.14"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="50.8" y1="88.9" x2="60.96" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="76.2" x2="50.8" y2="88.9" width="0.1524" layer="91"/>
@@ -5977,7 +5958,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="15.24" y1="111.76" x2="30.48" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="SUPPLY2" gate="G$1" pin="VCC"/>
 <wire x1="30.48" y1="111.76" x2="30.48" y2="114.3" width="0.1524" layer="91"/>
-<junction x="30.48" y="114.3"/>
 </segment>
 <segment>
 <pinref part="C1" gate="G$1" pin="1"/>
@@ -5987,12 +5967,9 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="96.52" y1="104.14" x2="114.3" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="104.14" x2="114.3" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="109.22" x2="119.38" y2="109.22" width="0.1524" layer="91"/>
-<junction x="119.38" y="109.22"/>
 <wire x1="129.54" y1="109.22" x2="139.7" y2="109.22" width="0.1524" layer="91"/>
-<junction x="129.54" y="109.22"/>
 <pinref part="SUPPLY1" gate="G$1" pin="VCC"/>
 <wire x1="139.7" y1="109.22" x2="139.7" y2="114.3" width="0.1524" layer="91"/>
-<junction x="139.7" y="114.3"/>
 </segment>
 <segment>
 <pinref part="KT0915" gate="G$1" pin="ENABLE"/>
@@ -6001,8 +5978,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="53.34" y1="121.92" x2="68.58" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="SUPPLY3" gate="G$1" pin="VCC"/>
 <wire x1="68.58" y1="121.92" x2="68.58" y2="124.46" width="0.1524" layer="91"/>
-<junction x="60.96" y="114.3"/>
-<junction x="68.58" y="124.46"/>
 </segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
@@ -6023,11 +5998,9 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="106.68" y1="111.76" x2="121.92" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="Q1" gate="G$1" pin="2"/>
 <wire x1="121.92" y1="111.76" x2="121.92" y2="116.84" width="0.1524" layer="91"/>
-<junction x="96.52" y="109.22"/>
 <pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="127" y1="129.54" x2="127" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="127" y1="116.84" x2="121.92" y2="116.84" width="0.1524" layer="91"/>
-<junction x="121.92" y="116.84"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -6037,7 +6010,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="104.14" y1="114.3" x2="104.14" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="Q1" gate="G$1" pin="1"/>
 <wire x1="104.14" y1="116.84" x2="106.68" y2="116.84" width="0.1524" layer="91"/>
-<junction x="96.52" y="114.3"/>
 <pinref part="C3" gate="G$1" pin="1"/>
 <wire x1="106.68" y1="116.84" x2="111.76" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="129.54" x2="114.3" y2="127" width="0.1524" layer="91"/>
@@ -6053,8 +6025,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="111.76" y1="93.98" x2="111.76" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="111.76" y1="91.44" x2="144.78" y2="91.44" width="0.1524" layer="91"/>
-<junction x="96.52" y="93.98"/>
-<junction x="144.78" y="91.44"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -6062,7 +6032,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <pinref part="C6" gate="G$1" pin="2"/>
 <pinref part="X1" gate="G$1" pin="2"/>
 <wire x1="152.4" y1="91.44" x2="162.56" y2="91.44" width="0.1524" layer="91"/>
-<junction x="162.56" y="91.44"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -6072,7 +6041,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="157.48" y1="81.28" x2="157.48" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="X1" gate="G$1" pin="3"/>
 <wire x1="157.48" y1="88.9" x2="162.56" y2="88.9" width="0.1524" layer="91"/>
-<junction x="162.56" y="88.9"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -6083,8 +6051,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="48.26" y1="124.46" x2="55.88" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="C7" gate="G$1" pin="2"/>
 <wire x1="55.88" y1="124.46" x2="55.88" y2="127" width="0.1524" layer="91"/>
-<junction x="60.96" y="109.22"/>
-<junction x="55.88" y="127"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -6095,8 +6061,6 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="45.72" y1="134.62" x2="48.26" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="ANT1" gate="A" pin="1"/>
 <wire x1="48.26" y1="134.62" x2="48.26" y2="142.24" width="0.1524" layer="91"/>
-<junction x="60.96" y="104.14"/>
-<junction x="48.26" y="142.24"/>
 </segment>
 </net>
 <net name="N$1" class="0">

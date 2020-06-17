@@ -5673,7 +5673,7 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <attribute name="VALUE" x="54.102" y="67.31" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="SUPPLY4" gate="G$1" x="40.64" y="53.34" smashed="yes" rot="R180">
-<attribute name="VALUE" x="42.545" y="50.165" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="37.465" y="50.165" size="1.778" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
@@ -5722,6 +5722,11 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="162.56" y1="83.82" x2="162.56" y2="73.66" width="0.1524" layer="91"/>
 <junction x="162.56" y="83.82"/>
 <junction x="162.56" y="73.66"/>
+<pinref part="KT1" gate="G$1" pin="DVSS"/>
+<wire x1="96.52" y1="83.82" x2="127" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="127" y1="83.82" x2="127" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="127" y1="73.66" x2="162.56" y2="73.66" width="0.1524" layer="91"/>
+<junction x="96.52" y="83.82"/>
 </segment>
 <segment>
 <pinref part="C7" gate="G$1" pin="1"/>
