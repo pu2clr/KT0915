@@ -5,6 +5,4 @@ This receiver has 4 push buttons and no display device. The push buttons are use
 
 The schematic below shows the buttons and Arduino connections 
 
-![Buttons and Arduino Connections](extras/images/schematic_basic.png) 
-
-
+![Buttons and Arduino Connections](https://github.com/pu2clr/KT0915/blob/master/extras/images/schematic_minimal_AM_FM_receiver.png)
