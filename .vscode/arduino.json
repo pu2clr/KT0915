@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:pro",
+    "configuration": "cpu=8MHzatmega328",
+    "sketch": "examples/kt0915_99_minimal_receiver/kt0915_99_minimal_receiver.ino"
+}
