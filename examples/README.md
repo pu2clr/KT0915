@@ -28,3 +28,4 @@ This example implements a FM, AM (MW AND SW) receiver with an OLED 128X64 I2C. T
 ![Picture OLED Schematic](https://github.com/pu2clr/KT0915/blob/master/extras/images/schematic_OLED_AM_FM_SW_receiver.png)
 
 
+Check also the Typical Application Circuit suggested by the KTMicro [KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™](http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf); page 24. 
