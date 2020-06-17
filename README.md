@@ -169,15 +169,15 @@ Source: __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"_
 The KT0915 can be configured to deal with mechanical tuning via a variable resistors. For example, you can use a variable resistor to control the audio volume and another to tuninig the receiver. This resource is  enabled by setting the internal register GPIOCFG (Address 0x1D) of the device. The dial can be a variable resistor with the tap connected to CH and VOL as well. The divided voltage at the tap is processed by the internal KT0915  analog to digital converter (ADC). Finally, the converted datas are stored into the internal registers of the KT0915 device.
 
 
-By default, this library the tune an volume are conttrolled by the Arduino. However, you can sets the mechanical feature by calling setTuneDialModeOn and setVolumeDialModeOn. See [API Documentation](https://pu2clr.github.io/KT0915/extras/docs/html/index.html).
+By default, this library the tune and volume are conttrolled by the MCU (Arduino). However, you can sets the mechanical feature by calling setTuneDialModeOn and setVolumeDialModeOn. See [API Documentation](https://pu2clr.github.io/KT0915/extras/docs/html/index.html).
 
-See the KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); pages: 8, 9, 10 and 20.
+See [KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™](http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf); pages: 8, 9, 10 and 20.
 
 
 
 ## SCHEMATIC
 
-You can use the Typical Application Circuit suggested by the KTMicro. This circuit can be found in the document KT0915-Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip.  The main porpuse of this prototype below is testing de KT0915 Arduino Library. It does not intend to be a real radio for exigent listener. However, it is possible to start with it and after include some devices to improve, for example,  its sensibility beyond other desired features.  The schematic below does not use the ferrite antenna as suggested by KTMicro and no front-en as well.  
+You can use the Typical Application Circuit suggested by the KTMicro. This circuit can be found in the document KT0915-Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip.  The main porpuse of this prototype below is testing de KT0915 Arduino Library. It does not intend to be a real radio for exigent listener. However, it is possible to start with it and after include some devices to improve, for example,  its sensibility beyond other desired features.  The schematic below does not use the ferrite antenna as suggested by KTMicro and no front-en as well.  See [KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™](http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf); page 24. 
 
 <BR>
 
@@ -202,10 +202,10 @@ The table below shows the component parts used to build the receiver prototype b
 |   C5, C6   |  10uF     | Electrolytic or tantalum capacitor | 
 |    C7      |  100nF    | AC coupling capacitor |  
 |    Q1      | 32.768KHz | Crystal | 
-|  R1, R2    |  10K      | I²C buss Pull up ristors | 
-| Arduino    | Pro Mini  | 3.3V 8Mhz | 
-| KT0915     | DSP       | FM and AM receiver | 
-| VCC        | 3.3V      | Baterry |
+|   R1, R2   |  10K      | I²C buss Pull up ristors | 
+|   Arduino  | Pro Mini  | 3.3V 8Mhz | 
+|   KT0915   | DSP       | FM and AM receiver | 
+|    VCC     | 3.3V      | Baterry |
      
 
 <BR>
