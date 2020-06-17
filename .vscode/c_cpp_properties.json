@@ -4,10 +4,12 @@
             "name": "Mac",
             "includePath": [
                 "/Applications/Arduino.app/Contents/Java/tools/**",
-                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/**"
+                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/**",
+                "/Users/rcaratti/Documents/Arduino/libraries/KT0915/**"
             ],
             "forcedInclude": [
-                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/Arduino.h"
+                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/Arduino.h",
+                "/Users/rcaratti/Documents/Arduino/libraries/KT0915/KT0915.h"
             ],
             "macFrameworkPath": [
                 "/System/Library/Frameworks",
