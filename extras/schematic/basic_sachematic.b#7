@@ -1629,6 +1629,49 @@ Metric Code Size 4564</description>
 </package3d>
 </packages3d>
 </library>
+<library name="con-lumberg" urn="urn:adsk.eagle:library:163">
+<description>&lt;b&gt;Lumberg Connectors&lt;/b&gt;&lt;p&gt;
+include con-mfs.lbr - 2001.03.22&lt;br&gt;
+Jack connectors - 2005.11.23&lt;p&gt;
+http://www.lumberg.de&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="1501_03" urn="urn:adsk.eagle:footprint:8468/1" library_version="1">
+<description>&lt;b&gt;Jack connectors according to JISC 6560, 2.5 mm&lt;/b&gt;&lt;p&gt;
+Klinkensteckverbinder nach JISC 6560, 2,5 mm&lt;br&gt;
+Source: http://www.lumberg.com/Produkte/PDFs/1501_03.pdf</description>
+<wire x1="-1.9" y1="3.9" x2="1.9" y2="3.9" width="0.2032" layer="21"/>
+<wire x1="-1.9" y1="3.9" x2="-1.9" y2="2.5" width="0.2032" layer="21"/>
+<wire x1="-2.4" y1="2.4" x2="2.4" y2="2.4" width="0.2032" layer="21"/>
+<wire x1="2.4" y1="-6.9" x2="-2.4" y2="-6.9" width="0.2032" layer="21"/>
+<wire x1="1.9" y1="3.9" x2="1.9" y2="2.5" width="0.2032" layer="21"/>
+<wire x1="-2.4" y1="-6.9" x2="-2.4" y2="2.4" width="0.2032" layer="51"/>
+<wire x1="2.4" y1="2.4" x2="2.4" y2="-6.9" width="0.2032" layer="51"/>
+<wire x1="-2.4" y1="-6.9" x2="-2.4" y2="-6.49" width="0.2032" layer="21"/>
+<wire x1="2.4" y1="2.4" x2="2.4" y2="0.085" width="0.2032" layer="21"/>
+<wire x1="2.4" y1="-2.045" x2="2.4" y2="-6.9" width="0.2032" layer="21"/>
+<wire x1="-2.4" y1="1.355" x2="-2.4" y2="2.4" width="0.2032" layer="21"/>
+<wire x1="-2.4" y1="-4.36" x2="-2.4" y2="-0.775" width="0.2032" layer="21"/>
+<pad name="1" x="-1.85" y="0.3" drill="1.1" diameter="1.7"/>
+<pad name="2" x="1.85" y="-1" drill="1.1" diameter="1.7"/>
+<pad name="3" x="-1.85" y="-5.7" drill="1.1" diameter="1.7"/>
+<text x="-3.175" y="-6.16" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="4.445" y="-6.16" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<hole x="0" y="0" drill="1.1"/>
+<hole x="0" y="-6" drill="1.1"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="1501_03" urn="urn:adsk.eagle:package:8543/1" type="box" library_version="1">
+<description>Jack connectors according to JISC 6560, 2.5 mm
+Klinkensteckverbinder nach JISC 6560, 2,5 mm
+Source: http://www.lumberg.com/Produkte/PDFs/1501_03.pdf</description>
+<packageinstances>
+<packageinstance name="1501_03"/>
+</packageinstances>
+</package3d>
+</packages3d>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1853,6 +1896,24 @@ design rules under a new name.</description>
 <attribute name="NAME" x="-56.6787" y="2.5063" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="-57.3137" y="-0.0337" size="1.27" layer="27" ratio="10"/>
 </element>
+<element name="C5" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C1825K" package3d_urn="urn:adsk.eagle:package:23684/2" value="10uF" x="-64.25" y="-2.125" smashed="yes">
+<attribute name="NAME" x="-65.85" y="1.425" size="1.016" layer="25"/>
+<attribute name="SPICEPREFIX" value="C" x="-64.25" y="-2.125" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-65.85" y="-6.75" size="1.016" layer="27"/>
+</element>
+<element name="C6" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C1825K" package3d_urn="urn:adsk.eagle:package:23684/2" value="10uF" x="-70.9375" y="-2.125" smashed="yes">
+<attribute name="NAME" x="-72.5375" y="1.425" size="1.016" layer="25"/>
+<attribute name="SPICEPREFIX" value="C" x="-70.9375" y="-2.125" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-72.5375" y="-6.75" size="1.016" layer="27"/>
+</element>
+<element name="X1" library="con-lumberg" library_urn="urn:adsk.eagle:library:163" package="1501_03" package3d_urn="urn:adsk.eagle:package:8543/1" value="1501_03" x="-78.3125" y="-0.1875" smashed="yes">
+<attribute name="MF" value="" x="-78.3125" y="-0.1875" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="" x="-78.3125" y="-0.1875" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="-81.4875" y="-6.3475" size="1.27" layer="25" rot="R90"/>
+<attribute name="OC_FARNELL" value="1200127" x="-78.3125" y="-0.1875" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="-78.3125" y="-0.1875" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-73.8675" y="-6.3475" size="1.27" layer="27" rot="R90"/>
+</element>
 </elements>
 <signals>
 <signal name="N$12">
@@ -1866,6 +1927,8 @@ design rules under a new name.</description>
 <wire x1="10.25" y1="37.25" x2="10.25" y2="29.25" width="0.254" layer="1"/>
 <wire x1="14.75" y1="41.75" x2="10.25" y2="37.25" width="0.254" layer="1"/>
 <wire x1="12.25" y1="29.25" x2="12.4665" y2="29.1095" width="0.254" layer="1"/>
+<contactref element="C5" pad="1"/>
+<wire x1="10.25" y1="29.25" x2="-65.75" y2="-2.125" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="GND">
 <contactref element="KT1" pad="AVSS"/>
@@ -1875,12 +1938,18 @@ design rules under a new name.</description>
 <contactref element="ARDUINO1" pad="GND@3"/>
 <contactref element="C1" pad="2"/>
 <contactref element="C2" pad="2"/>
-<wire x1="-11.445" y1="25.1" x2="12.4665" y2="30.3795" width="0" layer="19" extent="1-1"/>
-<wire x1="-15.255" y1="30.18" x2="-11.445" y2="25.1" width="0" layer="19" extent="1-1"/>
-<wire x1="-26.685" y1="20.02" x2="-15.255" y2="30.18" width="0" layer="19" extent="1-1"/>
-<wire x1="-19.065" y1="-0.3" x2="-26.685" y2="20.02" width="0" layer="19" extent="1-1"/>
-<wire x1="-25.275" y1="-5.6875" x2="-19.065" y2="-0.3" width="0" layer="19" extent="1-1"/>
-<wire x1="-30.8125" y1="-2.125" x2="-25.275" y2="-5.6875" width="0" layer="19" extent="1-1"/>
+<contactref element="C4" pad="1"/>
+<contactref element="C3" pad="1"/>
+<contactref element="X1" pad="1"/>
+<wire x1="-47.1875" y1="-2.125" x2="-80.1625" y2="0.1125" width="0" layer="19" extent="1-1"/>
+<wire x1="-40.5" y1="-2.125" x2="-47.1875" y2="-2.125" width="0" layer="19" extent="1-1"/>
+<wire x1="-30.8125" y1="-2.125" x2="-40.5" y2="-2.125" width="0" layer="19" extent="1-1"/>
+<wire x1="-25.275" y1="-5.6875" x2="-30.8125" y2="-2.125" width="0" layer="19" extent="1-1"/>
+<wire x1="-19.065" y1="-0.3" x2="-25.275" y2="-5.6875" width="0" layer="19" extent="1-1"/>
+<wire x1="-26.685" y1="20.02" x2="-19.065" y2="-0.3" width="0" layer="19" extent="1-1"/>
+<wire x1="-15.255" y1="30.18" x2="-26.685" y2="20.02" width="0" layer="19" extent="1-1"/>
+<wire x1="-11.445" y1="25.1" x2="-15.255" y2="30.18" width="0" layer="19" extent="1-1"/>
+<wire x1="12.4665" y1="30.3795" x2="-11.445" y2="25.1" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$2">
 <contactref element="ARDUINO1" pad="A4"/>
@@ -1918,9 +1987,19 @@ design rules under a new name.</description>
 <wire x1="12.4665" y1="32.2845" x2="-37.5" y2="-2.125" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$6">
-<contactref element="C4" pad="1"/>
-<contactref element="C3" pad="1"/>
-<wire x1="-40.5" y1="-2.125" x2="-47.1875" y2="-2.125" width="0" layer="19" extent="1-1"/>
+<contactref element="KT1" pad="LOUT"/>
+<contactref element="C6" pad="1"/>
+<wire x1="12.4665" y1="29.7445" x2="-72.4375" y2="-2.125" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$7">
+<contactref element="C6" pad="2"/>
+<contactref element="X1" pad="2"/>
+<wire x1="-69.4375" y1="-2.125" x2="-76.4625" y2="-1.1875" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$8">
+<contactref element="C5" pad="2"/>
+<contactref element="X1" pad="3"/>
+<wire x1="-62.75" y1="-2.125" x2="-80.1625" y2="-5.8875" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

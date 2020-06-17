@@ -5722,6 +5722,11 @@ An 0805 resistor inside a standard 1/4W 5% resistor. Makes for easy mods</descri
 <wire x1="162.56" y1="83.82" x2="162.56" y2="73.66" width="0.1524" layer="91"/>
 <junction x="162.56" y="83.82"/>
 <junction x="162.56" y="73.66"/>
+<pinref part="KT1" gate="G$1" pin="DVSS"/>
+<wire x1="96.52" y1="83.82" x2="127" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="127" y1="83.82" x2="127" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="127" y1="73.66" x2="162.56" y2="73.66" width="0.1524" layer="91"/>
+<junction x="96.52" y="83.82"/>
 </segment>
 <segment>
 <pinref part="C7" gate="G$1" pin="1"/>
