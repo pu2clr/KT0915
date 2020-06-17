@@ -181,7 +181,7 @@ You can use the Typical Application Circuit suggested by the KTMicro. This circu
 
 <BR>
 
-![Picture Schematic](extras/images/basic_schematic.png)
+![Picture Schematic](extras/images/schematic_basic.png)
 
 
 <BR>
