@@ -35,6 +35,10 @@ In this document you will see Arduino source codes, schematics, examples and tip
 
 {% include video01.html %} 
 
+
+{% include tutorial.html %} 
+[Video Tutorial](https://youtu.be/f3P6KL0XJpw)
+
 ## See also
 
 1. [PU2CLR Si4735 Library for Arduino](https://pu2clr.github.io/SI4735/). This library was built based on “Si47XX PROGRAMMING GUIDE; AN332” and it has support to FM, AM and SSB modes (LW, MW and SW). It also can be used on all members of the SI47XX family respecting, of course, the features available for each IC version; 
