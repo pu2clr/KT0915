@@ -96,6 +96,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 You can install this library on your Arduino environment using different methods. The best ways to do that are described below.  
 
+{% include libinstalling.html %} 
+
 
 ### Installing via Arduino IDE
 
