@@ -78,10 +78,10 @@
 /**
  * @defgroup GA01 Union, Structure and Defined Data Types  
  * @brief   KT0915 Defined Data Types 
- * @details Defined Data Types is a way to represent the AKC695X registers information
+ * @details Defined Data Types is a way to represent the KT0915 registers information
  * @details Some information appears to be inaccurate due to translation problems from Chinese to English.
  * @details The information shown here was extracted from Datasheet:
- * @details AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation.
+ * @details KT0915 stereo FM / TV / MW / SW / LW digital tuning radio documentation.
  * @details Other information seems incomplete even in the original Chinese Datasheet. 
  * @details For example: Reg 10 (0x0A). There is no information about it. The Reg11 and 12 seem wrong  
  */
