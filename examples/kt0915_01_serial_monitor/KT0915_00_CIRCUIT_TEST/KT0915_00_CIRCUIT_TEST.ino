@@ -67,14 +67,7 @@ void setup() {
   Serial.print(radio.getFrequency()/1000.0);
   Serial.println(" MHz");
   Serial.print("\nIf you got here and are listening to a station, your circuit is probably ok!");
-  Serial.print("\nIf you are not listening to a station, try change the value of: fmFreq variable!");
-
-  kt09xx_volume x;
-  x.refined.DMUTE = 0;
-  radio.setRegister(REG_VOLUME,x.raw);
-  Serial.print("\nVOLUME REGISTER: ");
-  Serial.print(radio.getRegister(REG_VOLUME),BIN);  
- 
+  Serial.print("\nIf you are not listening to a station, try change the value of: fmFreq variable!"); 
 }
 
 void loop() {

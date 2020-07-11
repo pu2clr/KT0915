@@ -153,6 +153,8 @@ void KT0915::enable(uint8_t on_off)
 {
     if (this->enablePin < 0)
         return;
+        
+    pinMode(this->enablePin, OUTPUT);
     digitalWrite(this->enablePin, on_off);
     delay(10);
 }
@@ -461,7 +463,6 @@ void KT0915::setLeftChannelInverseControl(uint8_t enable_disable)
 void KT0915::setup(int enable_pin, uint8_t oscillator_type, uint8_t ref_clock)
 {
     this->enablePin = enable_pin;
-    pinMode(this->enablePin, OUTPUT);
     enable(1);
     setReferenceClockType(oscillator_type, ref_clock);
     setVolume(this->currentVolume);

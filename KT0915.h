@@ -585,6 +585,9 @@ public:
     void setStep(uint16_t step);
     void frequencyUp();
     void frequencyDown();
+    inline void setFrequencyUp() { frequencyUp(); };        // Just an alias     
+    inline void setFrequencyDown() { frequencyDown(); };    // Just an alias
+
     uint32_t getFrequency();
 
     uint16_t getFmCurrentChannel();

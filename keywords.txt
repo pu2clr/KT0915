@@ -27,6 +27,20 @@ isCrystalReady          KEYWORD2
 setReferenceClockType   KEYWORD2
 setI2CBusAddress        KEYWORD2
 getDeviceId             KEYWORD2
+setAudioBass            KEYWORD2
+setAudioGain            KEYWORD2
+isFmStereo              KEYWORD2
+getAmRssi               KEYWORD2
+getFmRssi               KEYWORD2
+setDeEmphasis           KEYWORD2
+setAmAfc                KEYWORD2
+setAmSpace              KEYWORD2
+setAmBandwidth          KEYWORD2
+setFrequencyUp          KEYWORD2
+setFrequencyDown        KEYWORD2
+getAmCurrentChannel     KEYWORD2
+getFmCurrentChannel     KEYWORD2
+getFrequency            KEYWORD2
 
 
 #Literals

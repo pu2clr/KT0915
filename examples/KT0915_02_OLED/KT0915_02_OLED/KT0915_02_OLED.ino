@@ -46,8 +46,8 @@
 #define BAND_MODE_SWITCH_DOWN 5   //
 #define VOL_UP    6               // Volume Up
 #define VOL_DOWN  7               // Volume Down
-#define TEST_BUTTON1   8               // Seek Station Up
-#define TEST_BUTTON2 9               // Seek Station Down
+#define TEST_BUTTON1   8          // Seek Station Up
+#define TEST_BUTTON2 9            // Seek Station Down
 
 #define MIN_ELAPSED_TIME 100
 
