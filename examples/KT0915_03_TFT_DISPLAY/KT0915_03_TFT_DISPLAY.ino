@@ -137,7 +137,8 @@ akc_band band[] = {
   {MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
   {MODE_AM, (char *) "13m", 21400, 21900, 21525, 5},
   {MODE_AM, (char *) "11m", 27000, 28000, 27500, 1}, 
-  {MODE_FM, (char *) "VHF/2m", 144000, 148000, 145000, 50}  
+  {MODE_AM, (char *) "10m", 28000, 30000, 28400, 1}, 
+  {MODE_FM, (char *) "VHF/6m", 50000, 55000, 50125, 10}
 };
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
@@ -154,7 +155,6 @@ Rotary encoder = Rotary(ENCODER_PIN_A, ENCODER_PIN_B);
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 
 KT0915 rx;
-
 
 void setup()
 {
@@ -181,15 +181,17 @@ void setup()
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_A), rotaryEncoder, CHANGE);
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_B), rotaryEncoder, CHANGE);
 
-
   rx.setup(ENABLE_PIN); // You can control the enable or disable the device. If ENABLE_PIN is high, the device is enable
   
   rx.setTuneDialModeOff();   // Sets the KT0915 device to Digital control
   rx.setVolumeDialModeOff();
 
   rx.setVolume(20);
-  rx.setAudioGain(2);       // -2dB;
+  rx.setAudioGain(0);       // 0dB
   rx.setAudioAntiPop(3);    // Anti-pop Configuration (10uF capacitor).
+  rx.setAmAfc(true);
+  rx.setLeftChannelInverseControl(ENABLE_OFF);
+  rx.setSoftMute(false);
   
   rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
   showTemplate();
@@ -582,11 +584,6 @@ void volumeButton(byte d)
   delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
 }
 
-
-
-void doFilter() {
-
-}
 
 void loop()
 {

@@ -37,7 +37,6 @@ void KT0915::setI2CBusAddress(int deviceAddress)
  */
 void KT0915::setRegister(int reg, uint16_t parameter)
 {
-
     word16_to_bytes param;
 
     param.raw = parameter;
@@ -686,6 +685,7 @@ uint8_t KT0915::getAmBandwidth()
 void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step)
 {
     kt09xx_amsyscfg reg;
+    kt09xx_locfgc fm32;
 
     this->currentStep = step;
     this->currentFrequency = default_frequency;
@@ -700,11 +700,20 @@ void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
     reg.refined.RCLK_EN = this->currentRefClockEnabled;
     setRegister(REG_AMSYSCFG, reg.raw); // Stores the new value in the register
 
+    // Select the right FM band (Campus Band or regular band)
+    fm32.raw = getRegister(REG_LOCFGC);
+    fm32.refined.CAMPUSBAND_EN = (maximum_frequency <= 64000)? 1:0;
+    setRegister(REG_LOCFGC, fm32.raw);
+
     if (this->currentDialMode == DIAL_MODE_ON)
-        setTuneDialModeOn(minimum_frequency, maximum_frequency);
+           setTuneDialModeOn(minimum_frequency, maximum_frequency);
     else
         setFrequency(default_frequency);
 };
+
+
+
+
 
 /**
  * @todo Adjust setTuneDialOn()

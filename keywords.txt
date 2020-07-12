@@ -6,41 +6,42 @@ KT0915   KEYWORD1
 
 # Methods (KEYWORD2)
 
-KT0915                  KEYWORD2
-setup                   KEYWORD2
-reset                   KEYWORD2
-setRegister             KEYWORD2
-getRegister             KEYWORD2
-setFM                   KEYWORD2
-setAM                   KEYWORD2
-setStep                 KEYWORD2
-setFrequency            KEYWORD2
-frequencyUp             KEYWORD2
-frequencyDown           KEYWORD2
+KT0915 KEYWORD2
+setup  KEYWORD2
+reset  KEYWORD2
+setRegister KEYWORD2
+getRegister KEYWORD2
+setFM  KEYWORD2
+setAM  KEYWORD2
+setStep KEYWORD2
+setFrequency KEYWORD2
+frequencyUp KEYWORD2
+frequencyDown KEYWORD2
 setAntennaTuneCapacitor KEYWORD2
-setStep                 KEYWORD2
-setVolumeDialModeOff    KEYWORD2
-setVolumeDialModeOn     KEYWORD2
-setTuneDialModeOff      KEYWORD2
-setTuneDialModeOn       KEYWORD2
-isCrystalReady          KEYWORD2
-setReferenceClockType   KEYWORD2
-setI2CBusAddress        KEYWORD2
-getDeviceId             KEYWORD2
-setAudioBass            KEYWORD2
-setAudioGain            KEYWORD2
-isFmStereo              KEYWORD2
-getAmRssi               KEYWORD2
-getFmRssi               KEYWORD2
-setDeEmphasis           KEYWORD2
-setAmAfc                KEYWORD2
-setAmSpace              KEYWORD2
-setAmBandwidth          KEYWORD2
-setFrequencyUp          KEYWORD2
-setFrequencyDown        KEYWORD2
-getAmCurrentChannel     KEYWORD2
-getFmCurrentChannel     KEYWORD2
-getFrequency            KEYWORD2
+setStep KEYWORD2
+setVolumeDialModeOff KEYWORD2
+setVolumeDialModeOn KEYWORD2
+setTuneDialModeOff KEYWORD2
+setTuneDialModeOn KEYWORD2
+isCrystalReady KEYWORD2
+setReferenceClockType KEYWORD2
+setI2CBusAddress KEYWORD2
+getDeviceId KEYWORD2
+setAudioBass KEYWORD2
+setAudioGain KEYWORD2
+isFmStereo KEYWORD2
+getAmRssi KEYWORD2
+getFmRssi KEYWORD2
+setDeEmphasis KEYWORD2
+setAmAfc KEYWORD2
+setAmSpace KEYWORD2
+setAmBandwidth KEYWORD2
+setFrequencyUp KEYWORD2
+setFrequencyDown KEYWORD2
+getAmCurrentChannel KEYWORD2
+getFmCurrentChannel KEYWORD2
+getFrequency KEYWORD2
+setLeftChannelInverseControl KEYWORD2
 
 
 #Literals
