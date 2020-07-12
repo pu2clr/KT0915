@@ -21,10 +21,11 @@
   |                   | SCLK/CLK (pin 14)         |     A5        |
   |                   | (*1) Enable (pin 9)       |     12        |
   |     Buttons       |                           |               |
-  |                   | Volume Up                 |      4        |
-  |                   | Volume Down               |      5        |
-  |                   | Stereo/Mono               |      6        |
-  |                   | XXXXXXXXXX                |      7        |
+  |                   | Band Up                   |      4        |
+  |                   | Band Down                 |      5        |
+  |                   | Volume Up                 |      6        |
+  |                   | Volume Down               |      7        |
+  |                   | setAmBandwidth            |      14/A0    |
   |    Encoder        |                           |               |
   |                   | A                         |      2        |
   |                   | B                         |      3        |
@@ -67,6 +68,8 @@
 #define COLOR_WHITE 0xFFFF
 #define COLOR_RED 0xF800
 #define COLOR_BLUE 0x001F
+#define COLOR_GREEN 0x7E0
+#define COLOR_ORANGE 0xFBE0
 
 #define ENABLE_PIN -1  // The KT0915 pin 9 must be connected to tne +Vcc
 #define SDA_PIN A4 // SDA pin used by your Arduino Board
@@ -95,6 +98,7 @@ char oldRssi[15];
 char oldVolume[15];
 char oldStereo[15];
 char oldBW[15];
+char oldBandName[10];
 
 
 bool bSt = true;
@@ -113,6 +117,7 @@ uint32_t currentFrequency;
 typedef struct
 {
   uint8_t  mode; // Bande mode.
+  char    *name;  
   uint32_t minimum_frequency; // Minimum frequency to the band (KHz)
   uint32_t maximum_frequency; // Maximum frequency to the band (KHz)
   uint32_t default_frequency; // default frequency (KHz)
@@ -120,25 +125,26 @@ typedef struct
 } akc_band;
 
 akc_band band[] = {
-  {MODE_FM, 76000, 108000, 103900, 100},
-  {MODE_AM, 520, 1710, 810, 10},
-  {MODE_AM, 4700, 5600, 4885, 5},
-  {MODE_AM, 5700, 6400, 6100, 5},
-  {MODE_AM, 6800, 7600, 7205, 5},
-  {MODE_AM, 9200, 10500, 9600, 5},
-  {MODE_AM, 11400, 12200, 11940, 5},
-  {MODE_AM, 13500, 14300, 13600, 5},
-  {MODE_AM, 15000, 15900, 15300, 5},
-  {MODE_AM, 17400, 17900, 17600, 5},
-  {MODE_AM, 21400, 21900, 21525, 5},
-  {MODE_AM, 27000, 28000, 27500, 1}
+  {MODE_FM, "VHF", 76000, 108000, 103900, 100},
+  {MODE_AM, "MW ", 520, 1710, 810, 10},
+  {MODE_AM, "60m", 4700, 5600, 4885, 5},
+  {MODE_AM, "49m", 5700, 6400, 6100, 5},
+  {MODE_AM, "41m", 6800, 7600, 7205, 5},
+  {MODE_AM, "31m", 9200, 10500, 9600, 5},
+  {MODE_AM, "25m", 11400, 12200, 11940, 5},
+  {MODE_AM, "22m", 13500, 14300, 13600, 5},
+  {MODE_AM, "19m", 15000, 15900, 15300, 5},
+  {MODE_AM, "16m", 17400, 17900, 17600, 5},
+  {MODE_AM, "13m", 21400, 21900, 21525, 5},
+  {MODE_AM, "11m", 27000, 28000, 27500, 1}, 
+  {MODE_FM, "VHF/2m", 144000, 148000, 145000, 50}  
 };
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
 
 char am_bw[] = {'2', '2', '4', '6', 'X'};
-byte bwIdx = 0;
+byte bwIdx = 1;
 
 
 // Encoder control
@@ -170,7 +176,6 @@ void setup()
   tft.setRotation(1);
 
   showSplash();
-
 
   // Encoder interrupt
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_A), rotaryEncoder, CHANGE);
@@ -208,7 +213,6 @@ void rotaryEncoder()
    These strings are used to avoid blinking on display.
    See printValue function.
 */
-
 void resetBuffer()
 {
   oldFreq[0] = '\0';
@@ -219,6 +223,7 @@ void resetBuffer()
   oldVolume[0] = '\0';
   oldStereo[0] = '\0';
   oldBW[0] = '\0';
+  oldBandName[0] = '\0';
 }
 
 
@@ -227,7 +232,6 @@ void resetBuffer()
 */
 void showTemplate()
 {
-
   int maxX1 = tft.width() - 2;
   int maxY1 = tft.height() - 5;
 
@@ -236,20 +240,20 @@ void showTemplate()
   tft.drawRect(2, 2, maxX1, maxY1, COLOR_YELLOW);
   tft.drawLine(2, 40, maxX1, 40, COLOR_YELLOW);
   tft.drawLine(2, 60, maxX1, 60, COLOR_YELLOW);
-
 }
 
 
 void clearStatus() {
-
   char *unit;
   char *bandMode;
 
   int maxX1 = tft.width() - 6;
   int maxY1 = tft.height() - 6;
   
-  tft.fillRect(3,3, maxX1, 35, COLOR_BLACK);
-  // tft.fillRect(3,61,maxX1, maxY1 - 61, COLOR_BLACK);
+  tft.fillRect(3, 3, maxX1, 35, COLOR_BLACK);
+  tft.fillRect(3,41, maxX1, 19, COLOR_BLACK);
+   
+  tft.fillRect(3,61,maxX1, maxY1 - 61, COLOR_BLACK);
   
   if (band[bandIdx].mode ==  MODE_FM) {
     unit = (char *) "MHz";
@@ -260,7 +264,10 @@ void clearStatus() {
   }
   tft.setFont(&Serif_plain_7);
   printValue(135,15,oldMode, bandMode,7,COLOR_YELLOW);  
-  printValue(135,36,oldUnit, unit,7,COLOR_YELLOW);  
+  printValue(135,36,oldUnit, unit,7,COLOR_YELLOW); 
+
+  printValue(6, 120, oldBandName, band[bandIdx].name, 7, COLOR_GREEN);
+
 }
 
 /*
@@ -346,8 +353,8 @@ void showFrequency()
     freq[5] = aux[4];
     freq[6] = '\0'; 
 
-    printValue(2, 36, &oldFreq[0], &freq[0], 23, COLOR_RED);
-    printValue(82, 36, &oldFreq[4], &freq[4], 23, COLOR_RED);
+    printValue(2, 36, &oldFreq[0], &freq[0], 23, COLOR_ORANGE);
+    printValue(82, 36, &oldFreq[4], &freq[4], 23, COLOR_ORANGE);
     tft.setCursor(80, 35);
     tft.print('.');
    
@@ -361,7 +368,7 @@ void showFrequency()
     freq[3] = aux[3];
     freq[4] = aux[4];
     freq[5] = '\0';
-    printValue(2, 36, &oldFreq[0], &freq[0], 23, COLOR_RED);
+    printValue(2, 36, &oldFreq[0], &freq[0], 23, COLOR_ORANGE);
   }
 
 }
@@ -384,15 +391,21 @@ void showStatus()
 */
 void showRSSI()
 {
-  /*
   char rssi[15];
+  int currentRssi;
 
-  // Check AM or FM
-  sprintf(rssi, "%3.3udBuV", (band[bandIdx].mode ==  MODE_FM)? rx.getFmRssi():rx.getAmRssi());
+  if (band[bandIdx].mode ==  MODE_FM) {
+    currentRssi = rx.getFmRssi();
+    showStereo();
+  } else {
+    currentRssi = rx.getAmRssi();
+  }
+
+  sprintf(rssi, "%3u dBuV", currentRssi);
+  
   tft.setFont(&Serif_plain_14);
   tft.setTextSize(1);
-  printValue(5, 55, oldRssi, rssi, 11, COLOR_WHITE);
-  */
+  printValue(3, 55, oldRssi, rssi, 11, COLOR_WHITE);
 }
 
 
@@ -402,20 +415,20 @@ void showBandwidth() {
 
   if (band[bandIdx].mode !=  MODE_AM) return; 
   
-  sprintf(sBw, "%cKHz", am_bw[bwIdx]);
+  sprintf(sBw, "BW %cKHz", am_bw[bwIdx]);
 
   tft.setFont(&Serif_plain_14);
   tft.setTextSize(1);
-  printValue(5, 80, oldBW, sBw, 11, COLOR_WHITE);
+  printValue(5, 80, oldBW, sBw, 11, COLOR_GREEN);
 
 }
 
 void showStereo() {
-  // char stereo[10];
-  // sprintf(stereo, "%s", (rx.isFmStereo()) ? "St" : "Mo");
-  // tft.setFont(&Serif_plain_14);
-  // tft.setTextSize(1);
-  // printValue(125, 55, oldStereo, stereo, 15, COLOR_WHITE);
+  char stereo[10];
+  sprintf(stereo, "%s", (rx.isFmStereo()) ? "St" : "Mo");
+  tft.setFont(&Serif_plain_14);
+  tft.setTextSize(1);
+  printValue(125, 55, oldStereo, stereo, 15, COLOR_WHITE);
 }
 
 /*
@@ -423,10 +436,13 @@ void showStereo() {
 */
 void showVolume()
 {
-  // char sVolume[15];
-  // sprintf(sVolume, "Vol: %2.2u", rx.getVolume());
-  // printValue(80, 56, oldVolume, sVolume, 6, 1);
-
+  char sVolume[15];
+  
+  sprintf(sVolume, "V %2.2u", rx.getVolume());
+  
+  tft.setFont(&Serif_plain_14);
+  tft.setTextSize(1);
+  printValue(100, 80, oldVolume, sVolume, 11, COLOR_GREEN);
 }
 
 
