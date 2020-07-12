@@ -600,8 +600,32 @@ void KT0915::setAmSpace(uint8_t value)
 {
     kt09xx_amcfg r; 
     r.raw = getRegister(REG_AMCFG);
-    r.refined.AMSPACE = value;
+    this->currentAmSpace = r.refined.AMSPACE = value;
     setRegister(REG_AMCFG, r.raw);
+   
+}
+
+/**
+ * @ingroup GA04
+ * @brief Sets the FM Space 
+ * @details FM Channel Spacing; 00 = 200KHz; 01 = 100KHz; 10 = 50KHz
+ * @details Selects FN channel space 
+ * 
+ * | value | space KHz |
+ * | ----- | --------- | 
+ * |   0   |    200    | 
+ * |   1   |    100    |
+ * |   2   |     50    |
+ * |   3   |      ?    |
+ * 
+ * @param value  See table above
+ */
+void KT0915::setFmSpace(uint8_t value)
+{
+    kt09xx_seek r;
+    r.raw = getRegister(REG_SEEK);
+    this->currentFmSpace = r.refined.FMSPACE = value;
+    setRegister(REG_SEEK, r.raw);
 }
 
 /**

@@ -125,19 +125,19 @@ typedef struct
 } akc_band;
 
 akc_band band[] = {
-  {MODE_FM, "VHF", 76000, 108000, 103900, 100},
-  {MODE_AM, "MW ", 520, 1710, 810, 10},
-  {MODE_AM, "60m", 4700, 5600, 4885, 5},
-  {MODE_AM, "49m", 5700, 6400, 6100, 5},
-  {MODE_AM, "41m", 6800, 7600, 7205, 5},
-  {MODE_AM, "31m", 9200, 10500, 9600, 5},
-  {MODE_AM, "25m", 11400, 12200, 11940, 5},
-  {MODE_AM, "22m", 13500, 14300, 13600, 5},
-  {MODE_AM, "19m", 15000, 15900, 15300, 5},
-  {MODE_AM, "16m", 17400, 17900, 17600, 5},
-  {MODE_AM, "13m", 21400, 21900, 21525, 5},
-  {MODE_AM, "11m", 27000, 28000, 27500, 1}, 
-  {MODE_FM, "VHF/2m", 144000, 148000, 145000, 50}  
+  {MODE_FM, (char *) "VHF", 76000, 108000, 103900, 100},
+  {MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
+  {MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
+  {MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
+  {MODE_AM, (char *) "41m", 6800, 7600, 7205, 5},
+  {MODE_AM, (char *) "31m", 9200, 10500, 9600, 5},
+  {MODE_AM, (char *) "25m", 11400, 12200, 11940, 5},
+  {MODE_AM, (char *) "22m", 13500, 14300, 13600, 5},
+  {MODE_AM, (char *) "19m", 15000, 15900, 15300, 5},
+  {MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
+  {MODE_AM, (char *) "13m", 21400, 21900, 21525, 5},
+  {MODE_AM, (char *) "11m", 27000, 28000, 27500, 1}, 
+  {MODE_FM, (char *) "VHF/2m", 144000, 148000, 145000, 50}  
 };
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
@@ -188,8 +188,9 @@ void setup()
   rx.setVolumeDialModeOff();
 
   rx.setVolume(20);
-  rx.setAudioBass(0); // Med.
-  rx.setAudioGain(2); // -2dB;
+  rx.setAudioGain(2);       // -2dB;
+  rx.setAudioAntiPop(3);    // Anti-pop Configuration (10uF capacitor).
+  
   rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
   showTemplate();
   showStatus();
@@ -515,13 +516,15 @@ void useBand() {
     // rx.setSoftMute(TURN_OFF);
     rx.setFmAfc(TURN_ON);
     rx.setMono(TURN_OFF); // Force stereo
+    rx.setAudioBass(3);   // High.
   }
   else
   {
     rx.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
     rx.setAmAfc(TURN_ON);
     rx.setSoftMute(TURN_OFF);
-    rx.setAmSpace(0); // Sets Am space channel to 1Khz.
+    rx.setAmSpace(0);     // Sets Am space channel to 1Khz.
+    rx.setAudioBass(1);   // Low.
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;

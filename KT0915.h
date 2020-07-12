@@ -104,11 +104,11 @@ typedef union {
 typedef union {
     struct
     {
-        uint8_t  DMUTEL : 1;   //!< Left Channel Mute Control; 0 = Left channel mute enable; 1 = Left channel mute disable
-        uint8_t  DMUTER : 1;   //!< Right Channel Mute Control; 0 = Left channel mute enable; 1 = Left channel mute disable
-        uint8_t  FMSPACE : 2;  //!< FM Channel Spacing; 00 = 200KHz; 01 = 100KHz; 10 = 50KHz
+        uint16_t  DMUTEL : 1;   //!< Left Channel Mute Control; 0 = Left channel mute enable; 1 = Left channel mute disable
+        uint16_t  DMUTER : 1;   //!< Right Channel Mute Control; 0 = Left channel mute enable; 1 = Left channel mute disable
+        uint16_t  FMSPACE : 2;  //!< FM Channel Spacing; 00 = 200KHz; 01 = 100KHz; 10 = 50KHz
         uint16_t RESERVED : 11; //!< Reserved
-    } refinied;
+    } refined;
     uint16_t raw;
 } kt09xx_seek;
 
@@ -524,6 +524,9 @@ protected:
     int deviceAddress = KT0915_I2C_ADDRESS;
     int enablePin = -1;
 
+    uint8_t currentAmSpace = 0;
+    uint8_t currentFmSpace = 2;
+
     uint16_t currentStep;                                   //!< Stores the current step
     uint32_t currentFrequency;                              //!< Stores the current frequency
     uint32_t minimumFrequency;                              //!< Stores the minimum frequency for the current band
@@ -573,7 +576,8 @@ public:
     void setAmAfc(uint8_t on_off);
 
     void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
-    
+    void setFmSpace(uint8_t value);
+
     void setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step, uint8_t am_space = 0);
     void setAmSpace(uint8_t value);
     void setAmBandwidth(uint8_t value);
