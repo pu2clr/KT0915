@@ -2,7 +2,7 @@ var searchData=
 [
   ['seekstation_278',['seekStation',['../group___g_a04.html#gad167048c7c2c459b65a5988621228209',1,'KT0915']]],
   ['setam_279',['setAM',['../group___g_a04.html#ga8312ad7dcfe6e854bb0c07d0804000c4',1,'KT0915']]],
-  ['setamafc_280',['setAmAfc',['../group___g_a04.html#ga39c12beb17131b09f1a91de0d3e55b30',1,'KT0915']]],
+  ['setamafc_280',['setAmAfc',['../group___g_a04.html#ga00dfffd3536f8eb4b39c92fb0d75d33c',1,'KT0915']]],
   ['setambandwidth_281',['setAmBandwidth',['../group___g_a04.html#ga0d56d4b56e4cf9021d5e0934b7c54940',1,'KT0915']]],
   ['setamspace_282',['setAmSpace',['../group___g_a04.html#gab4dd1faf6eeabcf5a838dbf6cf36f08e',1,'KT0915']]],
   ['setaudioantipop_283',['setAudioAntiPop',['../group___g_a03.html#ga65fda4c7d18d7f6e7f479e9135ecf226',1,'KT0915']]],
@@ -11,7 +11,7 @@ var searchData=
   ['setaudiomute_286',['setAudioMute',['../group___g_a01.html#a8799087887cc599640ddfa2e87319590',1,'KT0915']]],
   ['setdeemphasis_287',['setDeEmphasis',['../group___g_a04.html#ga910291c7360265215e3962d03be780ee',1,'KT0915']]],
   ['setfm_288',['setFM',['../group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633',1,'KT0915']]],
-  ['setfmafc_289',['setFmAfc',['../group___g_a04.html#ga0a093372898d7699e03089b9dfd9dc1c',1,'KT0915']]],
+  ['setfmafc_289',['setFmAfc',['../group___g_a04.html#gab2c3c3e0e4cc4fe08ece3c8af83d42bd',1,'KT0915']]],
   ['setfmspace_290',['setFmSpace',['../group___g_a04.html#ga8a022cc2e280d527298c109db0088838',1,'KT0915']]],
   ['setfrequency_291',['setFrequency',['../group___g_a04.html#ga7b2e8a1f44c403c142bdbc6e14fa1323',1,'KT0915']]],
   ['setfrequencydown_292',['setFrequencyDown',['../group___g_a01.html#a6da6a5f0f450ef4da1e84359862f996a',1,'KT0915']]],
