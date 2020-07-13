@@ -710,8 +710,6 @@ uint8_t KT0915::getAmBandwidth()
     return r.refined.AM_BW;
 }
 
-
-
 /**
  * @ingroup GA04
  * @brief Sets the receiver to FM mode
