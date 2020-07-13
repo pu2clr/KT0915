@@ -259,6 +259,7 @@ void KT0915::setVolumeDialModeOff()
 
 /**
  * @ingroup GA03
+ * @todo Check this function
  * @brief  Key Mode setup 
  * @details KT0915 allows user to control the channel and volume by using keys/buttons to send digital control signals to CH and VOL pins. Please refer to Section 4 for a typical application circuit. The key mode is enabled by setting GPIO1<1:0> and GPIO2<1:0> to 01.
  * @details Mode A:
@@ -278,6 +279,7 @@ void KT0915::setKeyMode(uint8_t value)
 
 /**
  * @ingroup GA03
+ * @todo Check this function
  * @brief  Sets the Audio and Channel Key Control 
  * @details VOL Pin Mode Selection 00 = High Z; 01 = Key controlled volume increase/decrease; 10 = Dial controlled volume increase/decrease; 11 = Reserved
  * @details CH Pin Mode Selection; 00 = High Z; 01 = Key controlled channel increase / decrease; 10 = Dial controlled channel increase / decrease; 11 = Reserved
@@ -288,7 +290,8 @@ void KT0915::setKeyMode(uint8_t value)
 void KT0915::setKeyControl(uint8_t audioControl, uint8_t channelControl)
 {
     kt09xx_gpiocfg r;
-    r.raw = getRegister(REG_GPIOCFG);  // Gets the current value of the register
+
+    r.refined.RESERVED = 0;            // Always 0; I need check it
     r.refined.GPIO1 = channelControl;  //
     r.refined.GPIO2 = audioControl;    //
     setRegister(REG_GPIOCFG, r.raw);   // Stores the new value in the register
@@ -594,27 +597,29 @@ void KT0915::setDeEmphasis(uint8_t value)
  * @ingroup GA04
  * @brief Sets FM AFC Disable Control 
  * @details This function inverts the register enable/disable concept. So, here, 1 means enable and 0 disable.
- * @param  on_off  1 = enable AFC; 0 = disable AFC.
+ * @param  value  true = enable AFC; false = disable AFC.
  */
-void KT0915::setFmAfc(uint8_t on_off)
+void KT0915::setFmAfc(bool value)
 {
     kt09xx_locfga r;
-    r.refined.FMAFCD = !on_off;
+    r.refined.FMAFCD = !value;
     setRegister(REG_LOCFGA, r.raw);
 }
 
 /**
  * @ingroup GA04
+ * @todo Check the value of RESERVED1 and audio setup
  * @brief Sets AM AFC Disable Control 
  * @details This function inverts the register enable/disable concept. So, here, 1 means enable and 0 disable.
- * @param  on_off  1 = enable AFC; 0 = disable AFC.
+ * @see  @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 19
+ * @param  value  true = enable AFC; false = disable AFC.
  */
-void KT0915::setAmAfc(uint8_t on_off)
+void KT0915::setAmAfc(bool value)
 {
     kt09xx_amsyscfg r;
     r.raw = getRegister(REG_AMSYSCFG); // Gets the current value of the register
-    r.refined.RESERVED1 = 1;
-    r.refined.AMAFCD = !on_off;
+    r.refined.RESERVED1 = 1;           // See page 19. 
+    r.refined.AMAFCD = !value;
     setRegister(REG_AMSYSCFG, r.raw);
 }
 
@@ -753,7 +758,7 @@ void KT0915::setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
 
 
 /**
- * @todo Adjust setTuneDialOn()
+ * @todo Check RESERVED values and AM audio setup
  * @ingroup GA04
  * @brief Sets the receiver to AM mode
  * @details Configures the receiver on AM mode; Also sets the band limits, defaul frequency and step.
@@ -775,6 +780,7 @@ void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
 
     reg.raw = getRegister(REG_AMSYSCFG);
     reg.refined.AM_FM = MODE_AM;
+    reg.refined.RESERVED1 = 1;  // TODO: check it (page 19)
     reg.refined.USERBAND = this->currentDialMode;
     reg.refined.REFCLK = this->currentRefClockType;
     reg.refined.RCLK_EN = this->currentRefClockEnabled;

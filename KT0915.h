@@ -574,8 +574,8 @@ public:
     void setDeEmphasis(uint8_t value);
     void setMono(bool on_off);
 
-    void setFmAfc(uint8_t on_off);
-    void setAmAfc(uint8_t on_off);
+    void setFmAfc(bool value);
+    void setAmAfc(bool value);
 
     void setFM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint32_t default_frequency, uint16_t step);
     void setFmSpace(uint8_t value);
