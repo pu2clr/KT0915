@@ -18,7 +18,6 @@
 
 /**
  * @ingroup GA03
- * @todo check the real i2c address 
  * @brief Set I2C bus address 
  * 
  * @param deviceAddress  I2C address
@@ -714,7 +713,6 @@ uint8_t KT0915::getAmBandwidth()
 
 
 /**
- * @todo Adjust setTuneDialOn()
  * @ingroup GA04
  * @brief Sets the receiver to FM mode
  * @details Configures the receiver on FM mode; Also sets the band limits, defaul frequency and step.
