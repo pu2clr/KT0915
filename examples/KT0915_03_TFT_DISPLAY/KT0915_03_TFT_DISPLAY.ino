@@ -183,8 +183,8 @@ void setup()
 
   rx.setup(ENABLE_PIN); // You can control the enable or disable the device. If ENABLE_PIN is high, the device is enable
   
-  rx.setTuneDialModeOff();   // Sets the KT0915 device to Digital control
-  rx.setVolumeDialModeOff();
+  // rx.setTuneDialModeOff();   // Sets the KT0915 device to Digital control
+  // rx.setVolumeDialModeOff();
 
   rx.setVolume(20);
   rx.setAudioAntiPop(3);    // Anti-pop Configuration (10uF capacitor).
@@ -514,20 +514,20 @@ void useBand() {
     // rx.setSoftMute(TURN_OFF);
     rx.setFmAfc(true);
     rx.setMono(false);  // Force stereo
-    rx.setAudioBass(3); // High.
-    rx.setAudioGain(3); // 3dB
+    // rx.setAudioBass(3); // High.
+    // rx.setAudioGain(3); // 3dB
   }
   else
   {
     rx.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
-    rx.setAmAfc(TURN_ON);
-    rx.setSoftMute(TURN_OFF);
     rx.setAmSpace(0);     // Sets Am space channel to 1Khz.
     // Trying to improve the AM audio quality.
-    rx.setMono(true);
-    rx.setAudioBass(0);   // Disable.
-    rx.setAmAfc(false);   // 
-    rx.setAudioGain(3);       // 0dB
+    rx.setMono(true);           // Sets mono;
+    rx.setAudioBass(3);         // 0=Disable; 1=Low; 2=Med; 3=High
+    rx.setAmAfc(false);         // False = Disable AM AFC 
+    rx.setAudioGain(0);         // 0=3dB; 1=6dB; 2=-3db; 3=0dB
+    rx.setSoftMute(false);      // Makes the tune easier on SW band
+    // rx.setKeyControl(0, 0);
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;

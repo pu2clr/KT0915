@@ -627,8 +627,7 @@ void KT0915::setAmSpace(uint8_t value)
     kt09xx_amcfg r; 
     r.raw = getRegister(REG_AMCFG);
     this->currentAmSpace = r.refined.AMSPACE = value;
-    setRegister(REG_AMCFG, r.raw);
-   
+    setRegister(REG_AMCFG, r.raw);   
 }
 
 /**
@@ -764,7 +763,7 @@ void KT0915::setAM(uint32_t minimum_frequency, uint32_t maximum_frequency, uint3
 
     reg.raw = getRegister(REG_AMSYSCFG);
     reg.refined.AM_FM = MODE_AM;
-    reg.refined.RESERVED1 = 1;  // TODO: check it (page 19)
+    // reg.refined.RESERVED1 = 1;  // TODO: check it (page 19)
     reg.refined.USERBAND = this->currentDialMode;
     reg.refined.REFCLK = this->currentRefClockType;
     reg.refined.RCLK_EN = this->currentRefClockEnabled;
