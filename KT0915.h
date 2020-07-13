@@ -566,7 +566,14 @@ public:
     void setVolumeDown();
     uint8_t getVolume();
 
-    void setSoftMute(uint8_t on_off);
+    void setSoftMute(bool value);
+    void setSoftmuteAttenuation(uint8_t value);
+    void setSoftmuteAttack(uint8_t value);
+    void setAmSoftmuteStartLevel(uint8_t value);
+    void setFmSoftmuteStartLevel(uint8_t value);
+    void setSoftmuteTagertVolume(uint8_t value);
+    void setSoftmuteModeSelection(uint8_t value);
+
     void setAudioBass(uint8_t bass);
     void setAudioAntiPop(uint8_t value);
     void setAudioMute(uint8_t mute_on_off);

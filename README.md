@@ -237,6 +237,7 @@ The table below shows the component parts used to build the receiver prototype b
 ## Videos
 
 [PU2CLR KT0915 Arduino LIbrary - First Test](https://youtu.be/H6SwbuN3niU)
+[PU2CLR KT0915 Arduino Library - Sound testing](https://youtu.be/L3R1hmw8tqg)
 
 
 ## References

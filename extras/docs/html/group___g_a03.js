@@ -18,7 +18,6 @@ var group___g_a03 =
     [ "setVolumeUp", "group___g_a03.html#gabc78db223c9ab4c42cde9d4a749aabe9", null ],
     [ "setVolumeDown", "group___g_a03.html#ga3f223aba4503eefaf34949b2a25861e9", null ],
     [ "getVolume", "group___g_a03.html#ga1ea1b8a786db69d6f5d92222cd8be268", null ],
-    [ "setSoftMute", "group___g_a03.html#gaaab23baea08647563ad47774a8f90ce4", null ],
     [ "setAudioBass", "group___g_a03.html#ga850e1c49c9c7e7ddcd03d3d890df0e35", null ],
     [ "setAudioAntiPop", "group___g_a03.html#ga65fda4c7d18d7f6e7f479e9135ecf226", null ],
     [ "setLeftChannelInverseControl", "group___g_a03.html#ga8e5900c1fa0e1fc5db2b88c19027e71c", null ],

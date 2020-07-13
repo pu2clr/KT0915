@@ -368,20 +368,6 @@ uint8_t KT0915::getVolume()
     return this->currentVolume;
 }
 
-/**
- * @ingroup GA03
- * @brief AM and FM Softmute control
- * @details The internal KT0915 device register, FM and AM SMUTE 0 means enable and 1 disable. This function inverts this concept. So 1 means enable and 0 disable.
- *  
- * @param on_off 1 = ON (enable); 0 = OFF disable
- */
-void KT0915::setSoftMute(uint8_t on_off)
-{
-    kt09xx_volume v;
-    v.raw = getRegister(REG_VOLUME);
-    v.refined.AMDSMUTE = v.refined.FMDSMUTE  = !on_off;
-    setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
-}
 
 /**
  * @ingroup GA03
@@ -670,6 +656,7 @@ void KT0915::setFmSpace(uint8_t value)
 
 /**
  * @ingroup GA04
+ * @todo Check the reserved bits [0:2]
  * @brief Sets AM Channel Bandwidth Selection
  * @details Configures the AM Bandwidth 
  * 
@@ -686,6 +673,7 @@ void KT0915::setAmBandwidth(uint8_t value)
 {
     kt09xx_amdsp r;
     r.raw = getRegister(REG_AMDSP);
+    r.refined.RESERVED1 = 0b100;    // See page 21.
     r.refined.AM_BW = value;
     setRegister(REG_AMDSP, r.raw);
 }
@@ -912,3 +900,134 @@ void KT0915::seekStation()
     // TODO
 }
 
+/** 
+ * @defgroup GA05 Softmute xetup
+ * @section  GA05 Softmute methods 
+ */
+
+/**
+ * @ingroup GA05
+ * @brief AM and FM Softmute control
+ * @details The internal KT0915 device register, FM and AM SMUTE 0 means enable and 1 disable. This function inverts this concept. So 1 means enable and 0 disable.
+ *  
+ * @param value  true = ON (enable); off = OFF disable
+ */
+void KT0915::setSoftMute(bool value)
+{
+    kt09xx_volume v;
+    v.raw = getRegister(REG_VOLUME);
+    v.refined.AMDSMUTE = v.refined.FMDSMUTE = !value;
+    setRegister(REG_VOLUME, v.raw); // Stores the new values of the register
+}
+
+/**
+ * @ingroup GA05
+ * @brief Sets Softmute Attenuation
+ * @details Deal with Device Softmute setup 
+ * 
+ * Attenuation values 
+ * 
+ * | value | description |
+ * | ----- | ----------- | 
+ * |   0   | Strong      |
+ * |   1   | Strongest   | 
+ * |   2   | Weak        | 
+ * |   3   | Weakest     | 
+ *  
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 22
+ * 
+ * @param value  See the table above
+ */
+void KT0915::setSoftmuteAttenuation(uint8_t value)
+{
+    kt09xx_softmute r;
+    r.raw = getRegister(REG_SOFTMUTE); // gets the current stored value
+    r.refined.SMUTEA = value;          // chenges only the parameter Soft Mute Attenuation
+    setRegister(REG_SOFTMUTE, r.raw);  // stores the new values of the register
+}
+
+/**
+ * @ingroup GA05
+ * @brief Sets Softmute Attack/Recover Rate
+ * @details Deal with Device Softmute Attack/Recover Rate setup
+ * 
+ * Attenuation values 
+ * 
+ * | value | description |
+ * | ----- | ----------- | 
+ * |   0   | Slowest     |
+ * |   1   | Fastest (RSSI mode only)   | 
+ * |   2   | Fast        | 
+ * |   3   | Slow        | 
+ * 
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 22
+ *  
+ * @param value  See the table above
+ */
+void KT0915::setSoftmuteAttack(uint8_t value)
+{
+    kt09xx_softmute r;
+    r.raw = getRegister(REG_SOFTMUTE); // gets the current stored value
+    r.refined.SMUTER = value;          // chenges only the parameter
+    setRegister(REG_SOFTMUTE, r.raw);  // stores the new values of the register
+}
+
+/**
+ * @ingroup GA05
+ * @brief Sets AM Softmute Start Level
+ * @details Deal with Device Softmute start level setup
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 22
+ *
+ * @param value  000 - Lowest; 111 - Highest 
+ */
+void KT0915::setAmSoftmuteStartLevel(uint8_t value)
+{
+    kt09xx_softmute r;
+    r.raw = getRegister(REG_SOFTMUTE); // gets the current stored value
+    r.refined.AM_SMTH = value;         // chenges only the parameter
+    setRegister(REG_SOFTMUTE, r.raw);  // stores the new values of the register
+}
+
+/**
+ * @ingroup GA05
+ * @brief Sets FM Softmute Start Level
+ * @details Deal with Device Softmute start level setup
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 22
+ *
+ * @param value  000 - Lowest; 111 - Highest 
+ */
+void KT0915::setFmSoftmuteStartLevel(uint8_t value)
+{
+    kt09xx_softmute r;
+    r.raw = getRegister(REG_SOFTMUTE); // gets the current stored value
+    r.refined.FM_SMTH = value;         // chenges only the parameter
+    setRegister(REG_SOFTMUTE, r.raw);  // stores the new values of the register
+}
+
+/**
+ * @ingroup GA05
+ * @brief Sets  Softmute Target Volume
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 22
+ * @param value  000 - Lowest; 111 - Highest 
+ */
+void KT0915::setSoftmuteTagertVolume(uint8_t value)
+{
+    kt09xx_softmute r;
+    r.raw = getRegister(REG_SOFTMUTE); // gets the current stored value
+    r.refined.VOLUMET = value;         // chenges only the parameter
+    setRegister(REG_SOFTMUTE, r.raw);  // stores the new values of the register
+}
+
+/**
+ * @ingroup GA05
+ * @brief Sets  Softmute Selection RSSI or SNR
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 22
+ * @param value  0 = RSSI; 1 = SNR (only effective in FM mode)
+ */
+void KT0915::setSoftmuteModeSelection(uint8_t value)
+{
+    kt09xx_softmute r;
+    r.raw = getRegister(REG_SOFTMUTE); // gets the current stored value
+    r.refined.SMMD = value;            // chenges only the parameter
+    setRegister(REG_SOFTMUTE, r.raw);  // stores the new values of the register
+}
