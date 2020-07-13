@@ -259,6 +259,24 @@ void KT0915::setVolumeDialModeOff()
 
 /**
  * @ingroup GA03
+ * @brief  Key Mode setup 
+ * @details KT0915 allows user to control the channel and volume by using keys/buttons to send digital control signals to CH and VOL pins. Please refer to Section 4 for a typical application circuit. The key mode is enabled by setting GPIO1<1:0> and GPIO2<1:0> to 01.
+ * @details Mode A:
+ * @details If KEY_MODE<1:0> is set to 00, Mode A is selected. In this mode, each time the CHP (CHM) is pressed, the channel frequency increases (decreases) by one step. The step sizes are defined by FMSPACE<1:0> and AMSPACE<1:0>. If the CHP (CHM) key is pressed for and held for a certain time (defined by TIME1<1:0>), the channel frequency will continue to increase (decrease) automatically at a certain pace (as defined by TIME2<2:0>) until the key is released.
+ * @details Mode B:
+ * @details If KEY_MODE<1:0> is set to 01, Mode B is selected. In this mode, each time the CHP (CHM) is pressed, the channel increases (decreases) by one step. The step sizes are defined by FMSPACE<1:0> and AMSPACE<1:0>. If the CHP (CHM) key is pressed and held for a specific time (TIME1<1:0>), the channel will continue to increase (decrease) automatically at a certain pace (TIME2<2:0>) even if the key is released. The movement is stopped when the key is pressed again.
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); pages 8 and 23.
+ */
+void KT0915::setKeyMode(uint8_t value)
+{
+    kt09xx_amcfg r;
+    r.raw = getRegister(REG_AMCFG);   // Gets the current value of the register
+    r.refined.KEY_MODE = value;       // Set the key mode
+    setRegister(REG_GPIOCFG, r.raw);  // Stores the new value in the register
+}
+
+/**
+ * @ingroup GA03
  * @brief Audio Gain 
  * @details This function set the audio gain you want to use. See table below.
  * | value | Gain Selection |

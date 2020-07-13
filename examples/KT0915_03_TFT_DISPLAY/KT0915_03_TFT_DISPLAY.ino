@@ -189,9 +189,6 @@ void setup()
   rx.setVolume(20);
   rx.setAudioGain(0);       // 0dB
   rx.setAudioAntiPop(3);    // Anti-pop Configuration (10uF capacitor).
-  rx.setAmAfc(true);
-  rx.setLeftChannelInverseControl(ENABLE_OFF);
-  rx.setSoftMute(false);
   
   rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
   showTemplate();
@@ -516,8 +513,8 @@ void useBand() {
     rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
     rx.setDeEmphasis(DE_EMPHASIS_75);
     // rx.setSoftMute(TURN_OFF);
-    rx.setFmAfc(TURN_ON);
-    rx.setMono(TURN_OFF); // Force stereo
+    rx.setFmAfc(true);
+    rx.setMono(false); // Force stereo
     rx.setAudioBass(3);   // High.
   }
   else
@@ -526,7 +523,11 @@ void useBand() {
     rx.setAmAfc(TURN_ON);
     rx.setSoftMute(TURN_OFF);
     rx.setAmSpace(0);     // Sets Am space channel to 1Khz.
-    rx.setAudioBass(1);   // Low.
+    rx.setAudioBass(3);   // Low.
+    // rx.setLeftChannelInverseControl(ENABLE_ON);
+    rx.setMono(true);
+    rx.setAmAfc(true);
+
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;

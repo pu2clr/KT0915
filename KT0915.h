@@ -551,6 +551,7 @@ public:
     bool isCrystalReady();
     void setup(int enable_pin, uint8_t oscillator_type = OSCILLATOR_32KHZ, uint8_t ref_clock = REF_CLOCK_DISABLE);
 
+    void setKeyMode(uint8_t value);
     void setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequency);
     void setTuneDialModeOff();
     void setVolumeDialModeOn();
