@@ -210,7 +210,7 @@ void KT0915::setTuneDialModeOn(uint32_t minimu_frequency, uint32_t maximum_frequ
 /**
  * @ingroup GA03
  * @brief Turns the Tune Dial Mode interface Off
- * @see setTuneDialModeOn
+ * @see setTuneDialModeOn, setKeyMode, setKeyControl
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.
  */
 void KT0915::setTuneDialModeOff()
@@ -246,7 +246,7 @@ void KT0915::setVolumeDialModeOn()
 /**
  * @ingroup GA03
  * @brief Turns the Volume Dial Mode interface Off
- * @see setVolumeDialModeOn
+ * @see setVolumeDialModeOn, setKeyMode, setKeyControl
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.
  */
 void KT0915::setVolumeDialModeOff()
@@ -266,13 +266,32 @@ void KT0915::setVolumeDialModeOff()
  * @details Mode B:
  * @details If KEY_MODE<1:0> is set to 01, Mode B is selected. In this mode, each time the CHP (CHM) is pressed, the channel increases (decreases) by one step. The step sizes are defined by FMSPACE<1:0> and AMSPACE<1:0>. If the CHP (CHM) key is pressed and held for a specific time (TIME1<1:0>), the channel will continue to increase (decrease) automatically at a certain pace (TIME2<2:0>) even if the key is released. The movement is stopped when the key is pressed again.
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); pages 8 and 23.
+ * @param value  00 = Working mode A; 01 = Working mode B;  Others = Reserved
  */
 void KT0915::setKeyMode(uint8_t value)
 {
     kt09xx_amcfg r;
     r.raw = getRegister(REG_AMCFG);   // Gets the current value of the register
     r.refined.KEY_MODE = value;       // Set the key mode
-    setRegister(REG_GPIOCFG, r.raw);  // Stores the new value in the register
+    setRegister(REG_AMCFG, r.raw);    // Stores the new value in the register
+}
+
+/**
+ * @ingroup GA03
+ * @brief  Sets the Audio and Channel Key Control 
+ * @details VOL Pin Mode Selection 00 = High Z; 01 = Key controlled volume increase/decrease; 10 = Dial controlled volume increase/decrease; 11 = Reserved
+ * @details CH Pin Mode Selection; 00 = High Z; 01 = Key controlled channel increase / decrease; 10 = Dial controlled channel increase / decrease; 11 = Reserved
+ * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 20.
+ * @param audioControl VOL Pin Mode Selection; 00 = High Z; 01 = Key controlled volume increase/decrease; 10 = Dial controlled volume increase/decrease; 11 = Reserved
+ * @param channelControl CH Pin Mode Selection; 00 = High Z; 01 = Key controlled channel increase / decrease; 10 = Dial controlled channel increase / decrease 11 = Reserved
+ */
+void KT0915::setKeyControl(uint8_t audioControl, uint8_t channelControl)
+{
+    kt09xx_gpiocfg r;
+    r.raw = getRegister(REG_GPIOCFG);  // Gets the current value of the register
+    r.refined.GPIO1 = channelControl;  //
+    r.refined.GPIO2 = audioControl;    //
+    setRegister(REG_GPIOCFG, r.raw);   // Stores the new value in the register
 }
 
 /**
