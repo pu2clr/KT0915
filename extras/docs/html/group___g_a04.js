@@ -9,6 +9,7 @@ var group___g_a04 =
     [ "setFmAfc", "group___g_a04.html#ga0a093372898d7699e03089b9dfd9dc1c", null ],
     [ "setAmAfc", "group___g_a04.html#ga39c12beb17131b09f1a91de0d3e55b30", null ],
     [ "setAmSpace", "group___g_a04.html#gab4dd1faf6eeabcf5a838dbf6cf36f08e", null ],
+    [ "setFmSpace", "group___g_a04.html#ga8a022cc2e280d527298c109db0088838", null ],
     [ "setAmBandwidth", "group___g_a04.html#ga0d56d4b56e4cf9021d5e0934b7c54940", null ],
     [ "getAmBandwidth", "group___g_a04.html#ga8fe4637f04c8c2955d4f411871134cce", null ],
     [ "setFM", "group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633", null ],

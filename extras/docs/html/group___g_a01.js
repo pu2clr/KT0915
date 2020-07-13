@@ -5,10 +5,10 @@ var group___g_a01 =
       [ "chip_id_ascii", "group___g_a01.html#a005dd93511f32a1ed2d1b1fb4d014f7a", null ]
     ] ],
     [ "kt09xx_seek", "group___g_a01.html#unionkt09xx__seek", [
-      [ "refinied", "group___g_a01.html#a0a8033d64535b412b93334f959833a79", null ],
+      [ "refined", "group___g_a01.html#a04ae915d574ec45f1a128f39e0f7aec0", null ],
       [ "raw", "group___g_a01.html#a2910ac33e8520c6e70762b496dfcf97f", null ]
     ] ],
-    [ "kt09xx_seek.refinied", "group___g_a01.html#structkt09xx__seek_8refinied", [
+    [ "kt09xx_seek.refined", "group___g_a01.html#structkt09xx__seek_8refined", [
       [ "DMUTEL", "group___g_a01.html#acf8fc5aedadc0efed7804ebb5126cde0", null ],
       [ "DMUTER", "group___g_a01.html#a8a736e3b4d8603e38d08a609d982c874", null ],
       [ "FMSPACE", "group___g_a01.html#aa72a3e9cfb05d1906c40bc347c101908", null ],
@@ -260,6 +260,8 @@ var group___g_a01 =
       [ "setReferenceClockType", "group___g_a03.html#gaea3de0c32d82b229aff25e66c8a1fdc9", null ],
       [ "isCrystalReady", "group___g_a03.html#ga8efae1e4921f13b904a1477a94c02c51", null ],
       [ "setup", "group___g_a03.html#ga7004264a35366d5fd2ede1c43789f02b", null ],
+      [ "setKeyMode", "group___g_a03.html#gaf7ff761f66776a83b90cfc7c115a1ca6", null ],
+      [ "setKeyControl", "group___g_a03.html#ga463d12a26b1a6da7713d9a8a7352680c", null ],
       [ "setTuneDialModeOn", "group___g_a03.html#ga33e4e2c4b3529e035f5738991f2a8f0d", null ],
       [ "setTuneDialModeOff", "group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9", null ],
       [ "setVolumeDialModeOn", "group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9", null ],
@@ -279,6 +281,7 @@ var group___g_a01 =
       [ "setFmAfc", "group___g_a04.html#ga0a093372898d7699e03089b9dfd9dc1c", null ],
       [ "setAmAfc", "group___g_a04.html#ga39c12beb17131b09f1a91de0d3e55b30", null ],
       [ "setFM", "group___g_a04.html#ga3affa4b75d836a9792b43f3a58b47633", null ],
+      [ "setFmSpace", "group___g_a04.html#ga8a022cc2e280d527298c109db0088838", null ],
       [ "setAM", "group___g_a04.html#ga8312ad7dcfe6e854bb0c07d0804000c4", null ],
       [ "setAmSpace", "group___g_a04.html#gab4dd1faf6eeabcf5a838dbf6cf36f08e", null ],
       [ "setAmBandwidth", "group___g_a04.html#ga0d56d4b56e4cf9021d5e0934b7c54940", null ],
@@ -288,6 +291,8 @@ var group___g_a01 =
       [ "setStep", "group___g_a04.html#ga6c5890f59ddf05de366df69d80591b6d", null ],
       [ "frequencyUp", "group___g_a04.html#gaceba9c66a56862acffb3972a06c86ce7", null ],
       [ "frequencyDown", "group___g_a04.html#ga62a8459b778a4501fec4c685fb7698e4", null ],
+      [ "setFrequencyUp", "group___g_a01.html#a284f23b0617db0092ad48ec6aad0e8d2", null ],
+      [ "setFrequencyDown", "group___g_a01.html#a6da6a5f0f450ef4da1e84359862f996a", null ],
       [ "getFrequency", "group___g_a04.html#ga27fe68f4550dc8412bf870b982d09828", null ],
       [ "getFmCurrentChannel", "group___g_a04.html#gaed1602510e17de28e8f1aa275d02110d", null ],
       [ "getAmCurrentChannel", "group___g_a04.html#ga781bec3264c082bb77236a65da8e024b", null ],
@@ -298,6 +303,8 @@ var group___g_a01 =
       [ "getFmSnr", "group___g_a04.html#gae6b06bd1d58aee5c8f29299742b6006f", null ],
       [ "deviceAddress", "group___g_a01.html#ae18a907888005f0a781600e2b8ca9daf", null ],
       [ "enablePin", "group___g_a01.html#a2d46a1bc8b3b657f1e81c59a07d2237c", null ],
+      [ "currentAmSpace", "group___g_a01.html#a613b5a8dd6f061601a47e969e6fb595f", null ],
+      [ "currentFmSpace", "group___g_a01.html#a9ad4bfa81c97c593f016153d81ae9157", null ],
       [ "currentStep", "group___g_a01.html#a6c013cdf37aee5ceb98f2e039f61a361", null ],
       [ "currentFrequency", "group___g_a01.html#a3533ee5bbbdc7ba6cba97af7b3c7ea32", null ],
       [ "minimumFrequency", "group___g_a01.html#a5ba74c1edc1401aed676ff83559d2b33", null ],

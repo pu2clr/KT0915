@@ -1,5 +1,5 @@
 var group___g_a01_unionkt09xx__seek =
 [
-    [ "refinied", "group___g_a01.html#a0a8033d64535b412b93334f959833a79", null ],
+    [ "refined", "group___g_a01.html#a04ae915d574ec45f1a128f39e0f7aec0", null ],
     [ "raw", "group___g_a01.html#a2910ac33e8520c6e70762b496dfcf97f", null ]
 ];

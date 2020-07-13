@@ -23,26 +23,30 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "PU2CLR KT0915 Arduino Library", "index.html", [
+    [ "Your support is important.", "md__k_t0915__c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
     [ "PU2CLR KT0915 Arduino Library", "md__k_t0915__r_e_a_d_m_e.html", [
-      [ "Contents", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md1", [
-        [ "Preface", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md2", null ],
-        [ "See also", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md3", null ],
-        [ "Your support is important", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md4", null ],
-        [ "Library Features", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md5", null ],
-        [ "MIT License", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md6", null ],
-        [ "Library Installation", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md7", [
-          [ "Installing via Arduino IDE", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md8", null ]
+      [ "Contents", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md2", [
+        [ "Preface", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md3", null ],
+        [ "See also", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md4", null ],
+        [ "Your support is important", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md5", null ],
+        [ "Library Features", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md6", null ],
+        [ "MIT License", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md7", null ],
+        [ "Library Installation", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md8", [
+          [ "Installing via Arduino IDE", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md9", null ]
         ] ],
-        [ "About KT0915 DSP radio", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md9", [
-          [ "KT0915 features", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md10", null ],
-          [ "KT0915 Pinout", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md11", null ],
-          [ "KT0915 SSOP16L package", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md12", [
-            [ "About the Pin 1 (CH) and Pin 16 (VOL)", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md13", null ]
+        [ "About KT0915 DSP radio", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md10", [
+          [ "KT0915 features", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md11", null ],
+          [ "KT0915 Pinout", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md12", null ],
+          [ "KT0915 SSOP16L package", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md13", [
+            [ "About the Pin 1 (CH) and Pin 16 (VOL)", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md14", null ]
           ] ]
         ] ],
-        [ "SCHEMATIC", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md14", null ],
-        [ "Videos", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md15", null ],
-        [ "References", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md16", null ]
+        [ "SCHEMATIC", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md15", [
+          [ "Parts", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md16", null ]
+        ] ],
+        [ "Photos", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md17", null ],
+        [ "Videos", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md18", null ],
+        [ "References", "md__k_t0915__r_e_a_d_m_e.html#autotoc_md19", null ]
       ] ]
     ] ],
     [ "Todo List", "todo.html", null ],
@@ -71,7 +75,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_k_t0915_8cpp.html",
-"group___g_a01.html#structkt09xx__userstartch_8refined"
+"group___g_a01.html#structkt09xx__statusc_8refined"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

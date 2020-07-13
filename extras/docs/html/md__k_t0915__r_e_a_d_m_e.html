@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('md__k_t0915__r_e_a_d_m_e.html',''); in
 <p><a href="https://pu2clr.github.io/KT0915#mit-license">Copyright (c) 2020 Ricardo Lima Caratti</a>.</p>
 <p>Contact: <a href="#" onclick="location.href='mai'+'lto:'+'__p'+'u2'+'clr'+'@g'+'mai'+'l.'+'com'+'__'; return false;">__pu2<span style="display: none;">.nosp@m.</span>clr@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com<span style="display: none;">.nosp@m.</span>__</a>.</p>
 <p>Be a member of Facebook group <a href="https://www.facebook.com/groups/2655942598067211">DSP receivers for hobbyists</a></p>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Contents</h1>
 <ol type="1">
 <li><a href="https://pu2clr.github.io/KT0915#preface">Preface</a></li>
@@ -109,44 +109,48 @@ Contents</h1>
 <li><a href="https://pu2clr.github.io/KT0915#videos">Videos</a></li>
 <li><a href="https://pu2clr.github.io/KT0915#references">References</a></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Preface</h2>
 <p>The <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost. This device, will surprise hobbyists and experimenters with its simplicity.</p>
 <p>In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> device. The project and examples shown here do not intend to be a real receiver for exigent listener. However, it is possible to start with it and after add some improvements. On the other hand, with the simple circuits shown here, the experimenter may be surprised with its performance.</p>
 <p>{% include video01.html %}</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<p><a href="https://youtu.be/H6SwbuN3niU">PU2CLR KT0915 Arduino LIbrary - AM (MW and SW) and FM receiver with KT0915</a></p>
+<p><br  />
+</p>
+<p>{% include tutorial.html %}</p>
+<p><a href="https://youtu.be/f3P6KL0XJpw">Video Tutorial</a></p>
+<h2><a class="anchor" id="autotoc_md4"></a>
 See also</h2>
 <ol type="1">
 <li><a href="https://pu2clr.github.io/SI4735/">PU2CLR Si4735 Library for Arduino</a>. This library was built based on “Si47XX PROGRAMMING GUIDE; AN332” and it has support to FM, AM and SSB modes (LW, MW and SW). It also can be used on all members of the SI47XX family respecting, of course, the features available for each IC version;</li>
 <li><a href="https://github.com/pu2clr/SI4844">PU2CLR SI4844 Arduino Library</a>. This is an Arduino library for the SI4844, BROADCAST ANALOG TUNING DIGITAL DISPLAY AM/FM/SW RADIO RECEIVER, IC from Silicon Labs. It is available on Arduino IDE. This library is intended to provide an easier interface for controlling the SI4844.</li>
 <li><a href="https://pu2clr.github.io/AKC695X/">PU2CLR AKC695X Arduino Library</a>. The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959sx support AM and FM modes. On AM mode the AKC6955 and AKC6959sx work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Your support is important</h2>
 <p>If you would like to support this library development, consider joining this project via Github. Alternatively, make suggestions on new features and report errors if you find them. Thank you!</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Library Features</h2>
 <p>This library uses the I²C communication protocol and implements most of the functions offered by the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> (BROADCAST AM / FM / SW / LW RECEIVER).</p>
 <p>The main features of this library are listed below.</p>
 <ol type="1">
 <li>Open Source. It is free. You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. See <a href="https://pu2clr.github.io/AKC695X/#mit-license">MIT License to know more</a>;</li>
-<li>Built based on <a href="http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf">AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio</a>;</li>
+<li>Built based on <a href="http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf">KT0915 stereo FM / TV / MW / SW / LW digital tuning radio</a>;</li>
 <li>C++ Language and Object-oriented programming. You can easily extend the AKC695X class by adding more functionalities;</li>
 <li>Available on Arduino IDE (via Manage Libraries). Easy to install and use;</li>
 <li>Cross-platform. You can compile and run this library on most of board available on Arduino IDE (Examples: ATtiny85, boards based on ATmega328 and ATmega-32u4, ATmega2560, ARM Cortex, STM32, Arduino DUE, ESP32 and more);</li>
 <li>Simplifies projects based on <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> IC;</li>
-<li>Seeking function support;</li>
-<li>Support to <b>32.768KHz, 6.5MHz, 7.6MHz, 12MHz, 13MHz, 15.2MHz, 19.2MHz, 24MHz, and 26MHz</b> crystal oscillators;</li>
+<li>Support to 32.768KHz and external reference clock;</li>
 <li>Support to audio controlled by the MCU (Arduino) or potentiometer;</li>
-<li>Real tim FM stereo or mono indicator;</li>
+<li>Real time FM stereo or mono indicator;</li>
 <li>FM stereo or mono selecting;</li>
 <li>Real time signal level reading;</li>
 <li>Real time AM and FM carrier to noise ratio information (dB).</li>
-<li>Bandwidth selection for FM;</li>
+<li>Bandwidth selection for AM;</li>
 <li>Custom band support;</li>
 <li>More than 40 functions implemented.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 MIT License</h2>
 <p>Copyright (c) 2019 Ricardo Lima Caratti</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
@@ -154,19 +158,20 @@ MIT License</h2>
 <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 <p><br  />
 </p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Library Installation</h2>
 <p>You can install this library on your Arduino environment using different methods. The best ways to do that are described below. <br  />
 </p>
-<h3><a class="anchor" id="autotoc_md8"></a>
+<p>{% include libinstalling.html %}</p>
+<h3><a class="anchor" id="autotoc_md9"></a>
 Installing via Arduino IDE</h3>
 <p>// TODO</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 About KT0915 DSP radio</h2>
 <p>According to __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"__ document from KTMicro, "the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> is a fully integrated full band AM/FM digital radio receiver IC with patented technologies that offer full band FM/MW/SW/LW functionality, high quality audio performance, simple design and low BOM cost. The direct frequency and volume control interface help custumers to maintain the classic looks of their existing products.</p>
 <p>Thanks to the patented tuning technology, the receiver maintains good signal reception with short antenna. The chip consumes only 22mA current and can be powered by 2 AAA batteries. Another useful feature is that the volume and channel setup can be preserved in standby mode without external memories. <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> supports a wide range of reference clocks from 32.768KHz to 26MHz, hence can share system clocks with a varieties of MCUs further reducing the system BOM cost.</p>
 <p>With high audio performance, fully integrated features and low BOM cost, <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> is ideal for various FM/MW/SW/LW applications and products".</p>
-<h3><a class="anchor" id="autotoc_md10"></a>
+<h3><a class="anchor" id="autotoc_md11"></a>
 KT0915 features</h3>
 <ol type="1">
 <li>Worldwide full band FM/MW/SW/LW support FM: 32MHz-110MHz<ul>
@@ -191,7 +196,7 @@ KT0915 features</h3>
 <li>Adjustable AM channel filters (2k/4k/6KHz)</li>
 <li>Embedded FM SNR meter</li>
 <li>Fast seek/Tune</li>
-<li>Integrated stereo headphone driver I2C control interface for MCU</li>
+<li>Integrated stereo headphone driver I²C control interface for MCU</li>
 <li>Support traditional dial and digital key for frequency tuning and volume control</li>
 <li>Memorize channel and volume in standby mode</li>
 <li>Low Supply Current - 22mA (operating) &lt;15uA (standby)</li>
@@ -199,7 +204,7 @@ KT0915 features</h3>
 <li>Support continuous reference frequency from 32.768KHz to 26MHz</li>
 </ol>
 <p>Source: __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"__ document from KTMicro</p>
-<h3><a class="anchor" id="autotoc_md11"></a>
+<h3><a class="anchor" id="autotoc_md12"></a>
 KT0915 Pinout</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -231,27 +236,81 @@ KT0915 Pinout</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">13 </td><td class="markdownTableBodyNone">RFGND </td><td class="markdownTableBodyNone">RF ground  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">14 </td><td class="markdownTableBodyNone">SCL </td><td class="markdownTableBodyNone">SCL of I2C bus. Tied to an internal 47kohm pull-up resistor  </td></tr>
+<td class="markdownTableBodyNone">14 </td><td class="markdownTableBodyNone">SCL </td><td class="markdownTableBodyNone">SCL of I²C bus. Tied to an internal 47kohm pull-up resistor  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">15 </td><td class="markdownTableBodyNone">SDA </td><td class="markdownTableBodyNone">SDA of I2C bus. Tied to an internal 47kohm pull-up resistor  </td></tr>
+<td class="markdownTableBodyNone">15 </td><td class="markdownTableBodyNone">SDA </td><td class="markdownTableBodyNone">SDA of I²C bus. Tied to an internal 47kohm pull-up resistor  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">16 </td><td class="markdownTableBodyNone">VOL </td><td class="markdownTableBodyNone">Volume adjustment. Used to deal with mechanical volume control  </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md13"></a>
 KT0915 SSOP16L package</h3>
 <p><img src="https://pu2clr.github.io/KT0915/extras/images/KT0915_SSOP16L.png" alt="KT0915 SSOP16L package" class="inline"/></p>
-<h4><a class="anchor" id="autotoc_md13"></a>
+<h4><a class="anchor" id="autotoc_md14"></a>
 About the Pin 1 (CH) and Pin 16 (VOL)</h4>
 <p>The <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> can be configured to deal with mechanical tuning via a variable resistors. For example, you can use a variable resistor to control the audio volume and another to tuninig the receiver. This resource is enabled by setting the internal register GPIOCFG (Address 0x1D) of the device. The dial can be a variable resistor with the tap connected to CH and VOL as well. The divided voltage at the tap is processed by the internal <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> analog to digital converter (ADC). Finally, the converted datas are stored into the internal registers of the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> device.</p>
-<p>By default, this library the tune an volume are conttrolled by the Arduino. However, you can sets the mechanical feature by calling setTuneDialModeOn and setVolumeDialModeOn. See <a href="https://pu2clr.github.io/KT0915/extras/docs/html/index.html">API Documentation</a>.</p>
-<p>See the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a>; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); pages: 8, 9, 10 and 20.</p>
-<h2><a class="anchor" id="autotoc_md14"></a>
-SCHEMATIC</h2>
+<p>By default, this library the tune and volume are conttrolled by the MCU (Arduino). However, you can sets the mechanical feature by calling setTuneDialModeOn and setVolumeDialModeOn. See <a href="https://pu2clr.github.io/KT0915/extras/docs/html/index.html">API Documentation</a>.</p>
+<p>See <a href="http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf">KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™</a>; pages: 8, 9, 10 and 20.</p>
 <h2><a class="anchor" id="autotoc_md15"></a>
+SCHEMATIC</h2>
+<p>You can use the Typical Application Circuit suggested by the KTMicro. This circuit can be found in the document KT0915-Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip. The main porpuse of this prototype below is testing de <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> Arduino Library. It does not intend to be a real radio for exigent listener. However, it is possible to start with it and after include some devices to improve, for example, its sensibility beyond other desired features. The schematic below does not use the ferrite antenna as suggested by KTMicro and no front-en as well. See <a href="http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf">KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™</a>; page 24.</p>
+<p><br  />
+</p>
+<p><img src="extras/images/schematic_basic.png" alt="Picture Schematic" class="inline"/></p>
+<p><br  />
+</p>
+<p><b>The <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> is a 3.3V part. If you are not using a 3.3V version of Arduino, you have to use a kind of 5V to 3.3V bidirectional converter. It is important to say that just power the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> device with 3.3V from Arduino board is not enough. You have to be aware that the Arduino that operates with 5V, the digital pins and the I²C bus will send 5V signals to the <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> device. That configuration can make the system unstable or damage the device</b>. <br  />
+</p>
+<h3><a class="anchor" id="autotoc_md16"></a>
+Parts</h3>
+<p>The table below shows the component parts used to build the receiver prototype based on <a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a></p>
+<p><br  />
+</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Components </th><th class="markdownTableHeadNone">Value </th><th class="markdownTableHeadNone">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">C1 </td><td class="markdownTableBodyNone">10uF </td><td class="markdownTableBodyNone">Ceramic or tantalum capacitor  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">C2 </td><td class="markdownTableBodyNone">100nF </td><td class="markdownTableBodyNone">Ceramic or tantalum capacitor  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">C3, C4 </td><td class="markdownTableBodyNone">22pF </td><td class="markdownTableBodyNone">Supply decoupling capacitor - Ceramic or tantalum capacitor  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">C5, C6 </td><td class="markdownTableBodyNone">10uF </td><td class="markdownTableBodyNone">Electrolytic or tantalum capacitor  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">C7 </td><td class="markdownTableBodyNone">100nF </td><td class="markdownTableBodyNone">AC coupling capacitor  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Q1 </td><td class="markdownTableBodyNone">32.768KHz </td><td class="markdownTableBodyNone">Crystal  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">R1, R2 </td><td class="markdownTableBodyNone">10K </td><td class="markdownTableBodyNone">I²C buss Pull up ristors  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Arduino </td><td class="markdownTableBodyNone">Pro Mini </td><td class="markdownTableBodyNone">3.3V 8Mhz  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="group___g_a01.html#class_k_t0915" title="KT0915 Class.">KT0915</a> </td><td class="markdownTableBodyNone">DSP </td><td class="markdownTableBodyNone">FM and AM receiver  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">VCC </td><td class="markdownTableBodyNone">3.3V </td><td class="markdownTableBodyNone">Baterry  </td></tr>
+</table>
+<p><br  />
+</p>
+<h2><a class="anchor" id="autotoc_md17"></a>
+Photos</h2>
+<p><img src="extras/images/B01.png" alt="Photo 01" class="inline"/></p>
+<p><br  />
+</p>
+<p><img src="extras/images/F002.png" alt="Photo 02" class="inline"/></p>
+<p><br  />
+</p>
+<p><img src="extras/images/F003.png" alt="Photo 03" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Videos</h2>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<p><a href="https://youtu.be/H6SwbuN3niU">PU2CLR KT0915 Arduino LIbrary - First Test</a></p>
+<h2><a class="anchor" id="autotoc_md19"></a>
 References</h2>
-<p><a href="https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip">Radio, yes AM-SW-FM radio by DSP radio chip</a> <a href="https://github.com/kodera2t/KT0915_DSP_RADIO-fullscreen-info">KT0915_DSP_RADIO-fullscreen-info</a> <a href="https://easyeda.com/wolfezrawilliam/KT0915-Arduino">KT0915 Arduino</a> </p>
+<ul>
+<li><a href="http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf">KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™</a></li>
+<li><a href="https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip">Radio, yes AM-SW-FM radio by DSP radio chip</a></li>
+<li><a href="https://github.com/kodera2t/KT0915_DSP_RADIO-fullscreen-info">KT0915_DSP_RADIO-fullscreen-info</a></li>
+<li><a href="https://easyeda.com/wolfezrawilliam/KT0915-Arduino">KT0915 Arduino</a> </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

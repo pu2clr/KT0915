@@ -31,7 +31,7 @@ var annotated_dup =
     [ "kt09xx_rxcfg", "group___g_a01.html#unionkt09xx__rxcfg", "group___g_a01_unionkt09xx__rxcfg" ],
     [ "kt09xx_rxcfg.refined", "group___g_a01.html#structkt09xx__rxcfg_8refined", "group___g_a01_structkt09xx__rxcfg_8refined" ],
     [ "kt09xx_seek", "group___g_a01.html#unionkt09xx__seek", "group___g_a01_unionkt09xx__seek" ],
-    [ "kt09xx_seek.refinied", "group___g_a01.html#structkt09xx__seek_8refinied", "group___g_a01_structkt09xx__seek_8refinied" ],
+    [ "kt09xx_seek.refined", "group___g_a01.html#structkt09xx__seek_8refined", "group___g_a01_structkt09xx__seek_8refined" ],
     [ "kt09xx_softmute", "group___g_a01.html#unionkt09xx__softmute", "group___g_a01_unionkt09xx__softmute" ],
     [ "kt09xx_softmute.refined", "group___g_a01.html#structkt09xx__softmute_8refined", "group___g_a01_structkt09xx__softmute_8refined" ],
     [ "kt09xx_statusa", "group___g_a01.html#unionkt09xx__statusa", "group___g_a01_unionkt09xx__statusa" ],

@@ -11,6 +11,8 @@ var group___g_a03 =
     [ "setTuneDialModeOff", "group___g_a03.html#gae51e0cd9b5c16ef62382a66087de06e9", null ],
     [ "setVolumeDialModeOn", "group___g_a03.html#gab7c667ae0100d5ef98af1e89977aaae9", null ],
     [ "setVolumeDialModeOff", "group___g_a03.html#gad03af1182b58a192bd7cb2b5b07242c1", null ],
+    [ "setKeyMode", "group___g_a03.html#gaf7ff761f66776a83b90cfc7c115a1ca6", null ],
+    [ "setKeyControl", "group___g_a03.html#ga463d12a26b1a6da7713d9a8a7352680c", null ],
     [ "setAudioGain", "group___g_a03.html#gaf6262a0562e796977894c7dfb477d2c4", null ],
     [ "setVolume", "group___g_a03.html#ga34e84d857bb6010f42057011ed258922", null ],
     [ "setVolumeUp", "group___g_a03.html#gabc78db223c9ab4c42cde9d4a749aabe9", null ],
