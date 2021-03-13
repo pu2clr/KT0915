@@ -1,4 +1,4 @@
-# PU2CLR KT0915 Arduino Library
+# [PU2CLR KT0915 Arduino Library](https://pu2clr.github.io/KT0915/)
 
 
 This is an Arduino Library to control the KT0915 DSP receiver from KTMicro.
