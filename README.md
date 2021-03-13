@@ -29,25 +29,39 @@ Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook
 ## Preface
 
 
-The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost. This device, will surprise hobbyists and experimenters with its simplicity. 
+The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost. This device, will surprise hobbyists and experimenters with its simplicity.
 
 In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and the KT0915 device.  The project and examples shown here do not intend to be a real receiver for exigent listener. However, it is possible to start with it and after add some improvements. On the other hand, with the simple circuits shown here, the experimenter may be surprised with its performance.
 
-{% include video01.html %} 
+{% include video01.html %}
 
 [PU2CLR KT0915 Arduino LIbrary - AM (MW and SW) and FM receiver with KT0915](https://youtu.be/H6SwbuN3niU)
 
 <BR>
 
-{% include tutorial.html %} 
+{% include tutorial.html %}
 
 [Video Tutorial](https://youtu.be/f3P6KL0XJpw)
 
 ## See also
 
-1. [PU2CLR Si4735 Library for Arduino](https://pu2clr.github.io/SI4735/). This library was built based on “Si47XX PROGRAMMING GUIDE; AN332” and it has support to FM, AM and SSB modes (LW, MW and SW). It also can be used on all members of the SI47XX family respecting, of course, the features available for each IC version; 
-2. [PU2CLR SI4844 Arduino Library](https://github.com/pu2clr/SI4844). This is an Arduino library for the SI4844, BROADCAST ANALOG TUNING DIGITAL DISPLAY AM/FM/SW RADIO RECEIVER,  IC from Silicon Labs.  It is available on Arduino IDE. This library is intended to provide an easier interface for controlling the SI4844.
-3. [PU2CLR AKC695X Arduino Library](https://pu2clr.github.io/AKC695X/). The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959sx support AM and FM modes. On AM mode the AKC6955 and AKC6959sx work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
+* [PU2CLR Si4735 Library for Arduino](https://pu2clr.github.io/SI4735/). This library was built based on “Si47XX PROGRAMMING GUIDE; AN332” and it has support to FM, AM and SSB modes (LW, MW and SW). It also can be used on all members of the SI47XX family respecting, of course, the features available for each IC version;
+* [PU2CLR SI4844 Arduino Library](https://pu2clr.github.io/SI4844). This is an Arduino library for the SI4844, BROADCAST ANALOG TUNING DIGITAL * DISPLAY AM/FM/SW RADIO RECEIVER,  IC from Silicon Labs.  It is available on Arduino IDE. This library is intended to provide an easier interface for controlling the SI4844.
+* [PU2CLR AKC695X Arduino Library](https://pu2clr.github.io/AKC695X/). The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959sx support AM and FM modes. On AM mode the AKC6955 and AKC6959sx work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
+* [PU2CLR KT0915 Arduino Library](https://pu2clr.github.io/KT0915/). The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost.
+* [PU2CLR BK108X](https://pu2clr.github.io/BK108X/). The BK1086 and BK1088 are DSP receivers from BAKEN. The BK1088 is a BROADCAST FM and AM (LW, MW and ) RECEIVER and BK1086 is a subset of the BK1088 (it does not have LW and SW acording to the Datasheet).
+* [PU2CLR RDA5807 Arduino Library](https://pu2clr.github.io/RDA5807/). The RDA5807 is a FM DSP integrated circuit receiver (50 to 115MHz) with low noise amplifier support. This device requires very few external components if compared with other similar devices. It also supports RDS/RBDS functionalities, direct auto gain control (AGC) and real time adaptive noise cancellation function.
+* [PU2CLR SI470X Arduino Library](https://pu2clr.github.io/SI470X/). It is a Silicon Labs device family that integrates the complete functionalities for FM receivers, including RDS (Si4703).
+* [PU2CLR MCP23008](https://pu2clr.github.io/MCP23008/). It is an Arduino Library to control the MCP23008/MCP23S08 8-Bit I/O Expander. The MCP23008 device provides 8-bit, general purpose, parallel I/O expansion. It can be controlled via I2C bus applications. It is a great and inexpensive device that allow you to add more devices to be controlled by your Arduino board via I2C protocol.
+* [PU2CLR - PCF8574 Arduino Library](https://pu2clr.github.io/PCF8574/). It is an Arduino Library to control the PCF8574 8-Bit I/O Expander. The PCF8574 device provides 8-bit, general purpose, parallel I/O expansion. It can be controlled via I²C bus applications. It is a great and inexpensive device that allow you to add more peripherals to be controlled by your Arduino board via I²C protocol.
+
+### More Arduino Projects developed by author 
+
+* [Multipurpose signal generator with SI5351](https://pu2clr.github.io/SI5351/). It is a multipurpose signal generator controlled by Arduino. This project uses the SI5351 from Silicon Labs. The Arduino sketch is configured to control the SI5351 with three channels from 32.768KHz to 160MHz and steps from 1Hz to 1MHz.
+* [Shortwave Arduino Transmiter](https://pu2clr.github.io/Small-Shortwave-Transmitter/). This project is about a shortwave transmitter from 3 MHz to 30 MHz. It uses the SI5351 oscillator from Silicon Labs controlled by Arduino. Also, you can use it with a crystal oscillator. In this case, you will not need the SI5351 device and Arduino. 
+* [Android and iOS Bluetooth Remote Control for PU2CLR Arduino Library DSP receivers](https://pu2clr.github.io/bluetooth_remote_control/). This project is an extension of the Arduino library projects for: [SI4735](https://pu2clr.github.io/SI4735/); [AKC6959](https://pu2clr.github.io/AKC695X/) and [KT0915](https://pu2clr.github.io/KT0915/). It is a simple example that shows a way to use your smartphone as a remote control via Bluetooth. In order to follow the steps presented here, I am assuming that you have some knowledge in development for mobile devices. Also, you will need to be familiar with the Javascript programming language. The development environment used by this project is the [Apache Cordova](https://cordova.apache.org/docs/en/latest/guide/overview/index.html). Cordova is a open-source mobile development framework that allows you to develop cross-platform applications. That means you can code once and deploy the application in many system, including iOS and Android. 
+Cordova provides an easy way to develop for iOS and Android.  
+* [Band Pass Filter controlled by Arduino](https://pu2clr.github.io/auto_bpf_arduino/). It is a HF band pass filter controlled by Arduino. It is designed for HF receivers. With this project, you can use a set of up to four HF bandpass filters that can be selected by Arduino. To do that you will need just two digital Arduino pins.
 
 
 ## Your support is important
@@ -57,7 +71,7 @@ If you would like to support this library development, consider joining this pro
 
 ## Library Features
 
-This library uses the I²C communication protocol and implements most of the functions offered by the KT0915 (BROADCAST AM / FM / SW / LW RECEIVER). 
+This library uses the I²C communication protocol and implements most of the functions offered by the KT0915 (BROADCAST AM / FM / SW / LW RECEIVER).
 
 The main features of this library are listed below.
 
@@ -96,7 +110,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 You can install this library on your Arduino environment using different methods. The best ways to do that are described below.  
 
-{% include libinstalling.html %} 
+{% include libinstalling.html %}
 
 
 ### Installing via Arduino IDE
@@ -118,15 +132,15 @@ With high audio performance, fully integrated features and low BOM cost, KT0915 
 ### KT0915 features
 
 1. Worldwide full band FM/MW/SW/LW support FM: 32MHz-110MHz
-   * MW: 500KHz-1710KHz 
+   * MW: 500KHz-1710KHz
    * FM: 32MHz-110MHz
    * MW: 500KHz-1710KHz SW: 1.6MHz~32MHz LW: 150KHz ~ 280KHz
 2. Fully integrated frequency synthesizer with no external component
-3. High Sensitivity 
-   * 1.6uVEMF for FM 
+3. High Sensitivity
+   * 1.6uVEMF for FM
    * 16uVEMF for AM
 4. High Fidelity
-   * SNR (FM/AM): 60dB/55dB 
+   * SNR (FM/AM): 60dB/55dB
    * THD: 0.3%
 5. Low supply voltage: 2.2V to 3.6V, can be supplied by 2 AAA batteries
 6. Automatic antenna tuning
@@ -135,8 +149,8 @@ With high audio performance, fully integrated features and low BOM cost, KT0915 
 10. Fast seek/Tune
 11. Integrated stereo headphone driver I²C control interface for MCU
 12. Support traditional dial and digital key for frequency tuning and volume control
-13. Memorize channel and volume in standby mode 
-14. Low Supply Current - 22mA (operating) <15uA (standby) 
+13. Memorize channel and volume in standby mode
+14. Low Supply Current - 22mA (operating) <15uA (standby)
 15. Support both 32.768KHz and 38KHz crystal
 16. Support continuous reference frequency from 32.768KHz to 26MHz
 
@@ -149,18 +163,18 @@ Source: __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"_
  | Pin Number  | Pin Name  | Description |
  | ----------  | --------  | ----------- |
  | 1           | CH        | Channel Adjustment. Used to deal with mechanical tune option |
- | 2           | DVSS      | Digital Ground | 
- | 3           | ROUT      | Righ channel audio output | 
- | 4           | LOUT      | Left channel audio output | 
- | 5           | AVSS      | Analog ground | 
- | 6           | AVDD      | Power Supply | 
- | 7           | XI/RCLK   | Crystal input or reference clock input setup | 
- | 8           | XO        | Crystal Output | 
+ | 2           | DVSS      | Digital Ground |
+ | 3           | ROUT      | Righ channel audio output |
+ | 4           | LOUT      | Left channel audio output |
+ | 5           | AVSS      | Analog ground |
+ | 6           | AVDD      | Power Supply |
+ | 7           | XI/RCLK   | Crystal input or reference clock input setup |
+ | 8           | XO        | Crystal Output |
  | 9           | ENABLE    | Chip enable. Tied to an internal 600kohm pull down resistor |
  | 10          | AMINN     | AM RF negative input |
  | 11          | AMINP     | AM RF positive input |
- | 12          | RFINP     | FM RF input | 
- | 13          | RFGND     | RF ground | 
+ | 12          | RFINP     | FM RF input |
+ | 13          | RFGND     | RF ground |
  | 14          | SCL       | SCL of I²C bus. Tied to an internal 47kohm pull-up resistor |
  | 15          | SDA       | SDA of I²C bus. Tied to an internal 47kohm pull-up resistor |
  | 16          | VOL       | Volume adjustment. Used to deal with mechanical volume control |
@@ -186,7 +200,7 @@ See [KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™](http://
 
 ## SCHEMATIC
 
-You can use the Typical Application Circuit suggested by the KTMicro. This circuit can be found in the document KT0915-Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip.  The main porpuse of this prototype below is testing de KT0915 Arduino Library. It does not intend to be a real radio for exigent listener. However, it is possible to start with it and after include some devices to improve, for example,  its sensibility beyond other desired features.  The schematic below does not use the ferrite antenna as suggested by KTMicro and no front-en as well.  See [KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™](http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf); page 24. 
+You can use the Typical Application Circuit suggested by the KTMicro. This circuit can be found in the document KT0915-Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip.  The main porpuse of this prototype below is testing de KT0915 Arduino Library. It does not intend to be a real radio for exigent listener. However, it is possible to start with it and after include some devices to improve, for example,  its sensibility beyond other desired features.  The schematic below does not use the ferrite antenna as suggested by KTMicro and no front-en as well.  See [KT0915 - Monolithic Digital FM/MW/SW/LW ReceiverRadio-on-a-Chip™](http://aitendo3.sakura.ne.jp/aitendo_data/product_img/ic/radio/KT0915%20/KT0915_datasheet_V022_aitendo.pdf); page 24.
 
 <BR>
 
@@ -204,18 +218,18 @@ The table below shows the component parts used to build the receiver prototype b
 <BR>
 
 | Components |  Value    | Description |
-| ---------- |  -------- | ----------- | 
-|    C1      |  10uF     | Ceramic or tantalum capacitor | 
-|    C2      |  100nF    | Ceramic or tantalum capacitor | 
-|   C3, C4   |  22pF     | Supply decoupling capacitor - Ceramic or tantalum capacitor | 
-|   C5, C6   |  10uF     | Electrolytic or tantalum capacitor | 
+| ---------- |  -------- | ----------- |
+|    C1      |  10uF     | Ceramic or tantalum capacitor |
+|    C2      |  100nF    | Ceramic or tantalum capacitor |
+|   C3, C4   |  22pF     | Supply decoupling capacitor - Ceramic or tantalum capacitor |
+|   C5, C6   |  10uF     | Electrolytic or tantalum capacitor |
 |    C7      |  100nF    | AC coupling capacitor |  
-|    Q1      | 32.768KHz | Crystal | 
-|   R1, R2   |  10K      | I²C buss Pull up ristors | 
-|   Arduino  | Pro Mini  | 3.3V 8Mhz | 
-|   KT0915   | DSP       | FM and AM receiver | 
+|    Q1      | 32.768KHz | Crystal |
+|   R1, R2   |  10K      | I²C buss Pull up ristors |
+|   Arduino  | Pro Mini  | 3.3V 8Mhz |
+|   KT0915   | DSP       | FM and AM receiver |
 |    VCC     | 3.3V      | Baterry |
-     
+
 
 <BR>
 
@@ -246,4 +260,3 @@ The table below shows the component parts used to build the receiver prototype b
 * [Radio, yes AM-SW-FM radio by DSP radio chip](https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip)
 * [KT0915_DSP_RADIO-fullscreen-info](https://github.com/kodera2t/KT0915_DSP_RADIO-fullscreen-info)
 * [KT0915 Arduino](https://easyeda.com/wolfezrawilliam/KT0915-Arduino)
-  
