@@ -21,7 +21,7 @@ Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook
    * [KT0915 pinout](https://pu2clr.github.io/KT0915#kt0915-pinout)
 7. [SCHEMATIC](https://pu2clr.github.io/KT0915#schematic)
 8.  [API Documentation](https://pu2clr.github.io/KT0915/extras/docs/html/index.html)
-9.  [Examples](https://github.com/pu2clr/KT0915/tree/master/examples)
+9.  [Source code - Examples](https://github.com/pu2clr/KT0915/tree/master/examples)
 10. [Videos](https://pu2clr.github.io/KT0915#videos)
 11. [References](https://pu2clr.github.io/KT0915#references)
 
