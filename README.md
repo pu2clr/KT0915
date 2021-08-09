@@ -132,9 +132,10 @@ With high audio performance, fully integrated features and low BOM cost, KT0915 
 ### KT0915 features
 
 1. Worldwide full band FM/MW/SW/LW support FM: 32MHz-110MHz
-   * MW: 500KHz-1710KHz
    * FM: 32MHz-110MHz
-   * MW: 500KHz-1710KHz SW: 1.6MHz~32MHz LW: 150KHz ~ 280KHz
+   * MW: 500KHz-1710KHz 
+   * SW: 1.6MHz~32MHz 
+   * LW: 150KHz ~ 280KHz
 2. Fully integrated frequency synthesizer with no external component
 3. High Sensitivity
    * 1.6uVEMF for FM
@@ -144,15 +145,15 @@ With high audio performance, fully integrated features and low BOM cost, KT0915 
    * THD: 0.3%
 5. Low supply voltage: 2.2V to 3.6V, can be supplied by 2 AAA batteries
 6. Automatic antenna tuning
-8. Adjustable AM channel filters (2k/4k/6KHz)
-9. Embedded FM SNR meter
-10. Fast seek/Tune
-11. Integrated stereo headphone driver I²C control interface for MCU
-12. Support traditional dial and digital key for frequency tuning and volume control
-13. Memorize channel and volume in standby mode
-14. Low Supply Current - 22mA (operating) <15uA (standby)
-15. Support both 32.768KHz and 38KHz crystal
-16. Support continuous reference frequency from 32.768KHz to 26MHz
+7. Adjustable AM channel filters (2k/4k/6KHz)
+8. Embedded FM SNR meter
+9.  Fast seek/Tune
+10. Integrated stereo headphone driver I²C control interface for MCU
+11. Support traditional dial and digital key for frequency tuning and volume control
+12. Memorize channel and volume in standby mode
+13. Low Supply Current - 22mA (operating) <15uA (standby)
+14. Support both 32.768KHz and 38KHz crystal
+15. Support continuous reference frequency from 32.768KHz to 26MHz
 
 Source: __"Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); KT0915"__ document from KTMicro
 
