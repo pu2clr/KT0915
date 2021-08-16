@@ -1,8 +1,7 @@
 # [PU2CLR KT0915 Arduino Library](https://pu2clr.github.io/KT0915/)
 
 
-This is an Arduino Library to control the KT0915 DSP receiver from KTMicro.
-The KT0915 is an integrated circuit that provides full band receiver on FM and AM (MW/SW/LW).
+This is an Arduino Library to control the KT0915 DSP receiver from KTMicro. The KT0915 is an integrated circuit that provides full band receiver on FM and AM (MW/SW/LW).
 
 [Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/KT0915#mit-license).
 
