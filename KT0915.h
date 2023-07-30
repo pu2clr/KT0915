@@ -1,20 +1,24 @@
 
 /**
- * @mainpage PU2CLR KT0915 Arduino Library 
- * @brief PU2CLR KT0915 Arduino Library implementation. <br> 
- * @details This is an Arduino library for the KT0915, BROADCAST RECEIVER.<br>  
+ * @mainpage PU2CLR KT0915 Arduino Library
+ * @brief PU2CLR KT0915 Arduino Library implementation. <br>
+ * @details This is an Arduino library for the KT0915, BROADCAST RECEIVER.<br>
  * @details It works with I2C protocol and can provide an easier interface for controlling the KT0915 device.<br>
- * @details This library was built based on KT0915 Datasheet from KTMicro (Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip TM). 
+ * @details This library was built based on KT0915 Datasheet from KTMicro (Monolithic Digital FM/MW/SW/LW Receiver Radio-on-a-Chip TM).
  * @details Others sources help the author to build this library. They are referenced in the documentation for this library on: https://github.com/pu2clr/KT0915
  * @details This library uses the I2C protocols to read and write KT0915 registers. In this context, registers are memory position into the device.
- * @details The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost. 
- * @details This device, will surprise hobbyists and experimenters with its simplicity. 
- * 
+ * @details The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost.
+ * @details This device, will surprise hobbyists and experimenters with its simplicity.
+ *
  * This library can be freely distributed using the MIT Free Software model.
- * 
- * Copyright (c) 2020 Ricardo Lima Caratti.  
+ *
+ * Copyright (c) 2020 Ricardo Lima Caratti.
  * Contact: pu2clr@gmail.com
  */
+
+ #ifndef _KT0915_H // Prevent this file from being compiled more than once
+ #define _KT0915_H
+
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -32,8 +36,8 @@
 #define DE_EMPHASIS_75 0
 #define DE_EMPHASIS_50 1
 
-#define OSCILLATOR_32KHZ    0      //  32.768KHz 
-#define OSCILLATOR_6_5MHZ   1      //  6.5MHz 
+#define OSCILLATOR_32KHZ    0      //  32.768KHz
+#define OSCILLATOR_6_5MHZ   1      //  6.5MHz
 #define OSCILLATOR_7_6MHZ   2      //  7.6MHz
 #define OSCILLATOR_12MHZ    3      //  12MHz
 #define OSCILLATOR_13MHZ    4      //  13MHz
@@ -41,13 +45,13 @@
 #define OSCILLATOR_19_2MHZ  6      //  19.2MHz
 #define OSCILLATOR_24MHZ    7      //  24MHz
 #define OSCILLATOR_26MHZ    8      //  26MHz
-#define OSCILLATOR_38KHz    9      //  38KHz 
+#define OSCILLATOR_38KHz    9      //  38KHz
 
-#define REF_CLOCK_ENABLE    1      // Reference Clock 
-#define REF_CLOCK_DISABLE   0      // Crystal Clock 
+#define REF_CLOCK_ENABLE    1      // Reference Clock
+#define REF_CLOCK_DISABLE   0      // Crystal Clock
 
 #define DIAL_MODE_ON        1      // Mechanical tuning (Via 100K resistor)
-#define DIAL_MODE_OFF       0      // MCU (Arduino) tuning  
+#define DIAL_MODE_OFF       0      // MCU (Arduino) tuning
 
 #define REG_CHIP_ID 0x01
 #define REG_SEEK 0x02
@@ -76,14 +80,14 @@
 #define REG_AFC 0x3C
 
 /**
- * @defgroup GA01 Union, Structure and Defined Data Types  
- * @brief   KT0915 Defined Data Types 
+ * @defgroup GA01 Union, Structure and Defined Data Types
+ * @brief   KT0915 Defined Data Types
  * @details Defined Data Types is a way to represent the KT0915 registers information
  * @details Some information appears to be inaccurate due to translation problems from Chinese to English.
  * @details The information shown here was extracted from Datasheet:
  * @details KT0915 stereo FM / TV / MW / SW / LW digital tuning radio documentation.
- * @details Other information seems incomplete even in the original Chinese Datasheet. 
- * @details For example: Reg 10 (0x0A). There is no information about it. The Reg11 and 12 seem wrong  
+ * @details Other information seems incomplete even in the original Chinese Datasheet.
+ * @details For example: Reg 10 (0x0A). There is no information about it. The Reg11 and 12 seem wrong
  */
 
 /**
@@ -178,7 +182,7 @@ typedef union {
         uint8_t RESERVED1 : 8;  //!< Reserved
         uint8_t FMAFCD : 1;     //!< AFC Disable Control Bit; 0 = AFC enable; 1 = AFC disable.
         uint8_t RESERVED2 : 7;  //!< Reserved
-    } refined; 
+    } refined;
     uint16_t raw;
 } kt09xx_locfga; // LOCFGA
 
@@ -265,10 +269,10 @@ typedef union {
 } kt09xx_statusc; // STATUSC
 
 /**
- * @ingroup GA01 
+ * @ingroup GA01
  * @brief 3.10.12. AMSYSCFG (Address 0x16)
- * @details The table below shows  REFCLK possibvle values 
- * 
+ * @details The table below shows  REFCLK possibvle values
+ *
  * Crystal type table
  * | Dec | binary | Description | defined constant |
  * | --  | ------ | ----------- | ---------------  |
@@ -278,13 +282,13 @@ typedef union {
  * | 3   | 0011   | 12MHz       | OSCILLATOR_12MHZ    |
  * | 4   | 0100   | 13MHz       | OSCILLATOR_13MHZ    |
  * | 5   | 0101   | 15.2MHz     | OSCILLATOR_15_2MHZ  |
- * | 6   | 0110   | 19.2MHz     | OSCILLATOR_19_2MHZ  | 
+ * | 6   | 0110   | 19.2MHz     | OSCILLATOR_19_2MHZ  |
  * | 7   | 0111   | 24MHz       | OSCILLATOR_24MHZ    |
  * | 8   | 1000   | 26MHz       | OSCILLATOR_26MHZ    |
  * | 9   | 1001   | ?? 38KHz ?? | OSCILLATOR_38KHz    |
- * 
+ *
  * @see KT0915; Monolithic Digital FM/MW/SW/LW Receiver Radio on a Chip(TM); page 19.
- * 
+ *
  */
 typedef union {
     struct
@@ -339,7 +343,7 @@ typedef union {
     {
         uint8_t GPIO1 : 2;      //!< CH Pin Mode Selection; 00 = High Z; 01 = Key controlled channel increase / decrease; 10 = Dial controlled channel increase / decrease; 11 = Reserved
         uint8_t GPIO2 : 2;      //!< VOL Pin Mode Selection; 00 = High Z; 01 = Key controlled volume increase/decrease; 10 = Dial controlled volume increase/decrease; 11 = Reserved
-        uint16_t RESERVED : 12;  //!< Reserved  
+        uint16_t RESERVED : 12;  //!< Reserved
     } refined;
     uint16_t raw;
 } kt09xx_gpiocfg; // GPIOCFG
@@ -499,7 +503,7 @@ typedef union {
 
 /**
  * @ingroup GA01
- * @brief Converts 16 bits word to two bytes 
+ * @brief Converts 16 bits word to two bytes
  */
 typedef union {
     struct {
@@ -510,11 +514,11 @@ typedef union {
 } word16_to_bytes;
 
 /**
- * @ingroup GA01  
- * @brief KT0915 Class 
- * @details This class implements all functions that will help you to control the KT0915 devices. 
- * 
- * @author PU2CLR - Ricardo Lima Caratti 
+ * @ingroup GA01
+ * @brief KT0915 Class
+ * @details This class implements all functions that will help you to control the KT0915 devices.
+ *
+ * @author PU2CLR - Ricardo Lima Caratti
  */
 
 class KT0915 {
@@ -562,7 +566,7 @@ public:
     void setLeftChannelInverseControl(uint8_t enable_disable);
 
     void setVolume(uint8_t value);
-    void setVolumeUp(); 
+    void setVolumeUp();
     void setVolumeDown();
     uint8_t getVolume();
 
@@ -598,16 +602,16 @@ public:
     void setStep(uint16_t step);
     void frequencyUp();
     void frequencyDown();
-    inline void setFrequencyUp() { frequencyUp(); };        // Just an alias     
+    inline void setFrequencyUp() { frequencyUp(); };        // Just an alias
     inline void setFrequencyDown() { frequencyDown(); };    // Just an alias
 
     uint32_t getFrequency();
 
     uint16_t getFmCurrentChannel();
-    uint16_t getAmCurrentChannel(); 
+    uint16_t getAmCurrentChannel();
 
     void seekStation();
- 
+
     inline uint8_t getCurrentMode() { return this->currentMode; };
 
     int getFmRssi();
@@ -616,3 +620,4 @@ public:
 
 };
 
+#endif
