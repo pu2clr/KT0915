@@ -9,6 +9,13 @@ The examples purpose is assisting you about the use of the PU2CLR KT0915 Arduino
 __The KT0915 is a 3.3V part. If you are not using a 3.3V version of Arduino, you have to use a kind of 5V to 3.3V bidirectional converter. It is important to say that just power the KT0915 device with 3.3V from Arduino board is not enough. You have to be aware that the Arduino that operates with 5V, the digital pins and the I²C bus will send 5V signals to the KT0915 device. That configuration can make the system unstable or damage the device__.  
 
 
+## Donate 
+
+[If you find this project useful, consider making a donation so that the author of this library can purchase components and modules for improvements and testing of this library. Click here to donate.](https://www.paypal.com/donate/?business=LLV4PHKTXC4JW&no_recurring=0&item_name=Consider+making+a+donation.++So+I+can+purchase+components+and+modules+for+improvements+and+testing+of+this+library.&currency_code=USD)
+
+
+
+
 ## KT0915_01_serial_monitor examples 
 
 The examples stored in this folder should be used to check your circuit and check the functionalities implemented by the library. You will not need to use any display device, push buttons and encoders to make a receiver based on KT0916 works. All you will need is your computer and the Arduino IDE to get a basic receiver.
